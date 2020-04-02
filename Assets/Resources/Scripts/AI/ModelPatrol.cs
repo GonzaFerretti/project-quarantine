@@ -9,6 +9,7 @@ public class ModelPatrol : ModelChar
     public float angle;
     public float alertDuration;
     public float alertCountdown;
+    public SpriteRenderer FOVcone;
     public LayerMask visibility;
     public ModelPlayable target;
     public ControllerWrapper patrolcontroller;
@@ -33,6 +34,7 @@ public class ModelPatrol : ModelChar
     {
         Debug.Log("!");
         currentSpeed = runSpeed;
+        FOVcone.color = new Color(1, 0, 0);
         controller = alertcontroller;
         
         if(controller.myController == null)
