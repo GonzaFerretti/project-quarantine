@@ -728,7 +728,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283858616}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
   m_Speed: 5
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   queuedAction:
   - {fileID: 11400000, guid: ff7d0c755224d4f4c98b6bde9fee094b, type: 2}
   - {fileID: 11400000, guid: ff7d0c755224d4f4c98b6bde9fee094b, type: 2}
-  - {fileID: 11400000, guid: 78380fdd64dc00747bcd0bc9771aed3b, type: 2}
+  - {fileID: 11400000, guid: f33ea861a3e8b044b9540a21b7a68a95, type: 2}
   currentAction: 0
 --- !u!23 &1118163036
 MeshRenderer:
@@ -2223,7 +2223,7 @@ PrefabInstance:
         type: 3}
       propertyPath: queuedAction.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 78380fdd64dc00747bcd0bc9771aed3b,
+      objectReference: {fileID: 11400000, guid: f33ea861a3e8b044b9540a21b7a68a95,
         type: 2}
     - target: {fileID: 2793555924068173874, guid: 1387e31a7dd8dc840b2f4458674907c3,
         type: 3}

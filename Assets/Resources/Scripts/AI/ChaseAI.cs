@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine.AI;
 
 public class ChaseAI : ControllerWrapper, IController
 {
@@ -12,7 +10,7 @@ public class ChaseAI : ControllerWrapper, IController
 
     public void OnUpdate()
     {
-        _model.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(_model.target.transform.position);
+        _model.GetComponent<NavMeshAgent>().SetDestination(_model.target.transform.position);
     }
 
     public override void SetController()

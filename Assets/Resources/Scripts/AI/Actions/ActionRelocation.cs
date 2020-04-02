@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class ActionRelocation : IAction
 {
@@ -13,6 +12,8 @@ public class ActionRelocation : IAction
 
     public void Do(ModelChar m)
     {
-        m.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(_targetLoc);
+        NavMeshAgent agent = m.GetComponent<NavMeshAgent>();
+        agent.speed = m.currentSpeed;
+        agent.SetDestination(_targetLoc);
     }
 }
