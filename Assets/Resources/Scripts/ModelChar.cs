@@ -6,6 +6,7 @@ public class ModelChar : MonoBehaviour
     public float currentSpeed;
     public float walkSpeed;
     public float runSpeed;
+    public bool isDucking;
 
     protected virtual void Start()
     {
@@ -16,6 +17,7 @@ public class ModelChar : MonoBehaviour
 
     protected virtual void Update()
     {
+        isDucking = false;
         controller.myController.OnUpdate();
     }
 }
