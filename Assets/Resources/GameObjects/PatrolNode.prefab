@@ -92,6 +92,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextNode: {fileID: 0}
-  queuedAction:
-  - {fileID: 11400000, guid: 78380fdd64dc00747bcd0bc9771aed3b, type: 2}
+  queuedAction: []
   currentAction: 0

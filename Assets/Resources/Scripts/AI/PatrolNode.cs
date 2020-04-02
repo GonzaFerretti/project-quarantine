@@ -25,6 +25,11 @@ public class PatrolNode : MonoBehaviour
                 ((queuedAction[i] as ActionRotationWrapper).action as ActionRotation).SetNode(this);
             }
 
+            if (queuedAction[i] is ActionRelocationWrapper)
+            {
+                queuedAction[i] = ScriptableObject.CreateInstance("ActionRelocationWrapper") as ActionWrapper;
+                (queuedAction[i] as ActionRelocationWrapper).targetLocation = nextNode.transform.position;
+            }
         }
     }
 

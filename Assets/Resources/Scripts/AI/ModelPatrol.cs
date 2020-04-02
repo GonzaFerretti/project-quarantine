@@ -34,6 +34,7 @@ public class ModelPatrol : ModelChar
         Debug.Log("!");
         currentSpeed = runSpeed;
         controller = alertcontroller;
+        
         if(controller.myController == null)
         controller.SetController();
     }
