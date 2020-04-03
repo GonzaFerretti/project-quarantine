@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Controller/AI/PatrolAI")]
 public class PatrolAI : ControllerWrapper, IController
@@ -17,11 +15,11 @@ public class PatrolAI : ControllerWrapper, IController
     {
         if (_model.node.queuedAction[_model.node.currentAction].action == null)
             _model.node.ActionChecker();
-
         _model.node.queuedAction[_model.node.currentAction].action.Do(_model);
 
         if (Vector3.Distance(_model.transform.position, _model.node.nextNode.transform.position) < nodeDistanceThreshold)
         {
+            Debug.Log("A");
             if (_model.node.currentAction == _model.node.queuedAction.Length - 1) _model.node.currentAction = 0;
             _model.node = _model.node.nextNode;
         }
@@ -30,5 +28,12 @@ public class PatrolAI : ControllerWrapper, IController
     public override void SetController()
     {
         myController = this;
+    }
+
+    public override ControllerWrapper Clone()
+    {
+        PatrolAI cloneWrapper = ScriptableObject.CreateInstance("PatrolAI") as PatrolAI;
+        cloneWrapper.nodeDistanceThreshold = nodeDistanceThreshold;
+        return cloneWrapper as ControllerWrapper;
     }
 }

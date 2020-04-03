@@ -1,11 +1,18 @@
-﻿using UnityEngine.AI;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
+[CreateAssetMenu(menuName = "Controller/AI/ChaseAI")]
 public class ChaseAI : ControllerWrapper, IController
 {
     ModelPatrol _model;
     public void AssignModel(ModelChar model)
     {
         _model = model as ModelPatrol;
+    }
+
+    public override ControllerWrapper Clone()
+    {
+        return ScriptableObject.CreateInstance("ChaseAI") as ControllerWrapper;
     }
 
     public void OnUpdate()
@@ -17,4 +24,6 @@ public class ChaseAI : ControllerWrapper, IController
     {
         myController = this;
     }
+
+    
 }
