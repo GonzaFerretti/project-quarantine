@@ -12,30 +12,17 @@ public class PatrolNode : MonoBehaviour
     {
         for (int i = 0; i < queuedAction.Length; i++)
         {
-            if (queuedAction[i] is ActionMovementWrapper && (queuedAction[i] as ActionMovementWrapper).direction == Vector3.zero)
+            if (queuedAction[i] is EnemyActionWrapper)
             {
-                queuedAction[i] = ScriptableObject.CreateInstance("ActionMovementWrapper") as ActionWrapper;
-                (queuedAction[i] as ActionMovementWrapper).direction = (nextNode.transform.position - transform.position).normalized;
+                (queuedAction[i] as EnemyActionWrapper).SetParams(this);
             }
-
-                queuedAction[i].SetAction();
-
-            if (queuedAction[i] is ActionRotationWrapper)
-            {
-                ((queuedAction[i] as ActionRotationWrapper).action as ActionRotation).SetNode(this);
-            }
-
-            if (queuedAction[i] is ActionRelocationWrapper)
-            {
-                queuedAction[i] = ScriptableObject.CreateInstance("ActionRelocationWrapper") as ActionWrapper;
-                (queuedAction[i] as ActionRelocationWrapper).targetLocation = nextNode.transform.position;
-            }
+            queuedAction[i].SetAction();
         }
     }
 
     private void OnDrawGizmos()
     {
-        if(nextNode != null)
-        Gizmos.DrawLine(transform.position, nextNode.transform.position);
+        if (nextNode != null)
+            Gizmos.DrawLine(transform.position, nextNode.transform.position);
     }
 }
