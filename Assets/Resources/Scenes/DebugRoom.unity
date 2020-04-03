@@ -618,7 +618,8 @@ MonoBehaviour:
   currentSpeed: 3
   walkSpeed: 3
   runSpeed: 5
-  isTouchingGround: 0
+  isDucking: 0
+  canVault: 0
   node: {fileID: 1150561160}
   range: 11.66
   angle: 80
@@ -863,7 +864,7 @@ GameObject:
   - component: {fileID: 401587658}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Terrain
+  m_TagString: TerrainObsLow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,8 +936,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401587657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0528955, y: -3.7867107, z: -16.18397}
-  m_LocalScale: {x: 1, y: 5, z: 5}
+  m_LocalPosition: {x: -4.22, y: -3.2, z: -16.18397}
+  m_LocalScale: {x: 1, y: 0.8, z: 5}
   m_Children: []
   m_Father: {fileID: 2139207761}
   m_RootOrder: 2
@@ -1672,8 +1673,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262840952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.45, y: -3.1226482, z: -15.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.45, y: -2.614, z: -15.93}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1867886315}
   - {fileID: 269212335}
@@ -1696,7 +1697,8 @@ MonoBehaviour:
   currentSpeed: 5
   walkSpeed: 5
   runSpeed: 7
-  isTouchingGround: 0
+  isDucking: 0
+  canVault: 0
 --- !u!54 &1262840958
 Rigidbody:
   m_ObjectHideFlags: 0

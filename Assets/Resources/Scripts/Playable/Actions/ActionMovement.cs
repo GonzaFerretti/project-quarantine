@@ -10,7 +10,11 @@ public class ActionMovement : IAction
 
     public void Do(ModelChar m)
     {
-        m.transform.position += _direction.normalized * m.currentSpeed * Time.deltaTime;
-        m.transform.forward += _direction.normalized;
+        if (m.vaultState != ModelChar.vaultStates.isVaulting)
+        {
+            m.transform.position += _direction.normalized * m.currentSpeed * Time.deltaTime;
+            m.transform.forward += _direction.normalized;
+        }
+
     }
 }
