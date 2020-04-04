@@ -13,11 +13,6 @@ public class PlayerController : ControllerWrapper, IController
         _model = model;
     }
 
-    public override ControllerWrapper Clone()
-    {
-        return new PlayerController();
-    }
-
     public void OnUpdate()
     {
         for (int i = 0; i < actionLinks.Length; i++)

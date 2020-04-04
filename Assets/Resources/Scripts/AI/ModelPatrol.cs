@@ -19,13 +19,9 @@ public class ModelPatrol : ModelChar
 
     protected override void Start()
     {
-        patrolcontroller = patrolcontroller.Clone();
-        alertcontroller = alertcontroller.Clone();
         controller = patrolcontroller;
         base.Start();
-        (alertcontroller as IController).AssignModel(this);
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
-        EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
     }
 
     protected override void Update()
@@ -43,15 +39,6 @@ public class ModelPatrol : ModelChar
         
         if(controller.myController == null)
         controller.SetController();
-    }
-
-    void NormalBehavior()
-    {
-        currentSpeed = walkSpeed;
-        controller = patrolcontroller;
-
-        if (controller.myController == null)
-            controller.SetController();
     }
 
     public bool IsInSight(ModelPlayable player)
