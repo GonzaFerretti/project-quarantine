@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 47957110}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,6 +412,9 @@ MonoBehaviour:
   currentSpeed: 3
   walkSpeed: 3
   runSpeed: 5
+  isDucking: 0
+  vaultState: 0
+  lastVault: {fileID: 0}
   node: {fileID: 1849708537}
   range: 11.66
   angle: 80
@@ -750,7 +753,7 @@ GameObject:
   - component: {fileID: 277368818}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -866,6 +869,9 @@ MonoBehaviour:
   currentSpeed: 3
   walkSpeed: 3
   runSpeed: 5
+  isDucking: 0
+  vaultState: 0
+  lastVault: {fileID: 0}
   node: {fileID: 1150561160}
   range: 11.66
   angle: 80
@@ -1174,7 +1180,7 @@ GameObject:
   - component: {fileID: 401587662}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: TerrainObsLow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,7 +1252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401587657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0528955, y: -3.7867107, z: -16.18397}
+  m_LocalPosition: {x: -4.0528955, y: -4.97, z: -16.18397}
   m_LocalScale: {x: 1, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 2139207761}
@@ -2347,6 +2353,9 @@ MonoBehaviour:
   currentSpeed: 5
   walkSpeed: 5
   runSpeed: 7
+  isDucking: 0
+  vaultState: 0
+  lastVault: {fileID: 0}
   availableActions:
   - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
   - {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
@@ -2373,7 +2382,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262840952}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
