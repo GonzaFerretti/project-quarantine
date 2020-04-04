@@ -2350,15 +2350,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 11400000, guid: b456120371ea80945a750da8e0239a67, type: 2}
-  currentSpeed: 5
-  walkSpeed: 5
-  runSpeed: 7
+  currentSpeed: 0
+  walkSpeed: 0
+  runSpeed: 0
   isDucking: 0
   vaultState: 0
   lastVault: {fileID: 0}
-  availableActions:
-  - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
-  - {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
+  availableActions: []
+  myAttributes: {fileID: 11400000, guid: 7592d7cc9dd99014e9731287a61dd37d, type: 2}
 --- !u!54 &1262840958
 Rigidbody:
   m_ObjectHideFlags: 0
