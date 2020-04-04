@@ -11,11 +11,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 388cea6ba23d0e0459505556b33eb700, type: 3}
   m_Name: Player Controller
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   actionLinks:
   - {fileID: 11400000, guid: dfff7a2e77d431b4db7d37eb14a16396, type: 2}
   - {fileID: 11400000, guid: b6896b1a5a0b88740990634bf0d6286f, type: 2}
   - {fileID: 11400000, guid: 1aee3b37ff70f6344bbf8424ed11c48c, type: 2}
   - {fileID: 11400000, guid: 4824bc4e9feb94341a80b2cdb2d7810e, type: 2}
-  - {fileID: 11400000, guid: 78236a665ff512f499322ef65344cbb7, type: 2}
-  - {fileID: 11400000, guid: 167b229f1d98ccb4098ded3334f9b3bd, type: 2}
+  - {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
