@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b24dc7824d2134bbcb27a2a3739e4d, type: 3}
   m_Name: Vault
   m_EditorClassIdentifier: 
+  vaultDuration: 0.5
+  vaultHeight: 1.5
