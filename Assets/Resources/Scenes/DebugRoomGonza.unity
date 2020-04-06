@@ -415,8 +415,7 @@ MonoBehaviour:
   isDucking: 0
   vaultState: 0
   vaultDuration: 0
-  vaultSpeed: 0
-  vaultSnapDistance: 0
+  vaultHeight: 0
   lastVault: {fileID: 0}
   node: {fileID: 1849708537}
   range: 11.66
@@ -875,8 +874,7 @@ MonoBehaviour:
   isDucking: 0
   vaultState: 0
   vaultDuration: 0
-  vaultSpeed: 0
-  vaultSnapDistance: 0
+  vaultHeight: 0
   lastVault: {fileID: 0}
   node: {fileID: 1150561160}
   range: 11.66
@@ -2471,8 +2469,7 @@ MonoBehaviour:
   isDucking: 0
   vaultState: 0
   vaultDuration: 1
-  vaultSpeed: 1
-  vaultSnapDistance: 0.3
+  vaultHeight: 0
   lastVault: {fileID: 0}
   availableActions:
   - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
