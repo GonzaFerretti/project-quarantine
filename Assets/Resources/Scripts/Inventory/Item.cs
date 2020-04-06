@@ -7,8 +7,4 @@ public class Item : MonoBehaviour
     public int id;
     public string displayName;
     public string description;
-    public Item()
-    {
-        public int id;
-    }
 }
