@@ -327,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152703268}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 340.79047, y: 31.890963, z: -4.952526}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1462719761}
@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &266779551
 Transform:
   m_ObjectHideFlags: 0
@@ -737,6 +737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PatrolNode (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2793555924068173886, guid: 1387e31a7dd8dc840b2f4458674907c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1387e31a7dd8dc840b2f4458674907c3, type: 3}
 --- !u!1 &277368817
@@ -852,7 +857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &283858617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,7 +1014,7 @@ GameObject:
   - component: {fileID: 346730983}
   - component: {fileID: 346730982}
   m_Layer: 4
-  m_Name: Camera
+  m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,7 +1086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346730981}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -344.73337, y: -26.01361, z: -6.041443}
+  m_LocalPosition: {x: -3.9429016, y: 5.8773518, z: -10.993969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 152703269}
@@ -1483,6 +1488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PatrolNode (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2793555924068173886, guid: 1387e31a7dd8dc840b2f4458674907c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1387e31a7dd8dc840b2f4458674907c3, type: 3}
 --- !u!1 &723006522
@@ -1529,6 +1539,8 @@ Transform:
   - {fileID: 1260047599}
   - {fileID: 1369774646}
   - {fileID: 1849708540}
+  - {fileID: 1295989927}
+  - {fileID: 943348863}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1564,7 +1576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &770124999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,8 +1665,8 @@ GameObject:
   - component: {fileID: 943348862}
   - component: {fileID: 943348861}
   - component: {fileID: 943348860}
-  - component: {fileID: 943348859}
   - component: {fileID: 943348864}
+  - component: {fileID: 943348859}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1671,11 +1683,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 943348858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea53979d51310d41a37f22cad01729a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6956b164042c85543b6012429a01e709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredAction: {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
-  feedback: {fileID: 11400000, guid: 340ea859ea9fe70429eaf45f3a7dbe83, type: 2}
+  requiredAction: {fileID: 11400000, guid: eff97ae2f9229194eba16ade55b52550, type: 2}
+  feedback: {fileID: 11400000, guid: 252f21cc82ea36544bda215d21c00c47, type: 2}
+  indoorSetter: {fileID: 1176247790189006239, guid: 472a7229778444747a70a78076924b70,
+    type: 3}
+  indoorAttributes: {fileID: 0}
 --- !u!65 &943348860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1742,12 +1757,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943348858}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4058871, y: 0.55, z: 8.75}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.74, y: -2.07, z: -9.52}
   m_LocalScale: {x: 2, y: 3, z: 0.2}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 723006523}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &943348864
 NavMeshObstacle:
@@ -1883,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1118163035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,7 +2071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1125616112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,7 +2178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1260047596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2497,12 +2512,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295989922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.68, y: 0.05, z: 6.68}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 723006523}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1295989928
 NavMeshObstacle:
@@ -2618,7 +2633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1369774646
 Transform:
   m_ObjectHideFlags: 0
@@ -2865,7 +2880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462719758}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -349.73337, y: -26.01361, z: -11.041443}
+  m_LocalPosition: {x: -8.942902, y: 5.8773518, z: -15.993969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 152703269}
@@ -2884,8 +2899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1262840957}
-  camDistance: 5
-  smooth: {x: 0.1, y: 0.5}
+  camDistance: 15
+  smooth: {x: 0.1, y: 0.1}
 --- !u!1 &1545820508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,6 +3413,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PatrolNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 2793555924068173886, guid: 1387e31a7dd8dc840b2f4458674907c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1387e31a7dd8dc840b2f4458674907c3, type: 3}

@@ -31,11 +31,11 @@ public class ModelPlayable : ModelChar
         }
         MeshFilter myMesh = GetComponent<MeshFilter>();
         myMesh.mesh = attributes.mesh;
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.materials = new Material[attributes.materials.Length];
-        for (int i = 0; i < attributes.materials.Length; i++)
-        {
-            meshRenderer.materials[i] = attributes.materials[i];
-        }
+        //MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        //meshRenderer.materials = new Material[attributes.materials.Length];
+        //for (int i = 0; i < attributes.materials.Length; i++)
+        //{
+        //    meshRenderer.materials[i] = attributes.materials[i];
+        //}
     }
 }

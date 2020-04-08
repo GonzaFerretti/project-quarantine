@@ -18,5 +18,6 @@ MonoBehaviour:
   innateActions:
   - {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
+  - {fileID: 11400000, guid: eff97ae2f9229194eba16ade55b52550, type: 2}
   mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   materials: []
