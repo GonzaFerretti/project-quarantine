@@ -19,7 +19,6 @@ public class PatrolAI : ControllerWrapper, IController
 
         if (Vector3.Distance(_model.transform.position, _model.node.nextNode.transform.position) < nodeDistanceThreshold)
         {
-            Debug.Log("A");
             if (_model.node.currentAction == _model.node.queuedAction.Length - 1) _model.node.currentAction = 0;
             _model.node = _model.node.nextNode;
         }
