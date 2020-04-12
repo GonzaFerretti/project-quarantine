@@ -14,6 +14,19 @@ public class ActionVault : IAction
     {
         if (m.vaultState == ModelChar.vaultStates.canVault)
         {
+            Ray directionFacingRay = new Ray(m.transform.position, m.transform.forward);
+            RaycastHit[] directionHits = Physics.RaycastAll(directionFacingRay, 20);
+            bool checkFacingDirection = false;
+            foreach (RaycastHit Dhit in directionHits)
+            {
+                checkFacingDirection = Dhit.transform.gameObject == m.lastVault.gameObject;
+                if (Dhit.transform.gameObject == m.lastVault.gameObject)
+                {
+                    break;
+                }
+            }
+            if (checkFacingDirection)
+            { 
             m.vaultDuration = vaultDuration;
             m.vaultHeight = vaultHeight;
             Collider obsCol = m.lastVault.GetComponent<Collider>();
@@ -35,6 +48,7 @@ public class ActionVault : IAction
             float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x;
             Debug.DrawLine(m.transform.position, objectivePoint, Color.red, 3);
             m.startVault(objectivePoint + m.transform.forward * objectivePointOffset);
+            }
         }
     }
 

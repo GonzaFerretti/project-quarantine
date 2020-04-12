@@ -40,7 +40,6 @@ public class ModelChar : MonoBehaviour
     private void moveTowardsVaultPoint()
     {
         float vaultProgress = (Time.time - vaultStart) / (vaultDuration);
-        Debug.Log(vaultDuration - (Time.time - vaultStart));
         if (vaultProgress < 1)
         {
             //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine function. The distance travelled is lerped between the starting point and the objective.
