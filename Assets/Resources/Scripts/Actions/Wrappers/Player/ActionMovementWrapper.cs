@@ -3,7 +3,7 @@
 [CreateAssetMenu(menuName ="Controller/Action/Movement")]
 public class ActionMovementWrapper : ActionWrapper
 {
-    public Vector3 direction;
+    public movementKeysDirection direction;
 
     public override void SetAction()
     {

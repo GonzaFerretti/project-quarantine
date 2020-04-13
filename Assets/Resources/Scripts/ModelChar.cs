@@ -12,6 +12,8 @@ public class ModelChar : MonoBehaviour
     private float vaultStart;
     public float vaultDuration, vaultHeight;
     public Transform lastVault;
+    // up, down, left, right (WASD)
+    public bool[] goingDirections = {false,false,false,false};
 
     public enum vaultStates
     {
@@ -35,6 +37,11 @@ public class ModelChar : MonoBehaviour
         {
             moveTowardsVaultPoint();
         }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        goingDirections = new bool[] { false, false, false, false };
     }
 
     private void moveTowardsVaultPoint()
