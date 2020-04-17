@@ -7,6 +7,7 @@ public class PlayerController : ControllerWrapper, IController
 {
     public ActionKeyLinks[] actionLinks;
     ModelChar _model;
+    public List<KeyCode> movementKeys = new List<KeyCode>();
 
     public void AssignModel(ModelChar model)
     {
@@ -32,5 +33,18 @@ public class PlayerController : ControllerWrapper, IController
     public override void SetController()
     {
         myController = this;
+    }
+
+    public void SaveControllerKeys()
+    {
+        for (int i = 0; i < actionLinks.Length; i++)
+        {
+            if (Input.GetKey(actionLinks[i].key))
+                if (actionLinks[i].action.action is ActionMovement)
+                {
+                    if (!movementKeys.Contains(actionLinks[i].key))
+                        movementKeys.Add(actionLinks[i].key);
+                }
+        }
     }
 }

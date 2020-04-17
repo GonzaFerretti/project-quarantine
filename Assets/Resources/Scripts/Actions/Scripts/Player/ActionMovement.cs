@@ -19,9 +19,6 @@ public class ActionMovement : IAction
     public void Do(ModelChar m)
     {
         Vector3 directionVector = directionVectors[_direction];
-        m.goingDirections[(int)_direction] = true;
-        bool isPressingMultipleDirections = m.goingDirections.Count(c => c) >= 2;
-        Debug.Log(isPressingMultipleDirections);
         m.transform.position += directionVector.normalized * m.currentSpeed * Time.deltaTime;
         m.transform.forward += directionVector.normalized;
     }
