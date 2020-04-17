@@ -5,6 +5,10 @@ using UnityEngine.AI;
 public class ChaseAI : ControllerWrapper, IController
 {
     ModelPatrol _model;
+
+    public override void startFunction()
+    { }
+
     public void AssignModel(ModelChar model)
     {
         _model = model as ModelPatrol;

@@ -35,15 +35,14 @@ public class PlayerController : ControllerWrapper, IController
         myController = this;
     }
 
-    public void SaveControllerKeys()
+    public override void startFunction()
     {
         for (int i = 0; i < actionLinks.Length; i++)
         {
-            if (Input.GetKey(actionLinks[i].key))
                 if (actionLinks[i].action.action is ActionMovement)
                 {
-                    if (!movementKeys.Contains(actionLinks[i].key))
-                        movementKeys.Add(actionLinks[i].key);
+                    if (!_model.movementKeys.Contains(actionLinks[i].key))
+                        _model.movementKeys.Add(actionLinks[i].key);
                 }
         }
     }

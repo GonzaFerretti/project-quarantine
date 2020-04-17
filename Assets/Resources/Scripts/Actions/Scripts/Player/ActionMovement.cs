@@ -19,7 +19,17 @@ public class ActionMovement : IAction
     public void Do(ModelChar m)
     {
         Vector3 directionVector = directionVectors[_direction];
-        m.transform.position += directionVector.normalized * m.currentSpeed * Time.deltaTime;
+        int currentlyPressedAmount = 0;
+        //Debug.Log(m.movementKeys.Count);
+        foreach(KeyCode key in m.movementKeys)
+        {
+            if (Input.GetKey(key))
+            {
+                currentlyPressedAmount++;
+            }
+        }
+        float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
+        m.transform.position += directionVector.normalized * m.currentSpeed * Time.deltaTime * diagonalMultiplier;
         m.transform.forward += directionVector.normalized;
     }
 }

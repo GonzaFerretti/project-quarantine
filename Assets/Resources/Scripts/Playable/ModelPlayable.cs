@@ -1,7 +1,9 @@
-﻿public class ModelPlayable : ModelChar
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+public class ModelPlayable : ModelChar
 {
     public ActionWrapper[] availableActions;
-    public PlayerController controller;
     protected override void Start()
     {
         base.Start();
@@ -9,6 +11,7 @@
         {
             availableActions[i].SetAction();
         }
-        controller.SaveControllerKeys();
+        controller.startFunction();
     }
+    
 }
