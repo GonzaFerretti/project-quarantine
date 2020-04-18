@@ -35,15 +35,18 @@ public class PlayerController : ControllerWrapper, IController
         myController = this;
     }
 
-    public override void startFunction()
+    public void startFunction()
     {
         for (int i = 0; i < actionLinks.Length; i++)
         {
-                if (actionLinks[i].action.action is ActionMovement)
-                {
-                    if (!_model.movementKeys.Contains(actionLinks[i].key))
-                        _model.movementKeys.Add(actionLinks[i].key);
-                }
+
+            if (actionLinks[i].action.action == null)
+                actionLinks[i].action.SetAction();
+            if (actionLinks[i].action.action is ActionMovement)
+            {
+                if (!movementKeys.Contains(actionLinks[i].key))
+                    movementKeys.Add(actionLinks[i].key);
+            }
         }
     }
 }

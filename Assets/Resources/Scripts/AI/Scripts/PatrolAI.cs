@@ -11,9 +11,6 @@ public class PatrolAI : ControllerWrapper, IController
         _model = model as ModelPatrol;
     }
 
-    public override void startFunction()
-    {}
-
     public void OnUpdate()
     {
         if (_model.node.queuedAction[_model.node.currentAction].action == null)

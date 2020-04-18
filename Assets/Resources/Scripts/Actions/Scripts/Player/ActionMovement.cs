@@ -20,17 +20,19 @@ public class ActionMovement : IAction
     {
         Vector3 directionVector = directionVectors[_direction];
         int currentlyPressedAmount = 0;
-        //Debug.Log(m.movementKeys.Count);
-        foreach(KeyCode key in m.movementKeys)
+        foreach(KeyCode key in (m.controller as PlayerController).movementKeys)
         {
             if (Input.GetKey(key))
             {
                 currentlyPressedAmount++;
             }
         }
+        if (currentlyPressedAmount < 3)
+        { 
         float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
-        m.transform.position += directionVector.normalized * m.currentSpeed * Time.deltaTime * diagonalMultiplier;
+        m.transform.position += directionVector.normalized * m.currentSpeed * Time.deltaTime /diagonalMultiplier;
         m.transform.forward += directionVector.normalized;
+        }
     }
 }
 

@@ -11,7 +11,10 @@ public class ModelPlayable : ModelChar
         {
             availableActions[i].SetAction();
         }
-        controller.startFunction();
+        if (controller is PlayerController)
+        {
+            (controller as PlayerController).startFunction();
+        }
     }
     
 }

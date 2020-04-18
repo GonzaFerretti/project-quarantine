@@ -14,7 +14,6 @@ public class ModelChar : MonoBehaviour
     private float vaultStart;
     public float vaultDuration, vaultHeight;
     public Transform lastVault;
-    public List<KeyCode> movementKeys = new List<KeyCode>();
 
     public enum vaultStates
     {
