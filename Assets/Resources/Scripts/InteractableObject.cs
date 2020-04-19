@@ -7,7 +7,7 @@ public class InteractableObject : MonoBehaviour
 
     public void Interact(ModelPlayable c)
     {
-        for (int i = 0; i < c.availableActions.Length; i++)
+        for (int i = 0; i < c.availableActions.Count; i++)
         {
             if(c.availableActions[i] == requiredAction)
             {

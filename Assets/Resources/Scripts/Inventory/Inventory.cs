@@ -1,18 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Inventory : MonoBehaviour
+[CreateAssetMenu(menuName = "Inventory/Inventory")]
+public class Inventory : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Item> items = new List<Item>();
+    ModelChar _model;
+    public void initializeInventory(ModelChar model)
     {
+        _model = model;
+        foreach (Item item in items)
+        {
+            foreach (ActionWrapper action in item.allowingActions)
+            { 
+            if (!_model.availableActions.Contains(action))
+                (_model as ModelPlayable).availableActions.Add(action);
+            }
+        }
+    }
+
+    public void AddItem(Item item)
+    {
+        items.Add(item);
+        foreach (ActionWrapper action in item.allowingActions)
+        {
+            if (!_model.availableActions.Contains(action))
+                (_model as ModelPlayable).availableActions.Add(action);
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveItem(Item item)
     {
-        
+        if (items.Contains(item))
+        { items.Remove(item);
+        }
+        foreach (ActionWrapper action in item.allowingActions)
+        {
+            if (_model.availableActions.Contains(action))
+                (_model as ModelPlayable).availableActions.Remove(action);
+        }
+    }
+
+    public List<Item> GetAllItems()
+    {
+        return items;
+    }
+
+    public Inventory cloneInvTemplate()
+    {
+        Inventory newInventory = Instantiate(this);
+        return newInventory;
     }
 }

@@ -14,6 +14,7 @@ public class ModelChar : MonoBehaviour
     private float vaultStart;
     public float vaultDuration, vaultHeight;
     public Transform lastVault;
+    public List<ActionWrapper> availableActions = new List<ActionWrapper>();
 
     public enum vaultStates
     {
@@ -71,7 +72,7 @@ public class ModelChar : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.transform.tag == "TerrainObsLow" && vaultState != vaultStates.canVault)
+        if (collision.transform.GetComponent<InteractableVaultWrapper>() != null && vaultState != vaultStates.canVault)
         {
             vaultState = vaultStates.canVault;
             lastVault = collision.transform;
@@ -80,7 +81,7 @@ public class ModelChar : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.tag == "TerrainObsLow" && vaultState == vaultStates.canVault)
+        if (collision.transform.GetComponent<InteractableVaultWrapper>() != null && vaultState == vaultStates.canVault)
         {
             vaultState = vaultStates.cantVault;
         }
