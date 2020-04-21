@@ -11,10 +11,9 @@ public class InteractableObject : MonoBehaviour
         {
             if(c.availableActions[i] == requiredAction)
             {
-                c.availableActions[i].action.Do(c);
+                //c.availableActions[i].action.Do(c);
 
                 if (feedback.action == null) feedback.SetAction();
-                Debug.Log("hola");
                 feedback.action.Do(this);
                 break;
             }

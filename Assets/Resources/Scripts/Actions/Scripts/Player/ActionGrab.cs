@@ -6,10 +6,15 @@ public class ActionGrab : IAction
     {
         if (m.nearbyObject != null && m is ModelPlayable)
         {
-            Vector3 baseDirection = (m.nearbyObject.transform.position - m.transform.position).normalized;
+            ModelPlayable model = m as ModelPlayable;
+            Vector3 baseDirection = (model.nearbyObject.transform.position - model.transform.position).normalized;
             Vector3 finalDirection = new Vector3(baseDirection.x, 0, baseDirection.z);
             Debug.Log("lo agarré");
-            m.transform.forward = finalDirection;
+            ItemWrapper item = model.nearbyObject.GetComponent<ItemWrapper>();
+            item.Interact(model);
+            model.transform.forward = finalDirection;
+            model.inv.AddItem(item.item);
+            model.nearbyObject = null;
         }
     }
 }
