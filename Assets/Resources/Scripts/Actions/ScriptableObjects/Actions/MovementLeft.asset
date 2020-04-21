@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f5beb05ce41b54bbe72f7d866f9ba3, type: 3}
   m_Name: MovementLeft
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 11400000, guid: 1aee3b37ff70f6344bbf8424ed11c48c, type: 2}
   direction: 3

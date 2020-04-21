@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1262840957}
-  camDistance: 0
+  camDistance: 16
   smooth: {x: 0.2, y: 0.2}
 --- !u!20 &346730983
 Camera:
@@ -3139,7 +3139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1262840957}
-  camDistance: 5
+  camDistance: 16
   smooth: {x: 0.1, y: 0.5}
 --- !u!1 &1545820508
 GameObject:

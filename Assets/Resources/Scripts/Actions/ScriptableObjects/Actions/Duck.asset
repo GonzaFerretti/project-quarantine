@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b59af890e39cd45be3b087f34606fa, type: 3}
   m_Name: Duck
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 11400000, guid: d904d6d29e437fd429d5359854c13f5e, type: 2}

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f5beb05ce41b54bbe72f7d866f9ba3, type: 3}
   m_Name: MovementDown
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 11400000, guid: b6896b1a5a0b88740990634bf0d6286f, type: 2}
   direction: 1

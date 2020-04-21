@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9374a467d73a547a3cfbe0a902bd72, type: 3}
   m_Name: Grab
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}

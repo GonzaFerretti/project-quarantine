@@ -28,6 +28,14 @@ public class PlayerController : ControllerWrapper, IController
                     actionLinks[i].action.SetAction();
                 else actionLinks[i].action.action.Do(_model);
         }
+        List<ActionWrapper> addedActions = _model.availableActions;
+        for (int i = 0; i < addedActions.Count; i++)
+        {
+            if (Input.GetKey(addedActions[i].actionKey.key))
+                if (addedActions[i].actionKey.action.action == null)
+                    addedActions[i].actionKey.action.SetAction();
+                else addedActions[i].actionKey.action.action.Do(_model);
+        }
     }
 
     public override void SetController()

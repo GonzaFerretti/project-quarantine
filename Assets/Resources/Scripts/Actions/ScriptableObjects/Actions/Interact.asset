@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11180333f343d504ea16f3751c3d6334, type: 3}
   m_Name: Interact
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
   interactionDistance: 1
