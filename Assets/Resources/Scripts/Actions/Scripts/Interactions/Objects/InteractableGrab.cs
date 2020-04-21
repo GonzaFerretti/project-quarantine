@@ -6,7 +6,6 @@ public class InteractableGrab : IActionInteractableObject
 {
     public void Do(InteractableObject obj)
     {
-        Debug.Log("hola");
         Object.Destroy(obj.gameObject);
     }
 }
