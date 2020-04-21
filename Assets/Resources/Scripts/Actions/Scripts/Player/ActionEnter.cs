@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class ActionOpen : IAction
+public class ActionEnter : IAction
 {
     public void Do(ModelChar m)
     {
         //Animaciones
-        Debug.Log("Open");
+        Debug.Log("Enter");
     }
 }
