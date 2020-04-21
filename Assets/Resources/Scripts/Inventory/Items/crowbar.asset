@@ -16,4 +16,4 @@ MonoBehaviour:
   _description: allows prying open stuff
   _mesh: {fileID: 973877516759717424, guid: 4b2c333fa429c9348a6a1ebabcf68cc3, type: 3}
   allowingActions:
-  - {fileID: 11400000, guid: e472da21543aa2843b45bbd819c2b7f7, type: 2}
+  - {fileID: 11400000, guid: b61e571d7c5a21d418771b6908161e9c, type: 2}

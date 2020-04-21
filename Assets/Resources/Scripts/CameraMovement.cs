@@ -27,10 +27,10 @@ public class CameraMovement : MonoBehaviour
         ActionMovementWrapper controlLeft = controller.actionLinks[2].action as ActionMovementWrapper;
         ActionMovementWrapper controlRight = controller.actionLinks[3].action as ActionMovementWrapper;
 
-        controlUp.direction = new Vector3(transform.forward.x, 0, transform.forward.z);
-        controlDown.direction = new Vector3(-transform.forward.x, 0, -transform.forward.z);
-        controlLeft.direction = new Vector3(-transform.right.x, 0, -transform.right.z);
-        controlRight.direction = new Vector3(transform.right.x, 0, transform.right.z);
+        controlUp.direction = movementKeysDirection.up;
+        controlDown.direction = movementKeysDirection.down;
+        controlLeft.direction = movementKeysDirection.left;
+        controlRight.direction = movementKeysDirection.right;
 
         for (int i = 0; i < 4; i++)
         {

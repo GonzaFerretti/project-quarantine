@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Resources/Scripts/Actions/Scripts/Interactions/Objects/InteractableGrab.cs.meta
-guid: b5f312442b87ac945acd65cc856763c7
-=======
-guid: 7de6fe21e00f4e54485f301ab821838a
->>>>>>> origin/Character-Attributes:Assets/Resources/Scripts/Actions/Scripts/Interactions/Objects/InteractableEnter.cs.meta
+guid: 70e73938a53665b4ea9d0235f86f4610
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

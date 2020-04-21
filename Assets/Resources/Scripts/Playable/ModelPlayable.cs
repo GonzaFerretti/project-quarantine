@@ -6,14 +6,13 @@ public class ModelPlayable : ModelChar
 {
     float _sneakSpeed;
     public Inventory inv;
-    public ActionWrapper[] availableActions;
     public CharacterAttributes myAttributes;
 
     protected override void Start()
     {
         base.Start();
         SetAttributes(myAttributes);
-        for (int i = 0; i < availableActions.Length; i++)
+        for (int i = 0; i < availableActions.Count; i++)
         {
             availableActions[i].SetAction();
         }
@@ -34,10 +33,10 @@ public class ModelPlayable : ModelChar
 
         currentSpeed = walkSpeed;
 
-        availableActions = new ActionWrapper[attributes.innateActions.Length];
-        for (int i = 0; i < availableActions.Length; i++)
+        availableActions = new List<ActionWrapper>();
+        for (int i = 0; i < availableActions.Count; i++)
         {
-            availableActions[i] = attributes.innateActions[i];
+            availableActions.Add(attributes.innateActions[i]);
         }
         MeshFilter myMesh = GetComponent<MeshFilter>();
         myMesh.mesh = attributes.mesh;
