@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280cf9a4ab8b1ed4f9632533c7d1ebe2, type: 3}
-  m_Name: playerBaseInventory
+  m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
+  m_Name: Grab Key
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 0}
-  - {fileID: 0}
+  action: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
+  key: 101

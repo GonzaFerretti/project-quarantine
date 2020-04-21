@@ -14,6 +14,7 @@ public class ModelChar : MonoBehaviour
     private float vaultStart;
     public float vaultDuration, vaultHeight;
     public Transform lastVault;
+    public GameObject nearbyObject;
     public List<ActionWrapper> availableActions = new List<ActionWrapper>();
 
     public enum vaultStates
@@ -21,6 +22,22 @@ public class ModelChar : MonoBehaviour
         cantVault = 0,
         isVaulting = 1,
         canVault = 2,
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.GetComponent<ItemWrapper>())
+        {
+            nearbyObject = collider.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.GetComponent<ItemWrapper>())
+        {
+            nearbyObject = null;
+        }
     }
 
     protected virtual void Start()

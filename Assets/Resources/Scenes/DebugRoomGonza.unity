@@ -346,8 +346,8 @@ GameObject:
   - component: {fileID: 250001178}
   - component: {fileID: 250001177}
   - component: {fileID: 250001176}
-  - component: {fileID: 250001175}
   - component: {fileID: 250001179}
+  - component: {fileID: 250001175}
   m_Layer: 0
   m_Name: crowbar
   m_TagString: Untagged
@@ -355,19 +355,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &250001175
-CapsuleCollider:
+--- !u!135 &250001175
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250001174}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &250001176
 MeshRenderer:
@@ -422,13 +421,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250001174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.15, y: -2.52, z: -8.38}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -4.308, y: -2.574, z: -13.711}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &250001179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +525,7 @@ MonoBehaviour:
   vaultDuration: 0
   vaultHeight: 0
   lastVault: {fileID: 0}
+  nearbyObject: {fileID: 0}
   availableActions: []
   node: {fileID: 1849708537}
   range: 11.66
@@ -986,6 +986,7 @@ MonoBehaviour:
   vaultDuration: 0
   vaultHeight: 0
   lastVault: {fileID: 0}
+  nearbyObject: {fileID: 0}
   availableActions: []
   node: {fileID: 1150561160}
   range: 11.66
@@ -2608,6 +2609,7 @@ MonoBehaviour:
   vaultDuration: 1
   vaultHeight: 0
   lastVault: {fileID: 0}
+  nearbyObject: {fileID: 0}
   availableActions:
   - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
   - {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}

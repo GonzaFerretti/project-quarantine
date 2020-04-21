@@ -14,6 +14,7 @@ public class InteractableObject : MonoBehaviour
                 c.availableActions[i].action.Do(c);
 
                 if (feedback.action == null) feedback.SetAction();
+                Debug.Log("hola");
                 feedback.action.Do(this);
                 break;
             }

@@ -20,3 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 945961f4600bae04dba4e01dfce25f31, type: 2}
   - {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
   - {fileID: 11400000, guid: d904d6d29e437fd429d5359854c13f5e, type: 2}
+  - {fileID: 11400000, guid: 413e3b586da16b3418d8845b63008d06, type: 2}
+  movementKeys: 77000000730000006100000064000000
