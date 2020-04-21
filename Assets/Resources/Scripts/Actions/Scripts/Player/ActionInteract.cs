@@ -16,7 +16,14 @@ public class ActionInteract : IAction
         if (hit.collider)
         {
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
-            if (interactable) interactable.Interact(m as ModelPlayable);
+            if (interactable)
+            {
+                for (int i = 0; i < m.availableActions.Count; i++)
+                {
+                    if(interactable.requiredAction == m.availableActions[i])
+                    interactable.Interact(m as ModelPlayable);
+                }
+            }
         }
     }
 }
