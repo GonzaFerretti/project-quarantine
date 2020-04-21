@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Door : InteractableObject
 {
-    public IndoorSetter indoorSetter;
-    public IndoorAttributes indoorAttributes;
+    public MapSetter mapSetter;
+    public MapAttributes mapAttributes;
+    public MapInfoKeeper mapInfoKeeper;
 
-    public IndoorAttributes GenerateIndoorAttributes()
+    public MapAttributes GenerateIndoorAttributes()
     {
-        IndoorAttributes newIndoors = ScriptableObject.CreateInstance("IndoorAttributes") as IndoorAttributes;
-        newIndoors.storyAmount = Random.Range(1, 3);
-        newIndoors.height = 2;
-        newIndoors.layout = new IndoorUShape().SetParams();
-        return newIndoors;
+        MapAttributes newMap = ScriptableObject.CreateInstance("MapAttributes") as MapAttributes;
+        newMap.storyAmount = Random.Range(1, 3);
+        newMap.doorAmount = 2;
+        newMap.height = 2;
+        newMap.name = "MapNo " + mapInfoKeeper.indoors.Count;
+        newMap.mapName = "MapNo " + mapInfoKeeper.indoors.Count;
+        newMap.layout = new IndoorBoxShape(6,6,6,6).SetParams();
+        mapInfoKeeper.indoors.Add(newMap);
+        mapInfoKeeper.mapLinker.Add(newMap.mapName, newMap);
+        mapInfoKeeper.doorLinker.Add(mapInfoKeeper.currentMap + transform.position, newMap.mapName);
+        return newMap;
     }
 }

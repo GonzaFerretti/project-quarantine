@@ -16,19 +16,23 @@ public class InteractableEnter : IActionInteractableObject
     {
         Door door = obj as Door;
 
-        if (door.indoorAttributes == null)
+        if (door.mapAttributes == null)
         {
-            door.indoorAttributes = door.GenerateIndoorAttributes();
+            door.mapAttributes = door.GenerateIndoorAttributes();
         }
 
-        IndoorSetter indoorSetter = MonoBehaviour.Instantiate(door.indoorSetter);
-        indoorSetter.indoorAttributes = door.indoorAttributes;
+        MapSetter mapSetter = MonoBehaviour.Instantiate(door.mapSetter);
+        mapSetter.mapInfoKeeper = door.mapInfoKeeper;
+        mapSetter.mapAttributes = door.mapAttributes;
 
         if(SceneManager.GetActiveScene().name == _wrapper.scenes[0])
         SceneManager.LoadScene(_wrapper.scenes[1]);
         else
         SceneManager.LoadScene(_wrapper.scenes[0]);
 
-        indoorSetter.CreateFloorWrapper();
+        mapSetter.mapInfoKeeper.previousMap = mapSetter.mapInfoKeeper.currentMap;
+        mapSetter.mapInfoKeeper.currentMap = door.mapAttributes.mapName;
+
+        mapSetter.CreateFloorWrapper();
     }
 }

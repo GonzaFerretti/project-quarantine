@@ -4,25 +4,53 @@ using UnityEngine;
 
 public class IndoorBoxShape : ILayout
 {
-    int _width;
-    int _breadth;
+    public int width;
+    public int breadth;
+    Vector3 _placement;
+    int _minWidth;
+    int _maxWidth;
+    int _minBreadth;
+    int _maxBreadth;
 
-    public void SetLayout(int height, IndoorSetter indoorSetter)
+    public IndoorBoxShape(int minWidth, int maxWidth, int minBreadth, int maxBreadth)
     {
-        for (int i = 0- _width/2; i < _width/2; i++)
+        _minWidth = minWidth;
+        _maxWidth = maxWidth;
+        _minBreadth = minBreadth;
+        _maxBreadth = maxBreadth;
+    }
+
+    public void SetLayout(int height, MapSetter mapSetter)
+    {
+        for (int i = 0 - width / 2; i < width / 2; i++)
         {
-            for (int j = 0 - _breadth/2; j < _breadth/2; j++)
+            for (int j = 0 - breadth / 2; j < breadth / 2; j++)
             {
-                GameObject newTile = MonoBehaviour.Instantiate(indoorSetter.floorTiles);
-                newTile.transform.position = new Vector3(i,height,j);
+                mapSetter.CreateTiles(new Vector3(i, height, j) + _placement);
             }
         }
     }
 
     public ILayout SetParams()
     {
-        _width = Random.Range(3, 11) * 2;
-        _breadth = Random.Range(3, 11) * 2;
+        width = Random.Range(_minWidth, _maxWidth) * 2;
+        breadth = Random.Range(_minBreadth, _maxBreadth) * 2;
+        return this;
+    }
+
+    public int ReturnWidth()
+    {
+        return width;
+    }
+
+    public int ReturnBreadth()
+    {
+        return breadth;
+    }
+
+    public IndoorBoxShape Attributes(Vector3 placement)
+    {
+        _placement = placement;
         return this;
     }
 }

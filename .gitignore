@@ -12,10 +12,11 @@
 sysinfo.txt
 # Unity3D generated meta files
 *.pidb.meta
-
+ 
 ###
 # VS/MD solution and project files
 ###
+.vs/
 [Ee]xportedObj/
 *.booproj
 *.csproj
@@ -27,7 +28,7 @@ sysinfo.txt
 *.userprefs
 *.pidb
 .DS_Store
-
+ 
 ###
 # OS generated
 ###
