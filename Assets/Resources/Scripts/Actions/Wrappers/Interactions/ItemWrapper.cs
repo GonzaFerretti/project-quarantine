@@ -8,8 +8,8 @@ public class ItemWrapper : InteractableObject
     public void Start()
     {
         if (item._mesh)
-        { 
-        GetComponent<MeshFilter>().mesh = item._mesh;
+        {
+            GetComponent<MeshFilter>().mesh = item._mesh;
         }
     }
 }

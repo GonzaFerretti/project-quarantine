@@ -8,6 +8,7 @@ public class PlayerController : ControllerWrapper, IController
     public ActionKeyLinks[] actionLinks;
     ModelChar _model;
     public List<KeyCode> movementKeys = new List<KeyCode>();
+    //public ActionWrapper[] passiveActions;
 
     public void AssignModel(ModelChar model)
     {
@@ -28,6 +29,11 @@ public class PlayerController : ControllerWrapper, IController
                     actionLinks[i].action.SetAction();
                 else actionLinks[i].action.action.Do(_model);
         }
+
+        //for (int i = 0; i < passiveActions.Length; i++)
+        //{
+        //    passiveActions[i].action.Do(_model);
+        //}
     }
 
     public override void SetController()
@@ -35,7 +41,7 @@ public class PlayerController : ControllerWrapper, IController
         myController = this;
     }
 
-    public void startFunction()
+    public void StartFunction()
     {
         for (int i = 0; i < actionLinks.Length; i++)
         {

@@ -15,7 +15,7 @@ public class ModelChar : MonoBehaviour
     public float vaultDuration, vaultHeight;
     public Transform lastVault;
     public GameObject nearbyObject;
-    public List<ActionWrapper> availableActions = new List<ActionWrapper>();
+    public List<ActionWrapper> availableActions;
 
     public enum vaultStates
     {

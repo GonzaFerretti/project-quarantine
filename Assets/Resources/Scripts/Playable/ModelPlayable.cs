@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 
 public class ModelPlayable : ModelChar
@@ -18,11 +18,16 @@ public class ModelPlayable : ModelChar
         }
         if (controller is PlayerController)
         {
-            (controller as PlayerController).startFunction();
+            (controller as PlayerController).StartFunction();
         }
 
         inv = inv.cloneInvTemplate();
         inv.initializeInventory(this);
+
+        //for (int i = 0; i < (controller as PlayerController).passiveActions.Length; i++)
+        //{
+        //    if ((controller as PlayerController).passiveActions[i].action == null) (controller as PlayerController).passiveActions[i].SetAction();
+        //}
     }
 
     void SetAttributes(CharacterAttributes attributes)
@@ -34,7 +39,7 @@ public class ModelPlayable : ModelChar
         currentSpeed = walkSpeed;
 
         availableActions = new List<ActionWrapper>();
-        for (int i = 0; i < availableActions.Count; i++)
+        for (int i = 0; i < attributes.innateActions.Length; i++)
         {
             availableActions.Add(attributes.innateActions[i]);
         }

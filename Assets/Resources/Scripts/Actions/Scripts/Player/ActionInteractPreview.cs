@@ -1,18 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class ActionInteract : IAction
+public class ActionInteractPreview : IAction
 {
+    Text _textBox;
     float _rayDistance;
 
-    public ActionInteract(float rayDistance)
+    public ActionInteractPreview(float rayDistance, Text text)
     {
         _rayDistance = rayDistance;
+        _textBox = text;
     }
 
     public void Do(ModelChar m)
     {
         RaycastHit hit;
         Physics.Raycast(m.transform.position, m.transform.forward, out hit, _rayDistance);
+
         if (hit.collider)
         {
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
@@ -22,11 +28,12 @@ public class ActionInteract : IAction
                 {
                     if (interactable.requiredAction == m.availableActions[i])
                     {
-                        m.availableActions[i].action.Do(m);
-                        interactable.Interact(m as ModelPlayable);
+                        _textBox.text = interactable.requiredAction.ToString();
                     }
                 }
             }
+            else _textBox.text = "";
         }
+        else _textBox.text = "";
     }
 }
