@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ActionInteractPreview : IAction
@@ -28,7 +26,7 @@ public class ActionInteractPreview : IAction
                 {
                     if (interactable.requiredAction == m.availableActions[i])
                     {
-                        _textBox.text = interactable.requiredAction.ToString();
+                        _textBox.text = interactable.requiredAction.name;
                     }
                 }
             }

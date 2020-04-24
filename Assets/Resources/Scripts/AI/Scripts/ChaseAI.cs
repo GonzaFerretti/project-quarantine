@@ -13,7 +13,7 @@ public class ChaseAI : ControllerWrapper, IController
 
     public override ControllerWrapper Clone()
     {
-        return ScriptableObject.CreateInstance("ChaseAI") as ControllerWrapper;
+        return CreateInstance("ChaseAI") as ControllerWrapper;
     }
 
     public void OnUpdate()
@@ -24,7 +24,5 @@ public class ChaseAI : ControllerWrapper, IController
     public override void SetController()
     {
         myController = this;
-    }
-
-    
+    }    
 }
