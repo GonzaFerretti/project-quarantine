@@ -6,7 +6,7 @@ public class ChaseAI : ControllerWrapper, IController
 {
     ModelPatrol _model;
 
-    public void AssignModel(ModelChar model)
+    public void AssignModel(Model model)
     {
         _model = model as ModelPatrol;
     }

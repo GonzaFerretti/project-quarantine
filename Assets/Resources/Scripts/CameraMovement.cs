@@ -14,30 +14,8 @@ public class CameraMovement : MonoBehaviour
         if (player)
         {
             FollowTarget();
-            AdjustPlayerMovement();
         }
     }
-
-    void AdjustPlayerMovement()
-    {
-        PlayerController controller = player.controller as PlayerController;
-
-        ActionMovementWrapper controlUp = controller.actionLinks[0].action as ActionMovementWrapper;
-        ActionMovementWrapper controlDown = controller.actionLinks[1].action as ActionMovementWrapper;
-        ActionMovementWrapper controlLeft = controller.actionLinks[2].action as ActionMovementWrapper;
-        ActionMovementWrapper controlRight = controller.actionLinks[3].action as ActionMovementWrapper;
-
-        controlUp.direction = movementKeysDirection.up;
-        controlDown.direction = movementKeysDirection.down;
-        controlLeft.direction = movementKeysDirection.left;
-        controlRight.direction = movementKeysDirection.right;
-
-        for (int i = 0; i < 4; i++)
-        {
-            controller.actionLinks[i].action.SetAction();
-        }
-    }
-
 
     void FollowTarget()
     {

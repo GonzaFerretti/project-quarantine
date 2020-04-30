@@ -10,10 +10,11 @@ public class ActionRelocation : IAction
         _targetLoc = targetLocation;
     }
 
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
+        ModelChar mc = m as ModelChar;
         NavMeshAgent agent = m.GetComponent<NavMeshAgent>();
-        agent.speed = m.currentSpeed;
+        agent.speed = mc.currentSpeed;
         agent.SetDestination(_targetLoc);
     }
 }

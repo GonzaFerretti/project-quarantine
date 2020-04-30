@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
 
 public class ActionMovement : IAction
 {
@@ -16,11 +14,13 @@ public class ActionMovement : IAction
         _direction = direction;
     }
 
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
         Vector3 directionVector = directionVectors[_direction];
         int currentlyPressedAmount = 0;
-        foreach(KeyCode key in (m.controller as PlayerController).movementKeys)
+        ModelChar mc = m as ModelChar;
+
+        foreach(KeyCode key in (mc.controller as PlayerController).movementKeys)
         {
             if (Input.GetKey(key))
             {
@@ -30,8 +30,9 @@ public class ActionMovement : IAction
         if (currentlyPressedAmount < 3)
         { 
         float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
-        m.transform.position += directionVector.normalized * m.currentSpeed * Time.deltaTime /diagonalMultiplier;
-        m.transform.forward += directionVector.normalized;
+        m.transform.position += directionVector.normalized * mc.currentSpeed * Time.deltaTime /diagonalMultiplier;
+
+            m.transform.forward += directionVector.normalized;
         }
     }
 }

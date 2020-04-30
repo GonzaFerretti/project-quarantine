@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Hide
   m_EditorClassIdentifier: 
   interactionDistance: 1
+  redirection: -1
+  goalLocation: 1

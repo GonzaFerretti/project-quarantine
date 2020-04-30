@@ -12,19 +12,19 @@ public class ActionInteractPreview : IAction
         _textBox = text;
     }
 
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
         RaycastHit hit;
         Physics.Raycast(m.transform.position, m.transform.forward, out hit, _rayDistance);
-
-        if (hit.collider)
+        ModelChar mc = m as ModelChar;
+        if (hit.collider && mc.controller != (m as ModelPlayable).redirectController)
         {
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
             if (interactable)
             {
-                for (int i = 0; i < m.availableActions.Count; i++)
+                for (int i = 0; i < mc.availableActions.Count; i++)
                 {
-                    if (interactable.requiredAction == m.availableActions[i])
+                    if (interactable.requiredAction == mc.availableActions[i])
                     {
                         _textBox.text = interactable.requiredAction.name;
                     }

@@ -9,9 +9,9 @@ public class ItemWrapper : InteractableObject
     {
         //tentative;
         base.Start();
-        if (item._mesh)
+        if (item.mesh)
         {
-            GetComponent<MeshFilter>().mesh = item._mesh;
+            GetComponent<MeshFilter>().mesh = item.mesh;
         }
     }
 }

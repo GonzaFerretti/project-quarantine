@@ -6,9 +6,11 @@ using UnityEngine;
 public class ActionHideWrapper : ActionWrapper
 {
     public float interactionDistance;
+    public int redirection;
+    public int goalLocation;
 
     public override void SetAction()
     {
-        action = new ActionHide(interactionDistance);
+        action = new ActionHide(goalLocation , redirection, interactionDistance);
     }
 }

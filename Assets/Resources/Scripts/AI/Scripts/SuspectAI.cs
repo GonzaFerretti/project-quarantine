@@ -19,7 +19,7 @@ public class SuspectAI : ControllerWrapper, IController
     ModelPatrol _model;
     Vector3 _target;
 
-    public void AssignModel(ModelChar model)
+    public void AssignModel(Model model)
     {
         _model = model as ModelPatrol;
     }
@@ -52,7 +52,7 @@ public class SuspectAI : ControllerWrapper, IController
     {
         if (currentRotations < rotationMaxAmount)
             Rotate();
-        else _model.controller = _model.patrolController;
+        else _model.controller = _model.standardController;
     }
 
     void Rotate()

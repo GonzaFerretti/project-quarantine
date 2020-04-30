@@ -9,20 +9,21 @@ public class ActionInteract : IAction
         _rayDistance = rayDistance;
     }
 
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
         RaycastHit hit;
         Physics.Raycast(m.transform.position, m.transform.forward, out hit, _rayDistance);
+        ModelChar mc = m as ModelChar;
         if (hit.collider)
         {
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
             if (interactable)
             {
-                for (int i = 0; i < m.availableActions.Count; i++)
+                for (int i = 0; i < mc.availableActions.Count; i++)
                 {
-                    if (interactable.requiredAction == m.availableActions[i])
+                    if (interactable.requiredAction == mc.availableActions[i])
                     {
-                        m.availableActions[i].action.Do(m);
+                        mc.availableActions[i].action.Do(m);
                         interactable.Interact(m as ModelPlayable);
                     }
                 }

@@ -5,38 +5,40 @@ using UnityEngine;
 public class ActionHide : IAction
 {
     float _interactionDistance;
+    int _goalLocation;
+    int _facingRedirecion;
 
-    public ActionHide(float interactionDistance)
+    public ActionHide(int goalLocation, int facingRedirection, float interactionDistance)
     {
         _interactionDistance = interactionDistance;
+        _goalLocation = goalLocation;
+        _facingRedirecion = facingRedirection;
     }
 
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
         RaycastHit hit;
         Physics.Raycast(m.transform.position, m.transform.forward, out hit, _interactionDistance);
         if (hit.collider)
         {
-            InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
-            if (interactable && interactable.requiredAction is ActionHideWrapper)
+            HidingPlace hidingPlace = hit.collider.gameObject.GetComponent<HidingPlace>();
+            if (hidingPlace)
             {
-                Rigidbody rb = m.GetComponent<Rigidbody>();
+                ModelPlayable mp = (m as ModelPlayable);
 
-                if (rb.constraints == RigidbodyConstraints.FreezeAll)
-                {
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    m.transform.position = hit.collider.transform.position + hit.collider.transform.forward;
-                    m.currentSpeed = m.walkSpeed;
-                    interactable.requiredAction.name = "Hide";
-                }
-                else
-                {
-                    rb.constraints = RigidbodyConstraints.FreezeAll;
-                    m.transform.position = hit.collider.transform.position - hit.collider.transform.forward / 2;
-                    m.transform.forward = hit.collider.transform.forward;
-                    m.currentSpeed = 0;
-                    interactable.requiredAction.name = "Unhide";
-                }
+                if (mp.redirectController.myController == null) mp.redirectController.SetController();
+                RedirectController rc = (mp.redirectController as RedirectController);
+
+                rc.AssignModel(mp);
+
+                rc.SetFrontGoal(hidingPlace.transform.position + hidingPlace.transform.forward * _goalLocation);
+                rc.SetInsideGoal(hidingPlace.transform.position + hidingPlace.transform.forward / 4 * _facingRedirecion);
+                rc.SetForward(hidingPlace.transform.forward);
+                rc.SetHidingPlace(hidingPlace);
+
+                if (hidingPlace.unhideAction.action == null) hidingPlace.unhideAction.SetAction();
+
+                mp.controller = mp.redirectController;
             }
         }
     }
