@@ -1,13 +1,13 @@
 ﻿
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AlertPhaseTimer : MonoBehaviour
 {
     public float maxTimer;
     public float timer;
-
+    public Text timerText;
+    bool _onAlert;
 
     private void Start()
     {
@@ -17,16 +17,25 @@ public class AlertPhaseTimer : MonoBehaviour
     private void ActivateAlert()
     {
         timer = maxTimer;
+        _onAlert = true;
     }
 
     private void Update()
     {
         if (timer > 0)
+        {
             timer -= Time.deltaTime;
+            timerText.color = Color.red;
+            timerText.text = "Alert!" + "\n" + timer.ToString("F0");
+        }
         else
         {
-            timer = 0;
-            DeactivateAlert();
+            if (_onAlert == true)
+            {
+                timer = 0;
+                DeactivateAlert();
+                _onAlert = false;
+            }
         }
     }
 
@@ -34,5 +43,7 @@ public class AlertPhaseTimer : MonoBehaviour
     private void DeactivateAlert()
     {
         EventManager.TriggerEvent("AlertStop");
+        timerText.color = Color.black;
+        timerText.text = "Unseen";
     }
 }

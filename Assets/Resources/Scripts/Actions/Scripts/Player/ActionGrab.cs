@@ -2,9 +2,10 @@
 
 public class ActionGrab : IAction
 {
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
-        if (m.nearbyObject != null && m is ModelPlayable)
+        ModelHumanoid mh = m as ModelHumanoid;
+        if (mh.nearbyObject != null && m is ModelPlayable)
         {
             ModelPlayable model = m as ModelPlayable;
             Vector3 baseDirection = (model.nearbyObject.transform.position - model.transform.position).normalized;

@@ -1,4 +1,4 @@
 ﻿public interface IAction
 {
-    void Do(ModelChar m);
+    void Do(Model m);
 }

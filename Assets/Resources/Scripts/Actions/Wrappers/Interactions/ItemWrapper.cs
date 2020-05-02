@@ -5,11 +5,13 @@ using UnityEngine;
 public class ItemWrapper : InteractableObject
 {
     public Item item;
-    public void Start()
+    protected override void Start()
     {
-        if (item._mesh)
-        { 
-        GetComponent<MeshFilter>().mesh = item._mesh;
+        //tentative;
+        base.Start();
+        if (item.mesh)
+        {
+            GetComponent<MeshFilter>().mesh = item.mesh;
         }
     }
 }

@@ -1,24 +1,34 @@
 ﻿using UnityEngine;
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 
-public class ModelPlayable : ModelChar
+public class ModelPlayable : ModelHumanoid
 {
-    float _sneakSpeed;
+    float _sneakSpeed;    
     public Inventory inv;
     public CharacterAttributes myAttributes;
+    public ControllerWrapper usualController;
+    public ControllerWrapper redirectController;
+    public ControllerWrapper hideController;
+    public ControllerWrapper flingController;
+    public FlingSpotLight flingSpotlight;
 
     protected override void Start()
     {
+        controller = usualController;
         base.Start();
         SetAttributes(myAttributes);
+        flingController.SetController();
+        flingController.myController.AssignModel(this);
+
         for (int i = 0; i < availableActions.Count; i++)
         {
             availableActions[i].SetAction();
         }
+
         if (controller is PlayerController)
         {
-            (controller as PlayerController).startFunction();
+            (controller as PlayerController).StartFunction();
         }
 
         inv = inv.cloneInvTemplate();
@@ -27,24 +37,18 @@ public class ModelPlayable : ModelChar
 
     void SetAttributes(CharacterAttributes attributes)
     {
-        walkSpeed = attributes.walkSpeed;
+        standardSpeed = attributes.walkSpeed;
         runSpeed = attributes.runSpeed;
         _sneakSpeed = attributes.sneakSpeed;
-
-        currentSpeed = walkSpeed;
+        strength = attributes.strength;
+        currentSpeed = standardSpeed;
 
         availableActions = new List<ActionWrapper>();
-        for (int i = 0; i < availableActions.Count; i++)
+        for (int i = 0; i < attributes.innateActions.Length; i++)
         {
             availableActions.Add(attributes.innateActions[i]);
         }
         MeshFilter myMesh = GetComponent<MeshFilter>();
         myMesh.mesh = attributes.mesh;
-        //MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        //meshRenderer.materials = new Material[attributes.materials.Length];
-        //for (int i = 0; i < attributes.materials.Length; i++)
-        //{
-        //    meshRenderer.materials[i] = attributes.materials[i];
-        //}
     }
 }

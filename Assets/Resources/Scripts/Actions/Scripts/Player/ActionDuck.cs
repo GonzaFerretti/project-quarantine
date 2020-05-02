@@ -2,12 +2,9 @@
 
 public class ActionDuck : IAction
 {
-    public ActionDuck()
+    public void Do(Model m)
     {
-    }
-
-    public void Do(ModelChar m)
-    {
-        m.isDucking = true;
+        ModelHumanoid mh = m as ModelHumanoid;
+        mh.isDucking = true;
     }
 }

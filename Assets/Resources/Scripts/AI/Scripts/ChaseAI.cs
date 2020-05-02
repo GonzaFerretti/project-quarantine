@@ -6,14 +6,14 @@ public class ChaseAI : ControllerWrapper, IController
 {
     ModelPatrol _model;
 
-    public void AssignModel(ModelChar model)
+    public void AssignModel(Model model)
     {
         _model = model as ModelPatrol;
     }
 
     public override ControllerWrapper Clone()
     {
-        return ScriptableObject.CreateInstance("ChaseAI") as ControllerWrapper;
+        return CreateInstance("ChaseAI") as ControllerWrapper;
     }
 
     public void OnUpdate()
@@ -24,7 +24,5 @@ public class ChaseAI : ControllerWrapper, IController
     public override void SetController()
     {
         myController = this;
-    }
-
-    
+    }    
 }

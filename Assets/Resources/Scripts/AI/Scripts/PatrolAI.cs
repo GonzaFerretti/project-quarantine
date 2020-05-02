@@ -6,7 +6,7 @@ public class PatrolAI : ControllerWrapper, IController
     ModelPatrol _model;
     public float nodeDistanceThreshold;
 
-    public void AssignModel(ModelChar model)
+    public void AssignModel(Model model)
     {
         _model = model as ModelPatrol;
     }
@@ -31,7 +31,7 @@ public class PatrolAI : ControllerWrapper, IController
 
     public override ControllerWrapper Clone()
     {
-        PatrolAI cloneWrapper = ScriptableObject.CreateInstance("PatrolAI") as PatrolAI;
+        PatrolAI cloneWrapper = CreateInstance("PatrolAI") as PatrolAI;
         cloneWrapper.nodeDistanceThreshold = nodeDistanceThreshold;
         return cloneWrapper as ControllerWrapper;
     }

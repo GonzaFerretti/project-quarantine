@@ -2,7 +2,7 @@
 
 public class ActionEnter : IAction
 {
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
         //Animaciones
         Debug.Log("Enter");

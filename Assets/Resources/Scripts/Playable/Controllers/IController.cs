@@ -1,5 +1,5 @@
 ﻿public interface IController 
 {
-    void AssignModel(ModelChar model);
+    void AssignModel(Model model);
     void OnUpdate();
 }

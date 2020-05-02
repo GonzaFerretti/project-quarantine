@@ -1,26 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ActionRotation : IAction
+public class ActionPatrolRotation : IAction
 {
     float _speed;
     float _duration;
     float _maxDuration;
+    Vector3 _quaternion;
 
     PatrolNode _node;
 
-    public ActionRotation(float speed, float duration)
+    public ActionPatrolRotation(float speed, float duration, Vector3 quaternion)
     {
         _speed = speed;
         _maxDuration = duration;
+        _quaternion = quaternion;
     }
 
-    public void Do(ModelChar m)
+    public void Do(Model m)
     {
         if (_duration < _maxDuration)
         {
-            m.transform.Rotate(0, _speed * _duration, 0);
+            m.transform.Rotate(_quaternion * _speed * _duration);
             _duration += Time.deltaTime;
         }
         else
@@ -30,7 +30,7 @@ public class ActionRotation : IAction
         }        
     }
 
-    public ActionRotation SetNode(PatrolNode p)
+    public ActionPatrolRotation SetNode(PatrolNode p)
     {
         _node = p;
         return this;

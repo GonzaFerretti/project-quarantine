@@ -2,93 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelPatrol : ModelChar
+public class ModelPatrol : ModelEnemy
 {
     public PatrolNode node;
-    public float range;
-    public float angle;
-    public float alertDuration;
-    public float alertCountdown;
-    public LayerMask visibility;
-    public ModelPlayable target;
-    public ControllerWrapper patrolcontroller;
-    public ControllerWrapper alertcontroller;
-
-    private Transform debugTarget;
+    public ControllerWrapper suspectController;
+    public float runSpeed;
 
     protected override void Start()
-    {
-        patrolcontroller = patrolcontroller.Clone();
-        alertcontroller = alertcontroller.Clone();
-        controller = patrolcontroller;
+    {      
+        suspectController = suspectController.Clone();
+        (suspectController as IController).AssignModel(this);
         base.Start();
-        (alertcontroller as IController).AssignModel(this);
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
+        EventManager.SubscribeToLocationEvent("Noise", SuspectNoise);
     }
 
     protected override void Update()
     {
         base.Update();
-        if (IsInSight(target)) EventManager.TriggerEvent("Alert");
-    }
-
-    void AlertBehavior()
-    {
-        Debug.Log("!");
-        currentSpeed = runSpeed;
-        controller = alertcontroller;
-        
-        if(controller.myController == null)
-        controller.SetController();
-    }
+        if (IsInSight(target, _alertRange)) EventManager.TriggerEvent("Alert");
+        if (IsInSight(target, _suspectRange))
+        {
+            SuspectBehavior();
+            (suspectController as SuspectAI).SetTarget(target.transform.position);
+        }
+    } 
 
     void NormalBehavior()
     {
-        currentSpeed = walkSpeed;
-        controller = patrolcontroller;
+        currentSpeed = standardSpeed;
+        controller = standardController;
 
         if (controller.myController == null)
             controller.SetController();
     }
 
-    public bool IsInSight(ModelPlayable player)
+    void SuspectBehavior()
     {
-        debugTarget = player.transform;
+        if (controller is ChaseAI) return;
 
-        Vector3 positionDifference = player.transform.position - transform.position;
+        Debug.Log("?");
+        currentSpeed = standardSpeed;
+        controller = suspectController;
 
-        float distance = positionDifference.magnitude;
-
-        if (distance > range) return false;
-
-        var angleToTarget = Vector3.Angle(transform.forward, positionDifference);
-
-        if (angleToTarget > angle / 2) return false;
-
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(transform.position, positionDifference, out hitInfo, range, visibility))
-        {
-            if (hitInfo.transform != player.transform) return false;
-        }
-
-        return true;
+        if (controller.myController == null)
+            controller.SetController();
     }
 
-    void OnDrawGizmos()
+    void SuspectNoise(Model m)
     {
-        var position = transform.position;
-
-        Gizmos.color = Color.white;
-        //Gizmos.DrawWireSphere(position, range);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(position, position + Quaternion.Euler(0, angle / 2, 0) * transform.forward * range);
-        Gizmos.DrawLine(position, position + Quaternion.Euler(0, -angle / 2, 0) * transform.forward * range);
-
-        if (debugTarget)
-            Gizmos.DrawLine(position, debugTarget.position);
+        (suspectController as SuspectAI).SetTarget(m.transform.position);
+        SuspectBehavior();
     }
 
+    void AlertBehavior()
+    {
+        if (Vector3.Distance(transform.position, target.transform.position) > _alertDistance) return;
+        Debug.Log("!");
+        currentSpeed = runSpeed;
+        controller = alertController;
+
+        if (controller.myController == null)
+            controller.SetController();
+    }
 }

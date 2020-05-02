@@ -4,16 +4,16 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {   
-    public string _displayName;
-    public string _description;
-    public Mesh _mesh;
+    public string displayName;
+    public string description;
+    public Mesh mesh;
     public List<ActionWrapper> allowingActions = new List<ActionWrapper>();
     public Item cloneItem()
     {
         Item newItem = new Item();
-        newItem._mesh = _mesh;
-        newItem._displayName = _displayName;
-        newItem._description = _description;
+        newItem.mesh = mesh;
+        newItem.displayName = displayName;
+        newItem.description = description;
         newItem.allowingActions = new List<ActionWrapper>();
         newItem.allowingActions = allowingActions;
         return newItem;
