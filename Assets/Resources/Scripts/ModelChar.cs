@@ -8,7 +8,8 @@ public class ModelChar : Model
     public float currentSpeed;
     public float standardSpeed;
     public float strength;
-    public List<ActionWrapper> availableActions;
+    public List<ActionWrapper> gainedActions;
+    public List<ActionKeyLinks> gainedActionKeyLinks; 
     public FlingObject flingObject;
 
     protected virtual void Start()

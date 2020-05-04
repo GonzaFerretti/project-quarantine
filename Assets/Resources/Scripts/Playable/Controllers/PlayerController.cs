@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Controller/Player/Player Controller")]
 public class PlayerController : ControllerWrapper, IController
 {
-    public ActionKeyLinks[] constantActionLinks;
-    public ActionKeyLinks[] oneTimeActionLinks;
+    public List<ActionKeyLinks> actionKeyLinks;
 
     ModelChar _model;
     public List<KeyCode> movementKeys = new List<KeyCode>();
@@ -23,34 +22,9 @@ public class PlayerController : ControllerWrapper, IController
 
     public void OnUpdate()
     {
-        for (int i = 0; i < constantActionLinks.Length; i++)
-        {
-            if (Input.GetKey(constantActionLinks[i].key))
-            {
-                if (constantActionLinks[i].action.action == null)
-                    constantActionLinks[i].action.SetAction();
-                constantActionLinks[i].action.action.Do(_model);
-
-            }
-        }
-
-        for (int i = 0; i < oneTimeActionLinks.Length; i++)
-        {
-            if (Input.GetKeyDown(oneTimeActionLinks[i].key))
-            {
-                if (oneTimeActionLinks[i].action.action == null)
-                    oneTimeActionLinks[i].action.SetAction();
-                oneTimeActionLinks[i].action.action.Do(_model);
-            }
-        }
-        List<ActionWrapper> addedActions = _model.availableActions;
-        for (int i = 0; i < addedActions.Count; i++)
-        {
-            if (Input.GetKey(addedActions[i].actionKey.key))
-                if (addedActions[i].actionKey.action.action == null)
-                    addedActions[i].actionKey.action.SetAction();
-                else addedActions[i].actionKey.action.action.Do(_model);
-        }
+        CheckActionList(actionKeyLinks);
+        List<ActionKeyLinks> addedActions = _model.gainedActionKeyLinks;
+        CheckActionList(addedActions);
     }
 
     public override void SetController()
@@ -60,16 +34,34 @@ public class PlayerController : ControllerWrapper, IController
 
     public void StartFunction()
     {
-        for (int i = 0; i < constantActionLinks.Length; i++)
+        for (int i = 0; i < actionKeyLinks.Count; i++)
         {
 
-            if (constantActionLinks[i].action.action == null)
-                constantActionLinks[i].action.SetAction();
-            if (constantActionLinks[i].action.action is ActionMovement)
+            if (actionKeyLinks[i].action.action == null)
+                actionKeyLinks[i].action.SetAction();
+            if (actionKeyLinks[i].action.action is ActionMovement)
             {
-                if (!movementKeys.Contains(constantActionLinks[i].key))
-                    movementKeys.Add(constantActionLinks[i].key);
+                if (!movementKeys.Contains(actionKeyLinks[i].key))
+                    movementKeys.Add(actionKeyLinks[i].key);
             }
+        }
+    }
+
+    public void CheckActionList(List<ActionKeyLinks> actionList)
+    {
+        for (int i = 0; i < actionList.Count; i++)
+        {
+            CheckAction(actionList[i]);
+        }
+    }
+
+    public void CheckAction(ActionKeyLinks action)
+    {
+        if (action.CheckTrigger())
+        {
+            if (action.action == null)
+                action.action.SetAction();
+            action.action.action.Do(_model);
         }
     }
 }

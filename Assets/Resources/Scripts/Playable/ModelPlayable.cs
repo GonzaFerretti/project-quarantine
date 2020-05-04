@@ -21,9 +21,9 @@ public class ModelPlayable : ModelHumanoid
         flingController.SetController();
         flingController.myController.AssignModel(this);
 
-        for (int i = 0; i < availableActions.Count; i++)
+        for (int i = 0; i < gainedActions.Count; i++)
         {
-            availableActions[i].SetAction();
+            gainedActions[i].SetAction();
         }
 
         if (controller is PlayerController)
@@ -43,10 +43,10 @@ public class ModelPlayable : ModelHumanoid
         strength = attributes.strength;
         currentSpeed = standardSpeed;
 
-        availableActions = new List<ActionWrapper>();
+        gainedActions = new List<ActionWrapper>();
         for (int i = 0; i < attributes.innateActions.Length; i++)
         {
-            availableActions.Add(attributes.innateActions[i]);
+            gainedActions.Add(attributes.innateActions[i]);
         }
         MeshFilter myMesh = GetComponent<MeshFilter>();
         myMesh.mesh = attributes.mesh;

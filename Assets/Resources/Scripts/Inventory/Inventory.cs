@@ -13,8 +13,8 @@ public class Inventory : ScriptableObject
         {
             foreach (ActionWrapper action in item.allowingActions)
             { 
-            if (!_model.availableActions.Contains(action))
-                (_model as ModelPlayable).availableActions.Add(action);
+            if (!_model.gainedActions.Contains(action))
+                (_model as ModelPlayable).gainedActions.Add(action);
             }
         }
     }
@@ -24,8 +24,10 @@ public class Inventory : ScriptableObject
         items.Add(item);
         foreach (ActionWrapper action in item.allowingActions)
         {
-            if (!_model.availableActions.Contains(action))
-                (_model as ModelPlayable).availableActions.Add(action);
+            if (!_model.gainedActions.Contains(action))
+                (_model as ModelPlayable).gainedActions.Add(action);
+            if (action.actionKey && !_model.gainedActionKeyLinks.Contains(action.actionKey))
+                (_model as ModelPlayable).gainedActionKeyLinks.Add(action.actionKey);
         }
         
     }
@@ -37,8 +39,10 @@ public class Inventory : ScriptableObject
         }
         foreach (ActionWrapper action in item.allowingActions)
         {
-            if (_model.availableActions.Contains(action))
-                (_model as ModelPlayable).availableActions.Remove(action);
+            if (_model.gainedActions.Contains(action))
+                (_model as ModelPlayable).gainedActions.Remove(action);
+            if (action.actionKey && _model.gainedActionKeyLinks.Contains(action.actionKey))
+                (_model as ModelPlayable).gainedActionKeyLinks.Remove(action.actionKey);
         }
     }
 

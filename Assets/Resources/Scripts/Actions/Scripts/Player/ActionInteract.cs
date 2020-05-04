@@ -19,11 +19,11 @@ public class ActionInteract : IAction
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
             if (interactable)
             {
-                for (int i = 0; i < mc.availableActions.Count; i++)
+                for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
-                    if (interactable.requiredAction == mc.availableActions[i])
+                    if (interactable.requiredAction == mc.gainedActions[i])
                     {
-                        mc.availableActions[i].action.Do(m);
+                        mc.gainedActions[i].action.Do(m);
                         interactable.Interact(m as ModelPlayable);
                     }
                 }

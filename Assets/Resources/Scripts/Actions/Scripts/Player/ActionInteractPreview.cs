@@ -22,9 +22,9 @@ public class ActionInteractPreview : IAction
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
             if (interactable)
             {
-                for (int i = 0; i < mc.availableActions.Count; i++)
+                for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
-                    if (interactable.requiredAction == mc.availableActions[i])
+                    if (interactable.requiredAction == mc.gainedActions[i])
                     {
                         _textBox.text = interactable.requiredAction.name;
                     }
