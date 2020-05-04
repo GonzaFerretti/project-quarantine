@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: 5733fdd1dbefd6b4ab2028e069e90a1a, type: 2}
   key: 119
+  triggerType: {fileID: 11400000, guid: af69ad0b0b10c304cbccfb7e5b7b6645, type: 2}
