@@ -29,7 +29,6 @@ public class Inventory : ScriptableObject
             if (action.actionKey && !_model.gainedActionKeyLinks.Contains(action.actionKey))
                 (_model as ModelPlayable).gainedActionKeyLinks.Add(action.actionKey);
         }
-        
     }
 
     public void RemoveItem(Item item)

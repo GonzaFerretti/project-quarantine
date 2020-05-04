@@ -10,7 +10,7 @@ public class ActionKeyLinks : ScriptableObject
     {
         return triggerType.CheckTrigger(key);
     }
-    // If changekey will be used to allow the end user to change key bindings, we shouldn't allow them to modify also the trigger type, so it was omitted in the parameters.
+    // If changekey will be used to allow the end user to change key bindings, we shouldn't allow them to modify also the trigger type, so it was omitted in the constructor parameters.
     public void ChangeKey(KeyCode newKey)
     {
         key = newKey;
