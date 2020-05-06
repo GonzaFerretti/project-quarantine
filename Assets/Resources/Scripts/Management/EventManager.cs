@@ -8,7 +8,7 @@ public class EventManager : MonoBehaviour
 
     public delegate void LocationEventReceiver(Model v);
     static Dictionary<string, LocationEventReceiver> _locEvents;
-   
+
     public static void SubscribeToEvent(string eventType, EventReceiver listener)
     {
         if (_events == null) _events = new Dictionary<string, EventReceiver>();
@@ -37,19 +37,19 @@ public class EventManager : MonoBehaviour
 
     public static void TriggerEvent(string s)
     {
-        if(_events.ContainsKey(s))
+        if (_events == null) _locEvents = new Dictionary<string, LocationEventReceiver>();
+        if (_events.ContainsKey(s))
         {
-            if (_events[s] != null)
-                _events[s]();
+            _events[s]?.Invoke();
         }
     }
 
     public static void TriggerLocEvent(string s, Model v)
     {
+        if (_locEvents == null) _locEvents = new Dictionary<string, LocationEventReceiver>();
         if (_locEvents.ContainsKey(s))
         {
-            if (_locEvents[s] != null)
-                _locEvents[s](v);
+            _locEvents[s]?.Invoke(v);
         }
     }
 }

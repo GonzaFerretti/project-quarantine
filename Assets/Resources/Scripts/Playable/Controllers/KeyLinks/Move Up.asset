@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
   m_Name: Move Up
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: 5733fdd1dbefd6b4ab2028e069e90a1a, type: 2}
+  myAction: {fileID: 11400000, guid: 5733fdd1dbefd6b4ab2028e069e90a1a, type: 2}
   key: 119

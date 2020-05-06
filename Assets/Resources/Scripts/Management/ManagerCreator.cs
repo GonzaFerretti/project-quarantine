@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ManagerCreator : MonoBehaviour
 {
-    public MapInfoKeeper mapInfoKeeper;
+    public TentativeMapInfoKeeper mapInfoKeeper;
     //Tentative
     void Start()
     {
-        if (!FindObjectOfType<MapInfoKeeper>()) Instantiate(mapInfoKeeper);
+        if (!FindObjectOfType<TentativeMapInfoKeeper>()) Instantiate(mapInfoKeeper);
         Destroy(gameObject);
     }
 }

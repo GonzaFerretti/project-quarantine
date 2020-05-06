@@ -36,7 +36,14 @@ public class PlayerController : ControllerWrapper, IController
 
         for (int i = 0; i < oneTimeActionLinks.Length; i++)
         {
+<<<<<<< Updated upstream
             if (Input.GetKeyDown(oneTimeActionLinks[i].key))
+=======
+
+            if (actionKeyLinks[i].myAction.action == null)
+                actionKeyLinks[i].myAction.SetAction();
+            if (actionKeyLinks[i].myAction.action is ActionMovement)
+>>>>>>> Stashed changes
             {
                 if (oneTimeActionLinks[i].action.action == null)
                     oneTimeActionLinks[i].action.SetAction();
@@ -50,6 +57,7 @@ public class PlayerController : ControllerWrapper, IController
         myController = this;
     }
 
+<<<<<<< Updated upstream
     public void StartFunction()
     {
         for (int i = 0; i < constantActionLinks.Length; i++)
@@ -62,6 +70,15 @@ public class PlayerController : ControllerWrapper, IController
                 if (!movementKeys.Contains(constantActionLinks[i].key))
                     movementKeys.Add(constantActionLinks[i].key);
             }
+=======
+    public void CheckAction(ActionKeyLinks links)
+    {
+        if (links.CheckTrigger())
+        {
+            if (links.myAction.action == null)
+                links.myAction.SetAction();
+            links.myAction.action.Do(_model);
+>>>>>>> Stashed changes
         }
     }
 }

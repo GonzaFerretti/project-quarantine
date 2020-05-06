@@ -21,9 +21,9 @@ public class HideController : ControllerWrapper, IController
         for (int i = 0; i < actionLinks.Length; i++)
         {
             if (Input.GetKey(actionLinks[i].key))
-                if (actionLinks[i].action.action == null)
-                    actionLinks[i].action.SetAction();
-                else actionLinks[i].action.action.Do(_model);
+                if (actionLinks[i].myAction.action == null)
+                    actionLinks[i].myAction.SetAction();
+                else actionLinks[i].myAction.action.Do(_model);
         }
     }
 

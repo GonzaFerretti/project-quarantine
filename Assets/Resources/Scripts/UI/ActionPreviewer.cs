@@ -17,6 +17,8 @@ public class ActionPreviewer : MonoBehaviour
 
     private void Update()
     {
+        //tentative
+        if (!modelPlayable) modelPlayable = FindObjectOfType<ModelPlayable>(); 
         actionPreviewer.action.Do(modelPlayable);
         Movement();
     }

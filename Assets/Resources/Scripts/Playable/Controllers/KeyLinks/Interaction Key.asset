@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
   m_Name: Interaction Key
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: 2345e2593fd952c42b6f17a2226baf34, type: 2}
+  myAction: {fileID: 11400000, guid: 2345e2593fd952c42b6f17a2226baf34, type: 2}
   key: 101
+  triggerType: {fileID: 11400000, guid: ebc19ec25038cc7489fc95db82cee3d1, type: 2}

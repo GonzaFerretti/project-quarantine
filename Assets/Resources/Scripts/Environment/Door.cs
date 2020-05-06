@@ -5,8 +5,10 @@ using UnityEngine;
 public class Door : InteractableObject
 {
     public MapSetter mapSetter;
+    public string tentativeSceneName;
     public MapAttributes mapAttributes;
     public MapInfoKeeper mapInfoKeeper;
+    public Vector3 targetLocation;
 
     public MapAttributes GenerateIndoorAttributes()
     {

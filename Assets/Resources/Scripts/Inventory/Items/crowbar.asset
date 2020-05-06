@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f17888907b5e046be7eb4f671b4a4c, type: 3}
   m_Name: crowbar
   m_EditorClassIdentifier: 
-  _displayName: crowbar
-  _description: allows prying open stuff
-  _mesh: {fileID: 973877516759717424, guid: 4b2c333fa429c9348a6a1ebabcf68cc3, type: 3}
+  displayName: 
+  description: 
+  mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   allowingActions:
   - {fileID: 11400000, guid: b61e571d7c5a21d418771b6908161e9c, type: 2}

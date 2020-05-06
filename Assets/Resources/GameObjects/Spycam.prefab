@@ -281,19 +281,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   currentSpeed: 0
-  standardSpeed: 15
-  availableActions: []
+  standardSpeed: 0.3
+  strength: 0
+  gainedActions: []
+  gainedActionKeyLinks: []
+  flingObject: {fileID: 0}
   standardController: {fileID: 11400000, guid: de573efb4cccf97459350a085a5db2a0, type: 2}
   alertController: {fileID: 11400000, guid: 7f9217400e321cc429a77bf84ab7e191, type: 2}
   enemyAttributes: {fileID: 11400000, guid: e240bde085f20e94f92f79f9345796c1, type: 2}
+  alertRange: 0
   visibility:
     serializedVersion: 2
     m_Bits: 4294967295
   target: {fileID: 0}
   mat: {fileID: 0}
-  changeFrequency: 4
-  limit: 25
+  alertSpeed: 1
   waitTime: 2
+  camAngle: 60
+  goalRangeMargin: 0.05
+  coroutineCasted: 0
+  startDir: {x: 0, y: 0, z: 0}
+  rightForward: {x: 0, y: 0, z: 0}
+  leftForward: {x: 0, y: 0, z: 0}
 --- !u!1 &7323806385986867237
 GameObject:
   m_ObjectHideFlags: 0

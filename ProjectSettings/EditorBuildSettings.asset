@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Resources/Scenes/DebugRoomPablo.unity
+    path: Assets/Resources/Scenes/DebugRoomGonza.unity
     guid: 11b6a6c15df8e194e9f478ec1784e61b
   - enabled: 1
     path: Assets/Resources/Scenes/IndoorsDebugRoom.unity
     guid: 09d1569e094d95144894a1fcd5e97e74
+  - enabled: 1
+    path: Assets/Resources/Scenes/Demo/Demo House.unity
+    guid: 2ca7d52680b04d04e8a76223a3a480b9
+  - enabled: 1
+    path: Assets/Resources/Scenes/Demo/Demo City.unity
+    guid: 614e3b0611f17e3499e734369df72b56
+  - enabled: 1
+    path: Assets/Resources/Scenes/Demo/Demo Shop.unity
+    guid: d6f35fc813c811d49a89e9d3378faafd
   m_configObjects: {}

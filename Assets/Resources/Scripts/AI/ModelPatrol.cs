@@ -21,7 +21,7 @@ public class ModelPatrol : ModelEnemy
     protected override void Update()
     {
         base.Update();
-        if (IsInSight(target, _alertRange)) EventManager.TriggerEvent("Alert");
+        if (IsInSight(target, alertRange)) EventManager.TriggerEvent("Alert");
         if (IsInSight(target, _suspectRange))
         {
             SuspectBehavior();

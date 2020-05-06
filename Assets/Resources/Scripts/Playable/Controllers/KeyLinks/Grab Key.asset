@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
   m_Name: Grab Key
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
+  myAction: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   key: 101
+  triggerType: {fileID: 0}
