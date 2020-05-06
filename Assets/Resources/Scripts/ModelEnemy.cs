@@ -7,7 +7,7 @@ public class ModelEnemy : ModelChar
     public ControllerWrapper standardController;
     public ControllerWrapper alertController;
     public EnemyAttributes enemyAttributes;
-    protected float _alertRange;
+    public float alertRange;
     protected float _suspectRange;
     protected float _angle;
     protected float _alertDistance;
@@ -29,6 +29,9 @@ public class ModelEnemy : ModelChar
         (alertController as IController).AssignModel(this);
         TentativeColorSwap();
         SetAttributes();
+
+        //Tentative
+        if (!target) target = FindObjectOfType<ModelPlayable>();
     }
 
     void TentativeColorSwap()
@@ -41,7 +44,7 @@ public class ModelEnemy : ModelChar
 
     void SetAttributes()
     {
-        _alertRange = enemyAttributes.alertRange;
+        alertRange = enemyAttributes.alertRange;
         _suspectRange = enemyAttributes.suspectRange;
         _angle = enemyAttributes.angle;
         _alertDistance = enemyAttributes.alertDistance;

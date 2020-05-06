@@ -16,23 +16,25 @@ public class InteractableEnter : IActionInteractableObject
     {
         Door door = obj as Door;
 
-        if (door.mapAttributes == null)
-        {
-            door.mapAttributes = door.GenerateIndoorAttributes();
-        }
+        //if (door.mapAttributes == null)
+        //{
+        //    door.mapAttributes = door.GenerateIndoorAttributes();
+        //}
 
-        MapSetter mapSetter = MonoBehaviour.Instantiate(door.mapSetter);
-        mapSetter.mapInfoKeeper = door.mapInfoKeeper;
-        mapSetter.mapAttributes = door.mapAttributes;
+        //MapSetter mapSetter = MonoBehaviour.Instantiate(door.mapSetter);
+        //mapSetter.mapInfoKeeper = door.mapInfoKeeper;
+        //mapSetter.mapAttributes = door.mapAttributes;
 
-        if(SceneManager.GetActiveScene().name == _wrapper.scenes[0])
-        SceneManager.LoadScene(_wrapper.scenes[1]);
-        else
-        SceneManager.LoadScene(_wrapper.scenes[0]);
+        //if(SceneManager.GetActiveScene().name == _wrapper.scenes[0])
+        //SceneManager.LoadScene(_wrapper.scenes[1]);
+        //else
+        //SceneManager.LoadScene(_wrapper.scenes[0]);
 
-        mapSetter.mapInfoKeeper.previousMap = mapSetter.mapInfoKeeper.currentMap;
-        mapSetter.mapInfoKeeper.currentMap = door.mapAttributes.mapName;
+        //mapSetter.mapInfoKeeper.previousMap = mapSetter.mapInfoKeeper.currentMap;
+        //mapSetter.mapInfoKeeper.currentMap = door.mapAttributes.mapName;
 
-        mapSetter.CreateFloorWrapper();
+        //mapSetter.CreateFloorWrapper();
+        SceneManager.LoadScene(door.tentativeSceneName);
+        EventManager.TriggerEvent("Enter");
     }
 }

@@ -9,6 +9,12 @@ public class CameraMovement : MonoBehaviour
 
     public Vector2 smooth;
 
+    //Tentative
+    private void Start()
+    {
+        if (!player) player = FindObjectOfType<ModelPlayable>();
+    }
+
     private void LateUpdate()
     {
         if (player)

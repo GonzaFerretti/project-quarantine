@@ -5,21 +5,50 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Controller/AI/SpycamAI")]
 public class SpycamAI : ControllerWrapper, IController
 {
-    ModelChar _model;
+    ModelSpycam _model;
+    Vector3 _currentGoal;
 
     public void AssignModel(Model model)
     {
-        _model = model as ModelChar;
+        _model = model as ModelSpycam;
     }
 
     public override ControllerWrapper Clone()
     {
-        return CreateInstance("SpycamAI") as SpycamAI;
+        SpycamAI newSpycamAI = CreateInstance("SpycamAI") as SpycamAI;
+        return newSpycamAI;
     }
 
     public void OnUpdate()
     {
-        _model.transform.Rotate(0, _model.currentSpeed * Time.deltaTime, 0);
+        if (_currentGoal == Vector3.zero) _currentGoal = _model.leftForward;
+
+        Vector3 currentGoal = Vector3.RotateTowards(_model.transform.forward, _currentGoal, _model.currentSpeed * Time.deltaTime, 0);
+        _model.transform.rotation = Quaternion.LookRotation(currentGoal);
+
+        ChangeAngle(_model.rightForward, _model.leftForward);
+        ChangeAngle(_model.leftForward, _model.rightForward);
+    }
+
+    void ChangeAngle(Vector3 condition, Vector3 change)
+    {
+        if (IsInRange(condition, _model.goalRangeMargin))
+        {
+            _currentGoal = change;
+            _model.currentSpeed = 0;
+            if (!_model.coroutineCasted)
+            {
+                _model.StartCoroutine(_model.Reactivate(_model.standardSpeed));
+                _model.coroutineCasted = true;
+            }
+        }
+    }
+
+    public bool IsInRange(Vector3 condition, float range)
+    {
+        if ((_model.transform.forward.x < condition.x + range && _model.transform.forward.x > condition.x - range) && (_model.transform.forward.z < condition.z + range && _model.transform.forward.z > condition.z - range))
+            return true;
+        else return false;
     }
 
     public override void SetController()

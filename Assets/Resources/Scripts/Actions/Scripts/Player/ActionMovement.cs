@@ -20,7 +20,7 @@ public class ActionMovement : IAction
         int currentlyPressedAmount = 0;
         ModelChar mc = m as ModelChar;
 
-        foreach(KeyCode key in (mc.controller as PlayerController).movementKeys)
+        foreach (KeyCode key in (mc.controller as PlayerController).movementKeys)
         {
             if (Input.GetKey(key))
             {
@@ -28,10 +28,10 @@ public class ActionMovement : IAction
             }
         }
         if (currentlyPressedAmount < 3)
-        { 
-        float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
-        m.transform.position += directionVector.normalized * mc.currentSpeed * Time.deltaTime /diagonalMultiplier;
-
+        {
+            float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
+            m.transform.position += directionVector.normalized * mc.currentSpeed * Time.deltaTime / diagonalMultiplier;
+            //tentative
             m.transform.forward += directionVector.normalized;
         }
     }

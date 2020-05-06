@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
   m_Name: Move Left
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: 5f894105edbae25448b082a90003c8af, type: 2}
+  myAction: {fileID: 11400000, guid: 5f894105edbae25448b082a90003c8af, type: 2}
   key: 97
   triggerType: {fileID: 11400000, guid: af69ad0b0b10c304cbccfb7e5b7b6645, type: 2}

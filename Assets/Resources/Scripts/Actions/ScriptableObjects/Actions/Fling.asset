@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a136bf728f08fcf4194ab8400035e16b, type: 3}
   m_Name: Fling
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 11400000, guid: 7bc9e5ce023778e4783e478378d90b61, type: 2}

@@ -3,50 +3,51 @@ using UnityEngine;
 
 public class ModelSpycam : ModelEnemy
 {
-    public float changeFrequency;
-    public float limit;
-
+    public float alertSpeed;
     public float waitTime;
-    SpycamAI spycamAI;
+    public float camAngle;
+
+    public float goalRangeMargin;
+
+    public bool coroutineCasted;
+
+    public Vector3 startDir;
+    public Vector3 rightForward;
+    public Vector3 leftForward;
 
     protected override void Start()
     {
         base.Start();
-        spycamAI = controller as SpycamAI;
-
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
-        StartCoroutine(Deactivate(changeFrequency/2));
+        startDir = transform.forward;
+        leftForward = (Quaternion.Euler(0, camAngle / 2, 0) * transform.forward).normalized;
+        rightForward = (Quaternion.Euler(0, -camAngle / 2, 0) * transform.forward).normalized;
     }
 
     protected override void Update()
     {
         base.Update();
-
-        if (IsInSight(target, _alertRange)) EventManager.TriggerEvent("Alert");
-    }
-
-    public IEnumerator Deactivate(float f)
-    {
-        yield return new WaitForSeconds(f);
-        StartCoroutine(Reactivate(-currentSpeed));
-        currentSpeed = 0;
+        if (IsInSight(target, alertRange)) EventManager.TriggerEvent("Alert");
     }
 
     public IEnumerator Reactivate(float f)
     {
         yield return new WaitForSeconds(waitTime);
-        StartCoroutine(Deactivate(changeFrequency));
         currentSpeed = f;
+        coroutineCasted = false;
     }
 
     void AlertBehavior()
     {
+        StopAllCoroutines();
+        currentSpeed = alertSpeed;
         controller = alertController;
     }
 
     void NormalBehavior()
     {
+        currentSpeed = standardSpeed;
         controller = standardController;
     }
 }

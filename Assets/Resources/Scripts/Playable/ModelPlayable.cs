@@ -15,6 +15,7 @@ public class ModelPlayable : ModelHumanoid
 
     protected override void Start()
     {
+        DontDestroyOnLoad(this);
         controller = usualController;
         base.Start();
         SetAttributes(myAttributes);

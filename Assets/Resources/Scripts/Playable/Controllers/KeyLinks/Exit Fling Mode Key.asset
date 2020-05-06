@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
   m_Name: Exit Fling Mode Key
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: 02cf51be1a176a94d8a1dcd4c86db33d, type: 2}
+  myAction: {fileID: 11400000, guid: 02cf51be1a176a94d8a1dcd4c86db33d, type: 2}
   key: 113
+  triggerType: {fileID: 11400000, guid: ebc19ec25038cc7489fc95db82cee3d1, type: 2}
