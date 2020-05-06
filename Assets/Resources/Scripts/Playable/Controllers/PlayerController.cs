@@ -36,15 +36,14 @@ public class PlayerController : ControllerWrapper, IController
     {
         for (int i = 0; i < actionKeyLinks.Count; i++)
         {
-
-            if (actionKeyLinks[i].action.action == null)
-                actionKeyLinks[i].action.SetAction();
-            if (actionKeyLinks[i].action.action is ActionMovement)
+            if (actionKeyLinks[i].myAction.action == null)
+                actionKeyLinks[i].myAction.SetAction();
+            if (actionKeyLinks[i].myAction.action is ActionMovement)
             {
                 if (!movementKeys.Contains(actionKeyLinks[i].key))
                     movementKeys.Add(actionKeyLinks[i].key);
             }
-          }
+        }
     }
 
     public void CheckActionList(List<ActionKeyLinks> actionList)
@@ -55,13 +54,13 @@ public class PlayerController : ControllerWrapper, IController
         }
     }
 
-    public void CheckAction(ActionKeyLinks myAction)
+    public void CheckAction(ActionKeyLinks action)
     {
-        if (myAction.CheckTrigger())
+        if (action.CheckTrigger())
         {
-            if (myAction.action == null)
-                myAction.action.SetAction();
-            action.action.action.Do(_model);
+            if (action.myAction == null)
+                action.myAction.SetAction();
+            action.myAction.action.Do(_model);
         }
     }
 }
