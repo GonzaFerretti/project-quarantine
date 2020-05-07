@@ -4078,6 +4078,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: crowbar
       objectReference: {fileID: 0}
+    - target: {fileID: 4649749825943471089, guid: 84d1252f46f6cd445bc61d8b56dda9ea,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4649749825943471100, guid: 84d1252f46f6cd445bc61d8b56dda9ea,
         type: 3}
       propertyPath: m_LocalPosition.x

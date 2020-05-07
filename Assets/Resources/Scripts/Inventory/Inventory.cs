@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Inventory/Inventory")]
 public class Inventory : ScriptableObject
 {
-    public List<Item> items = new List<Item>();
+    public List<Item> items;
     ModelChar _model;
     public void initializeInventory(ModelChar model)
     {
@@ -15,12 +15,16 @@ public class Inventory : ScriptableObject
             { 
             if (!_model.gainedActions.Contains(action))
                 (_model as ModelPlayable).gainedActions.Add(action);
+            
+            if (action.actionKey && !_model.gainedActionKeyLinks.Contains(action.actionKey))
+                (_model as ModelPlayable).gainedActionKeyLinks.Add(action.actionKey);
             }
         }
     }
 
     public void AddItem(Item item)
     {
+        Debug.Log("itemAdded");
         items.Add(item);
         foreach (ActionWrapper action in item.allowingActions)
         {

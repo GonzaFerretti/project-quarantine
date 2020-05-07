@@ -14,6 +14,7 @@ public class ActionInteract : IAction
         RaycastHit hit;
         Physics.Raycast(m.transform.position, m.transform.forward, out hit, _rayDistance);
         ModelChar mc = m as ModelChar;
+        Debug.DrawLine(m.transform.position, m.transform.position + m.transform.forward, Color.red, 2);
         if (hit.collider)
         {
             InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();

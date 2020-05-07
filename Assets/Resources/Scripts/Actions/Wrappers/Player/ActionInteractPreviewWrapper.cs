@@ -6,9 +6,10 @@ public class ActionInteractPreviewWrapper : ActionWrapper
 {
     public float rayDistance;
     public Text text;
+    public float arc, density;
 
     public override void SetAction()
     {
-        action = new ActionInteractPreview(rayDistance,text);
+        action = new ActionInteractPreview(rayDistance,text,arc,density);
     }
 }

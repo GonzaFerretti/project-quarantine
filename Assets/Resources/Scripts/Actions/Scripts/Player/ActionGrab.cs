@@ -13,6 +13,7 @@ public class ActionGrab : IAction
             ItemWrapper item = model.nearbyObject.GetComponent<ItemWrapper>();
             item.Interact(model);
             model.transform.forward = finalDirection;
+            Debug.Log("test");
             model.inv.AddItem(item.item);
             model.nearbyObject = null;
         }
