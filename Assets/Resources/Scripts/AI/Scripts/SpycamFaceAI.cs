@@ -4,6 +4,8 @@
 public class SpycamFaceAI : ControllerWrapper, IController
 {
     ModelSpycam _model;
+    public float margin;
+
     public void AssignModel(Model model)
     {
         _model = model as ModelSpycam;
@@ -16,11 +18,25 @@ public class SpycamFaceAI : ControllerWrapper, IController
 
     public void OnUpdate()
     {
+        Vector3 currentGoal;
         if (IsInRange(_model.leftForward, _model.rightForward))
         {
-            Vector3 currentGoal = Vector3.RotateTowards(_model.transform.forward, (_model.target.transform.position - _model.transform.position).normalized, _model.currentSpeed * Time.deltaTime, 0);
-            _model.transform.rotation = Quaternion.LookRotation(currentGoal);
+            currentGoal = Vector3.RotateTowards(_model.transform.forward, (_model.target.transform.position - _model.transform.position).normalized, _model.currentSpeed * Time.deltaTime, 0);
         }
+        else
+        {
+            Vector3 marginVector = new Vector3(margin, 0, margin);
+
+            if (Vector3.Distance(_model.transform.forward, _model.rightForward) < Vector3.Distance(_model.transform.forward, _model.leftForward))
+            {
+                currentGoal = Vector3.RotateTowards(_model.transform.forward, _model.leftForward + marginVector, _model.currentSpeed * Time.deltaTime, 0);
+            }
+            else
+            {
+                currentGoal = Vector3.RotateTowards(_model.transform.forward, _model.rightForward - marginVector, _model.currentSpeed * Time.deltaTime, 0);
+            }
+        }
+        _model.transform.rotation = Quaternion.LookRotation(currentGoal);
     }
 
     public bool IsInRange(Vector3 left, Vector3 right)

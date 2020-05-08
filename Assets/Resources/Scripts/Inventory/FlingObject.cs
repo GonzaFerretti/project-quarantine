@@ -7,17 +7,20 @@ public class FlingObject : Model
     public ActionWrapper[] collisionAction;
     public Rigidbody rb;
     Collider col;
-    
-    //MeshFilter myMesh;
 
-    //public void SetAttributes(Item item)
-    //{
-    //    myMesh.mesh = item.mesh;
-    //}
+    MeshFilter _myMesh;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+    }
+
+    public void SetAttributes(Item item)
+    {
+        if(_myMesh == null)
+        _myMesh = GetComponent<MeshFilter>();
+        _myMesh.mesh = item.mesh;
     }
 
     private void OnCollisionEnter(Collision c)

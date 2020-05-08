@@ -29,5 +29,4 @@ public class ActionPreviewer : MonoBehaviour
         Vector3 distance = modelPositionOnScreen - new Vector2(transform.position.x, transform.position.y);
         transform.position = new Vector3(transform.position.x + distance.x, transform.position.y + distance.y) + threshold;
     }
-
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ModelPlayable : ModelHumanoid
 {
-    float _sneakSpeed;    
+    float _sneakSpeed;
     public Inventory inv;
     public CharacterAttributes myAttributes;
     public ControllerWrapper usualController;
@@ -13,6 +13,7 @@ public class ModelPlayable : ModelHumanoid
     public ControllerWrapper flingController;
     public FlingSpotLight flingSpotlight;
     public bool isHidden = false;
+    public Item currentlySelectedItem;
 
     protected override void Start()
     {
@@ -50,7 +51,7 @@ public class ModelPlayable : ModelHumanoid
         {
             gainedActions.Add(attributes.innateActions[i]);
             if (controller is PlayerController && !(controller as PlayerController).actionKeyLinks.Contains(attributes.innateActions[i].actionKey) && attributes.innateActions[i].actionKey)
-            { 
+            {
             gainedActionKeyLinks.Add(attributes.innateActions[i].actionKey);
             }
         }

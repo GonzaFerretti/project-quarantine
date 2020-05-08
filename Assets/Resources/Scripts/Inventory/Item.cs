@@ -8,7 +8,7 @@ public class Item : ScriptableObject
     public string description;
     public Mesh mesh;
     public List<ActionWrapper> allowingActions = new List<ActionWrapper>();
-    public Item cloneItem()
+    public virtual Item cloneItem()
     {
         Item newItem = new Item();
         newItem.mesh = mesh;

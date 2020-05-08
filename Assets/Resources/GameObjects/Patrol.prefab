@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3778155312325358368}
   - component: {fileID: 3778155312325358374}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Patrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3778155312325358369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.38289547, y: -2.56, z: -10.993969}
+  m_LocalPosition: {x: -0.1, y: 0.03, z: 11.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3778155313164867352}
@@ -128,22 +128,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   currentSpeed: 3
-  walkSpeed: 3
-  runSpeed: 5
-  isDucking: 0
-  vaultState: 0
-  lastVault: {fileID: 0}
-  node: {fileID: 0}
-  range: 11.66
-  angle: 80
-  alertDuration: 90
-  alertCountdown: 0
+  standardSpeed: 3
+  strength: 0
+  gainedActions: []
+  gainedActionKeyLinks: []
+  flingObject: {fileID: 0}
+  standardController: {fileID: 11400000, guid: 0dd6af90ca7f0f64f9bb9af248b06a3b, type: 2}
+  alertController: {fileID: 11400000, guid: 63f2cee4b5b41034e872e68057d12af9, type: 2}
+  enemyAttributes: {fileID: 11400000, guid: 0f3b2933310aea04c9a63dcecccbd819, type: 2}
+  alertRange: 8
   visibility:
     serializedVersion: 2
     m_Bits: 4294967295
   target: {fileID: 0}
-  patrolcontroller: {fileID: 11400000, guid: 0dd6af90ca7f0f64f9bb9af248b06a3b, type: 2}
-  alertcontroller: {fileID: 11400000, guid: 63f2cee4b5b41034e872e68057d12af9, type: 2}
+  mat: {fileID: 0}
+  node: {fileID: 0}
+  suspectController: {fileID: 11400000, guid: ba3c23eb89cc9924598c913cd29a801c, type: 2}
+  runSpeed: 5
+  spawner: {fileID: 0}
 --- !u!195 &3778155312325358374
 NavMeshAgent:
   m_ObjectHideFlags: 0

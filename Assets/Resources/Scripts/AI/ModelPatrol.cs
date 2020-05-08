@@ -7,6 +7,7 @@ public class ModelPatrol : ModelEnemy
     public PatrolNode node;
     public ControllerWrapper suspectController;
     public float runSpeed;
+    public PatrolSpawner spawner;
 
     protected override void Start()
     {      

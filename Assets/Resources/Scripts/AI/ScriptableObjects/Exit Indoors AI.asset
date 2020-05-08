@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a136bf728f08fcf4194ab8400035e16b, type: 3}
-  m_Name: Fling
+  m_Script: {fileID: 11500000, guid: 86562d49a4eb5564e9c43e5ac5d92d1a, type: 3}
+  m_Name: Exit Indoors AI
   m_EditorClassIdentifier: 
-  actionKey: {fileID: 11400000, guid: 7bc9e5ce023778e4783e478378d90b61, type: 2}
-  upwardStrength: 0.2
+  tresholdDistance: 0

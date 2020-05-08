@@ -16,7 +16,7 @@ public class ActionRelocationWrapper : EnemyActionWrapper
         {
             if (node.queuedAction[i] == this)
             {
-                node.queuedAction[i] = ScriptableObject.CreateInstance("ActionRelocationWrapper") as ActionWrapper;
+                node.queuedAction[i] = CreateInstance("ActionRelocationWrapper") as ActionWrapper;
                 (node.queuedAction[i] as ActionRelocationWrapper).targetLocation = node.nextNode.transform.position;
                 break;
             }
