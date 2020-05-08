@@ -12,6 +12,7 @@ public class ModelPlayable : ModelHumanoid
     public ControllerWrapper hideController;
     public ControllerWrapper flingController;
     public FlingSpotLight flingSpotlight;
+    public bool isHidden = false;
 
     protected override void Start()
     {

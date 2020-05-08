@@ -37,8 +37,8 @@ public class ActionHide : IAction
                 rc.SetHidingPlace(hidingPlace);
 
                 if (hidingPlace.unhideAction.action == null) hidingPlace.unhideAction.SetAction();
-
                 mp.controller = mp.redirectController;
+                mp.isHidden = (_goalLocation == 1);
             }
         }
     }
