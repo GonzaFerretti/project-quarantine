@@ -6,6 +6,7 @@ public class ActionFling : IAction
 {
     float _upwardStrength;
 
+
     public ActionFling(float upwardStrength)
     {
         _upwardStrength = upwardStrength;
@@ -48,7 +49,7 @@ public class ActionFling : IAction
             else strength = mp.strength;
 
             //tentative
-            mc.flingObject.SetAttributes(flingableItems[0]);
+            mc.flingObject.SetAttributes(flingableItems[0].itemModel);
             mp.inv.RemoveItem(flingableItems[0]);
         }
         else

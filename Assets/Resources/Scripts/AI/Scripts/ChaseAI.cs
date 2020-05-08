@@ -19,6 +19,7 @@ public class ChaseAI : ControllerWrapper, IController
     public void OnUpdate()
     {
         _model.GetComponent<NavMeshAgent>().SetDestination(_model.target.transform.position);
+        _model.animator.SetBool("running", true);
     }
 
     public override void SetController()

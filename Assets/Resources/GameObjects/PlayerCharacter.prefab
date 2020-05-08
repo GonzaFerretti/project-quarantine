@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 4032696742755407111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
   m_Children:
   - {fileID: 4032696743226202004}
   - {fileID: 4032696742062400464}
@@ -181,6 +181,7 @@ MonoBehaviour:
   flingController: {fileID: 11400000, guid: 7de993f5f6dcd544a9c896dccc085877, type: 2}
   flingSpotlight: {fileID: 7636424143663356410}
   isHidden: 0
+  currentlySelectedItem: {fileID: 0}
 --- !u!195 &4032696742755407104
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -129,7 +129,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7323806385488534911}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -286,6 +286,7 @@ MonoBehaviour:
   gainedActions: []
   gainedActionKeyLinks: []
   flingObject: {fileID: 0}
+  animator: {fileID: 0}
   standardController: {fileID: 11400000, guid: de573efb4cccf97459350a085a5db2a0, type: 2}
   alertController: {fileID: 11400000, guid: 7f9217400e321cc429a77bf84ab7e191, type: 2}
   enemyAttributes: {fileID: 11400000, guid: e240bde085f20e94f92f79f9345796c1, type: 2}
