@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlingObject : Model
 {
     public ActionWrapper[] collisionAction;
+    public GameObject characterModel;
     public Rigidbody rb;
     Collider col;
 
@@ -18,9 +19,8 @@ public class FlingObject : Model
 
     public void SetAttributes(Item item)
     {
-        if(_myMesh == null)
-        _myMesh = GetComponent<MeshFilter>();
-        _myMesh.mesh = item.mesh;
+        GameObject itemModel = Instantiate(characterModel, transform);
+        itemModel.name = "itemModel";
     }
 
     private void OnCollisionEnter(Collision c)

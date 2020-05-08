@@ -55,9 +55,6 @@ public class ModelPlayable : ModelHumanoid
             gainedActionKeyLinks.Add(attributes.innateActions[i].actionKey);
             }
         }
-        GameObject myPlayerCharacter = Instantiate(attributes.characterModel, transform);
-        myPlayerCharacter.GetComponent<Animator>().runtimeAnimatorController = attributes.animations;
-        myPlayerCharacter.name = "characterModel";
-        animator = myPlayerCharacter.GetComponent<Animator>();
+        initModel(ref animator, attributes.characterModel, attributes.animations);
     }
 }

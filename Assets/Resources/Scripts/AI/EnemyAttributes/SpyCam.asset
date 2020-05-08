@@ -17,4 +17,6 @@ MonoBehaviour:
   angle: 45
   alertDistance: 50
   hearingDistance: 0
-  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  characterModel: {fileID: -927199367670048503, guid: 92cf32674492aff4c9f8772f75a1536e,
+    type: 3}
+  animations: {fileID: 9100000, guid: a1b73534e8681054ea02ed3fd699fb44, type: 2}

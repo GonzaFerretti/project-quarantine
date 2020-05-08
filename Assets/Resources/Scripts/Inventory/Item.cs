@@ -6,12 +6,10 @@ public class Item : ScriptableObject
 {   
     public string displayName;
     public string description;
-    public Mesh mesh;
     public List<ActionWrapper> allowingActions = new List<ActionWrapper>();
     public virtual Item cloneItem()
     {
         Item newItem = new Item();
-        newItem.mesh = mesh;
         newItem.displayName = displayName;
         newItem.description = description;
         newItem.allowingActions = new List<ActionWrapper>();

@@ -12,6 +12,5 @@ public class CharacterAttributes : ScriptableObject
     public float strength;
     public ActionWrapper[] innateActions;
     public GameObject characterModel;
-    public Material[] materials;
     public AnimatorController animations;
 }

@@ -50,10 +50,7 @@ public class ModelEnemy : ModelChar
         _angle = enemyAttributes.angle;
         _alertDistance = enemyAttributes.alertDistance;
         _hearingDistance = enemyAttributes.hearingDistance;
-
-        if (GetComponent<MeshFilter>())
-        GetComponent<MeshFilter>().mesh = enemyAttributes.mesh;
-        else GetComponentInChildren<MeshFilter>().mesh = enemyAttributes.mesh;
+        initModel(ref animator, enemyAttributes.characterModel, enemyAttributes.animations);
     }
 
     public bool IsInSight(ModelPlayable player, float range)

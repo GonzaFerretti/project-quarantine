@@ -6,15 +6,14 @@ public class ItemWrapper : InteractableObject
 {
     public Item item;
     private ParticleSystem parts;
+    public GameObject characterModel;
     protected override void Start()
     {
         //tentative;
         base.Start();
-        if (item.mesh)
-        {
-            GetComponent<MeshFilter>().mesh = item.mesh;
-        }
         parts = GetComponent<ParticleSystem>();
+        //GameObject itemModel = Instantiate(characterModel, transform);
+        //itemModel.name = "itemModel";
     }
 
     public void activateParticles()

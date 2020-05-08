@@ -10,7 +10,6 @@ public class FlingableItem : Item
     public override Item cloneItem()
     {
         FlingableItem newItem = new FlingableItem();
-        newItem.mesh = mesh;
         newItem.displayName = displayName;
         newItem.description = description;
         newItem.allowingActions = new List<ActionWrapper>();

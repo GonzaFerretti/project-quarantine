@@ -1110,6 +1110,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fling Object
       objectReference: {fileID: 0}
+    - target: {fileID: 6391621869539279117, guid: 1366872e92e409a449c78158484e6542,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1366872e92e409a449c78158484e6542, type: 3}
 --- !u!1 &401587657
@@ -4017,6 +4022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spycam
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323806385819156389, guid: c388a02d75cf4a94a80f5ada4218e536,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323806385819156394, guid: c388a02d75cf4a94a80f5ada4218e536,
         type: 3}
