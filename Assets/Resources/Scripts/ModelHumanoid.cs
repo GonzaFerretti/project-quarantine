@@ -23,6 +23,7 @@ public class ModelHumanoid : ModelChar
         if (collider.GetComponent<ItemWrapper>())
         {
             nearbyObject = collider.gameObject;
+            nearbyObject.GetComponent<ItemWrapper>().activateParticles();
         }
     }
 
@@ -30,6 +31,7 @@ public class ModelHumanoid : ModelChar
     {
         if (collider.GetComponent<ItemWrapper>())
         {
+            nearbyObject.GetComponent<ItemWrapper>().disableParticles();
             nearbyObject = null;
         }
     }

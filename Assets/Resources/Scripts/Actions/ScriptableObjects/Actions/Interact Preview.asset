@@ -15,5 +15,5 @@ MonoBehaviour:
   actionKey: {fileID: 0}
   rayDistance: 1
   text: {fileID: 0}
-  arc: 90
-  density: 1
+  arc: 150
+  density: 10
