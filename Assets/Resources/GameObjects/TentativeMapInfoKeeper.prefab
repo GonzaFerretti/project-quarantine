@@ -46,11 +46,11 @@ MonoBehaviour:
   mapInfoList:
   - {fileID: 11400000, guid: d629f87f195bfcc41866c9e187c25558, type: 2}
   - {fileID: 11400000, guid: 78699859044b1cf40ae128fba580e7f3, type: 2}
-  - {fileID: 11400000, guid: 78699859044b1cf40ae128fba580e7f3, type: 2}
   - {fileID: 11400000, guid: d629f87f195bfcc41866c9e187c25558, type: 2}
+  - {fileID: 11400000, guid: ebbd09df7e59ac24da26bad8ae175522, type: 2}
   sceneList:
   - IndoorsDebugRoom
   - Demo City
   - Demo House
-  - DebugRoompablo
+  - Demo Shop
   item: {fileID: 4649749825943471101, guid: 84d1252f46f6cd445bc61d8b56dda9ea, type: 3}

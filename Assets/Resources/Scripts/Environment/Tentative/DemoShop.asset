@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dac7935043dd6e44b9dc8d754a6a3c1f, type: 3}
-  m_Name: DemoCity
+  m_Name: DemoShop
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 042e6fdd2ebc9fa47b58675e52c91890, type: 2}
   positions:
-  - {x: 1.16, y: 0.93, z: -17.6}
+  - {x: 26.01, y: 5.68, z: 14.6}

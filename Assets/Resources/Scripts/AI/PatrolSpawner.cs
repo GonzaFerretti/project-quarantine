@@ -35,11 +35,12 @@ public class PatrolSpawner : MonoBehaviour
         if (reinforcementAmount > 0)
         {
             ModelPatrol newPatrol = Instantiate(modelPatrol);
-            newPatrol.controller = newPatrol.alertController;
             newPatrol.transform.position = transform.position;
             newPatrol.spawner = this;
-           // newPatrol.standardController = indoorController.Clone();
-           //newPatrol.standardController.myController.AssignModel(newPatrol);
+            newPatrol.controller = newPatrol.alertController;
+            //newPatrol.standardController = indoorController.Clone();
+            //newPatrol.standardController.SetController();
+            //newPatrol.standardController.myController.AssignModel(newPatrol);
             reinforcementAmount--;
             StartCoroutine(SpawnReinforcements(normalWaitTime));
         }

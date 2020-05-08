@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dac7935043dd6e44b9dc8d754a6a3c1f, type: 3}
-  m_Name: New Tentative Map Info
+  m_Name: No Items
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 042e6fdd2ebc9fa47b58675e52c91890, type: 2}
-  positions:
-  - {x: 1, y: 0, z: 1}
+  items: []
+  positions: []
