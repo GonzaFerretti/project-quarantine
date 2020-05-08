@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Scenes/DebugRoomPablo.meta
 guid: 0c82feecb2d12cd4f8405d8e72a259f3
+=======
+guid: 6e4aa2eb72fe096499a94c809344e2a1
+>>>>>>> Arte:Assets/Arte/ActualArteDebugRoom.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
