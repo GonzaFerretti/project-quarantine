@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Vault
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 945961f4600bae04dba4e01dfce25f31, type: 2}
-  vaultDuration: 0.5
-  vaultHeight: 1.5
+  vaultDuration: 1
+  vaultHeight: 0.5
