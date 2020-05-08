@@ -19,4 +19,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b6896b1a5a0b88740990634bf0d6286f, type: 2}
   - {fileID: 11400000, guid: 615ea45002203d84486d66e5451a1dc2, type: 2}
   - {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
+  - {fileID: 11400000, guid: 85198abd4ae59e84ea0e5c1400649f00, type: 2}
+  - {fileID: 11400000, guid: 4feb2c7c163df9b4ab8401d2af50b3fa, type: 2}
+  - {fileID: 11400000, guid: 4304a581e29be2242bafe108fb8ab9d0, type: 2}
+  - {fileID: 11400000, guid: 570bc07071e7eae409d47f34abea1658, type: 2}
   movementKeys: 77000000610000006400000073000000

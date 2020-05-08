@@ -22,5 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eff97ae2f9229194eba16ade55b52550, type: 2}
   - {fileID: 11400000, guid: 12c85f03aa2383847ac7481e6be312ff, type: 2}
   - {fileID: 11400000, guid: d1a6cc61e6790484294a36883deaa8c1, type: 2}
-  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  characterModel: {fileID: -927199367670048503, guid: 92cf32674492aff4c9f8772f75a1536e,
+    type: 3}
   materials: []
+  animations: {fileID: 9100000, guid: a1b73534e8681054ea02ed3fd699fb44, type: 2}

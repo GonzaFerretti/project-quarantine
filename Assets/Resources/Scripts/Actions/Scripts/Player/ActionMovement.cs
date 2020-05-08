@@ -27,10 +27,12 @@ public class ActionMovement : IAction
                 currentlyPressedAmount++;
             }
         }
-        if (currentlyPressedAmount < 3)
+        if (currentlyPressedAmount < 3 && !((mc as ModelPlayable).vaultState == ModelHumanoid.vaultStates.isVaulting))
         {
             float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
+            mc.animator.ResetTrigger("idleVariation");
             m.transform.position += directionVector.normalized * mc.currentSpeed * Time.deltaTime / diagonalMultiplier;
+            mc.animator.SetBool("isRunning", true);
             //tentative
             m.transform.forward += directionVector.normalized;
         }

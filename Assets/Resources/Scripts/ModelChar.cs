@@ -11,12 +11,15 @@ public class ModelChar : Model
     public List<ActionWrapper> gainedActions;
     public List<ActionKeyLinks> gainedActionKeyLinks; 
     public FlingObject flingObject;
+    public Animator animator;
 
     protected virtual void Start()
     {
         currentSpeed = standardSpeed;
         controller.SetController();
         controller.myController.AssignModel(this);
+        // https://answers.unity.com/questions/1380820/addcomponent-is-obsolet-what-should-i-do.html
+        animator = gameObject.AddComponent<Animator>() as Animator;
     }
 
     protected virtual void Update()

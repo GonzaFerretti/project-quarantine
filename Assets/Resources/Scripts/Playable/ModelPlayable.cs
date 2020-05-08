@@ -49,8 +49,14 @@ public class ModelPlayable : ModelHumanoid
         for (int i = 0; i < attributes.innateActions.Length; i++)
         {
             gainedActions.Add(attributes.innateActions[i]);
+            if (controller is PlayerController && !(controller as PlayerController).actionKeyLinks.Contains(attributes.innateActions[i].actionKey) && attributes.innateActions[i].actionKey)
+            { 
+            gainedActionKeyLinks.Add(attributes.innateActions[i].actionKey);
+            }
         }
-        MeshFilter myMesh = GetComponent<MeshFilter>();
-        myMesh.mesh = attributes.mesh;
+        GameObject myPlayerCharacter = Instantiate(attributes.characterModel, transform);
+        myPlayerCharacter.GetComponent<Animator>().runtimeAnimatorController = attributes.animations;
+        myPlayerCharacter.name = "characterModel";
+        animator = myPlayerCharacter.GetComponent<Animator>();
     }
 }

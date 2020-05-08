@@ -10,7 +10,7 @@ public class ModelHumanoid : ModelChar
     public float vaultDuration, vaultHeight;
     public Transform lastVault;
     public GameObject nearbyObject;
-
+    
     public enum vaultStates
     {
         cantVault = 0,
@@ -73,6 +73,7 @@ public class ModelHumanoid : ModelChar
         vaultState = vaultStates.isVaulting;
         Physics.IgnoreCollision(lastVault.GetComponent<Collider>(), GetComponent<Collider>(), true);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        animator.SetTrigger("vault");
     }
 
     private void OnCollisionStay(Collision collision)
@@ -89,7 +90,9 @@ public class ModelHumanoid : ModelChar
         if (collision.transform.GetComponent<InteractableVaultWrapper>() != null && vaultState == vaultStates.canVault)
         {
             vaultState = vaultStates.cantVault;
+            animator.ResetTrigger("vault");
         }
     }
 
 }
+
