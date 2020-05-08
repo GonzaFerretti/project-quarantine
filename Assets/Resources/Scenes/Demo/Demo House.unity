@@ -1282,7 +1282,7 @@ MonoBehaviour:
   tentativeSceneName: Demo City
   mapAttributes: {fileID: 0}
   mapInfoKeeper: {fileID: 0}
-  targetLocation: {x: 14, y: 1.25, z: -20}
+  targetLocation: {x: 8.6, y: 1.25, z: -15.64}
 --- !u!65 &943348860
 BoxCollider:
   m_ObjectHideFlags: 0

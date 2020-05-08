@@ -97,6 +97,8 @@ MonoBehaviour:
   mat: {fileID: 0}
   node: {fileID: 0}
   suspectController: {fileID: 11400000, guid: ba3c23eb89cc9924598c913cd29a801c, type: 2}
+  indoorsController: {fileID: 11400000, guid: 1fb128c82325d674cb12ea0b39f3df6b, type: 2}
+  test: 0
   runSpeed: 5
   spawner: {fileID: 0}
 --- !u!195 &3778155312325358374

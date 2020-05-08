@@ -6,6 +6,7 @@ public class ModelPatrol : ModelEnemy
 {
     public PatrolNode node;
     public ControllerWrapper suspectController;
+
     public float runSpeed;
     public PatrolSpawner spawner;
 
@@ -13,6 +14,7 @@ public class ModelPatrol : ModelEnemy
     {      
         suspectController = suspectController.Clone();
         (suspectController as IController).AssignModel(this);
+
         base.Start();
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
