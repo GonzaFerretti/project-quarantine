@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04493f927c75b814f8318c69ae666dc4, type: 3}
   m_Name: Face AI
   m_EditorClassIdentifier: 
+  margin: 0.05

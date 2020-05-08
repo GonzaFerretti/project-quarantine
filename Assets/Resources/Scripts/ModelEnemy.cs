@@ -22,6 +22,7 @@ public class ModelEnemy : ModelChar
     protected override void Start()
     {
         standardController = standardController.Clone();
+        if(controller == null)
         controller = standardController;
         base.Start();
         alertController = alertController.Clone();

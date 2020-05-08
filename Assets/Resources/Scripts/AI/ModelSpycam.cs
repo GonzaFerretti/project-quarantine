@@ -18,6 +18,7 @@ public class ModelSpycam : ModelEnemy
     protected override void Start()
     {
         base.Start();
+        controller = standardController;
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
         startDir = transform.forward;

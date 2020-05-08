@@ -12,6 +12,7 @@ public class ModelPlayable : ModelHumanoid
     public ControllerWrapper hideController;
     public ControllerWrapper flingController;
     public FlingSpotLight flingSpotlight;
+    public Item currentlySelectedItem;
 
     protected override void Start()
     {

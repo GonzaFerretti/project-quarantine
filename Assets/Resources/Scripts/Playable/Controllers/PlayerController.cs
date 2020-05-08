@@ -58,7 +58,7 @@ public class PlayerController : ControllerWrapper, IController
     {
         if (action.CheckTrigger())
         {
-            if (action.myAction == null)
+            if (action.myAction.action == null)
                 action.myAction.SetAction();
             action.myAction.action.Do(_model);
         }
