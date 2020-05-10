@@ -7,8 +7,9 @@ public class ActionVaultWrapper : ActionWrapper
 {
     public float vaultDuration;
     public float vaultHeight;
+    public float vaultCheckDistance;
     public override void SetAction()
     {
-        action = new ActionVault(vaultDuration,vaultHeight);
+        action = new ActionVault(vaultDuration,vaultHeight, vaultCheckDistance);
     }
 }

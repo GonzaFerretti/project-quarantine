@@ -27,7 +27,7 @@ public class ActionMovement : IAction
                 currentlyPressedAmount++;
             }
         }
-        if (currentlyPressedAmount < 3 && !((mc as ModelPlayable).vaultState == ModelHumanoid.vaultStates.isVaulting))
+        if (currentlyPressedAmount < 3 && !((mc as ModelHumanoid).isVaulting))
         {
             float diagonalMultiplier = (currentlyPressedAmount > 1) ? Mathf.Sqrt(2) : 1;
             mc.animator.ResetTrigger("idleVariation");
