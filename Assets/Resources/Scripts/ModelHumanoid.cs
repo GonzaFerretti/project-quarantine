@@ -32,7 +32,6 @@ public class ModelHumanoid : ModelChar
     protected override void Update()
     {
         base.Update();
-        isDucking = false;
         if (isVaulting)
         {
             moveTowardsVaultPoint();
@@ -44,7 +43,7 @@ public class ModelHumanoid : ModelChar
         float vaultProgress = (Time.time - vaultStart) / (vaultDuration);
         if (vaultProgress < 1)
         {
-            //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine function. The distance travelled is lerped between the starting point and the objective.
+            //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine-based function. The distance travelled is lerped between the starting point and the objective.
             float vaultHeightIndex = Mathf.Lerp(0, Mathf.PI, vaultProgress);
             float yPosition = vaultStartPoint.y + Mathf.Sin(vaultHeightIndex) * vaultHeightIndex * vaultHeight;
             Vector3 XandZposition = Vector3.Lerp(vaultStartPoint, vaultObjetive, vaultProgress);

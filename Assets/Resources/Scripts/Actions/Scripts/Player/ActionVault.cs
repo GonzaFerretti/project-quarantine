@@ -36,7 +36,7 @@ public class ActionVault : IAction
                 mh.vaultDuration = vaultDuration;
                 mh.vaultHeight = vaultHeight;
                 Collider obsCol = closestVault.GetComponent<Collider>();
-                float vaultMaxDist = LongestPossibleRoute(obsCol);
+                float vaultMaxDist = LongestPossibleRoute(obsCol) + vaultCheckDistance;
                 Vector3 vaultCastStartPoint = m.transform.position + m.transform.forward * vaultMaxDist;
                 //Throw a ray from the longest possible distance the object can be vaulted, but in the opposite direction the player is facing, so we can find where the other end should be.
                 Ray endLocationRay = new Ray(vaultCastStartPoint, -(m.transform.forward));
