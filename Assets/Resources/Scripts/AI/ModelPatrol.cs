@@ -36,6 +36,7 @@ public class ModelPatrol : ModelEnemy
     {
         currentSpeed = standardSpeed;
         controller = standardController;
+        animator.SetBool("running", false);
 
         if (controller.myController == null)
             controller.SetController();

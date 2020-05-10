@@ -6,5 +6,6 @@ public class ActionDuck : IAction
     {
         ModelHumanoid mh = m as ModelHumanoid;
         mh.isDucking = true;
+        mh.animator.SetBool("isCrawling", true);
     }
 }

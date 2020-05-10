@@ -72,6 +72,7 @@ public class ModelEnemy : ModelChar
         if (Physics.Raycast(transform.position, positionDifference, out hitInfo, range, visibility))
         {
             if (hitInfo.transform != player.transform) return false;
+            if (hitInfo.transform == player.transform && player.isHidden) return false;
         }
         return true;
     }
