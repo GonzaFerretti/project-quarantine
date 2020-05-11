@@ -47,7 +47,7 @@ public class ActionVault : IAction
                     if (hit.transform.gameObject == closestVault)
                     {
                         objectivePoint = hit.point;
-                        Gizmos.DrawSphere(objectivePoint, 1);
+                        //Gizmos.DrawSphere(objectivePoint, 1);
                         break;
                     }
                 }
