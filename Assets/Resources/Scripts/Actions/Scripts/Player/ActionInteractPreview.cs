@@ -18,7 +18,6 @@ public class ActionInteractPreview : IAction
 
     public void Do(Model m)
     {
-        _textBox.color = Color.red;
         RaycastHit hit = new RaycastHit();
         if ((m is ModelHumanoid) && (m as ModelHumanoid).nearbyObject)
         {
