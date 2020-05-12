@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour
     public float camDistanceStep;
     public float camRotationStep;
     private float startingDistance;
-    public Vector3 defaultCamRotation;
+    private Vector3 defaultCamRotation;
 
     public Vector2 smooth;
 
