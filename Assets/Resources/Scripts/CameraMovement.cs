@@ -11,8 +11,7 @@ public class CameraMovement : MonoBehaviour
     public float camDistanceStep;
     public float camRotationStep;
     private float startingDistance;
-    Dictionary<movementKeysDirection, Vector3> defaultDirections = new Dictionary<movementKeysDirection, Vector3>();
-    private Quaternion defaultCamRotation;
+    public Vector3 defaultCamRotation;
 
     public Vector2 smooth;
 
@@ -21,8 +20,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (!player) player = FindObjectOfType<ModelPlayable>();
         startingDistance = camDistance;
-        defaultCamRotation = transform.rotation;
-        defaultDirections = ActionMovement.directionVectors;
+        defaultCamRotation = transform.localRotation.eulerAngles;
     }
 
     private void LateUpdate()
@@ -49,8 +47,9 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.X))
         {
             camDistance = startingDistance;
-            transform.rotation = defaultCamRotation;
-            ActionMovement.directionVectors = defaultDirections;
+            Debug.Log(defaultCamRotation);
+            transform.localRotation = Quaternion.Euler(defaultCamRotation);
+            ActionMovement.resetDirections();
         }
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
@@ -74,10 +73,12 @@ public class CameraMovement : MonoBehaviour
 
     private void updateMovementDirection()
     {
-        Vector3 up = transform.forward * Mathf.Sqrt(2)/2;
-        Vector3 down = -up;
-        Vector3 right = transform.up * Mathf.Sqrt(2) / 2;
+        Vector3 right = transform.right * Mathf.Sqrt(2) / 2;
         Vector3 left = -right;
+        Vector3 up = new Vector3(transform.forward.x,0,transform.forward.z);
+        Vector3 down = -up;
+        /*Vector3 up = transform.forward * Mathf.Sqrt(2) / 2;
+        Vector3 down = -up;*/
         ActionMovement.directionVectors[movementKeysDirection.up] = up;
         ActionMovement.directionVectors[movementKeysDirection.down] = down;
         ActionMovement.directionVectors[movementKeysDirection.left] = left;

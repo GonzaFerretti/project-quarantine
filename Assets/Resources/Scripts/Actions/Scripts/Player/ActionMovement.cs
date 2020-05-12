@@ -42,6 +42,14 @@ public class ActionMovement : IAction
             m.transform.forward += directionVector.normalized;
         }
     }
+
+    public static void resetDirections()
+    {
+        directionVectors[movementKeysDirection.up] = new Vector3(0.5f, 0, 0.5f);
+        directionVectors[movementKeysDirection.down] = new Vector3(-0.5f, 0, -0.5f);
+        directionVectors[movementKeysDirection.right] =  new Vector3(0.5f, 0, -0.5f);
+        directionVectors[movementKeysDirection.left] =  new Vector3(-0.5f, 0, 0.5f);
+    }
 }
 
 public enum movementKeysDirection
