@@ -7,12 +7,22 @@ public class CameraMovement : MonoBehaviour
     public ModelPlayable player;
     public float camDistance;
 
+    [Header("Debug")]
+    public float camDistanceStep;
+    public float camRotationStep;
+    private float startingDistance;
+    Dictionary<movementKeysDirection, Vector3> defaultDirections = new Dictionary<movementKeysDirection, Vector3>();
+    private Quaternion defaultCamRotation;
+
     public Vector2 smooth;
 
     //Tentative
     private void Start()
     {
         if (!player) player = FindObjectOfType<ModelPlayable>();
+        startingDistance = camDistance;
+        defaultCamRotation = transform.rotation;
+        defaultDirections = ActionMovement.directionVectors;
     }
 
     private void LateUpdate()
@@ -32,5 +42,45 @@ public class CameraMovement : MonoBehaviour
         newPos.z = ((player.transform.position.z - camDistance * (transform.forward.z) - transform.position.z) / smooth.y) * Time.deltaTime;
 
         transform.position += newPos;
+    }
+    
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.X))
+        {
+            camDistance = startingDistance;
+            transform.rotation = defaultCamRotation;
+            ActionMovement.directionVectors = defaultDirections;
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            camDistance += camDistanceStep * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            Vector3 angle = transform.localRotation.eulerAngles;
+            angle += Vector3.down * Time.deltaTime * camRotationStep;
+            transform.localRotation = Quaternion.Euler(angle);
+            updateMovementDirection();
+        }
+        else if(Input.GetKey(KeyCode.C))
+        {
+            Vector3 angle = transform.localRotation.eulerAngles;
+            angle += Vector3.up * Time.deltaTime * camRotationStep;
+            transform.localRotation = Quaternion.Euler(angle);
+            updateMovementDirection();
+        }
+    }
+
+    private void updateMovementDirection()
+    {
+        Vector3 up = transform.forward * Mathf.Sqrt(2)/2;
+        Vector3 down = -up;
+        Vector3 right = transform.up * Mathf.Sqrt(2) / 2;
+        Vector3 left = -right;
+        ActionMovement.directionVectors[movementKeysDirection.up] = up;
+        ActionMovement.directionVectors[movementKeysDirection.down] = down;
+        ActionMovement.directionVectors[movementKeysDirection.left] = left;
+        ActionMovement.directionVectors[movementKeysDirection.right] = right;
     }
 }
