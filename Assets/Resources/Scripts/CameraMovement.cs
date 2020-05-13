@@ -77,8 +77,6 @@ public class CameraMovement : MonoBehaviour
         Vector3 left = -right;
         Vector3 up = new Vector3(transform.forward.x,0,transform.forward.z);
         Vector3 down = -up;
-        /*Vector3 up = transform.forward * Mathf.Sqrt(2) / 2;
-        Vector3 down = -up;*/
         ActionMovement.directionVectors[movementKeysDirection.up] = up;
         ActionMovement.directionVectors[movementKeysDirection.down] = down;
         ActionMovement.directionVectors[movementKeysDirection.left] = left;
