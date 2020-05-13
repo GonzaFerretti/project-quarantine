@@ -42,7 +42,7 @@ public class CameraMovement : MonoBehaviour
         transform.position += newPos;
     }
     
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.X))
         {
@@ -51,18 +51,18 @@ public class CameraMovement : MonoBehaviour
             transform.localRotation = Quaternion.Euler(defaultCamRotation);
             ActionMovement.resetDirections();
         }
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
-            camDistance += camDistanceStep * Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+            camDistance += camDistanceStep * -Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.Z))
+        else if (Input.GetKey(KeyCode.C))
         {
             Vector3 angle = transform.localRotation.eulerAngles;
             angle += Vector3.down * Time.deltaTime * camRotationStep;
             transform.localRotation = Quaternion.Euler(angle);
             updateMovementDirection();
         }
-        else if(Input.GetKey(KeyCode.C))
+        else if(Input.GetKey(KeyCode.Z))
         {
             Vector3 angle = transform.localRotation.eulerAngles;
             angle += Vector3.up * Time.deltaTime * camRotationStep;

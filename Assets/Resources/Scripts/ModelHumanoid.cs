@@ -66,7 +66,7 @@ public class ModelHumanoid : ModelChar
         vaultStartPoint = transform.position;
         vaultObjetive = objetive;
         isVaulting = true;
-        _vaultDuration = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(objetive.x, objetive.z)) / currentSpeed;
+        _vaultDuration = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(objetive.x, objetive.z)) / (currentSpeed);
         Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), true);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         animator.SetBool("vault",true);
