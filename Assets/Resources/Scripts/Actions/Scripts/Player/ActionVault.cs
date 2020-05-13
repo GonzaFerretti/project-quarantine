@@ -5,11 +5,13 @@ public class ActionVault : IAction
     private float vaultDuration;
     private float vaultHeight;
     private float vaultCheckDistance;
-    public ActionVault(float _vaultDuration, float _vaultHeight, float _vaultCheckDistance)
+    private float objectiveOffset;
+    public ActionVault(float _vaultDuration, float _vaultHeight, float _vaultCheckDistance, float _objectiveOffset)
     {
         vaultDuration = _vaultDuration;
         vaultHeight = _vaultHeight;
         vaultCheckDistance = _vaultCheckDistance;
+        objectiveOffset = _objectiveOffset;
     }
 
     public void Do(Model m)
@@ -52,7 +54,7 @@ public class ActionVault : IAction
                     }
                 }
                 // Add an offset equal to half the size of the collider so it doesn't rely on the physics to pop it out of the obstacle in an unnatural manner.
-                float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x;
+                float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x + objectiveOffset;
                 Debug.DrawLine(m.transform.position, objectivePoint, Color.red, 3);
                 mh.startVault(objectivePoint + m.transform.forward * objectivePointOffset,obsCol);
             }

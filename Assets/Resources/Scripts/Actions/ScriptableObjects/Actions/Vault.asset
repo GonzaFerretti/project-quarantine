@@ -16,3 +16,4 @@ MonoBehaviour:
   vaultDuration: 0.6
   vaultHeight: 0.5
   vaultCheckDistance: 35
+  objectiveOffset: 1
