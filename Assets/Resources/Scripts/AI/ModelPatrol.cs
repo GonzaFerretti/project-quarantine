@@ -10,8 +10,9 @@ public class ModelPatrol : ModelEnemy
     public float runSpeed;
     public PatrolSpawner spawner;
 
+
     protected override void Start()
-    {      
+    {
         suspectController = suspectController.Clone();
         (suspectController as IController).AssignModel(this);
 

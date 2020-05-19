@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 945961f4600bae04dba4e01dfce25f31, type: 2}
   vaultDuration: 0.6
-  vaultHeight: 0.5
-  vaultCheckDistance: 35
+  vaultHeight: 0.125
+  vaultCheckDistance: 3
   objectiveOffset: 1

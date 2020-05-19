@@ -46,7 +46,7 @@ public class ModelHumanoid : ModelChar
         {
             //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine-based function. The distance travelled is lerped between the starting point and the objective.
             float vaultHeightIndex = Mathf.Lerp(0, Mathf.PI, vaultProgress);
-            float yPosition = vaultStartPoint.y + Mathf.Sin(vaultHeightIndex) * vaultHeightIndex * vaultHeight;
+            float yPosition = vaultStartPoint.y + (-(Mathf.Pow(vaultHeightIndex + Mathf.PI,2) * Mathf.Sin(vaultHeightIndex + Mathf.PI))) / 3 * vaultHeight;
             Vector3 XandZposition = Vector3.Lerp(vaultStartPoint, vaultObjetive, vaultProgress);
             transform.position = new Vector3(XandZposition.x, yPosition, XandZposition.z);
         }
