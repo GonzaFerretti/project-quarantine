@@ -93,8 +93,9 @@ GameObject:
   - component: {fileID: 4032696742755407105}
   - component: {fileID: 4032696742755407106}
   - component: {fileID: 4032696742755407104}
+  - component: {fileID: 195629204}
   m_Layer: 0
-  m_Name: PlayerCharacter
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +169,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   runSpeed: 7
   isDucking: 0
-  vaultState: 0
+  isVaulting: 0
   vaultDuration: 1
   vaultHeight: 0
   lastVault: {fileID: 0}
@@ -182,6 +183,8 @@ MonoBehaviour:
   flingSpotlight: {fileID: 7636424143663356410}
   isHidden: 0
   currentlySelectedItem: {fileID: 0}
+  baseFlingObject: {fileID: 6391621869539279117, guid: 1366872e92e409a449c78158484e6542,
+    type: 3}
 --- !u!195 &4032696742755407104
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -204,6 +207,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &195629204
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032696742755407111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.46
+  m_Height: 3.64
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.88, z: 0}
 --- !u!1 &4032696743226202005
 GameObject:
   m_ObjectHideFlags: 0
