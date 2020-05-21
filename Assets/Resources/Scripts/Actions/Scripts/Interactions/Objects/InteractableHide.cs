@@ -6,7 +6,6 @@ public class InteractableHide : IActionInteractableObject
 {
     public void Do(InteractableObject obj)
     {
-        //Animation
-        Debug.Log("Hide");
+        obj.animator.SetBool("open", true);
     }
 }

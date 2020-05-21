@@ -6,6 +6,7 @@ public class ModelHumanoid : ModelChar
     public bool isDucking;
     public bool isVaulting = false;
     private Vector3 vaultObjetive, vaultStartPoint;
+    float _vaultDuration;
     private float vaultStart;
     public float vaultDuration, vaultHeight;
     public Collider lastVault;
@@ -40,12 +41,12 @@ public class ModelHumanoid : ModelChar
 
     private void moveTowardsVaultPoint()
     {
-        float vaultProgress = (Time.time - vaultStart) / (vaultDuration);
+        float vaultProgress = (Time.time - vaultStart) / (_vaultDuration);
         if (vaultProgress < 1)
         {
             //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine-based function. The distance travelled is lerped between the starting point and the objective.
             float vaultHeightIndex = Mathf.Lerp(0, Mathf.PI, vaultProgress);
-            float yPosition = vaultStartPoint.y + Mathf.Sin(vaultHeightIndex) * vaultHeightIndex * vaultHeight;
+            float yPosition = vaultStartPoint.y + (-(Mathf.Pow(vaultHeightIndex + Mathf.PI,2) * Mathf.Sin(vaultHeightIndex + Mathf.PI))) / 3 * vaultHeight;
             Vector3 XandZposition = Vector3.Lerp(vaultStartPoint, vaultObjetive, vaultProgress);
             transform.position = new Vector3(XandZposition.x, yPosition, XandZposition.z);
         }
@@ -65,6 +66,7 @@ public class ModelHumanoid : ModelChar
         vaultStartPoint = transform.position;
         vaultObjetive = objetive;
         isVaulting = true;
+        _vaultDuration = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(objetive.x, objetive.z)) / (currentSpeed);
         Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), true);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         animator.SetBool("vault",true);

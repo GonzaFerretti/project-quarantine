@@ -70,7 +70,7 @@ public class RedirectController : ControllerWrapper, IController
                 _model.controller = (_model as ModelPlayable).usualController;
             }
 
-
+            hidingPlace.animator.SetBool("open", false);
             isCoroutineHappening = false;
         }
     }

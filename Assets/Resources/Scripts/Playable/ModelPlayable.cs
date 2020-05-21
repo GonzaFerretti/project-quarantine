@@ -15,6 +15,8 @@ public class ModelPlayable : ModelHumanoid
     public bool isHidden = false;
     public Item currentlySelectedItem;
 
+    public GameObject baseFlingObject;
+
     protected override void Start()
     {
         DontDestroyOnLoad(this);
@@ -23,6 +25,12 @@ public class ModelPlayable : ModelHumanoid
         SetAttributes(myAttributes);
         flingController.SetController();
         flingController.myController.AssignModel(this);
+        flingObject = FindObjectOfType<FlingObject>();
+        if (!flingObject)
+        {
+            GameObject newFlingObject = Instantiate(baseFlingObject, transform.parent);
+            flingObject = newFlingObject.GetComponent<FlingObject>();
+        }
 
         for (int i = 0; i < gainedActions.Count; i++)
         {

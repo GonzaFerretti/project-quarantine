@@ -18,14 +18,13 @@ public class ActionHide : IAction
     public void Do(Model m)
     {
         RaycastHit hit;
-        Physics.Raycast(m.transform.position, m.transform.forward, out hit, _interactionDistance);
+        Physics.Raycast((m as ModelChar).GetRayCastOrigin(), m.transform.forward, out hit, _interactionDistance);
         if (hit.collider)
         {
             HidingPlace hidingPlace = hit.collider.gameObject.GetComponent<HidingPlace>();
             if (hidingPlace)
             {
                 ModelPlayable mp = (m as ModelPlayable);
-
                 if (mp.redirectController.myController == null) mp.redirectController.SetController();
                 RedirectController rc = (mp.redirectController as RedirectController);
 

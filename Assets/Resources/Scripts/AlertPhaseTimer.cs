@@ -12,6 +12,18 @@ public class AlertPhaseTimer : MonoBehaviour
     private void Start()
     {
         EventManager.SubscribeToEvent("Alert", ActivateAlert);
+        if (!timerText)
+        {
+            try
+            {
+                timerText = GameObject.Find("DiscoveryTimer").GetComponent<Text>();
+            }
+            catch
+            {
+                Debug.LogError("Couldn't find Timer Object! Please make sure the Canvas was added to the scene!");
+            }
+        }
+            
     }
 
     private void ActivateAlert()

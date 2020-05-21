@@ -4,13 +4,18 @@ using System.Collections.Generic;
 public class ActionMovement : IAction
 {
     movementKeysDirection _direction;
-    Dictionary<movementKeysDirection, Vector3> directionVectors = new Dictionary<movementKeysDirection, Vector3>();
+    public static Dictionary<movementKeysDirection, Vector3> directionVectors = new Dictionary<movementKeysDirection, Vector3>();
+    public static bool hasSetDict;
     public ActionMovement(movementKeysDirection direction)
     {
+        if (!hasSetDict)
+        {
+        hasSetDict = true;
         directionVectors.Add(movementKeysDirection.up, new Vector3(0.5f, 0, 0.5f));
         directionVectors.Add(movementKeysDirection.down, new Vector3(-0.5f, 0, -0.5f));
         directionVectors.Add(movementKeysDirection.right, new Vector3(0.5f, 0, -0.5f));
         directionVectors.Add(movementKeysDirection.left, new Vector3(-0.5f, 0, 0.5f));
+        }
         _direction = direction;
     }
 
@@ -36,6 +41,14 @@ public class ActionMovement : IAction
             //tentative
             m.transform.forward += directionVector.normalized;
         }
+    }
+
+    public static void resetDirections()
+    {
+        directionVectors[movementKeysDirection.up] = new Vector3(0.5f, 0, 0.5f);
+        directionVectors[movementKeysDirection.down] = new Vector3(-0.5f, 0, -0.5f);
+        directionVectors[movementKeysDirection.right] =  new Vector3(0.5f, 0, -0.5f);
+        directionVectors[movementKeysDirection.left] =  new Vector3(-0.5f, 0, 0.5f);
     }
 }
 
