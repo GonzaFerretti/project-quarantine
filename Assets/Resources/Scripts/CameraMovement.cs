@@ -51,7 +51,7 @@ public class CameraMovement : MonoBehaviour
             camDistance = startingDistance;
             Debug.Log(defaultCamRotation);
             transform.localRotation = Quaternion.Euler(defaultCamRotation);
-            ActionMovement.resetDirections();
+            updateMovementDirection();
         }
         else if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {

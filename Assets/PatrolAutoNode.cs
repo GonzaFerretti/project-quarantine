@@ -22,6 +22,10 @@ public class PatrolAutoNode : MonoBehaviour
             model.node = newNode.GetComponent<PatrolNode>();
             newNode.name = "AutoPatrolNode" +" (" + model.name + ")";
         }
+        else
+        {
+            model.node.transform.position = model.transform.position + nodePrefab.GetComponent<Renderer>().bounds.extents.y * Vector3.up;
+        }
     }
 #endif
 }
