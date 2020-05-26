@@ -69,17 +69,18 @@ public class CameraMovement : MonoBehaviour
             transform.localRotation = Quaternion.Euler(angle);
             updateMovementDirection();
         }
+        if (Input.GetKey(KeyCode.V))
+        {
+            Dictionary<movementKeysDirection, Vector3> directionVectors = ActionMovement.directionVectors;
+        }
     }
 
     private void updateMovementDirection()
     {
-        Vector3 right = transform.right * Mathf.Sqrt(2) / 2;
+        Vector3 right = transform.right /** Mathf.Sqrt(2) / 2*/;
         Vector3 left = -right;
         Vector3 up = new Vector3(transform.forward.x,0,transform.forward.z);
         Vector3 down = -up;
-        ActionMovement.directionVectors[movementKeysDirection.up] = up;
-        ActionMovement.directionVectors[movementKeysDirection.down] = down;
-        ActionMovement.directionVectors[movementKeysDirection.left] = left;
-        ActionMovement.directionVectors[movementKeysDirection.right] = right;
+        ActionMovement.modifyDirections(up,down,left,right);
     }
 }

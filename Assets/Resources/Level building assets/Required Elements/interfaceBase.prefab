@@ -231,7 +231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Grab
+  m_Text: 
 --- !u!114 &3042370020803182425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 3042370021381138501}
   - component: {fileID: 3042370021381138500}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: interfaceBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

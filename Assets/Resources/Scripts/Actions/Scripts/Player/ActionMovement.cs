@@ -50,6 +50,19 @@ public class ActionMovement : IAction
         directionVectors[movementKeysDirection.right] =  new Vector3(0.5f, 0, -0.5f);
         directionVectors[movementKeysDirection.left] =  new Vector3(-0.5f, 0, 0.5f);
     }
+
+    public static void modifyDirections(Vector3 up, Vector3 down, Vector3 left, Vector3 right)
+    {
+        /*Debug.Log("up: " + up);
+        Debug.Log("down: " + down);
+        Debug.Log("left: " + left);
+        Debug.Log("right: " + right);*/
+
+        directionVectors[movementKeysDirection.up] = up;
+        directionVectors[movementKeysDirection.down] = down;
+        directionVectors[movementKeysDirection.right] = right;
+        directionVectors[movementKeysDirection.left] = left;
+    }
 }
 
 public enum movementKeysDirection
