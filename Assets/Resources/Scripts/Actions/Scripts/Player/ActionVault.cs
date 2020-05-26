@@ -6,12 +6,13 @@ public class ActionVault : IAction
     private float vaultHeight;
     private float vaultCheckDistance;
     private float objectiveOffset;
-    public ActionVault(float _vaultDuration, float _vaultHeight, float _vaultCheckDistance, float _objectiveOffset)
+    private float distanceModifierMin;
+    public ActionVault(float _vaultHeight, float _vaultCheckDistance, float _objectiveOffset, float _distanceModifierMin)
     {
-        vaultDuration = _vaultDuration;
         vaultHeight = _vaultHeight;
         vaultCheckDistance = _vaultCheckDistance;
         objectiveOffset = _objectiveOffset;
+        distanceModifierMin = _distanceModifierMin;
     }
 
     public void Do(Model m)
@@ -35,7 +36,6 @@ public class ActionVault : IAction
             }
             if (checkVault)
             {
-                mh.vaultDuration = vaultDuration;
                 mh.vaultHeight = vaultHeight;
                 Collider obsCol = closestVault.GetComponent<Collider>();
                 float vaultMaxDist = LongestPossibleRoute(obsCol) + vaultCheckDistance;
@@ -53,10 +53,13 @@ public class ActionVault : IAction
                         break;
                     }
                 }
+                // Add a multiplier to modify the duration depending on how close the character is from the vault object.
+                float distanceFromVaultCoefficient = Vector3.Distance(mh.transform.position, closestVault.transform.position)/vaultCheckDistance;
+                float finalCoefficient = Mathf.Lerp(distanceModifierMin, 1, distanceModifierMin);
                 // Add an offset equal to half the size of the collider so it doesn't rely on the physics to pop it out of the obstacle in an unnatural manner.
                 float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x + objectiveOffset;
                 Debug.DrawLine(m.transform.position, objectivePoint, Color.red, 3);
-                mh.startVault(objectivePoint + m.transform.forward * objectivePointOffset,obsCol);
+                mh.startVault(objectivePoint + m.transform.forward * objectivePointOffset,obsCol, finalCoefficient);
             }
         }
     }

@@ -282,6 +282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol
       objectReference: {fileID: 0}
+    - target: {fileID: 6098897822162930756, guid: 80c509bc36c7af54ea4f5160abbea414,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8777626297858726342, guid: 80c509bc36c7af54ea4f5160abbea414,
         type: 3}
       propertyPath: m_Enabled
