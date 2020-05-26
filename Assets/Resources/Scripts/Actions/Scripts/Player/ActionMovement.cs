@@ -51,17 +51,14 @@ public class ActionMovement : IAction
         directionVectors[movementKeysDirection.left] =  new Vector3(-0.5f, 0, 0.5f);
     }
 
-    public static void modifyDirections(Vector3 up, Vector3 down, Vector3 left, Vector3 right)
+    public static void modifyDirections()
     {
-        /*Debug.Log("up: " + up);
-        Debug.Log("down: " + down);
-        Debug.Log("left: " + left);
-        Debug.Log("right: " + right);*/
-
-        directionVectors[movementKeysDirection.up] = up;
-        directionVectors[movementKeysDirection.down] = down;
-        directionVectors[movementKeysDirection.right] = right;
-        directionVectors[movementKeysDirection.left] = left;
+        Vector3[] directions = GameObject.FindObjectOfType<CameraMovement>().movementDirections;
+        Debug.Log(directions.Length);
+        directionVectors[movementKeysDirection.up] = directions[0];
+        directionVectors[movementKeysDirection.left] = directions[1];
+        directionVectors[movementKeysDirection.down] = directions[2];
+        directionVectors[movementKeysDirection.right] = directions[3];
     }
 }
 

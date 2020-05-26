@@ -682,6 +682,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1678882433022949730, guid: 310c5f3b82ed938419b09ed7db5838da,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11714347
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678882433022949730, guid: 310c5f3b82ed938419b09ed7db5838da,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.87952954
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678882433022949730, guid: 310c5f3b82ed938419b09ed7db5838da,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.3643131
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678882433022949730, guid: 310c5f3b82ed938419b09ed7db5838da,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.28280935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678882433022949730, guid: 310c5f3b82ed938419b09ed7db5838da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -144.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 310c5f3b82ed938419b09ed7db5838da, type: 3}
 --- !u!1 &618064528

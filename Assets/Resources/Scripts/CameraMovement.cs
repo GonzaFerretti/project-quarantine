@@ -12,6 +12,7 @@ public class CameraMovement : MonoBehaviour
     public float camRotationStep;
     private float startingDistance;
     private Vector3 defaultCamRotation;
+    public Vector3[] movementDirections;
 
     public Vector2 smooth;
 
@@ -21,6 +22,7 @@ public class CameraMovement : MonoBehaviour
         if (!player) player = FindObjectOfType<ModelPlayable>();
         startingDistance = camDistance;
         defaultCamRotation = transform.localRotation.eulerAngles;
+        updateMovementDirection();
     }
 
     private void LateUpdate()
@@ -77,10 +79,11 @@ public class CameraMovement : MonoBehaviour
 
     private void updateMovementDirection()
     {
-        Vector3 right = transform.right /** Mathf.Sqrt(2) / 2*/;
+        Vector3 right = transform.right * Mathf.Sqrt(2) / 2;
         Vector3 left = -right;
         Vector3 up = new Vector3(transform.forward.x,0,transform.forward.z);
         Vector3 down = -up;
-        ActionMovement.modifyDirections(up,down,left,right);
+        movementDirections = new Vector3[]{ up, left, down, right};
+        ActionMovement.modifyDirections();
     }
 }
