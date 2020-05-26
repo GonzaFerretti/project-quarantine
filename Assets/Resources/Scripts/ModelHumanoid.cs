@@ -52,7 +52,6 @@ public class ModelHumanoid : ModelChar
         }
         else
         {
-            transform.position = vaultObjetive;
             isVaulting = false;
             animator.SetBool("vault", false);
             Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), false);

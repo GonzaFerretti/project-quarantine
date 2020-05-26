@@ -7,12 +7,13 @@ public class CameraMovement : MonoBehaviour
     public ModelPlayable player;
     public float camDistance;
 
+    public bool isMainCamera;
+
     [Header("Debug")]
     public float camDistanceStep;
     public float camRotationStep;
     private float startingDistance;
     private Vector3 defaultCamRotation;
-    public Vector3[] movementDirections;
 
     public Vector2 smooth;
 
@@ -20,9 +21,12 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         if (!player) player = FindObjectOfType<ModelPlayable>();
+        if (isMainCamera)
+        { 
         startingDistance = camDistance;
         defaultCamRotation = transform.localRotation.eulerAngles;
         updateMovementDirection();
+        }
     }
 
     private void LateUpdate()
@@ -46,6 +50,8 @@ public class CameraMovement : MonoBehaviour
     
     private void Update()
     {
+        if (isMainCamera)
+        { 
         if (Input.GetKey(KeyCode.X))
         {
             camDistance = startingDistance;
@@ -75,6 +81,7 @@ public class CameraMovement : MonoBehaviour
         {
             Dictionary<movementKeysDirection, Vector3> directionVectors = ActionMovement.directionVectors;
         }
+        }
     }
 
     private void updateMovementDirection()
@@ -83,7 +90,6 @@ public class CameraMovement : MonoBehaviour
         Vector3 left = -right;
         Vector3 up = new Vector3(transform.forward.x,0,transform.forward.z);
         Vector3 down = -up;
-        movementDirections = new Vector3[]{ up, left, down, right};
-        ActionMovement.modifyDirections();
+        ActionMovement.modifyDirections(up,left, down, right);
     }
 }

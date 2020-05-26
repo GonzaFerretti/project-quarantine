@@ -17,4 +17,4 @@ MonoBehaviour:
   vaultHeight: 0.125
   vaultCheckDistance: 3
   objectiveOffset: 1
-  distanceModifierMin: 0.7
+  distanceModifierMin: 0.8

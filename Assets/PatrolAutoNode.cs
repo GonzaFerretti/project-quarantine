@@ -6,7 +6,6 @@ public class PatrolAutoNode : MonoBehaviour
 {
     public GameObject nodePrefab;
     public ModelPatrol model;
-    [ExecuteInEditMode]
 #if UNITY_EDITOR
     private void Start()
     {

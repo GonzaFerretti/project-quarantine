@@ -2,7 +2,6 @@
 
 public class ActionVault : IAction
 {
-    private float vaultDuration;
     private float vaultHeight;
     private float vaultCheckDistance;
     private float objectiveOffset;
@@ -21,7 +20,7 @@ public class ActionVault : IAction
 
         if (!mh.isVaulting)
         {
-            Ray directionFacingRay = new Ray(m.transform.position, m.transform.forward);
+            Ray directionFacingRay = new Ray((m as ModelChar).GetRayCastOrigin(), m.transform.forward);
             RaycastHit[] directionHits = Physics.RaycastAll(directionFacingRay, vaultCheckDistance);
             bool checkVault = false;
             GameObject closestVault = null;
@@ -39,11 +38,11 @@ public class ActionVault : IAction
                 mh.vaultHeight = vaultHeight;
                 Collider obsCol = closestVault.GetComponent<Collider>();
                 float vaultMaxDist = LongestPossibleRoute(obsCol) + vaultCheckDistance;
-                Vector3 vaultCastStartPoint = m.transform.position + m.transform.forward * vaultMaxDist;
+                Vector3 vaultCastStartPoint = (m as ModelChar).GetRayCastOrigin() + m.transform.forward * vaultMaxDist;
                 //Throw a ray from the longest possible distance the object can be vaulted, but in the opposite direction the player is facing, so we can find where the other end should be.
                 Ray endLocationRay = new Ray(vaultCastStartPoint, -(m.transform.forward));
                 RaycastHit[] hits = Physics.RaycastAll(endLocationRay, vaultMaxDist);
-                Vector3 objectivePoint = m.transform.position;
+                Vector3 objectivePoint = (m as ModelChar).GetRayCastOrigin();
                 foreach (RaycastHit hit in hits)
                 {
                     if (hit.transform.gameObject == closestVault)
@@ -54,11 +53,11 @@ public class ActionVault : IAction
                     }
                 }
                 // Add a multiplier to modify the duration depending on how close the character is from the vault object.
-                float distanceFromVaultCoefficient = Vector3.Distance(mh.transform.position, closestVault.transform.position)/vaultCheckDistance;
+                float distanceFromVaultCoefficient = Vector3.Distance((m as ModelChar).GetRayCastOrigin(), closestVault.transform.position)/vaultCheckDistance;
                 float finalCoefficient = Mathf.Lerp(distanceModifierMin, 1, distanceModifierMin);
                 // Add an offset equal to half the size of the collider so it doesn't rely on the physics to pop it out of the obstacle in an unnatural manner.
                 float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x + objectiveOffset;
-                Debug.DrawLine(m.transform.position, objectivePoint, Color.red, 3);
+                Debug.DrawLine((m as ModelChar).GetRayCastOrigin(), objectivePoint, Color.red, 3);
                 mh.startVault(objectivePoint + m.transform.forward * objectivePointOffset,obsCol, finalCoefficient);
             }
         }

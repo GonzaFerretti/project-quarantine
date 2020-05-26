@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Controller/Action/Vault")]
 public class ActionVaultWrapper : ActionWrapper
 {
-    public float vaultDuration;
     public float vaultHeight;
     public float vaultCheckDistance;
     public float objectiveOffset;
