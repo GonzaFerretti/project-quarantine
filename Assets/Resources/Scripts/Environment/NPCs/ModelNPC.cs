@@ -8,7 +8,6 @@ public class ModelNPC : InteractableObject
     public Image dialogBox;
     public Text textField;
     public NPCAttributes npcAttributes;
-    public Animator animator;
     Resource _currentResource;
     float _currentAmountRequired;
     public List<NPCDialog> currentDialog;
