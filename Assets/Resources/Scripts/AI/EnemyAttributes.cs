@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
+using UnityEngine.Animations;
+//using UnityEditor.Animations;
 
 [CreateAssetMenu(menuName ="New Enemy")]
 public class EnemyAttributes : ScriptableObject
@@ -12,5 +13,5 @@ public class EnemyAttributes : ScriptableObject
     public float alertDistance;
     public float hearingDistance;
     public GameObject characterModel;
-    public AnimatorController animations;
+    public RuntimeAnimatorController animations;
 }

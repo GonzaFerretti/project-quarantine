@@ -7,6 +7,8 @@ public class CameraMovement : MonoBehaviour
     public ModelPlayable player;
     public float camDistance;
 
+    public bool isMainCamera;
+
     [Header("Debug")]
     public float camDistanceStep;
     public float camRotationStep;
@@ -19,8 +21,12 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         if (!player) player = FindObjectOfType<ModelPlayable>();
+        if (isMainCamera)
+        { 
         startingDistance = camDistance;
         defaultCamRotation = transform.localRotation.eulerAngles;
+        updateMovementDirection();
+        }
     }
 
     private void LateUpdate()
@@ -44,12 +50,14 @@ public class CameraMovement : MonoBehaviour
     
     private void Update()
     {
+        if (isMainCamera)
+        { 
         if (Input.GetKey(KeyCode.X))
         {
             camDistance = startingDistance;
             Debug.Log(defaultCamRotation);
             transform.localRotation = Quaternion.Euler(defaultCamRotation);
-            ActionMovement.resetDirections();
+            updateMovementDirection();
         }
         else if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
@@ -69,6 +77,11 @@ public class CameraMovement : MonoBehaviour
             transform.localRotation = Quaternion.Euler(angle);
             updateMovementDirection();
         }
+        if (Input.GetKey(KeyCode.V))
+        {
+            Dictionary<movementKeysDirection, Vector3> directionVectors = ActionMovement.directionVectors;
+        }
+        }
     }
 
     private void updateMovementDirection()
@@ -77,9 +90,6 @@ public class CameraMovement : MonoBehaviour
         Vector3 left = -right;
         Vector3 up = new Vector3(transform.forward.x,0,transform.forward.z);
         Vector3 down = -up;
-        ActionMovement.directionVectors[movementKeysDirection.up] = up;
-        ActionMovement.directionVectors[movementKeysDirection.down] = down;
-        ActionMovement.directionVectors[movementKeysDirection.left] = left;
-        ActionMovement.directionVectors[movementKeysDirection.right] = right;
+        ActionMovement.modifyDirections(up,left, down, right);
     }
 }
