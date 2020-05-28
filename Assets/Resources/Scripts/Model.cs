@@ -2,7 +2,7 @@
 
 public class Model : MonoBehaviour
 {
-    public virtual void initModel(ref Animator animator, GameObject characterModel, RuntimeAnimatorController animations)
+    public virtual void InitModel(ref Animator animator, GameObject characterModel, RuntimeAnimatorController animations)
     {
         GameObject myPlayerCharacter = Instantiate(characterModel, transform);
         myPlayerCharacter.transform.localPosition = new Vector3(0, 0, 0);

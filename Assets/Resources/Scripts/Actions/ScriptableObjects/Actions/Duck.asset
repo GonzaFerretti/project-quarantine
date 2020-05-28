@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Duck
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: d904d6d29e437fd429d5359854c13f5e, type: 2}
+  height: 0.81
+  center: {x: 0, y: 1.12, z: 0}

@@ -11,6 +11,7 @@ public class ModelPlayable : ModelHumanoid
     public ControllerWrapper redirectController;
     public ControllerWrapper hideController;
     public ControllerWrapper flingController;
+    public ControllerWrapper talkController;
     public FlingSpotLight flingSpotlight;
     public bool isHidden = false;
     public Item currentlySelectedItem;
@@ -23,6 +24,8 @@ public class ModelPlayable : ModelHumanoid
         SetAttributes(myAttributes);
         flingController.SetController();
         flingController.myController.AssignModel(this);
+        talkController.SetController();
+        talkController.myController.AssignModel(this);
 
         for (int i = 0; i < gainedActions.Count; i++)
         {
@@ -55,6 +58,6 @@ public class ModelPlayable : ModelHumanoid
             gainedActionKeyLinks.Add(attributes.innateActions[i].actionKey);
             }
         }
-        initModel(ref animator, attributes.characterModel, attributes.animations);
+        InitModel(ref animator, attributes.characterModel, attributes.animations);
     }
 }

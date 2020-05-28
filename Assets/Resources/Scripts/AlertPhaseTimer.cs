@@ -39,7 +39,6 @@ public class AlertPhaseTimer : MonoBehaviour
         }
     }
 
-
     private void DeactivateAlert()
     {
         EventManager.TriggerEvent("AlertStop");

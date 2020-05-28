@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Controller/Action/Duck")]
 public class ActionDuckWrapper : ActionWrapper
 {
+    public float height;
+    public Vector3 center;
+
     public override void SetAction()
     {
-        action = new ActionDuck();
+        action = new ActionDuck(height, center);
     }
 }

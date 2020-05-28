@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86562d49a4eb5564e9c43e5ac5d92d1a, type: 3}
   m_Name: Exit Indoors AI
   m_EditorClassIdentifier: 
-  tresholdDistance: 0
+  tresholdDistance: 0.5

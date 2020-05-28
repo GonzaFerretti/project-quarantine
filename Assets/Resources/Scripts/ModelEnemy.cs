@@ -11,7 +11,6 @@ public class ModelEnemy : ModelChar
     protected float _suspectRange;
     protected float _angle;
     protected float _alertDistance;
-    protected float _hearingDistance;
     public LayerMask visibility;
     public ModelPlayable target;
 
@@ -40,7 +39,6 @@ public class ModelEnemy : ModelChar
         mat = Resources.Load<Material>("Art/Visual/Placeholder/Red");
         if (transform.GetComponent<MeshRenderer>())
                 transform.GetComponent<MeshRenderer>().material = mat;
-        else transform.GetComponentInChildren<MeshRenderer>().material = mat;
     }
 
     void SetAttributes()
@@ -49,8 +47,7 @@ public class ModelEnemy : ModelChar
         _suspectRange = enemyAttributes.suspectRange;
         _angle = enemyAttributes.angle;
         _alertDistance = enemyAttributes.alertDistance;
-        _hearingDistance = enemyAttributes.hearingDistance;
-        initModel(ref animator, enemyAttributes.characterModel, enemyAttributes.animations);
+        InitModel(ref animator, enemyAttributes.characterModel, enemyAttributes.animations);
     }
 
     public bool IsInSight(ModelPlayable player, float range)

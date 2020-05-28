@@ -6,14 +6,17 @@ public class ModelPatrol : ModelEnemy
 {
     public PatrolNode node;
     public ControllerWrapper suspectController;
-
-    public float runSpeed;
+    public ControllerWrapper indoorController;
     public PatrolSpawner spawner;
+    public float runSpeed;
 
     protected override void Start()
-    {      
+    {
         suspectController = suspectController.Clone();
         (suspectController as IController).AssignModel(this);
+
+        indoorController = indoorController.Clone();
+        (indoorController as IController).AssignModel(this);
 
         base.Start();
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
@@ -24,13 +27,17 @@ public class ModelPatrol : ModelEnemy
     protected override void Update()
     {
         base.Update();
-        if (IsInSight(target, alertRange)) EventManager.TriggerEvent("Alert");
+        if (IsInSight(target, alertRange))
+        {
+            EventManager.TriggerEvent("Alert");
+            (alertController as INeedTargetLocation).SetTarget(target.transform.position);
+        }
         if (IsInSight(target, _suspectRange))
         {
             SuspectBehavior();
             (suspectController as SuspectAI).SetTarget(target.transform.position);
         }
-    } 
+    }
 
     void NormalBehavior()
     {
@@ -39,6 +46,9 @@ public class ModelPatrol : ModelEnemy
 
         if (controller.myController == null)
             controller.SetController();
+
+        if (controller.myController is ExitIndoorAI)
+            (controller.myController as ExitIndoorAI).myController.AssignModel(this);
     }
 
     void SuspectBehavior()
@@ -55,8 +65,15 @@ public class ModelPatrol : ModelEnemy
 
     void SuspectNoise(Model m)
     {
-        (suspectController as SuspectAI).SetTarget(m.transform.position);
-        SuspectBehavior();
+        if (!(m is IMakeNoise)) return;
+
+        IMakeNoise mn = (m as IMakeNoise);
+
+        if ((mn.GetNoiseValue() - Vector3.Distance(transform.position, m.transform.position)) < 0)
+        {
+            (suspectController as INeedTargetLocation).SetTarget(m.transform.position);
+            SuspectBehavior();
+        }
     }
 
     void AlertBehavior()

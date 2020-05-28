@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Controller/AI/SuspectAI")]
-public class SuspectAI : ControllerWrapper, IController
+public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
 {
     public float targetTreshold;
 
@@ -26,13 +26,13 @@ public class SuspectAI : ControllerWrapper, IController
 
     public override ControllerWrapper Clone()
     {
-        ControllerWrapper clone = CreateInstance("SuspectAI") as ControllerWrapper;
-        (clone as SuspectAI).targetTreshold = targetTreshold;
-        (clone as SuspectAI).rotationDuration = rotationDuration;
-        (clone as SuspectAI).rotationMaxDuration = rotationMaxDuration;
-        (clone as SuspectAI).currentRotations = currentRotations;
-        (clone as SuspectAI).rotationMaxAmount = rotationMaxAmount;
-        (clone as SuspectAI).degrees = degrees;
+        SuspectAI clone = CreateInstance("SuspectAI") as SuspectAI;
+        clone.targetTreshold = targetTreshold;
+        clone.rotationDuration = rotationDuration;
+        clone.rotationMaxDuration = rotationMaxDuration;
+        clone.currentRotations = currentRotations;
+        clone.rotationMaxAmount = rotationMaxAmount;
+        clone.degrees = degrees;
         return clone;
     }
 
@@ -75,8 +75,7 @@ public class SuspectAI : ControllerWrapper, IController
         return Vector3.Distance(_model.transform.position, _target) > targetTreshold;
     }
 
-
-    public SuspectAI SetTarget(Vector3 target)
+    public INeedTargetLocation SetTarget(Vector3 target)
     {
         _target = target;
         return this;

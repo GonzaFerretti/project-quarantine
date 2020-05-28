@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlingObject : Model
+public class FlingObject : Model, IMakeNoise
 {
+    public float noiseValue;
     public ActionWrapper[] collisionAction;
     public Rigidbody rb;
     Collider col;
@@ -32,5 +33,10 @@ public class FlingObject : Model
             }
             gameObject.SetActive(false);
         }
+    }
+
+    public float GetNoiseValue()
+    {
+        return noiseValue;
     }
 }

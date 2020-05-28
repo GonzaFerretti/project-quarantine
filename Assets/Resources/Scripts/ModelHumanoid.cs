@@ -25,13 +25,25 @@ public class ModelHumanoid : ModelChar
             nearbyObject = collider.gameObject;
             nearbyObject.GetComponent<ItemWrapper>().activateParticles();
         }
+
+        if (collider.GetComponent<ModelNPC>())
+        {
+            nearbyObject = collider.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider collider)
     {
         if (collider.GetComponent<ItemWrapper>())
         {
+            if (nearbyObject && nearbyObject.GetComponent<ItemWrapper>())
             nearbyObject.GetComponent<ItemWrapper>().disableParticles();
+            nearbyObject = null;
+        }
+
+        if (collider.GetComponent<ModelNPC>())
+        {
+            if(nearbyObject)
             nearbyObject = null;
         }
     }
