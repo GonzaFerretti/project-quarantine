@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PatrolSpawner : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class PatrolSpawner : MonoBehaviour
     //public float alertWaitTime;
     public float normalWaitTime;
     bool alert;
-    public ControllerWrapper indoorController;
 
     void Start()
     {
@@ -36,11 +36,10 @@ public class PatrolSpawner : MonoBehaviour
         {
             ModelPatrol newPatrol = Instantiate(modelPatrol);
             newPatrol.transform.position = transform.position;
-            newPatrol.spawner = this;
             newPatrol.controller = newPatrol.alertController;
-            //newPatrol.standardController = indoorController.Clone();
-            //newPatrol.standardController.SetController();
-            //newPatrol.standardController.myController.AssignModel(newPatrol);
+            newPatrol.spawner = this;
+            newPatrol.standardController = newPatrol.indoorController;
+
             reinforcementAmount--;
             StartCoroutine(SpawnReinforcements(normalWaitTime));
         }

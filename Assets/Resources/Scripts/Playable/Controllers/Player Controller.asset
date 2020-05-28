@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 388cea6ba23d0e0459505556b33eb700, type: 3}
   m_Name: Player Controller
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   actionKeyLinks:
   - {fileID: 11400000, guid: dfff7a2e77d431b4db7d37eb14a16396, type: 2}
   - {fileID: 11400000, guid: 1aee3b37ff70f6344bbf8424ed11c48c, type: 2}

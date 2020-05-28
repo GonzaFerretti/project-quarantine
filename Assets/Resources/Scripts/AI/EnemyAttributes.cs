@@ -11,7 +11,6 @@ public class EnemyAttributes : ScriptableObject
     public float suspectRange;
     public float angle;
     public float alertDistance;
-    public float hearingDistance;
     public GameObject characterModel;
     public RuntimeAnimatorController animations;
 }

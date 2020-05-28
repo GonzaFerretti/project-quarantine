@@ -26,7 +26,7 @@ public class ActionInteractPreview : IAction
             float forwardAngle = Vector2.SignedAngle(new Vector2(1, 0), new Vector2(m.transform.forward.x, m.transform.forward.z));
             float longestPossibleRay = LongestPossibleRoute((m as ModelPlayable).GetComponent<Collider>());
             for (float i = -_angleArc / 2 + forwardAngle; i <= _angleArc / 2 + forwardAngle; i += _arcDensity)
-            { 
+            {
                 float angle = i * Mathf.Deg2Rad;
                 float x = Mathf.Cos(angle);
                 float z = Mathf.Sin(angle);
@@ -35,7 +35,7 @@ public class ActionInteractPreview : IAction
                 Physics.Raycast(startPoint, rayDirection, out hit, longestPossibleRay);
                 if (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>())
                 {
-                break;
+                    break;
                 }
             }
         }

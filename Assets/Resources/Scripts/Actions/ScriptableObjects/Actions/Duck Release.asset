@@ -11,5 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81c5bd8b731a0fa49b1b20b2b050cd49, type: 3}
   m_Name: Duck Release
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   actionKey: {fileID: 11400000, guid: 7974c7280e1280a4882733ebe7f7f1ee, type: 2}
+  height: 3.69
+  center: {x: 0, y: 1.85, z: 0}
