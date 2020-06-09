@@ -4,7 +4,6 @@
 public class SpycamFaceAI : ControllerWrapper, IController
 {
     ModelSpycam _model;
-    public float margin;
 
     public void AssignModel(Model model)
     {
@@ -19,23 +18,12 @@ public class SpycamFaceAI : ControllerWrapper, IController
     public void OnUpdate()
     {
         Vector3 currentGoal;
-        if (IsInRange(_model.leftForward, _model.rightForward))
-        {
-            currentGoal = Vector3.RotateTowards(_model.transform.forward, (_model.target.transform.position - _model.transform.position).normalized, _model.currentSpeed * Time.deltaTime, 0);
-        }
-        else
-        {
-            Vector3 marginVector = new Vector3(margin, 0, margin);
 
-            if (Vector3.Distance(_model.transform.forward, _model.rightForward) < Vector3.Distance(_model.transform.forward, _model.leftForward))
-            {
-                currentGoal = Vector3.RotateTowards(_model.transform.forward, _model.leftForward + marginVector, _model.currentSpeed * Time.deltaTime, 0);
-            }
-            else
-            {
-                currentGoal = Vector3.RotateTowards(_model.transform.forward, _model.rightForward - marginVector, _model.currentSpeed * Time.deltaTime, 0);
-            }
-        }
+        Vector3 clampRotation = _model.transform.forward;
+        //clampRotation.x = Mathf.Clamp(clampRotation.x, _model.leftForward.x, _model.rightForward.x);
+        //clampRotation.y = Mathf.Clamp(clampRotation.y, _model.leftForward.y, _model.rightForward.y);
+        //clampRotation.z = Mathf.Clamp(clampRotation.z, _model.leftForward.z, _model.rightForward.z);
+        currentGoal = Vector3.RotateTowards(clampRotation, (_model.target.transform.position - _model.transform.position).normalized, _model.currentSpeed * Time.deltaTime, 0);
         _model.transform.rotation = Quaternion.LookRotation(currentGoal);
     }
 

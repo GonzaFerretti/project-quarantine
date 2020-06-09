@@ -12,9 +12,12 @@ public class ModelPlayable : ModelHumanoid
     public ControllerWrapper hideController;
     public ControllerWrapper flingController;
     public ControllerWrapper talkController;
+    public ControllerWrapper lossController;
     public FlingSpotLight flingSpotlight;
     public bool isHidden = false;
     public Item currentlySelectedItem;
+
+    public Dictionary<KeyCode, movementKeysDirection> movementKeys = new Dictionary<KeyCode, movementKeysDirection>();
 
     public GameObject baseFlingObject;
 
@@ -26,11 +29,12 @@ public class ModelPlayable : ModelHumanoid
         SetAttributes(myAttributes);
         flingController.SetController();
         flingController.myController.AssignModel(this);
-        flingObject = FindObjectOfType<FlingObject>();
         if (!flingObject)
         {
             GameObject newFlingObject = Instantiate(baseFlingObject, transform.parent);
+            newFlingObject.SetActive(false);
             flingObject = newFlingObject.GetComponent<FlingObject>();
+            newFlingObject.gameObject.SetActive(false);
         }
         talkController.SetController();
         talkController.myController.AssignModel(this);
@@ -45,8 +49,12 @@ public class ModelPlayable : ModelHumanoid
             (controller as PlayerController).StartFunction();
         }
 
+        lossController.SetController();
+        lossController.myController.AssignModel(this);
+
         inv = inv.cloneInvTemplate();
         inv.initializeInventory(this);
+        EventManager.SubscribeToEvent("Loss", LossBehavior);
     }
 
     void SetAttributes(CharacterAttributes attributes)
@@ -67,5 +75,12 @@ public class ModelPlayable : ModelHumanoid
             }
         }
         InitModel(ref animator, attributes.characterModel, attributes.animations);
+    }
+
+    void LossBehavior()
+    {
+        controller = lossController;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

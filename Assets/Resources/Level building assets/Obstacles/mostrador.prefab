@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 5098988752447458741}
   - component: {fileID: 3305083969397760102}
   - component: {fileID: 3305083969397760101}
+  - component: {fileID: 7853390175531163423}
   m_Layer: 0
   m_Name: mostrador
   m_TagString: Untagged
@@ -105,14 +106,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845446477742209385}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.177071, y: -0.93999994, z: 13.410985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434275035839171917}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!33 &1585185887436419404
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -185,3 +186,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.02, y: 0.92, z: 1.0000002}
   m_Center: {x: -1.86, y: -0.37, z: 0.49999997}
+--- !u!114 &7853390175531163423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845446477742209385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678d19aa980b97d4288a603b7484e754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldSnap: 0
+  snapDistance: {x: 3, y: 0, z: 3}
+  offset: {x: 0, y: 0, z: 0}

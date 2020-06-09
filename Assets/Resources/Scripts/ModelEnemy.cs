@@ -8,6 +8,7 @@ public class ModelEnemy : ModelChar
     public ControllerWrapper alertController;
     public EnemyAttributes enemyAttributes;
     public float alertRange;
+    public float headHeight;
     protected float _suspectRange;
     protected float _angle;
     protected float _alertDistance;
@@ -15,30 +16,21 @@ public class ModelEnemy : ModelChar
     public ModelPlayable target;
 
     //Tentative
-    public Material mat;
     private Transform debugTarget;
 
     protected override void Start()
     {
         standardController = standardController.Clone();
-        if(controller == null)
-        controller = standardController;
+        if (controller == null)
+            controller = standardController;
         base.Start();
         alertController = alertController.Clone();
         alertController.SetController();
         (alertController as IController).AssignModel(this);
-        TentativeColorSwap();
         SetAttributes();
 
         //Tentative
         if (!target) target = FindObjectOfType<ModelPlayable>();
-    }
-
-    void TentativeColorSwap()
-    {
-        mat = Resources.Load<Material>("Art/Visual/Placeholder/Red");
-        if (transform.GetComponent<MeshRenderer>())
-                transform.GetComponent<MeshRenderer>().material = mat;
     }
 
     void SetAttributes()
@@ -54,7 +46,7 @@ public class ModelEnemy : ModelChar
     {
         debugTarget = player.transform;
 
-        Vector3 positionDifference = player.transform.position - transform.position;
+        Vector3 positionDifference = player.transform.position - (transform.position + new Vector3(0, headHeight, 0));
 
         float distance = positionDifference.magnitude;
 
@@ -74,20 +66,20 @@ public class ModelEnemy : ModelChar
         return true;
     }
 
-    //void OnDrawGizmos()
-    //{
-    //    var position = transform.position;
+    void OnDrawGizmos()
+    {
+        var position = transform.position + new Vector3(0, headHeight, 0);
 
-    //    Gizmos.color = Color.white;
-    //    Gizmos.DrawWireSphere(position, _suspectRange);
+        //Gizmos.color = Color.white;
+        //Gizmos.DrawWireSphere(position, _suspectRange);
 
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawLine(position, position + Quaternion.Euler(0, -_angle / 2, 0) * transform.forward * _alertRange);
-    //    Gizmos.DrawLine(position, position + Quaternion.Euler(0, _angle / 2, 0) * transform.forward * _alertRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(position, position + Quaternion.Euler(0, -_angle / 2, 0) * transform.forward * alertRange);
+        Gizmos.DrawLine(position, position + Quaternion.Euler(0, _angle / 2, 0) * transform.forward * alertRange);
 
 
-    //    if (debugTarget)
-    //        Gizmos.DrawLine(position, debugTarget.position);
-    //}
+        if (debugTarget)
+            Gizmos.DrawLine(position, debugTarget.position);
+    }
 
 }

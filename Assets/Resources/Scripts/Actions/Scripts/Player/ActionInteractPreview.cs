@@ -24,7 +24,8 @@ public class ActionInteractPreview : IAction
         if ((m is ModelHumanoid) && (m as ModelHumanoid).nearbyObject)
         {
             float forwardAngle = Vector2.SignedAngle(new Vector2(1, 0), new Vector2(m.transform.forward.x, m.transform.forward.z));
-            float longestPossibleRay = LongestPossibleRoute((m as ModelPlayable).GetComponent<Collider>());
+            GameObject _nearbyObject = (m as ModelHumanoid).nearbyObject.gameObject;
+            float longestPossibleRay = _nearbyObject.GetComponent<SphereCollider>().radius * _nearbyObject.transform.localScale.x;
             for (float i = -_angleArc / 2 + forwardAngle; i <= _angleArc / 2 + forwardAngle; i += _arcDensity)
             {
                 float angle = i * Mathf.Deg2Rad;
@@ -44,6 +45,8 @@ public class ActionInteractPreview : IAction
             Physics.Raycast(startPoint, m.transform.forward, out hit, _rayDistance);
             hit = (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>()) ? new RaycastHit() : hit;
         }
+
+
         ModelChar mc = m as ModelChar;
         if (hit.collider && mc.controller != (m as ModelPlayable).redirectController)
         {

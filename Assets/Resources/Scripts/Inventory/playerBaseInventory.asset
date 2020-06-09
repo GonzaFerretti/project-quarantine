@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: playerBaseInventory
   m_EditorClassIdentifier: 
   items: []
+  foodResource: {fileID: 11400000, guid: 8db035356ff707b44b7eae0ec6eee5b2, type: 2}

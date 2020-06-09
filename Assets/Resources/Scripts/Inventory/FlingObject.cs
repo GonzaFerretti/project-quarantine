@@ -8,7 +8,8 @@ public class FlingObject : Model, IMakeNoise
     public ActionWrapper[] collisionAction;
     public Rigidbody rb;
     Collider col;
-
+    public TentativeFlingObjectFeedback tentativeFeedback;
+    TentativeFlingObjectFeedback _myTentativeFeedback;
     MeshFilter _myMesh;
 
     private void Awake()
@@ -31,6 +32,11 @@ public class FlingObject : Model, IMakeNoise
                 if (collisionAction[i].action == null) collisionAction[i].SetAction();
                 collisionAction[i].action.Do(this);
             }
+
+            if (!_myTentativeFeedback) _myTentativeFeedback = Instantiate(tentativeFeedback);
+            else _myTentativeFeedback.gameObject.SetActive(true);
+            _myTentativeFeedback.transform.position = transform.position;
+            _myTentativeFeedback.StartCoroutine(_myTentativeFeedback.TurnOff());
             gameObject.SetActive(false);
         }
     }

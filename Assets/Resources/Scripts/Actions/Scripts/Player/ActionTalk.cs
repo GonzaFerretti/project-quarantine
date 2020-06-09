@@ -1,28 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActionTalk : IAction
 {
+    float _dist;
+
+    public ActionTalk(float dist)
+    {
+        _dist = dist;
+    }
+
     public void Do(Model m)
     {
         //Stop Game Timer
-
-        ModelPlayable mp = m as ModelPlayable;
-        if (mp.nearbyObject != null && m is ModelPlayable)
+        if (m is ModelPlayable)
         {
-            ModelPlayable model = m as ModelPlayable;
-            Vector3 baseDirection = (model.nearbyObject.transform.position - model.transform.position).normalized;
-            Vector3 finalDirection = new Vector3(baseDirection.x, 0, baseDirection.z);
-            ModelNPC _npc = model.nearbyObject.GetComponent<ModelNPC>();
-            model.transform.forward = finalDirection;
+            RaycastHit hit = new RaycastHit();
+            ModelPlayable mp = m as ModelPlayable;
+            Physics.Raycast(mp.transform.position + new Vector3(0, mp.GetComponent<CapsuleCollider>().height / 2, 0), mp.transform.forward, out hit, _dist);
 
-            if (mp.controller == mp.usualController)
-                mp.controller = mp.talkController;
-
-            if (_npc.currentLine == _npc.maxLine)
+            if (hit.collider && hit.collider.GetComponent<ModelNPC>())
             {
-                mp.controller = mp.usualController;
+                if (mp.controller == mp.usualController)               
+                    mp.controller = mp.talkController;
+                
+                ModelNPC _npc = hit.collider.GetComponent<ModelNPC>();
+                Vector3 baseDirection = (_npc.transform.position - mp.transform.position).normalized;
+                Vector3 finalDirection = new Vector3(baseDirection.x, 0, baseDirection.z);
+                m.transform.forward = finalDirection;
+                if (_npc.currentLine == _npc.maxLine)
+                    mp.controller = mp.usualController;
             }
         }
     }

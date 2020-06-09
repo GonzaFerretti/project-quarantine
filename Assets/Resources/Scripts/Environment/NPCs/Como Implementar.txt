@@ -9,5 +9,3 @@ Para implementar un nuevo NPC:
 --Escriban el dialogo en el campo de string
 
 *Asignenle el dialogo al Attribute de NPC
-
-

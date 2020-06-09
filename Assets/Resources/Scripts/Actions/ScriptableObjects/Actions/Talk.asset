@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7b1cd0d968ad24d919c651bd804054, type: 3}
   m_Name: Talk
   m_EditorClassIdentifier: 
-  actionKey: {fileID: 0}
+  actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
+  dist: 1.5

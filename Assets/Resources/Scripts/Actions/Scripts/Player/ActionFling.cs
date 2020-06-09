@@ -23,6 +23,7 @@ public class ActionFling : IAction
         if (m is ModelPlayable)
         {
             ModelPlayable mp = (m as ModelPlayable);
+            Vector3 handPosition = GameObject.FindGameObjectWithTag("throwingHand").transform.position;
             if (mp.inv.items.Count == 0) return;
 
             //tentative
@@ -37,12 +38,12 @@ public class ActionFling : IAction
             if (flingableItems.Count == 0) return;
 
             //if (!(mp.currentlySelectedItem is FlingableItem)) return;
-            dir = new Vector3(mp.flingSpotlight.transform.forward.x, 0, mp.flingSpotlight.transform.forward.z);
+            dir = new Vector3(mp.flingSpotlight.transform.position.x - handPosition.x, 0, mp.flingSpotlight.transform.position.z - handPosition.z).normalized;
             m.transform.forward = dir;
             //tentative
-            mp.flingObject.transform.position = m.transform.position + dir + new Vector3(0, m.transform.localScale.y, 0);
+            mp.flingObject.transform.position = handPosition + dir + new Vector3(0, m.transform.localScale.y, 0);
 
-            float dis = Vector3.Distance(mp.GetComponentInChildren<FlingSpotLight>().point, m.transform.position);
+            float dis = Vector3.Distance(mp.GetComponentInChildren<FlingSpotLight>().point, handPosition);
 
             if (dis < mp.strength)
                 strength = dis;
@@ -72,6 +73,7 @@ public class ActionFling : IAction
         mc.flingObject.rb.angularVelocity = Vector3.zero;
         mc.flingObject.rb.AddForce(dir * strength, ForceMode.Impulse);
         mc.flingObject.rb.AddTorque(mc.flingObject.transform.forward, ForceMode.Impulse);
-        mc.flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);        
+        mc.flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);
+        mc.animator.SetTrigger("fling");
     }
 }

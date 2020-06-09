@@ -14,6 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resource: {fileID: 11400000, guid: ffc7b9ba9e139fd46aa82b7da1ff1b5b, type: 2}
   dialog:
-  - I
-  - want
-  - medicine
+  - We've been running out of medicine, please fetch us some.

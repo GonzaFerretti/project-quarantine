@@ -26,12 +26,20 @@ public class Inventory : ScriptableObject
     {
         Debug.Log("itemAdded");
         items.Add(item);
-        foreach (ActionWrapper action in item.allowingActions)
+        try { 
+            foreach (ActionWrapper action in item.allowingActions)
+            {
+                if (!_model.gainedActions.Contains(action))
+                    (_model as ModelPlayable).gainedActions.Add(action);
+                if (action.actionKey && !_model.gainedActionKeyLinks.Contains(action.actionKey))
+                    (_model as ModelPlayable).gainedActionKeyLinks.Add(action.actionKey);
+            }
+            
+        }
+        catch {}
+        if (item.resource != null)
         {
-            if (!_model.gainedActions.Contains(action))
-                (_model as ModelPlayable).gainedActions.Add(action);
-            if (action.actionKey && !_model.gainedActionKeyLinks.Contains(action.actionKey))
-                (_model as ModelPlayable).gainedActionKeyLinks.Add(action.actionKey);
+            ResourceManager.AddToResourceDict(item.resource.resourceName, item.amountPerResource, ref ResourceManager.currentResources);
         }
     }
 

@@ -15,7 +15,6 @@ public class ModelNPC : InteractableObject
     public int currentLine;
     public int maxLine;
 
-
     protected override void Start()
     {
         base.Start();

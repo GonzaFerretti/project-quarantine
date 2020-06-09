@@ -17,11 +17,12 @@ public class ActionInteract : IAction
     {
         RaycastHit hit = new RaycastHit();
         CapsuleCollider collider = m.GetComponent<CapsuleCollider>();
-        Vector3 startPoint = new Vector3(m.transform.position.x,m.transform.position.y + collider.height * m.transform.localScale.x / 2, m.transform.position.z);
+        Vector3 startPoint = new Vector3(m.transform.position.x, m.transform.position.y + collider.height * m.transform.localScale.x / 2, m.transform.position.z);
         if ((m is ModelHumanoid) && (m as ModelHumanoid).nearbyObject)
         {
             float forwardAngle = Vector2.SignedAngle(new Vector2(1, 0), new Vector2(m.transform.forward.x, m.transform.forward.z));
-            float longestPossibleRay = LongestPossibleRoute((m as ModelPlayable).GetComponent<Collider>());
+            GameObject _nearbyObject = (m as ModelHumanoid).nearbyObject.gameObject;
+            float longestPossibleRay = _nearbyObject.GetComponent<SphereCollider>().radius * _nearbyObject.transform.localScale.x;
             for (float i = -_angleArc / 2 + forwardAngle; i <= _angleArc / 2 + forwardAngle; i += _arcDensity)
             {
                 float angle = i * Mathf.Deg2Rad;
@@ -30,7 +31,7 @@ public class ActionInteract : IAction
                 Vector3 rayDirection = new Vector3(x, 0, z);
                 Debug.DrawLine(startPoint, startPoint + rayDirection * longestPossibleRay, Color.red, Time.deltaTime);
                 Physics.Raycast(startPoint, rayDirection, out hit, longestPossibleRay);
-                if (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>())
+                if (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>() && hit.collider.isTrigger)
                 {
                     break;
                 }

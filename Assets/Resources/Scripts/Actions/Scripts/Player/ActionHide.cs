@@ -38,6 +38,7 @@ public class ActionHide : IAction
                 if (hidingPlace.unhideAction.action == null) hidingPlace.unhideAction.SetAction();
                 mp.controller = mp.redirectController;
                 mp.isHidden = (_goalLocation == 1);
+                mp.animator.SetBool("isCrawling", _goalLocation == 1);
             }
         }
     }

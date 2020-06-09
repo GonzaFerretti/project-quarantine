@@ -95,7 +95,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 39
+    m_Bits: 551
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ae26c1b951045094b9cbb1b0048e1c1e, type: 2}
   m_TargetDisplay: 0
@@ -123,8 +123,9 @@ MonoBehaviour:
   camDistance: 16
   isMainCamera: 0
   camDistanceStep: 0
-  camRotationStep: 0
+  camRotationStep: 70
   smooth: {x: 0.2, y: 0.2}
+  activateSmooth: 0
 --- !u!1 &1678882433022949757
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,8 +154,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678882433022949757}
-  m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -349.73337, y: -26.01361, z: -11.041443}
+  m_LocalRotation: {x: -0.21022485, y: 0.0064498773, z: -0.0013868212, w: -0.9776308}
+  m_LocalPosition: {x: -11.629986, y: -0.16508102, z: -15.733146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1678882431442926934}
@@ -191,7 +192,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 7
+    m_Bits: 519
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -228,7 +229,8 @@ MonoBehaviour:
   isMainCamera: 1
   camDistanceStep: 200
   camRotationStep: 70
-  smooth: {x: 0.1, y: 0.5}
+  smooth: {x: 0.2, y: 0.2}
+  activateSmooth: 0
 --- !u!114 &1228891435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +266,7 @@ MonoBehaviour:
     m_Bits: 256
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 0
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25

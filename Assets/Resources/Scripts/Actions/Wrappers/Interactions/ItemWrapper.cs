@@ -5,28 +5,44 @@ using UnityEngine;
 public class ItemWrapper : InteractableObject
 {
     public Item item;
-    private ParticleSystem parts;
-    public Mesh itemModel;
+    public Material standardMaterial;
+    public Material outlineMaterial;
+    Renderer[] _meshRenderers;
+
     protected override void Start()
     {
         //tentative;
         base.Start();
-        parts = GetComponent<ParticleSystem>();
-        GetComponent<MeshFilter>().mesh = itemModel;
+        _meshRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
-    public void activateParticles()
+    void SetMeshOutLine (bool isOutlined)
     {
-        parts.Play();
+        if (!isOutlined)
+        {
+            foreach (MeshRenderer rend in _meshRenderers)
+            {
+               rend.material = standardMaterial;
+            }
+        }
+        else
+        {
+            foreach (MeshRenderer rend in _meshRenderers)
+            {
+                rend.material = outlineMaterial;
+            }
+        }
     }
 
-    public void disableParticles()
+    public void ActivateOutline()
     {
-        parts.Stop();
+        outlineMaterial.SetTexture("_texture", standardMaterial.GetTexture("_MainTex"));
+        outlineMaterial.SetTexture("_normal", standardMaterial.GetTexture("_BumpMap"));
+        SetMeshOutLine(true);
     }
 
-    public bool isPlayerNearby()
+    public void DisableOutline()
     {
-        return parts.isPlaying;
+        SetMeshOutLine(false);
     }
 }

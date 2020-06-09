@@ -7,6 +7,8 @@ public class Item : ScriptableObject
     public string displayName;
     public string description;
     public List<ActionWrapper> allowingActions = new List<ActionWrapper>();
+    public Resource resource;
+    public int amountPerResource;
     public virtual Item cloneItem()
     {
         Item newItem = new Item();
@@ -14,6 +16,8 @@ public class Item : ScriptableObject
         newItem.description = description;
         newItem.allowingActions = new List<ActionWrapper>();
         newItem.allowingActions = allowingActions;
+        newItem.amountPerResource = amountPerResource;
+        newItem.resource = resource;
         return newItem;
     }
 }

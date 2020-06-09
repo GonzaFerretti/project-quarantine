@@ -11,6 +11,7 @@ public class SpycamAI : ControllerWrapper, IController
     public void AssignModel(Model model)
     {
         _model = model as ModelSpycam;
+        if (_currentGoal == Vector3.zero) _currentGoal = _model.leftForward;
     }
 
     public override ControllerWrapper Clone()
@@ -21,8 +22,6 @@ public class SpycamAI : ControllerWrapper, IController
 
     public void OnUpdate()
     {
-        if (_currentGoal == Vector3.zero) _currentGoal = _model.leftForward;
-
         Vector3 currentGoal = Vector3.RotateTowards(_model.transform.forward, _currentGoal, _model.currentSpeed * Time.deltaTime, 0);
         _model.transform.rotation = Quaternion.LookRotation(currentGoal);
 

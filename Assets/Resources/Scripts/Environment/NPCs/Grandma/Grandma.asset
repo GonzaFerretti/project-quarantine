@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8816721037066142a04f16b09d777a7, type: 3}
   m_Name: Grandma
   m_EditorClassIdentifier: 
-  characterModel: {fileID: -927199367670048503, guid: 616a947a5a60bcb45bccf329eb5e1a5d,
+  characterModel: {fileID: -927199367670048503, guid: 92cf32674492aff4c9f8772f75a1536e,
     type: 3}
   resources:
   - {fileID: 11400000, guid: 8db035356ff707b44b7eae0ec6eee5b2, type: 2}
-  - {fileID: 11400000, guid: ffc7b9ba9e139fd46aa82b7da1ff1b5b, type: 2}
   dialog:
   - {fileID: 11400000, guid: 7f97a440eee3bac48b08d7d9219d4041, type: 2}
-  - {fileID: 11400000, guid: e40ea1908d9d3e54bba3c31d408a909f, type: 2}
+  - {fileID: 11400000, guid: 8f74d45c1a737a74787fcde24cddd249, type: 2}
+  - {fileID: 11400000, guid: c9252d0ddee9b1b449b1ad04cabf69c7, type: 2}
   - {fileID: 11400000, guid: c9252d0ddee9b1b449b1ad04cabf69c7, type: 2}
   animations: {fileID: 9100000, guid: a1b73534e8681054ea02ed3fd699fb44, type: 2}

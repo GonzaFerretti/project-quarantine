@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 630632120718937001}
   - component: {fileID: 630632120718937003}
   - component: {fileID: 630632120718937004}
+  - component: {fileID: 8255556395473151577}
   m_Layer: 0
   m_Name: bottle
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5208217556900930703}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.0537567, y: -2.3199997, z: -13.981553}
+  m_LocalPosition: {x: -4.0537567, y: 0.29, z: -13.981553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5208217556900930703}
-  m_Mesh: {fileID: 3588522986259572365, guid: 205b363cf6a19b346bef75e0e895ed3d, type: 3}
+  m_Mesh: {fileID: 3588522986259572365, guid: 552c4fb6c074a0143930ad8e94603f0f, type: 3}
 --- !u!23 &5208217556900930689
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ee6b1c0f8f6bdfc4da5f0ed2476bfe45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,9 +98,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredAction: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   feedback: {fileID: 11400000, guid: 5315370a5618f5a42898b9c4f4f7df7b, type: 2}
+  animator: {fileID: 0}
+  objModel: {fileID: 0}
+  anims: {fileID: 0}
   item: {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
-  itemModel: {fileID: 3588522986259572365, guid: 205b363cf6a19b346bef75e0e895ed3d,
-    type: 3}
+  standardMaterial: {fileID: 2100000, guid: ee6b1c0f8f6bdfc4da5f0ed2476bfe45, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 026e3de46fa36104098aff7ec8dd6da9, type: 2}
 --- !u!135 &630632120718937002
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -111,7 +115,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.64
   m_Center: {x: 0, y: 0.05, z: 0.22}
 --- !u!65 &630632120718937001
 BoxCollider:
@@ -124,7 +128,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.22, y: 0.12, z: 0.51}
+  m_Size: {x: 3.43, y: 0.12, z: 0.51}
   m_Center: {x: 0, y: 0.05, z: 0.22}
 --- !u!198 &630632120718937003
 ParticleSystem:
@@ -4847,3 +4851,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8255556395473151577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208217556900930703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678d19aa980b97d4288a603b7484e754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldSnap: 0
+  snapDistance: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}

@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 4032696742755407110}
   - component: {fileID: 4032696742755407105}
   - component: {fileID: 4032696742755407106}
-  - component: {fileID: 4032696742755407104}
   - component: {fileID: 195629204}
   m_Layer: 0
   m_Name: player
@@ -179,34 +178,14 @@ MonoBehaviour:
   usualController: {fileID: 11400000, guid: b456120371ea80945a750da8e0239a67, type: 2}
   redirectController: {fileID: 11400000, guid: 7f4d4cf796eb95a4abf16d38d2f6da92, type: 2}
   hideController: {fileID: 11400000, guid: e864caa915fe2d142aad8e426f288b36, type: 2}
-  flingController: {fileID: 11400000, guid: 7de993f5f6dcd544a9c896dccc085877, type: 2}
+  flingController: {fileID: 11400000, guid: 34e189ab5645e4443860b33d828bf85a, type: 2}
+  talkController: {fileID: 11400000, guid: 2bbf04f64c217634daa49354b4c2c5b4, type: 2}
+  lossController: {fileID: 11400000, guid: 91b9ddc20f80f5f45a29a4f5df2fe223, type: 2}
   flingSpotlight: {fileID: 7636424143663356410}
   isHidden: 0
   currentlySelectedItem: {fileID: 0}
   baseFlingObject: {fileID: 6391621869539279117, guid: 1366872e92e409a449c78158484e6542,
     type: 3}
---- !u!195 &4032696742755407104
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032696742755407111}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &195629204
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -343,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e015515bb2e54cb5c8784b9ae68a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelPlayable: {fileID: 0}
   point: {x: 0, y: 0, z: 0}
   controller: {fileID: 11400000, guid: 5bf857d91452fa746a808a28edf7fa92, type: 2}
 --- !u!108 &7636424143663356409

@@ -9,7 +9,9 @@ public class ModelPatrol : ModelEnemy
     public ControllerWrapper indoorController;
     public PatrolSpawner spawner;
     public float runSpeed;
-
+    public Vector3 lastSight;
+    public ActionCaptureWrapper actionCapture;
+    public float meleeDistance;
 
     protected override void Start()
     {
@@ -23,6 +25,8 @@ public class ModelPatrol : ModelEnemy
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
         EventManager.SubscribeToLocationEvent("Noise", SuspectNoise);
+        actionCapture = actionCapture.Clone();
+        actionCapture.SetAction();
     }
 
     protected override void Update()
@@ -31,6 +35,7 @@ public class ModelPatrol : ModelEnemy
         if (IsInSight(target, alertRange))
         {
             EventManager.TriggerEvent("Alert");
+            (alertController as ChaseAI).timer = 0;
             (alertController as INeedTargetLocation).SetTarget(target.transform.position);
         }
         if (IsInSight(target, _suspectRange))
@@ -71,11 +76,11 @@ public class ModelPatrol : ModelEnemy
 
         IMakeNoise mn = (m as IMakeNoise);
 
-        if ((mn.GetNoiseValue() - Vector3.Distance(transform.position, m.transform.position)) < 0)
-        {
-            (suspectController as INeedTargetLocation).SetTarget(m.transform.position);
-            SuspectBehavior();
-        }
+        if ((mn.GetNoiseValue() - Vector3.Distance(transform.position, m.transform.position)) < 0) return;
+
+        (suspectController as INeedTargetLocation).SetTarget(m.transform.position);
+        SuspectBehavior();
+
     }
 
     void AlertBehavior()
@@ -84,8 +89,22 @@ public class ModelPatrol : ModelEnemy
         Debug.Log("!");
         currentSpeed = runSpeed;
         controller = alertController;
-
+        lastSight = target.transform.position;
         if (controller.myController == null)
             controller.SetController();
+    }
+
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.gameObject.GetComponent<ModelPlayable>())
+        {
+            if (controller != alertController)
+            {
+                SuspectBehavior();
+                (suspectController as SuspectAI).SetTarget(target.transform.position);
+            }
+            else
+            actionCapture.action.Do(this);
+        }
     }
 }

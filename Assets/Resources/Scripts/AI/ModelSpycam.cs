@@ -14,16 +14,24 @@ public class ModelSpycam : ModelEnemy
     public Vector3 startDir;
     public Vector3 rightForward;
     public Vector3 leftForward;
+    public float test;
+    public float test2;
 
     protected override void Start()
     {
+        startDir = transform.forward;
+        leftForward = (Quaternion.Euler(0, camAngle / 2, 0) * transform.forward).normalized;
+        rightForward = (Quaternion.Euler(0, -camAngle / 2, 0) * transform.forward).normalized;
+
+        test = transform.parent.localRotation.y + camAngle / 2;
+        test2 = transform.parent.localRotation.y - camAngle / 2;
+
+
         base.Start();
         controller = standardController;
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
-        startDir = transform.forward;
-        leftForward = (Quaternion.Euler(0, camAngle / 2, 0) * transform.forward).normalized;
-        rightForward = (Quaternion.Euler(0, -camAngle / 2, 0) * transform.forward).normalized;
+
     }
 
     protected override void Update()
@@ -42,6 +50,7 @@ public class ModelSpycam : ModelEnemy
     void AlertBehavior()
     {
         StopAllCoroutines();
+        coroutineCasted = false;
         currentSpeed = alertSpeed;
         controller = alertController;
     }

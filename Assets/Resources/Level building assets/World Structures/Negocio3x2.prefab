@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1673161665939793086}
   - component: {fileID: 6144590744436781705}
   - component: {fileID: 6128206688621703068}
+  - component: {fileID: 7140628195229969772}
   m_Layer: 0
   m_Name: Negocio3x2
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082154355701207138}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.8232589, y: -0.93999887, z: 19.533615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!33 &4901265224007391303
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -107,3 +108,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25.03, y: 10.44, z: 9.503601}
   m_Center: {x: -0.1, y: 0.23, z: 4.7518005}
+--- !u!114 &7140628195229969772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082154355701207138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678d19aa980b97d4288a603b7484e754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldSnap: 0
+  snapDistance: {x: 25, y: 0, z: 20}
+  offset: {x: 0, y: 0, z: 0}
