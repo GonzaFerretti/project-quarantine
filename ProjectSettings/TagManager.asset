@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TerrainObsLow
-  - Terrain
-  - borderFence
-  - Edificios
+  - Shootable
   - throwingHand
+  - borderFence
   layers:
   - Default
   - TransparentFX
@@ -18,11 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcess
-  - Edificios
-  - Seethrough
-  - 
-  - 
+  - Lighting
+  - Ground
+  - Postprocessing
+  - Building
+  - BuildingMask
   - 
   - 
   - 
@@ -43,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

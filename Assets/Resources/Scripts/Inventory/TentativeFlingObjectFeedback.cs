@@ -5,10 +5,25 @@ using UnityEngine;
 public class TentativeFlingObjectFeedback : MonoBehaviour
 {
     public float timer;
-    public float growthAmount;
-    float _myWidth;
-    float _myHeigth;
-    float _myBreadth;
+    float _ogSpeed;
+    float _ogRadius;
+
+    public float speed;
+    public float speedUnit;
+    public float radius;
+    public float radiusUnit;
+    public float maxRadius;
+
+    ParticleSystem _myParticleSystem;    
+
+    private void Start()
+    {
+        _myParticleSystem = GetComponent<ParticleSystem>();
+        var main = _myParticleSystem.main.startSpeed;
+        var shape = _myParticleSystem.shape;
+        _ogSpeed = main.constant;
+        _ogRadius = shape.radius;
+    }
 
     private void Update()
     {
@@ -17,14 +32,18 @@ public class TentativeFlingObjectFeedback : MonoBehaviour
 
     public void Grow()
     {
-        _myWidth = _myHeigth = _myBreadth += growthAmount * Time.deltaTime;
-        transform.localScale = new Vector3(_myWidth, _myHeigth, _myBreadth);
+        var main = _myParticleSystem.main;
+        var shape = _myParticleSystem.shape;
+        speed -= speedUnit * Time.deltaTime;
+        main.startSpeed = speed; 
+        shape.radius += radiusUnit * Time.deltaTime;
     }
 
     public void SetOriginalParam()
     {
-        _myWidth = _myHeigth = _myBreadth = 1;
-        transform.localScale = Vector3.one;
+        speed = _ogSpeed;
+        var shape = _myParticleSystem.shape.radius;
+        shape = _ogRadius;
     }
 
     public IEnumerator TurnOff()

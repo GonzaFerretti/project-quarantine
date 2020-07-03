@@ -27,6 +27,8 @@ public class FlingController : PlayerController
 
         if (flingableItems.Count == 0)
         {
+            _mp.flingSpotlight.noiseRangeIndicator.gameObject.SetActive(false);
+            _mp.flingSpotlight.flingRangeIndicator.gameObject.SetActive(false);
             _mp.controller = _mp.usualController;
             _mp.flingSpotlight.gameObject.SetActive(false);
         }

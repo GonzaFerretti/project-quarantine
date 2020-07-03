@@ -23,11 +23,7 @@ public class AutoSnap : MonoBehaviour
         Event current = Event.current;
         if (current.type != EventType.KeyDown)
             return;
-        Debug.Log("funciona");
-        if (current.keyCode == KeyCode.Backspace)
-        {
-            Debug.Log("dsfa");
-        }
+        //Debug.Log("funciona");
     }
 
     public void Update()

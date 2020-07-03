@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b271d210ffb8dd943ae44c3e76189d9c, type: 3}
   m_Name: Dad
   m_EditorClassIdentifier: 
-  sneakSpeed: 2
+  sneakSpeed: 3
   walkSpeed: 5
   runSpeed: 7
-  strength: 6
+  strength: 14
+  bodyheight: 1.15
   innateActions:
   - {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}

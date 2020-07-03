@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: First Aid Kit
   description: Contains medicine
-  allowingActions:
-  - {fileID: 0}
+  icon: {fileID: 21300000, guid: e316b64bb62f80f46ac6c2a766d78a91, type: 3}
+  isStackable: 1
+  allowingActions: []
   resource: {fileID: 11400000, guid: ffc7b9ba9e139fd46aa82b7da1ff1b5b, type: 2}
   amountPerResource: 1
+  mesh: {fileID: 7204923983376927192, guid: debd69daf1def2144b9d3c0a16558eb4, type: 3}

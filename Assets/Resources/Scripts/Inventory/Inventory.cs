@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 [CreateAssetMenu(menuName = "Inventory/Inventory")]
 public class Inventory : ScriptableObject
 {
@@ -24,7 +25,7 @@ public class Inventory : ScriptableObject
 
     public void AddItem(Item item)
     {
-        Debug.Log("itemAdded");
+        //Debug.Log("itemAdded");
         items.Add(item);
         try { 
             foreach (ActionWrapper action in item.allowingActions)
@@ -41,12 +42,41 @@ public class Inventory : ScriptableObject
         {
             ResourceManager.AddToResourceDict(item.resource.resourceName, item.amountPerResource, ref ResourceManager.currentResources);
         }
+        if (item.icon != null)
+        {
+            //Debug.Log("has Icon");
+            UpdateUI(item, true, false);
+        }
+    }
+
+    public void UpdateAllUI()
+    {
+        List<Item> itemsUnique = items.GroupBy(item => item.displayName).Select(g => g.First()).ToList();
+        foreach (Item item in itemsUnique)
+        {
+            if (item.icon != null)
+            {
+                //Debug.Log("has Icon");
+                UpdateUI(item, true, true);
+            }
+        }
+    }
+
+    void UpdateUI(Item item, bool isAdding, bool isReloading)
+    {
+        Item _item = item;
+        int count = GetItemCount(item);
+        bool _isAdding = isAdding;
+        bool _isReloading = isReloading;
+        FindObjectOfType<UiManager>().UpdateItem(item, GetItemCount(item), isAdding, isReloading);
     }
 
     public void RemoveItem(Item item)
     {
         if (items.Contains(item))
-        { items.Remove(item);
+        {
+            items.Remove(item);
+            UpdateUI(item, false, false);
         }
         foreach (ActionWrapper action in item.allowingActions)
         {
@@ -66,5 +96,19 @@ public class Inventory : ScriptableObject
     {
         Inventory newInventory = Instantiate(this);
         return newInventory;
+    }
+
+    //tentative
+    public int GetItemCount(Item item)
+    {
+        int count = 0;
+        foreach (Item _item in items)
+        {
+            if (_item == item)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }

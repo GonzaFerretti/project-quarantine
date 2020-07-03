@@ -27070,4 +27070,12 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.26666668
+    functionName: PlayRightFootStep
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: fbec44b71054be843ba680d79b048879,
+      type: 3}
+    floatParameter: 0.8
+    intParameter: 0
+    messageOptions: 0

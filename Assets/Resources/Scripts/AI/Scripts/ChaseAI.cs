@@ -4,16 +4,18 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "Controller/AI/ChaseAI")]
 public class ChaseAI : ControllerWrapper, IController, INeedTargetLocation
 {
+    public SearchAI searchAI;
     public float targetTreshold;
-    ModelPatrol _model;
-    Vector3 _target;
     public float maxTimer;
     public float timer;
-    public SearchAI searchAI;
+    NavMeshAgent _agent;
+    ModelPatrol _model;
+    Vector3 _target;
 
     public void AssignModel(Model model)
     {
         _model = model as ModelPatrol;
+        _agent = model.GetComponent<NavMeshAgent>();
     }
 
     public override ControllerWrapper Clone()
@@ -28,25 +30,27 @@ public class ChaseAI : ControllerWrapper, IController, INeedTargetLocation
 
     public void OnUpdate()
     {
+        if (_agent.isStopped) _agent.isStopped = false;
+
+        if (timer < maxTimer)
         {
-            if (timer < maxTimer)
+            _agent.speed = _model.currentSpeed;
+            _agent.SetDestination(_model.target.transform.position);
+            timer += 1 * Time.deltaTime;
+        }
+        else
+        {
+            if (Vector3.Distance(_model.transform.position, _model.lastSight) < targetTreshold)
             {
-                _model.GetComponent<NavMeshAgent>().SetDestination(_model.target.transform.position);
-                timer += 1 * Time.deltaTime;
+                (searchAI as IController).AssignModel(_model);
+                searchAI.GenerateNewGoal();
+                _model.controller = searchAI;
             }
             else
-            {
-                if(Vector3.Distance(_model.transform.position, _model.lastSight) < targetTreshold)
-                {
-                    (searchAI as IController).AssignModel(_model);
-                    searchAI.GenerateNewGoal();
-                    _model.controller = searchAI;
-                }else
-                _model.GetComponent<NavMeshAgent>().SetDestination(_model.lastSight);
-            }
-
-            _model.animator.SetBool("running", true);
+                _agent.SetDestination(_model.lastSight);
         }
+
+        _model.animator.SetBool("running", true);
     }
 
     bool Distance()

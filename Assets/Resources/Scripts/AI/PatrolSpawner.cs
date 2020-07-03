@@ -17,6 +17,7 @@ public class PatrolSpawner : MonoBehaviour
     {
         EventManager.SubscribeToEvent("Alert", CallReinforcements);
         EventManager.SubscribeToEvent("AlertStop", CallReinforcements);
+        EventManager.SubscribeToEvent("UnsubEnter", EnterBehavior);
         reinforcementAmount = maxReinforcementAmount;
     }
 
@@ -52,6 +53,13 @@ public class PatrolSpawner : MonoBehaviour
             return waitTimeforFirstSummon;
         else
             return normalWaitTime;
+    }
+
+    void EnterBehavior()
+    {
+        EventManager.UnsubscribeToEvent("Alert", CallReinforcements);
+        EventManager.UnsubscribeToEvent("AlertStop", CallReinforcements);
+        EventManager.UnsubscribeToEvent("UnsubEnter", EnterBehavior);
     }
 
     void EndAlert()

@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Boltcutter
   description: Cuts wire fences and the like.
-  allowingActions: []
+  icon: {fileID: 21300000, guid: d33c6460a7e2baf418292686481fa865, type: 3}
+  isStackable: 0
+  allowingActions:
+  - {fileID: 11400000, guid: e4b22e86750d82849922ef36f928cbb4, type: 2}
   resource: {fileID: 0}
   amountPerResource: 0
+  mesh: {fileID: -3762252726716533165, guid: 94d6d7e35900e6b4aa7b9d9af9c958a6, type: 3}

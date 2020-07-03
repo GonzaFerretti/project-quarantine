@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class InteractableEnter : IActionInteractableObject
 {
@@ -34,7 +31,16 @@ public class InteractableEnter : IActionInteractableObject
         //mapSetter.mapInfoKeeper.currentMap = door.mapAttributes.mapName;
 
         //mapSetter.CreateFloorWrapper();
-        SceneManager.LoadScene(door.tentativeSceneName);
-        EventManager.TriggerEvent("Enter");
+
+        if (MonoBehaviour.FindObjectOfType<AlertPhaseTimer>())
+        {
+            if (MonoBehaviour.FindObjectOfType<AlertPhaseTimer>().timer == 0)
+            {
+                EventManager.TriggerLocEvent("EnterLocation", obj);
+                EventManager.TriggerEvent("UnsubEnter");
+                GameObject.Destroy(GameObject.Find("interfaceBase"));
+                door.SceneLoad();
+            }
+        }
     }
 }

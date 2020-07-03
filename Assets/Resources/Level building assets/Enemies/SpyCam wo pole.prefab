@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 7715199735570246140}
   - component: {fileID: 7715199735570246141}
   m_Layer: 0
-  m_Name: SpyCam
+  m_Name: SpyCam wo pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,11 +371,11 @@ MonoBehaviour:
   alertController: {fileID: 11400000, guid: 7f9217400e321cc429a77bf84ab7e191, type: 2}
   enemyAttributes: {fileID: 11400000, guid: e240bde085f20e94f92f79f9345796c1, type: 2}
   alertRange: 0
+  headHeight: 0
   visibility:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   target: {fileID: 0}
-  mat: {fileID: 0}
   alertSpeed: 1
   waitTime: 2
   camAngle: 60
@@ -384,3 +384,5 @@ MonoBehaviour:
   startDir: {x: 0, y: 0, z: 0}
   rightForward: {x: 0, y: 0, z: 0}
   leftForward: {x: 0, y: 0, z: 0}
+  test: 0
+  test2: 0

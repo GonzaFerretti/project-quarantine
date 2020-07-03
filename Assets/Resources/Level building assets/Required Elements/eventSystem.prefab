@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6956528288905013384}
   - component: {fileID: 6956528288905013385}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: eventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6956528288905013386}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.9428954, y: -4.1226482, z: -10.993969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -113,3 +113,8 @@ MonoBehaviour:
   maxTimer: 20
   timer: 0
   timerText: {fileID: 0}
+  seenIndicator: {fileID: 0}
+  eyeShut: {fileID: 21300000, guid: 40b6f96f0d09de64ea186529a21fa8a9, type: 3}
+  eyeOpen: {fileID: 21300000, guid: fa343e70bea8300478ac2e76bd2c55b6, type: 3}
+  soundManager: {fileID: 0}
+  alertSound: {fileID: 8300000, guid: ae168eb635392894ebaa3b5f83300c17, type: 3}

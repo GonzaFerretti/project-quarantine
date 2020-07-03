@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Controller/AI/SearchAI")]
@@ -11,16 +9,19 @@ public class SearchAI : ControllerWrapper, IController
     public Vector2 range;
     ModelPatrol _model;
     Vector3 _newGoal;
+    NavMeshAgent _agent;
 
     public void AssignModel(Model model)
     {
         _model = model as ModelPatrol;
+        _agent = model.GetComponent<NavMeshAgent>();
     }
 
     public void OnUpdate()
     {
+        if (_agent.isStopped) _agent.isStopped = false;
         if (Vector3.Distance(_model.transform.position, _newGoal) > goalDistance)
-            _model.GetComponent<NavMeshAgent>().SetDestination(_newGoal);
+           _agent.SetDestination(_newGoal);
         else GenerateNewGoal();
     }
 

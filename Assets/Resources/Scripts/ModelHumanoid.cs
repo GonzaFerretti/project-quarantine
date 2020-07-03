@@ -16,8 +16,24 @@ public class ModelHumanoid : ModelChar
     {
         if (collider.GetComponent<ItemWrapper>())
         {
+            if (nearbyObject)
+            { 
+            nearbyObject.DisableOutline();
+            }
             nearbyObject = collider.GetComponent<ItemWrapper>();
             nearbyObject.ActivateOutline();
+        }
+    }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        if (collider.GetComponent<ItemWrapper>())
+        {
+            if (!nearbyObject)
+            {
+                nearbyObject = collider.GetComponent<ItemWrapper>();
+                nearbyObject.ActivateOutline();
+            }
         }
     }
 
@@ -68,7 +84,7 @@ public class ModelHumanoid : ModelChar
         vaultStartPoint = transform.position;
         vaultObjetive = objetive;
         isVaulting = true;
-        _vaultDuration = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(objetive.x, objetive.z)) / (currentSpeed * distanceCoef);
+        _vaultDuration = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(objetive.x, objetive.z)) / (standardSpeed * distanceCoef);
         Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), true);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         animator.SetBool("vault", true);

@@ -11,6 +11,7 @@ public class CharacterAttributes : ScriptableObject
     public float walkSpeed;
     public float runSpeed;
     public float strength;
+    public float bodyheight;
     public ActionWrapper[] innateActions;
     public GameObject characterModel;
     public RuntimeAnimatorController animations;

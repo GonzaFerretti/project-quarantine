@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     public float camRotationStep;
     private float startingDistance;
     private Vector3 defaultCamRotation;
-    public CameraMovement otherCamera;
+    public bool shouldMove = true;
 
     public Vector2 smooth;
 
@@ -22,31 +23,46 @@ public class CameraMovement : MonoBehaviour
     //Tentative
     private void Start()
     {
-        if (!player) player = FindObjectOfType<ModelPlayable>();
-        defaultCamRotation = transform.localRotation.eulerAngles;
+        if (!GetComponent<SoundManager>()) gameObject.AddComponent<SoundManager>();
+        StartCoroutine(FindPlayer());
         if (isMainCamera)
         {
+            defaultCamRotation = transform.localRotation.eulerAngles;
             startingDistance = camDistance;
             updateMovementDirection();
-        }
-        else
-        {
             foreach (CameraMovement cam in FindObjectsOfType<CameraMovement>())
             {
                 if (cam != this)
                 {
-                    otherCamera = cam;
-                    transform.localRotation = Quaternion.Euler(new Vector3(90,otherCamera.defaultCamRotation.y,otherCamera.defaultCamRotation.z));
-                    defaultCamRotation = transform.localRotation.eulerAngles;
+                    cam.transform.localRotation = Quaternion.Euler(new Vector3(90, defaultCamRotation.y, defaultCamRotation.z));
                     break;
                 }
             }
         }
     }
 
+    IEnumerator FindPlayer()
+    {
+        yield return new WaitForEndOfFrame();
+        if (!player) player = FindObjectOfType<ModelPlayable>();
+    }
+    /*
+    public void setFixedCamera(bool _shouldMove,Vector3 position, Vector3 rotation)
+    {
+        shouldMove = _shouldMove;
+        if (!shouldMove)
+        {
+            if (isMainCamera)
+            {
+                transform.position = position;
+                transform.rotation = Quaternion.Euler(rotation);
+            }
+        }
+    }*/
+
     private void LateUpdate()
     {
-        if (player)
+        if (player && shouldMove)
         {
             FollowTarget();
         }
@@ -64,55 +80,54 @@ public class CameraMovement : MonoBehaviour
 
             transform.position += newPos;
         }
-        else transform.position = new Vector3(player.transform.position.x - camDistance * (transform.forward.x), player.transform.position.y - camDistance * (transform.forward.y), player.transform.position.z - camDistance * (transform.forward.z));
+        else transform.position = new Vector3(player.transform.position.x - camDistance * (transform.forward.x), (/*player.transform.position.y + */player.standingBodyHeight)- camDistance * (transform.forward.y), player.transform.position.z - camDistance * (transform.forward.z));
     }
 
     private void Update()
     {
-        if (isMainCamera)
+        /*
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKey(KeyCode.R))
-            {
-                camDistance = startingDistance;
-                transform.localRotation = Quaternion.Euler(defaultCamRotation);
-                updateMovementDirection();
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") != 0)
-            {
-                camDistance += camDistanceStep * -Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
-            }
-            else if (Input.GetKey(KeyCode.E))
-            {
-                Vector3 angle = transform.localRotation.eulerAngles;
-                angle += Vector3.down * Time.deltaTime * camRotationStep;
-                transform.localRotation = Quaternion.Euler(angle);
-                updateMovementDirection();
-            }
-            else if (Input.GetKey(KeyCode.Q))
-            {
-                Vector3 angle = transform.localRotation.eulerAngles;
-                angle += Vector3.up * Time.deltaTime * camRotationStep;
-                transform.localRotation = Quaternion.Euler(angle);
-                updateMovementDirection();
-            }
-        }
-        else
+            SceneManager.LoadScene("DebugDelDebug");
+            FindObjectOfType<ModelPlayable>();
+        }*/
+        if (shouldMove)
         {
-            if (Input.GetKey(KeyCode.R))
+            if (isMainCamera)
             {
-                transform.localRotation = Quaternion.Euler(defaultCamRotation);
+                if (Input.GetAxis("Mouse ScrollWheel") != 0)
+                {
+                    camDistance += camDistanceStep * -Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
+                }
+                else if (Input.GetKey(KeyCode.E))
+                {
+                    Vector3 angle = transform.localRotation.eulerAngles;
+                    angle += Vector3.down * Time.deltaTime * camRotationStep;
+                    transform.localRotation = Quaternion.Euler(angle);
+                    updateMovementDirection();
+                }
+                else if (Input.GetKey(KeyCode.Q))
+                {
+                    Vector3 angle = transform.localRotation.eulerAngles;
+                    angle += Vector3.up * Time.deltaTime * camRotationStep;
+                    transform.localRotation = Quaternion.Euler(angle);
+                    updateMovementDirection();
+                }
             }
-            else if (Input.GetKey(KeyCode.E))
+            else
             {
-                Vector3 angle = transform.localRotation.eulerAngles;
-                angle += Vector3.down * Time.deltaTime * camRotationStep;
-                transform.localRotation = Quaternion.Euler(angle);
-            }
-            else if (Input.GetKey(KeyCode.Q))
-            {
-                Vector3 angle = transform.localRotation.eulerAngles;
-                angle += Vector3.up * Time.deltaTime * camRotationStep;
-                transform.localRotation = Quaternion.Euler(angle);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    Vector3 angle = transform.localRotation.eulerAngles;
+                    angle += Vector3.down * Time.deltaTime * camRotationStep;
+                    transform.localRotation = Quaternion.Euler(angle);
+                }
+                else if (Input.GetKey(KeyCode.Q))
+                {
+                    Vector3 angle = transform.localRotation.eulerAngles;
+                    angle += Vector3.up * Time.deltaTime * camRotationStep;
+                    transform.localRotation = Quaternion.Euler(angle);
+                }
             }
         }
     }

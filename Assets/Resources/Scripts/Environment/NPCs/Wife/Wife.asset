@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8816721037066142a04f16b09d777a7, type: 3}
   m_Name: Wife
   m_EditorClassIdentifier: 
-  characterModel: {fileID: -927199367670048503, guid: 92cf32674492aff4c9f8772f75a1536e,
+  characterModel: {fileID: 7019218888713676751, guid: 41f00ec2e6a3d5c44a99643e3f2a1755,
     type: 3}
   resources:
   - {fileID: 11400000, guid: 8db035356ff707b44b7eae0ec6eee5b2, type: 2}

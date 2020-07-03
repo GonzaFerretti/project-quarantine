@@ -57,7 +57,7 @@ public class ActionVault : IAction
                 float finalCoefficient = Mathf.Lerp(distanceModifierMin, 1, distanceModifierMin);
                 // Add an offset equal to half the size of the collider so it doesn't rely on the physics to pop it out of the obstacle in an unnatural manner.
                 float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x + objectiveOffset;
-                Debug.DrawLine((m as ModelChar).GetRayCastOrigin(), objectivePoint, Color.red, 3);
+                //Debug.DrawLine((m as ModelChar).GetRayCastOrigin(), objectivePoint, Color.red, 3);
                 mh.startVault(objectivePoint + m.transform.forward * objectivePointOffset,obsCol, finalCoefficient);
             }
         }

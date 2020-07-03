@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resource: {fileID: 11400000, guid: ffc7b9ba9e139fd46aa82b7da1ff1b5b, type: 2}
   dialog:
-  - We're running low on Medicine please give us some
+  - These old bones are feeling more clanky lately.

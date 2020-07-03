@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Cornucopia
   description: Basket full of fresh fruits. How artsy.
+  icon: {fileID: 0}
+  isStackable: 1
   allowingActions: []
   resource: {fileID: 11400000, guid: 8db035356ff707b44b7eae0ec6eee5b2, type: 2}
-  amountPerResource: 1
+  amountPerResource: 30
+  mesh: {fileID: -5214659172218046519, guid: 14928bb73a450404d96e612534a370ab, type: 3}

@@ -14,17 +14,30 @@ public class ActionFling : IAction
 
     public void Do(Model m)
     {
+        ModelChar mc = m as ModelChar;
+        mc.animator.SetTrigger("fling");
+        (m as ModelPlayable).CheckFlingObjectExistsOrCreate();
+        m.StartCoroutine(waitForAnimationAndFling(mc));
+    }
+
+    IEnumerator waitForAnimationAndFling(Model m)
+    {
+        ModelChar mc = m as ModelChar;
+        AnimCheck check = GameObject.FindObjectOfType<AnimCheck>();
+        do
+        {
+            yield return null;
+        } while (!check.hasReachedPoint);
         //m.flingObject.SetAttributes();
         float strength;
         Vector3 dir;
-        ModelChar mc = m as ModelChar;
-        if (mc.flingObject.gameObject.activeSelf) return;
-
+        if (mc.flingObject.gameObject.activeSelf) yield break;
+        check.hasReachedPoint = false;
         if (m is ModelPlayable)
         {
             ModelPlayable mp = (m as ModelPlayable);
             Vector3 handPosition = GameObject.FindGameObjectWithTag("throwingHand").transform.position;
-            if (mp.inv.items.Count == 0) return;
+            if (mp.inv.items.Count == 0) yield break;
 
             //tentative
             List<FlingableItem> flingableItems = new List<FlingableItem>();
@@ -35,7 +48,7 @@ public class ActionFling : IAction
                     flingableItems.Add(mp.inv.items[i] as FlingableItem);
             }
 
-            if (flingableItems.Count == 0) return;
+            if (flingableItems.Count == 0) yield break;
 
             //if (!(mp.currentlySelectedItem is FlingableItem)) return;
             dir = new Vector3(mp.flingSpotlight.transform.position.x - handPosition.x, 0, mp.flingSpotlight.transform.position.z - handPosition.z).normalized;
@@ -74,6 +87,5 @@ public class ActionFling : IAction
         mc.flingObject.rb.AddForce(dir * strength, ForceMode.Impulse);
         mc.flingObject.rb.AddTorque(mc.flingObject.transform.forward, ForceMode.Impulse);
         mc.flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);
-        mc.animator.SetTrigger("fling");
     }
 }

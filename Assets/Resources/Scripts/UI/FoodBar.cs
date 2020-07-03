@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class FoodBar : MonoBehaviour
+public class FoodBar : ResourceUI
 {
     public Image foodFillBar;
-    public Text foodBarText;
+    public TextMeshProUGUI foodBarText;
     public Color unfilledColor;
     public Color filledColor;
 
-    public void UpdateFoodBar(float amount)
+    public override void UpdateUI(int current, int required)
     {
         // tentative
-        int totalRequired = 2;
-        Debug.Log(amount / (totalRequired * 1f));
-        foodFillBar.fillAmount = amount / (totalRequired*1f);
-        foodBarText.text = amount + "/" + totalRequired + " FOOD";
+        foodFillBar.fillAmount = current / (required*1f);
+        foodBarText.text = current + "/" + required;
         if (foodFillBar.fillAmount >= 1)
         {
             foodFillBar.color = filledColor;

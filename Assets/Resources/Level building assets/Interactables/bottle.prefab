@@ -126,7 +126,7 @@ BoxCollider:
   m_GameObject: {fileID: 5208217556900930703}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.43, y: 0.12, z: 0.51}
   m_Center: {x: 0, y: 0.05, z: 0.22}
@@ -213,7 +213,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.66
+      scalar: 0.38
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -266,7 +266,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.01
+      scalar: 0.09
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -382,7 +382,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.09
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -763,9 +763,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0.34, y: 0.03, z: -0.07}
+    m_Position: {x: 0.06, y: 0.02, z: 0.21}
     m_Rotation: {x: 0, y: 90, z: 0}
-    m_Scale: {x: 1, y: 1.99, z: 1}
+    m_Scale: {x: 0.67, y: 0.35, z: 0.32}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0

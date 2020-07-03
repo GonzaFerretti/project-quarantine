@@ -10,19 +10,27 @@ public class lampFlickering : MonoBehaviour
     Light lampLight;
     public bool willFlicker;
     public float usualIntensity;
-    public float waitTime;
-    public float waitTimer = 0;
-    public float flickersMax;
-    public float flickers;
-    public float minFlickers, maxFlickers;
-    public float minWait, maxWait;
+    private float waitTime;
+    private float waitTimer = 0;
+    private float flickersMax;
+    private float flickers;
+    [Header("Amount of flickers")]
+    public float minFlickers;
+    public float maxFlickers;
+    [Header("Time inbetween multiple flickers")]
+    public float minWait;
+    public float maxWait;
+    [Header("Off period for flickers")]
     public float flickerPeriod;
-    public float flickerTimer;
+    private float flickerTimer;
     private void Start()
     {
         lampLight = GetComponentInChildren<Light>();
-        usualIntensity = lampLight.intensity;
-        flickers = flickersMax;
+        flickers = Random.Range(minFlickers, maxFlickers);
+        waitTime = Random.Range(minWait, maxWait);
+        waitTimer = 0;
+        flickers = 0;
+        flickerTimer = 0;
     }
     private void Update()
     {

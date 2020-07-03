@@ -6,7 +6,7 @@ public class ResourceManager : MonoBehaviour
 {
     public static Dictionary<string, int> currentResources = new Dictionary<string, int>();
     public static Dictionary<string, int> requiredResources = new Dictionary<string, int>();
-    public Resource foodResource;
+    public static Dictionary<string, ResourceUI> Uielements = new Dictionary<string, ResourceUI>();
 
     public static bool CheckResourceRequirements()
     {
@@ -25,40 +25,100 @@ public class ResourceManager : MonoBehaviour
         return hasMetRequirements;
     }
 
+    public static void ResetResources()
+    {
+        currentResources = new Dictionary<string, int>();
+        requiredResources = new Dictionary<string, int>();
+        Uielements = new Dictionary<string, ResourceUI>();
+    }
+
     public static void AddToResourceDict(string resourceName, int amount, ref Dictionary<string, int> resourceDict)
     {
-        if (!resourceDict.ContainsKey(resourceName)) resourceDict.Add(resourceName, amount);
-        else resourceDict[resourceName] += amount;
+        if (!resourceDict.ContainsKey(resourceName))
+        {
+            resourceDict.Add(resourceName, amount);  
+        }
+        else
+        {
+            resourceDict[resourceName] += amount;
+        }
+
+        if (!Uielements.ContainsKey(resourceName))
+        {
+            ResourceUI[] resourceUIs = FindObjectsOfType<ResourceUI>();
+            foreach (ResourceUI resourceUi in resourceUIs)
+            {
+                if (resourceUi.Resource.resourceName == resourceName)
+                {
+                    Uielements.Add(resourceName, resourceUi);
+                }
+            }
+        }
+
+        if (Uielements.ContainsKey(resourceName))
+        {
+            int _amountRequired = 14;
+            int _amountCurrent = 14;
+            try { _amountRequired = requiredResources[resourceName]; }
+            catch { _amountRequired = 0;}
+            try { _amountCurrent = currentResources[resourceName]; }
+            catch { _amountCurrent = 0; }
+            Uielements[resourceName].UpdateUI(_amountCurrent, _amountRequired);
+        }
     }
 
-    public void Update()
+    public static void ReloadUI()
     {
-        Debug.Log(currentResources.Count);
-        Debug.Log(currentResources["Food"]);
-    }
+        Uielements = new Dictionary<string, ResourceUI>();
+        foreach (KeyValuePair<string, int> res in requiredResources)
+        {
+            if (!Uielements.ContainsKey(res.Key))
+            {
+                ResourceUI[] resourceUIs = FindObjectsOfType<ResourceUI>();
+                foreach (ResourceUI resourceUi in resourceUIs)
+                {
+                    if (resourceUi.Resource.resourceName == res.Key)
+                    {
+                        Uielements.Add(res.Key, resourceUi);
+                    }
+                }
+            }
 
-    //public static void AddResource(Item item)
-    //{
-    //    int index = -1;
-    //    for (int i = 0; i < currentResources.Count; i++)
-    //    {
-    //        if (currentResources[i].resourceName == item.resource.resourceName)
-    //        {
-    //            index = i;
-    //            break;
-    //        }
-    //    }
-    //    if (index != -1)
-    //    {
-    //        currentResources[index].currentAmount += item.amountPerResource;
-    //        if (currentResources[index].resourceName == GameObject.FindObjectOfType<ResourceManager>().foodResource.resourceName)
-    //        {
-    //            FindObjectOfType<FoodBar>().UpdateFoodBar(currentResources[index].currentAmount);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Resource not found");
-    //    }
-    //}
+            if (Uielements.ContainsKey(res.Key))
+            {
+                int _amountRequired;
+                int _amountCurrent;
+                try { _amountRequired = requiredResources[res.Key]; }
+                catch { _amountRequired = 0; }
+                try { _amountCurrent = currentResources[res.Key]; }
+                catch { _amountCurrent = 0; }
+                Uielements[res.Key].UpdateUI(_amountCurrent, _amountRequired);
+            }
+        }
+        foreach (KeyValuePair<string, int> res in currentResources)
+        {
+            if (!Uielements.ContainsKey(res.Key))
+            {
+                ResourceUI[] resourceUIs = FindObjectsOfType<ResourceUI>();
+                foreach (ResourceUI resourceUi in resourceUIs)
+                {
+                    if (resourceUi.Resource.resourceName == res.Key)
+                    {
+                        Uielements.Add(res.Key, resourceUi);
+                    }
+                }
+            }
+
+            if (Uielements.ContainsKey(res.Key))
+            {
+                int _amountRequired;
+                int _amountCurrent;
+                try { _amountRequired = requiredResources[res.Key]; }
+                catch { _amountRequired = 0; }
+                try { _amountCurrent = currentResources[res.Key]; }
+                catch { _amountCurrent = 0; }
+                Uielements[res.Key].UpdateUI(_amountCurrent, _amountRequired);
+            }
+        }
+    }
 }

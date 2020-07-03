@@ -2,17 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceUI : MonoBehaviour
+public abstract class ResourceUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Resource Resource;
+    public abstract void UpdateUI(int current, int required);
 }

@@ -12,14 +12,14 @@ public class ActionRelocationWrapper : EnemyActionWrapper
 
     public override void SetParams(PatrolNode node)
     {
-        for (int i = 0; i < node.queuedAction.Length; i++)
-        {
-            if (node.queuedAction[i] == this)
-            {
-                node.queuedAction[i] = CreateInstance("ActionRelocationWrapper") as ActionWrapper;
-                (node.queuedAction[i] as ActionRelocationWrapper).targetLocation = node.nextNode.transform.position;
-                break;
-            }
-        }
+        //for (int i = 0; i < node.queuedAction.Length; i++)
+        //{
+        //    if (node.queuedAction[i] == this)
+        //    {
+        //        node.queuedAction[i] = CreateInstance("ActionRelocationWrapper") as ActionWrapper;
+        //        (node.queuedAction[i] as ActionRelocationWrapper).targetLocation = node.nextNode.transform.position;
+        //        break;
+        //    }
+        //}
     }
 }

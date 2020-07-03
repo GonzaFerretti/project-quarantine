@@ -9,21 +9,22 @@ public class ActionEnter : IAction
         _rayDistance = rayDistance;
     }
 
-
     public void Do(Model m)
     {
         //Animaciones
+        ModelPlayable mp = m as ModelPlayable;
         RaycastHit hit;
-        Physics.Raycast(m.transform.position, m.transform.forward, out hit, _rayDistance);
+        Physics.Raycast(m.transform.position + ReturnHeight(mp.bodyHeight), m.transform.forward, out hit, _rayDistance);
         ModelChar mc = m as ModelChar;
-        if (hit.collider)
+        if (hit.collider && hit.collider.GetComponent<Door>() && MonoBehaviour.FindObjectOfType<AlertPhaseTimer>() && MonoBehaviour.FindObjectOfType<AlertPhaseTimer>().timer == 0)
         {
-            if (hit.collider.GetComponent<Door>())
-            {
-                 m.transform.position = hit.collider.GetComponent<Door>().targetLocation;
-            }
+            m.transform.position = hit.collider.GetComponent<Door>().targetLocation;
         }
+    }
 
-        Debug.Log("Enter");
+    Vector3 ReturnHeight(float f)
+    {
+        Vector3 returnHeight = new Vector3(0, f, 0);
+        return returnHeight;
     }
 }

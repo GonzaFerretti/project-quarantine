@@ -112,6 +112,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   tentativeFeedback: {fileID: 1112178774142206120, guid: 5afdeab0e31362b40aa1fac7de8a10c8,
     type: 3}
+  soundRegulator: 0.2
+  clip: {fileID: 8300000, guid: b60633f31be1bc6409ccd40effdac05a, type: 3}
 --- !u!54 &6391621869539279119
 Rigidbody:
   m_ObjectHideFlags: 0

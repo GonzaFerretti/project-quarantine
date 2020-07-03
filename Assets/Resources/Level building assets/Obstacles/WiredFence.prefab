@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 784236712065688424}
   - component: {fileID: 5331393342560818983}
   - component: {fileID: 1237843276321130575}
+  - component: {fileID: -9064080596336411063}
   m_Layer: 0
   m_Name: WiredFence
   m_TagString: Untagged
@@ -118,3 +119,19 @@ MonoBehaviour:
   shouldSnap: 1
   snapDistance: {x: Infinity, y: Infinity, z: Infinity}
   offset: {x: NaN, y: NaN, z: NaN}
+--- !u!208 &-9064080596336411063
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237843276321130574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.36100003, y: 1.028, z: 1.1980001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.98200005, z: 1.159}
+  m_TimeToStationary: 0.5

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 [CreateAssetMenu(menuName = "Controller/Action/Interact Preview")]
 public class ActionInteractPreviewWrapper : ActionWrapper
 {
     public float rayDistance;
-    public Text text;
+    public TextMeshProUGUI text;
     public float arc, density;
 
     public override void SetAction()

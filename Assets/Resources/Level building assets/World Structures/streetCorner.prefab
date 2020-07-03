@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6660446304174160717}
   - component: {fileID: 6660446304174160716}
   - component: {fileID: 7043529382189779220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: streetCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

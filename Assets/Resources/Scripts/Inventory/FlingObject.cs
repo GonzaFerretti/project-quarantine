@@ -10,7 +10,10 @@ public class FlingObject : Model, IMakeNoise
     Collider col;
     public TentativeFlingObjectFeedback tentativeFeedback;
     TentativeFlingObjectFeedback _myTentativeFeedback;
+    public float soundRegulator;
     MeshFilter _myMesh;
+    SoundManager sound;
+    public AudioClip clip;
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class FlingObject : Model, IMakeNoise
     {
         if (c.gameObject)
         {
+            if (!sound) sound = FindObjectOfType<SoundManager>();
+            sound.Play(clip,false, soundRegulator);
             for (int i = 0; i < collisionAction.Length; i++)
             {
                 if (collisionAction[i].action == null) collisionAction[i].SetAction();

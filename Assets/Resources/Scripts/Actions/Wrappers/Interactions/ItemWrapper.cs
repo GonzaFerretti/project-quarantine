@@ -14,6 +14,15 @@ public class ItemWrapper : InteractableObject
         //tentative;
         base.Start();
         _meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        try
+        {
+
+            GetComponent<ParticleSystem>().Play();
+        }
+        catch
+        {
+            GetComponentInChildren<ParticleSystem>().Play();
+        }
     }
 
     void SetMeshOutLine (bool isOutlined)

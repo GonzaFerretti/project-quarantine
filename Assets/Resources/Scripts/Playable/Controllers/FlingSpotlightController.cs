@@ -7,6 +7,7 @@ public class FlingSpotlightController : ControllerWrapper, IController
 {
     FlingSpotLight _model;
     public float height;
+    public int groundLayerId;
 
     public void AssignModel(Model model)
     {
@@ -21,16 +22,23 @@ public class FlingSpotlightController : ControllerWrapper, IController
     public void OnUpdate()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        RaycastHit hit = new RaycastHit();
         Vector3 _modelDistVector = new Vector3(_model.transform.position.x, 0, _model.transform.position.z);
         Vector3 _playableDistVector = new Vector3(_model.modelPlayable.transform.position.x, 0, _model.modelPlayable.transform.position.z);
 
-        if (Physics.Raycast(ray, out hit))
+        //Debug.Log(Physics.RaycastAll(ray, float.MaxValue, 1 << groundLayerId).Length);
+        RaycastHit[] groundHits = Physics.RaycastAll(ray, float.MaxValue, 1 << groundLayerId);
+        if (groundHits.Length > 0)
         {
+            float range = _model.modelPlayable.strength;
+            hit = groundHits[0];
             Vector3 mPos = _model.modelPlayable.transform.position;
             Vector3 direction = new Vector3(hit.point.x - mPos.x,0, hit.point.z - mPos.z);
-            Vector3 clampedDirection = Vector3.ClampMagnitude(direction, _model.modelPlayable.strength);
-            _model.transform.position = new Vector3(mPos.x + clampedDirection.x, hit.point.y + height, mPos.z + clampedDirection.z);
+            Vector3 clampedDirection = Vector3.ClampMagnitude(direction, range);
+            Vector3 finalPosition = new Vector3(mPos.x + clampedDirection.x, hit.point.y, mPos.z + clampedDirection.z);
+            _model.flingRangeIndicator.UpdatePosition(finalPosition, _model.GetComponentInParent<ModelPlayable>().baseFlingObject.GetComponent<FlingObject>().noiseValue);
+            _model.noiseRangeIndicator.UpdatePosition(_model.transform.parent.position, range * 2);
+            _model.transform.position = finalPosition + Vector3.up * height;
         }
 
         if (_model is FlingSpotLight) (_model as FlingSpotLight).point = hit.point;

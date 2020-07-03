@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAction: {fileID: 11400000, guid: e472da21543aa2843b45bbd819c2b7f7, type: 2}
   key: 306
-  triggerType: {fileID: 11400000, guid: ebc19ec25038cc7489fc95db82cee3d1, type: 2}
+  triggerType: {fileID: 11400000, guid: af69ad0b0b10c304cbccfb7e5b7b6645, type: 2}

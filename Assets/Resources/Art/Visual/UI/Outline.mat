@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normal:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c855341fe4e8a0c4eb87111f3eb484d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -32,11 +32,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texture:
-        m_Texture: {fileID: 2800000, guid: 849c6892ed004b24a82e2f206b8423d2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 570ddf06416d52342909d93478f9f277, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Scale: 0.1
+    - _Scale: 0.02
     - __dirty: 0
     m_Colors:
-    - _color: {r: 1, g: 0.043137252, b: 0.043137252, a: 1}
+    - _color: {r: 1, g: 0.04313723, b: 0.04313723, a: 1}

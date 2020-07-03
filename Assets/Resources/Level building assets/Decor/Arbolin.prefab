@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &6139589433940212413
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744338251687251992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.11445236
+  m_Height: 3.8299139
+  m_Direction: 1
+  m_Center: {x: -2.7, y: 1.29, z: -0}
+--- !u!182 &6139589433940212412
+WindZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744338251687251992}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 0
+  m_WindMain: 0.01
+  m_WindTurbulence: 0
+  m_WindPulseMagnitude: 0
+  m_WindPulseFrequency: 0
+--- !u!208 &6139589433940212386
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744338251687251992}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.1144524, y: 1.914957, z: 0.1144524}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.7, y: 1.29, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2744338252839015508
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,50 +137,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7587637, y: 0.74723655, z: 0.048072714}
   m_Center: {x: 0, y: 0, z: 0.024036357}
---- !u!136 &6139589433940212413
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744338251687251992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.11445236
-  m_Height: 3.8299139
-  m_Direction: 1
-  m_Center: {x: -2.7, y: 1.29, z: -0}
---- !u!182 &6139589433940212412
-WindZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744338251687251992}
-  m_Enabled: 1
-  m_Mode: 0
-  m_Radius: 0
-  m_WindMain: 0.1
-  m_WindTurbulence: 0
-  m_WindPulseMagnitude: 0
-  m_WindPulseFrequency: 0
---- !u!208 &6139589433940212386
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744338251687251992}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.1144524, y: 1.914957, z: 0.1144524}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -2.7, y: 1.29, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &6139589434889898257
 PrefabInstance:
   m_ObjectHideFlags: 0

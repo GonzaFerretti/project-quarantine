@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ActionInteractPreview : IAction
 {
-    Text _textBox;
+    TextMeshProUGUI _textBox;
     float _rayDistance;
     float _angleArc;
     float _arcDensity;
 
-    public ActionInteractPreview(float rayDistance, Text text, float arc, float density)
+    public ActionInteractPreview(float rayDistance, TextMeshProUGUI text, float arc, float density)
     {
         _rayDistance = rayDistance;
         _textBox = text;
@@ -18,46 +18,48 @@ public class ActionInteractPreview : IAction
 
     public void Do(Model m)
     {
-        RaycastHit hit = new RaycastHit();
+        GameObject go = null;
         CapsuleCollider collider = m.GetComponent<CapsuleCollider>();
         Vector3 startPoint = new Vector3(m.transform.position.x, m.transform.position.y + collider.height * m.transform.localScale.x / 2, m.transform.position.z);
         if ((m is ModelHumanoid) && (m as ModelHumanoid).nearbyObject)
         {
-            float forwardAngle = Vector2.SignedAngle(new Vector2(1, 0), new Vector2(m.transform.forward.x, m.transform.forward.z));
-            GameObject _nearbyObject = (m as ModelHumanoid).nearbyObject.gameObject;
-            float longestPossibleRay = _nearbyObject.GetComponent<SphereCollider>().radius * _nearbyObject.transform.localScale.x;
-            for (float i = -_angleArc / 2 + forwardAngle; i <= _angleArc / 2 + forwardAngle; i += _arcDensity)
-            {
-                float angle = i * Mathf.Deg2Rad;
-                float x = Mathf.Cos(angle);
-                float z = Mathf.Sin(angle);
-                Vector3 rayDirection = new Vector3(x, 0, z);
-                Debug.DrawLine(startPoint, startPoint + rayDirection * longestPossibleRay, Color.red, Time.deltaTime);
-                Physics.Raycast(startPoint, rayDirection, out hit, longestPossibleRay);
-                if (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>())
-                {
-                    break;
-                }
-            }
+            go = (m as ModelHumanoid).nearbyObject.gameObject;
         }
         else
         {
+            RaycastHit hit = new RaycastHit();
             Physics.Raycast(startPoint, m.transform.forward, out hit, _rayDistance);
-            hit = (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>()) ? new RaycastHit() : hit;
+            /*int i = 0;
+            /*string DebugText = "";
+            foreach (RaycastHit hitTest in Physics.RaycastAll(startPoint, m.transform.forward, _rayDistance))
+            {
+                i++;
+                DebugText += i + " " + hitTest.collider.gameObject.name + " ";
+            }
+            Debug.Log(DebugText);*/
+            if (hit.collider)
+            {
+                go = hit.collider.gameObject;
+            }
         }
-
-
+        
         ModelChar mc = m as ModelChar;
-        if (hit.collider && mc.controller != (m as ModelPlayable).redirectController)
+        Debug.DrawLine(startPoint, startPoint + m.transform.forward, Color.blue, 2);
+        if (go && mc.controller != (m as ModelPlayable).redirectController)
         {
-            InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
+            InteractableObject interactable = go.GetComponent<InteractableObject>();
             if (interactable)
             {
                 for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
                     if (interactable.requiredAction == mc.gainedActions[i])
                     {
-                        _textBox.text = interactable.requiredAction.name;
+                        _textBox.text = interactable.requiredAction.name + " (F)";
+                    }
+                    
+                    {
+                        if (interactable is Fence &&!mc.gainedActions.Contains(interactable.requiredAction))
+                            _textBox.text = "I might need to find some Wirecutters to open this...";
                     }
                 }
             }

@@ -52,7 +52,11 @@ public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
     {
         if (currentRotations < rotationMaxAmount)
             Rotate();
-        else _model.controller = _model.standardController;
+        else
+        {
+            _model.GetComponent<NavMeshAgent>().SetDestination(_model.node.transform.position);
+            _model.controller = _model.standardController;
+        }
     }
 
     void Rotate()

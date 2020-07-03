@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-﻿using UnityEngine;
+using UnityEngine;
 
-[CreateAssetMenu(menuName ="Controller/Action/Duck Release")]
+[CreateAssetMenu(menuName = "Controller/Action/Duck Release")]
 public class ActionDuckReleaseWrapper : ActionWrapper
 {
     public float height;
+    public float radius;
     public Vector3 center;
+
     public override void SetAction()
     {
-        action = new ActionDuckRelease(height,center);
+        action = new ActionDuckRelease(height, radius, center);
     }
 }

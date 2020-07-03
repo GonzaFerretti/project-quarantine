@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resource: {fileID: 11400000, guid: 8db035356ff707b44b7eae0ec6eee5b2, type: 2}
   dialog:
-  - Could you get some food, dearie?
+  - I think we are running low on food.

@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Collections;
 
 public class ActionCapture : IAction
 {
@@ -17,12 +17,21 @@ public class ActionCapture : IAction
         if (!(m is ModelPatrol)) return;
         if (_mp == null) _mp = m as ModelPatrol;
         RaycastHit hit;
-        Vector3 _dir = (_mp.target.transform.position - m.transform.position).normalized * _mp.meleeDistance;
-        Physics.Raycast(_mp.transform.position, _dir, out hit);
+        Vector3 _dir = ((_mp.target.transform.position + HeightReturner(_mp.target.bodyHeight)) - (m.transform.position + HeightReturner(_mp.headHeight))).normalized;
+        Physics.Raycast(_mp.transform.position + HeightReturner(_mp.headHeight), _dir, out hit, _mp.meleeDistance, _layerMask);
 
-        if (hit.collider && hit.collider.GetComponent<ModelPlayable>())
+        if (hit.collider)
         {
-            EventManager.TriggerEvent("Loss");
+            if (hit.collider.GetComponent<ModelPlayable>())
+            {
+                EventManager.TriggerEvent("Loss");
+            }
         }
+    }
+
+    Vector3 HeightReturner(float f)
+    {
+        Vector3 newHeight = new Vector3(0, f, 0);
+        return newHeight;
     }
 }

@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Fling Spotlight Controller
   m_EditorClassIdentifier: 
   height: 2
+  groundLayerId: 9
+  noiseRangeIndicator: {fileID: 0}
+  flingRangeIndicator: {fileID: 0}

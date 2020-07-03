@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ModelNPC : InteractableObject
 {
     public Image dialogBox;
-    public Text textField;
+    public TextMeshProUGUI textField;
     public NPCAttributes npcAttributes;
-    Resource _currentResource;
-    float _currentAmountRequired;
+    public Resource currentResource;
+    public float currentAmountRequired;
     public List<NPCDialog> currentDialog;
 
     public int currentLine;
@@ -23,14 +24,14 @@ public class ModelNPC : InteractableObject
 
     void SetAttributes()
     {
-        _currentResource = npcAttributes.resources[Random.Range(0, npcAttributes.resources.Count)];
-        _currentAmountRequired = _currentResource.amounts[Random.Range(0, _currentResource.amounts.Count)];
+        currentResource = npcAttributes.resources[Random.Range(0, npcAttributes.resources.Count)];
+        currentAmountRequired = currentResource.amounts[Random.Range(0, currentResource.amounts.Count)];
         InitModel(ref animator, npcAttributes.characterModel, npcAttributes.animations);
         if (currentDialog == null) currentDialog = new List<NPCDialog>();
 
         for (int i = 0; i < npcAttributes.dialog.Count; i++)
         {
-            if (npcAttributes.dialog[i].resource == _currentResource)
+            if (npcAttributes.dialog[i].resource == currentResource)
                 currentDialog.Add(npcAttributes.dialog[i]);
         }
 
@@ -38,7 +39,7 @@ public class ModelNPC : InteractableObject
         //Que los requisitos de recursos se pasen al ResourceManager
     }
 
-    public virtual void InitModel(ref Animator animator, GameObject characterModel, RuntimeAnimatorController animations)
+    public override void InitModel(ref Animator animator, GameObject characterModel, RuntimeAnimatorController animations)
     {
         GameObject myPlayerCharacter = Instantiate(characterModel, transform);
         myPlayerCharacter.transform.localPosition = new Vector3(0, 0, 0);

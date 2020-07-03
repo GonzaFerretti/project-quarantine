@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Bottle
   description: An empty Bottle
+  icon: {fileID: 21300000, guid: 43948c89c96c1e9468f527099691e695, type: 3}
+  isStackable: 1
   allowingActions: []
+  resource: {fileID: 0}
+  amountPerResource: 0
+  mesh: {fileID: 3588522986259572365, guid: 205b363cf6a19b346bef75e0e895ed3d, type: 3}
   collisionActions:
   - {fileID: 11400000, guid: cf4d42f04384c7f438e0c55fb07c595a, type: 2}
   itemModel: {fileID: 3588522986259572365, guid: 205b363cf6a19b346bef75e0e895ed3d,

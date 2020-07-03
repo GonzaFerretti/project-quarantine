@@ -19,11 +19,15 @@ public class ActionEnterFlingMode : IAction
         {
             if (myflingables.Count == 0) return;
             fs.gameObject.SetActive(true);
+            fs.noiseRangeIndicator.gameObject.SetActive(true);
+            fs.flingRangeIndicator.gameObject.SetActive(true);
             mp.controller = mp.flingController;
         }
         else
         {
             fs.gameObject.SetActive(false);
+            fs.noiseRangeIndicator.gameObject.SetActive(false);
+            fs.flingRangeIndicator.gameObject.SetActive(false);
             mp.controller = mp.usualController;
         }
     }

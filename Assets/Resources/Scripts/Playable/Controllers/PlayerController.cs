@@ -16,7 +16,8 @@ public class PlayerController : ControllerWrapper, IController
 
     public override ControllerWrapper Clone()
     {
-        return new PlayerController();
+        PlayerController clone = CreateInstance("PlayerController") as PlayerController;
+        return clone;
     }
 
     public virtual void OnUpdate()

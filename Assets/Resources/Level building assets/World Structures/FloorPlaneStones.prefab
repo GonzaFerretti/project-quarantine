@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6376079379490707141}
   - component: {fileID: 4629898764426846727}
   - component: {fileID: 4629898764426846726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FloorPlaneStones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
