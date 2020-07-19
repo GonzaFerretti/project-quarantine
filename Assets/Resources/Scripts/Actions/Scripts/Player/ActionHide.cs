@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionHide : IAction
+public class ActionHide : ActionBaseInteract
 {
-    float _interactionDistance;
     int _goalLocation;
     int _facingRedirecion;
 
-    public ActionHide(int goalLocation, int facingRedirection, float interactionDistance)
+    public ActionHide(int goalLocation, int facingRedirection, float _interactionDistance)
     {
-        _interactionDistance = interactionDistance;
+        interactionDistance = _interactionDistance;
         _goalLocation = goalLocation;
         _facingRedirecion = facingRedirection;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         RaycastHit hit;
-        Physics.Raycast((m as ModelChar).GetRayCastOrigin(), m.transform.forward, out hit, _interactionDistance);
+        Physics.Raycast((m as ModelChar).GetRayCastOrigin(), m.transform.forward, out hit, interactionDistance);
         if (hit.collider)
         {
             HidingPlace hidingPlace = hit.collider.gameObject.GetComponent<HidingPlace>();

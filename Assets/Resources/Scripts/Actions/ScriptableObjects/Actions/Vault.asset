@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b24dc7824d2134bbcb27a2a3739e4d, type: 3}
   m_Name: Vault
   m_EditorClassIdentifier: 
-  actionKey: {fileID: 11400000, guid: 945961f4600bae04dba4e01dfce25f31, type: 2}
+  actionKey: {fileID: 0}
+  interactionDistance: 2
   vaultHeight: 0.125
-  vaultCheckDistance: 3
   objectiveOffset: 1
   distanceModifierMin: 0.8

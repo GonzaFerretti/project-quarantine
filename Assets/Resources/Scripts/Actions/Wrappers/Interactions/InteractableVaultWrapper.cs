@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableVaultWrapper : MonoBehaviour
+public class InteractableVaultWrapper : InteractableObject
 {
 }

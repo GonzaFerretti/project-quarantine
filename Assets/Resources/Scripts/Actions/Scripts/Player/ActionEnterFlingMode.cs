@@ -25,6 +25,7 @@ public class ActionEnterFlingMode : IAction
         }
         else
         {
+            (fs.controller as FlingSpotlightController)._curveDrawer.Hide();
             fs.gameObject.SetActive(false);
             fs.noiseRangeIndicator.gameObject.SetActive(false);
             fs.flingRangeIndicator.gameObject.SetActive(false);

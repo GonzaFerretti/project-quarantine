@@ -289,6 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbec44b71054be843ba680d79b048879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftFoot: {fileID: 11400000, guid: 8f8293db4aa02644cb5df4f212c46847, type: 2}
+  rightFoot: {fileID: 11400000, guid: f06b5ccd719d1cf4988a9bb001f76a88, type: 2}
+  landAfterVault: {fileID: 11400000, guid: 7980fd61165946a4f9dddd11805608dd, type: 2}
 --- !u!114 &8658942691365722375
 MonoBehaviour:
   m_ObjectHideFlags: 0

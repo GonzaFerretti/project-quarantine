@@ -5,20 +5,17 @@ public class ActionInteractPreview : IAction
 {
     TextMeshProUGUI _textBox;
     float _rayDistance;
-    float _angleArc;
-    float _arcDensity;
 
-    public ActionInteractPreview(float rayDistance, TextMeshProUGUI text, float arc, float density)
+    public ActionInteractPreview(float rayDistance, TextMeshProUGUI text)
     {
         _rayDistance = rayDistance;
         _textBox = text;
-        _angleArc = arc;
-        _arcDensity = density;
     }
 
     public void Do(Model m)
     {
         GameObject go = null;
+        float distanceToObject = 0;
         CapsuleCollider collider = m.GetComponent<CapsuleCollider>();
         Vector3 startPoint = new Vector3(m.transform.position.x, m.transform.position.y + collider.height * m.transform.localScale.x / 2, m.transform.position.z);
         if ((m is ModelHumanoid) && (m as ModelHumanoid).nearbyObject)
@@ -40,11 +37,11 @@ public class ActionInteractPreview : IAction
             if (hit.collider)
             {
                 go = hit.collider.gameObject;
+                distanceToObject = hit.distance;
             }
         }
-        
+
         ModelChar mc = m as ModelChar;
-        Debug.DrawLine(startPoint, startPoint + m.transform.forward, Color.blue, 2);
         if (go && mc.controller != (m as ModelPlayable).redirectController)
         {
             InteractableObject interactable = go.GetComponent<InteractableObject>();
@@ -52,14 +49,9 @@ public class ActionInteractPreview : IAction
             {
                 for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
-                    if (interactable.requiredAction == mc.gainedActions[i])
+                    if (!(mc.gainedActions[i].action is ActionBaseInteract) || (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject)
                     {
-                        _textBox.text = interactable.requiredAction.name + " (F)";
-                    }
-                    
-                    {
-                        if (interactable is Fence &&!mc.gainedActions.Contains(interactable.requiredAction))
-                            _textBox.text = "I might need to find some Wirecutters to open this...";
+                        interactable.preview.previewAction.Do(m, _textBox, interactable, interactable.requiredAction == mc.gainedActions[i]);
                     }
                 }
             }

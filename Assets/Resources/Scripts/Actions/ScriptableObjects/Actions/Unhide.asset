@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0a9ab804765664bb150951f384f553, type: 3}
   m_Name: Unhide
   m_EditorClassIdentifier: 
+  actionKey: {fileID: 0}
   interactionDistance: 1
   redirection: 8
   goalLocation: 0

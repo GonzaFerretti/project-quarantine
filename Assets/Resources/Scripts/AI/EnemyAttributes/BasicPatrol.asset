@@ -16,6 +16,6 @@ MonoBehaviour:
   suspectRange: 12
   angle: 80
   alertDistance: 60
-  characterModel: {fileID: -927199367670048503, guid: 528cee9f389f7694ebcdfd0073f39f4c,
+  characterModel: {fileID: 7987228655193679828, guid: 75829601dc001e14b89fd5ed818593ff,
     type: 3}
   animations: {fileID: 9100000, guid: 5677ae262e8bcde408b905498f65cacc, type: 2}

@@ -83,7 +83,8 @@ SkinnedMeshRenderer:
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: -950241972329899610, guid: 42432273ea2daca46bda8adc5f9b5e0a, type: 3}
   m_Bones: []
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0.000033646822, y: 0.9822734, z: 1.1587842}
@@ -154,6 +155,7 @@ MonoBehaviour:
   requiredAction: {fileID: 11400000, guid: e4b22e86750d82849922ef36f928cbb4, type: 2}
   feedback: {fileID: 11400000, guid: 2c58ebcebc1a6224787158725573a7e2, type: 2}
   animator: {fileID: 3682343662993302849}
+  preview: {fileID: 11400000, guid: 10e20effbb631eb4db2f08ae75309e40, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 9100000, guid: 9626d1630db49cf4f870e00f2dd3ea47, type: 2}
   openColliders: {fileID: 8855970168486706350}
@@ -190,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8855970168486706349
 Transform:
   m_ObjectHideFlags: 0
@@ -229,8 +231,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.23, y: 0.65, z: 2.3958716}
-  m_Center: {x: 0.000033646822, y: 1.68, z: 1.1587844}
+  m_Size: {x: 0.23, y: 0.5089829, z: 2.3958716}
+  m_Center: {x: 0.000033642977, y: 1.7505085, z: 1.1587844}
 --- !u!65 &8855970168486706348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,8 +244,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.23, y: 0.65, z: 2.3958716}
-  m_Center: {x: 0.000033646822, y: 0.3, z: 1.1587844}
+  m_Size: {x: 0.23, y: 0.48115933, z: 2.3958716}
+  m_Center: {x: 0.000033642977, y: 0.21557966, z: 1.1587844}
 --- !u!1 &8855970170080217259
 GameObject:
   m_ObjectHideFlags: 0

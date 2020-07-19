@@ -38,12 +38,16 @@ public class ActionInteract : IAction
             InteractableObject interactable = hitObject.GetComponent<InteractableObject>();
             if (interactable)
             {
+                float distanceToObject = hit.distance;
                 for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
                     if (interactable.requiredAction == mc.gainedActions[i])
                     {
-                        mc.gainedActions[i].action.Do(m);
-                        interactable.Interact(m as ModelPlayable);
+                        if (!(mc.gainedActions[i].action is ActionBaseInteract) || (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject)
+                        { 
+                            mc.gainedActions[i].action.Do(m);
+                            interactable.Interact(m as ModelPlayable);
+                        }
                     }
                 }
             }

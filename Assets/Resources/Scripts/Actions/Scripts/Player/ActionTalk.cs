@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 
-public class ActionTalk : IAction
+public class ActionTalk : ActionBaseInteract
 {
-    float _dist;
-
-    public ActionTalk(float dist)
+    public ActionTalk(float _interactionDistance)
     {
-        _dist = dist;
+        interactionDistance = _interactionDistance;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         //Stop Game Timer
         if (m is ModelPlayable)
         {
             RaycastHit hit = new RaycastHit();
             ModelPlayable mp = m as ModelPlayable;
-            Physics.Raycast(mp.transform.position + new Vector3(0, mp.GetComponent<CapsuleCollider>().height / 2, 0), mp.transform.forward, out hit, _dist);
+            Physics.Raycast(mp.transform.position + new Vector3(0, mp.GetComponent<CapsuleCollider>().height / 2, 0), mp.transform.forward, out hit, interactionDistance);
 
             if (hit.collider && hit.collider.GetComponent<ModelNPC>())
             {

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Firecracker
   m_EditorClassIdentifier: 
   actionKey: {fileID: 0}
-  sound: {fileID: 8300000, guid: 2737e741c0d2c3d46905feda7a68ee3c, type: 3}
+  sound: {fileID: 11400000, guid: a178840575b7d7d45b0dc8ea6360b5ce, type: 2}

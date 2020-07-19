@@ -11,6 +11,8 @@ public class ModelHumanoid : ModelChar
     public float vaultDuration, vaultHeight;
     public Collider lastVault;
     public ItemWrapper nearbyObject;
+    public FlingObstacleChecker FlingObstacleChecker;
+    public VaultCurveDrawer vaultCurveDrawer;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -58,6 +60,12 @@ public class ModelHumanoid : ModelChar
         }
     }
 
+    public void InitFlingObsChecker()
+    {
+        FlingObstacleChecker = GetComponentInChildren<FlingObstacleChecker>();
+        FlingObstacleChecker.Init();
+    }
+
     private void moveTowardsVaultPoint()
     {
         float vaultProgress = (Time.time - vaultStart) / (_vaultDuration);
@@ -73,6 +81,7 @@ public class ModelHumanoid : ModelChar
         {
             isVaulting = false;
             animator.SetBool("vault", false);
+            vaultCurveDrawer.Hide();
             Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), false);
         }
     }

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Controller/Action/Hide")]
-public class ActionHideWrapper : ActionWrapper
+public class ActionHideWrapper : ActionBaseInteractWrapper
 {
-    public float interactionDistance;
     public int redirection;
     public int goalLocation;
 

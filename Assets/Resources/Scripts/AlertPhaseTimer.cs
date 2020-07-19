@@ -10,7 +10,7 @@ public class AlertPhaseTimer : MonoBehaviour
     public Sprite eyeShut, eyeOpen;
     bool _onAlert;
     public SoundManager soundManager;
-    public AudioClip alertSound;
+    public SoundClip alertSound;
 
     private void Start()
     {

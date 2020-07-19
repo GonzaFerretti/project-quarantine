@@ -6,7 +6,8 @@ public class FlingSpotLight : Model
     Light _myLight;
     public Vector3 point;
     public ControllerWrapper controller;
-    public GameObject rangeIndicatorPrefab;
+    public GameObject noiseRangeIndicatorPrefab;
+    public GameObject flingRangeIndicatorPrefab;
     public RangeIndicator noiseRangeIndicator;
     public RangeIndicator flingRangeIndicator;
 
@@ -24,15 +25,15 @@ public class FlingSpotLight : Model
     {
         controller.myController.OnUpdate();
     }
-
+    
     void SetIndicator()
     {
-        GameObject newRangeIndicator = Instantiate(rangeIndicatorPrefab, null);
-        newRangeIndicator.transform.rotation = rangeIndicatorPrefab.transform.localRotation;
+        GameObject newRangeIndicator = Instantiate(noiseRangeIndicatorPrefab, null);
+        newRangeIndicator.transform.rotation = noiseRangeIndicatorPrefab.transform.localRotation;
         noiseRangeIndicator = newRangeIndicator.GetComponent<RangeIndicator>();
 
-        GameObject newFlingRange = Instantiate(rangeIndicatorPrefab, null);
+        GameObject newFlingRange = Instantiate(flingRangeIndicatorPrefab, null);
         flingRangeIndicator = newFlingRange.GetComponent<RangeIndicator>();
-        flingRangeIndicator.gameObject.transform.rotation = rangeIndicatorPrefab.transform.localRotation;
+        flingRangeIndicator.gameObject.transform.rotation = flingRangeIndicatorPrefab.transform.localRotation;
     }
 }

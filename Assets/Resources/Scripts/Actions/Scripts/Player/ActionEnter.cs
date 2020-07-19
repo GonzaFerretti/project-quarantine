@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 
-public class ActionEnter : IAction
+public class ActionEnter : ActionBaseInteract
 {
-    float _rayDistance;
-
-    public ActionEnter(float rayDistance)
+    public ActionEnter(float _interactionDistance)
     {
-        _rayDistance = rayDistance;
+        interactionDistance = _interactionDistance;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         //Animaciones
         ModelPlayable mp = m as ModelPlayable;
         RaycastHit hit;
-        Physics.Raycast(m.transform.position + ReturnHeight(mp.bodyHeight), m.transform.forward, out hit, _rayDistance);
+        Physics.Raycast(m.transform.position + ReturnHeight(mp.bodyHeight), m.transform.forward, out hit, interactionDistance);
         ModelChar mc = m as ModelChar;
         if (hit.collider && hit.collider.GetComponent<Door>() && MonoBehaviour.FindObjectOfType<AlertPhaseTimer>() && MonoBehaviour.FindObjectOfType<AlertPhaseTimer>().timer == 0)
         {

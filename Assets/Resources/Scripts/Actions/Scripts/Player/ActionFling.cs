@@ -11,13 +11,22 @@ public class ActionFling : IAction
     {
         _upwardStrength = upwardStrength;
     }
-
     public void Do(Model m)
     {
         ModelChar mc = m as ModelChar;
         mc.animator.SetTrigger("fling");
         (m as ModelPlayable).CheckFlingObjectExistsOrCreate();
         m.StartCoroutine(waitForAnimationAndFling(mc));
+    }
+
+    IEnumerator logSpeed(FlingObject fo)
+    {
+        Rigidbody rb = fo.GetComponent<Rigidbody>();
+        do
+        {
+            yield return null;
+        } while (rb.velocity == Vector3.zero);
+        Debug.Log(rb.velocity);
     }
 
     IEnumerator waitForAnimationAndFling(Model m)
@@ -63,8 +72,10 @@ public class ActionFling : IAction
             else strength = mp.strength;
 
             //tentative
-            mc.flingObject.SetAttributes(flingableItems[0].itemModel);
+            mc.flingObject.SetAttributes(flingableItems[0].flingItemRuntimeInfo);
+            mc.flingObject.Init();
             mp.inv.RemoveItem(flingableItems[0]);
+            (mp.controller as FlingController).DisableFling();
         }
         else
         {
@@ -80,12 +91,26 @@ public class ActionFling : IAction
                 strength = dis;
             else strength = me.strength;
         }
+        FlingObject flingObject = mc.flingObject;
+        m.StartCoroutine(logSpeed(flingObject));
+        flingObject.transform.forward = dir.normalized;
+        flingObject.gameObject.SetActive(true);
+        flingObject.rb.velocity = Vector3.zero;
+        flingObject.rb.angularVelocity = Vector3.zero;
+        Vector3 forceToApply = dir * strength + Vector3.up * _upwardStrength / 2;
+        flingObject.rb.AddForce(forceToApply, ForceMode.VelocityChange);
+        /*flingObject.rb.AddForce(dir * strength, ForceMode.Impulse);
+        flingObject.rb.AddTorque(mc.flingObject.transform.forward, ForceMode.Impulse);
+        flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);*/
 
-        mc.flingObject.gameObject.SetActive(true);
-        mc.flingObject.rb.velocity = Vector3.zero;
-        mc.flingObject.rb.angularVelocity = Vector3.zero;
-        mc.flingObject.rb.AddForce(dir * strength, ForceMode.Impulse);
-        mc.flingObject.rb.AddTorque(mc.flingObject.transform.forward, ForceMode.Impulse);
-        mc.flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);
+        Collider flingCollider = flingObject.GetComponent<Collider>();
+        foreach (GameObject go in (m as ModelPlayable).GetFlingObstacleObjects())
+        {
+            if (go)
+            {
+                flingObject.objectsNotToCollideWith.Add(go);
+                Physics.IgnoreCollision(go.GetComponent<Collider>(), flingCollider, true);
+            }
+        }
     }
 }

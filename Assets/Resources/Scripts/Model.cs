@@ -11,7 +11,8 @@ public class Model : MonoBehaviour
         myPlayerCharacter.GetComponent<Animator>().runtimeAnimatorController = animations;
         animator = myPlayerCharacter.GetComponent<Animator>();
         }
-        myPlayerCharacter.AddComponent<CharacterSounds>();
+        CharacterSounds charSounds = myPlayerCharacter.GetComponentInChildren<CharacterSounds>();
+        charSounds.FindSoundManager();
         myPlayerCharacter.name = "characterModel";
     }
 }

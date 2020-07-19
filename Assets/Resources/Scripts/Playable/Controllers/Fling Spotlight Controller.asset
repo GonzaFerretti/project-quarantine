@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 2
   groundLayerId: 9
-  noiseRangeIndicator: {fileID: 0}
-  flingRangeIndicator: {fileID: 0}
+  _upwardStrength: 5.5
+  _curveDrawer: {fileID: 0}

@@ -5,18 +5,16 @@ using UnityEngine;
 public class CharacterSounds : MonoBehaviour
 {
     SoundManager _manager;
+    public SoundClip leftFoot;
+    public SoundClip rightFoot;
+    public SoundClip landAfterVault;
 
     void Start()
     {
         FindSoundManager();
     }
 
-    public void ReloadSM()
-    {
-
-    }
-
-    void FindSoundManager()
+    public void FindSoundManager()
     {
         if(!_manager)
         _manager = FindObjectOfType<SoundManager>();
@@ -25,26 +23,25 @@ public class CharacterSounds : MonoBehaviour
     public void PlayLeftFootStep(float f)
     {
         FindSoundManager();
-        _manager.Play(Resources.Load<AudioClip>("Art/sfx/leftFoot"), false, f);
+        _manager.Play(leftFoot);
     }
 
     public void PlayRightFootStep(float f)
     {
 
         FindSoundManager();
-        _manager.Play(Resources.Load<AudioClip>("Art/sfx/rightFoot"), false, f);
+        _manager.Play(rightFoot);
     }
 
     public void PlayLandAfterVault(float f)
     {
         FindSoundManager();
-        _manager.Play(Resources.Load<AudioClip>("Art/sfx/landAfterVault"), false, f);
+        _manager.Play(landAfterVault);
     }
 
     public void PlayBottleCrash(float f)
     {
         FindSoundManager();
-
     }
 
 }

@@ -3,7 +3,7 @@
 [CreateAssetMenu(menuName = "Controller/Action/Firecracker")]
 public class ActionFirecrackerWrapper : ActionWrapper
 {
-    public AudioClip sound;
+    public SoundClip sound;
 
     public override void SetAction()
     {

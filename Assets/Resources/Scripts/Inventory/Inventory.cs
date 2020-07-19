@@ -23,12 +23,14 @@ public class Inventory : ScriptableObject
         }
     }
 
-    public void AddItem(Item item)
+    public void AddItem(Item item, GameObject objectObtainedFrom = null)
     {
         //Debug.Log("itemAdded");
-        items.Add(item);
+        Item itemToAdd = item;
+        if (objectObtainedFrom) (itemToAdd as FlingableItem).flingItemRuntimeInfo = new FlingObjectInfo(objectObtainedFrom);
+        items.Add(itemToAdd);
         try { 
-            foreach (ActionWrapper action in item.allowingActions)
+            foreach (ActionWrapper action in itemToAdd.allowingActions)
             {
                 if (!_model.gainedActions.Contains(action))
                     (_model as ModelPlayable).gainedActions.Add(action);
@@ -38,14 +40,14 @@ public class Inventory : ScriptableObject
             
         }
         catch {}
-        if (item.resource != null)
+        if (itemToAdd.resource != null)
         {
-            ResourceManager.AddToResourceDict(item.resource.resourceName, item.amountPerResource, ref ResourceManager.currentResources);
+            ResourceManager.AddToResourceDict(itemToAdd.resource.resourceName, itemToAdd.amountPerResource, ref ResourceManager.currentResources);
         }
-        if (item.icon != null)
+        if (itemToAdd.icon != null)
         {
             //Debug.Log("has Icon");
-            UpdateUI(item, true, false);
+            UpdateUI(itemToAdd, true, false);
         }
     }
 

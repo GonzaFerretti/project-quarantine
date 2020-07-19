@@ -12,7 +12,6 @@ public class Item : ScriptableObject
     public List<ActionWrapper> allowingActions = new List<ActionWrapper>();
     public Resource resource;
     public int amountPerResource;
-    public Mesh mesh;
 
     public virtual Item cloneItem()
     {
@@ -23,7 +22,8 @@ public class Item : ScriptableObject
         newItem.allowingActions = allowingActions;
         newItem.amountPerResource = amountPerResource;
         newItem.resource = resource;
-        newItem.mesh = mesh;
+        newItem.icon = icon;
+        newItem.isStackable = isStackable;
         return newItem;
     }
 }

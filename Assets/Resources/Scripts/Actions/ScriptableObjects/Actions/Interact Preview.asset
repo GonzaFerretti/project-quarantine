@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Interact Preview
   m_EditorClassIdentifier: 
   actionKey: {fileID: 0}
-  rayDistance: 1
+  rayDistance: 3
   text: {fileID: 0}
-  arc: 150
-  density: 10

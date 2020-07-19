@@ -81,7 +81,6 @@ public class TentativeMapInfoKeeper : MonoBehaviour
         }
         ModelPlayable player = GameObject.FindObjectOfType<ModelPlayable>();
         /*player.inv.UpdateAllUI();*/
-        player.GetComponentInChildren<CharacterSounds>().ReloadSM();
         for (int i = 0; i < currentScene.items.Count; i++)
         {
             if (currentScene.positions[i] != null)

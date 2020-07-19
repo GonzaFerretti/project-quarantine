@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class ActionFirecracker : IAction
 {
-    AudioClip _sound;
+    SoundClip _sound;
     SoundManager _soundManager;
 
-    public ActionFirecracker(AudioClip sound)
+    public ActionFirecracker(SoundClip sound)
     {
         _sound = sound;
     }

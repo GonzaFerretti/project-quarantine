@@ -27,10 +27,17 @@ public class FlingController : PlayerController
 
         if (flingableItems.Count == 0)
         {
-            _mp.flingSpotlight.noiseRangeIndicator.gameObject.SetActive(false);
-            _mp.flingSpotlight.flingRangeIndicator.gameObject.SetActive(false);
-            _mp.controller = _mp.usualController;
-            _mp.flingSpotlight.gameObject.SetActive(false);
+            DisableFling();
         }
+    }
+
+    public void DisableFling()
+    {
+        (_mp.flingSpotlight.controller as FlingSpotlightController)._curveDrawer.Hide();
+        _mp.flingSpotlight.noiseRangeIndicator.gameObject.SetActive(false);
+        _mp.flingSpotlight.flingRangeIndicator.gameObject.SetActive(false);
+        _mp.controller = _mp.usualController;
+        //_mp.flingObject.trailren.enabled = false;
+        _mp.flingSpotlight.gameObject.SetActive(false);
     }
 }

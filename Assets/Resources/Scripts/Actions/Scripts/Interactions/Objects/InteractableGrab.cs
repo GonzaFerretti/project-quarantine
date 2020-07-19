@@ -8,6 +8,7 @@ public class InteractableGrab : IActionInteractableObject
     public void Do(InteractableObject obj)
     {
         //tentative
+        /*
         TentativeMapInfoKeeper infoKeeper = MonoBehaviour.FindObjectOfType<TentativeMapInfoKeeper>();
         int positionInList = 0;
         TentativeMapInfo currentMapInfo = infoKeeper.sceneMapAssigner[SceneManager.GetActiveScene().name];
@@ -25,7 +26,7 @@ public class InteractableGrab : IActionInteractableObject
             currentMapInfo.positions.Remove(currentMapInfo.positions[positionInList]);
             currentMapInfo.rotations.Remove(currentMapInfo.rotations[positionInList]);
             //currentMapInfo.scales.Remove(currentMapInfo.scales[positionInList]);
-        }
+        }*/
         Object.Destroy(obj.gameObject);
     }
 }

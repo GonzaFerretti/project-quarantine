@@ -1,27 +1,27 @@
 ﻿using UnityEngine;
 
-public class ActionVault : IAction
+public class ActionVault : ActionBaseInteract
 {
     private float vaultHeight;
-    private float vaultCheckDistance;
     private float objectiveOffset;
     private float distanceModifierMin;
     public ActionVault(float _vaultHeight, float _vaultCheckDistance, float _objectiveOffset, float _distanceModifierMin)
     {
         vaultHeight = _vaultHeight;
-        vaultCheckDistance = _vaultCheckDistance;
+        interactionDistance = _vaultCheckDistance;
         objectiveOffset = _objectiveOffset;
         distanceModifierMin = _distanceModifierMin;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelHumanoid mh = m as ModelHumanoid;
 
         if (!mh.isVaulting)
         {
-            Ray directionFacingRay = new Ray((m as ModelChar).GetRayCastOrigin(), m.transform.forward);
-            RaycastHit[] directionHits = Physics.RaycastAll(directionFacingRay, vaultCheckDistance);
+            Vector3 rayCastOrigin = (m as ModelChar).GetRayCastOrigin();
+            Ray directionFacingRay = new Ray(rayCastOrigin, m.transform.forward);
+            RaycastHit[] directionHits = Physics.RaycastAll(directionFacingRay, interactionDistance);
             bool checkVault = false;
             GameObject closestVault = null;
             foreach (RaycastHit Dhit in directionHits)
@@ -37,7 +37,7 @@ public class ActionVault : IAction
             {
                 mh.vaultHeight = vaultHeight;
                 Collider obsCol = closestVault.GetComponent<Collider>();
-                float vaultMaxDist = LongestPossibleRoute(obsCol) + vaultCheckDistance;
+                float vaultMaxDist = LongestPossibleRoute(obsCol) + interactionDistance;
                 Vector3 vaultCastStartPoint = (m as ModelChar).GetRayCastOrigin() + m.transform.forward * vaultMaxDist;
                 //Throw a ray from the longest possible distance the object can be vaulted, but in the opposite direction the player is facing, so we can find where the other end should be.
                 Ray endLocationRay = new Ray(vaultCastStartPoint, -(m.transform.forward));
@@ -53,14 +53,41 @@ public class ActionVault : IAction
                     }
                 }
                 // Add a multiplier to modify the duration depending on how close the character is from the vault object.
-                float distanceFromVaultCoefficient = Vector3.Distance((m as ModelChar).GetRayCastOrigin(), closestVault.transform.position)/vaultCheckDistance;
+                float distanceFromVaultCoefficient = Vector3.Distance((m as ModelChar).GetRayCastOrigin(), closestVault.transform.position)/interactionDistance;
                 float finalCoefficient = Mathf.Lerp(distanceModifierMin, 1, distanceModifierMin);
                 // Add an offset equal to half the size of the collider so it doesn't rely on the physics to pop it out of the obstacle in an unnatural manner.
                 float objectivePointOffset = m.GetComponent<Collider>().bounds.extents.x + objectiveOffset;
                 //Debug.DrawLine((m as ModelChar).GetRayCastOrigin(), objectivePoint, Color.red, 3);
-                mh.startVault(objectivePoint + m.transform.forward * objectivePointOffset,obsCol, finalCoefficient);
+                Vector3 finalPoint = objectivePoint + m.transform.forward * objectivePointOffset;
+                if (isVaultValid(rayCastOrigin, finalPoint, closestVault))
+                {
+                    mh.startVault(finalPoint, obsCol, finalCoefficient);
+                }
             }
         }
+    }
+
+    private bool isVaultValid(Vector3 startPoint,Vector3 finalPoint, GameObject vault)
+    {
+        bool isThereAnObstacle = false;
+
+        RaycastHit[] obstacleHits = Physics.RaycastAll(startPoint, (finalPoint - startPoint).normalized, (finalPoint - startPoint).magnitude);
+        foreach (RaycastHit hit in obstacleHits)
+        {
+            if (hit.collider && hit.collider.gameObject != vault)
+            {
+                isThereAnObstacle = true;
+                break;
+            }
+        }
+        RaycastHit groundHit = new RaycastHit();
+        bool hasGroundBeneath = false;
+        Physics.Raycast(finalPoint, Vector3.down,out groundHit, float.MaxValue, 1 << LayerMask.NameToLayer("Ground"));
+        if (groundHit.collider)
+        {
+            hasGroundBeneath = true;
+        }
+        return !(isThereAnObstacle) && hasGroundBeneath;
     }
 
     private float LongestPossibleRoute(Collider objectCol)

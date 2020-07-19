@@ -43,8 +43,8 @@ namespace DecalSystem {
 
 
         public void OnValidate() {
-            if (!Material) Sprite = null;
-            if (Sprite && Material.mainTexture != Sprite.texture) Sprite = null;
+            //if (!Material) Sprite = null;
+            //if (Sprite && Material.mainTexture != Sprite.texture) Sprite = null;
 
             MaxAngle = Mathf.Clamp( MaxAngle, 1, 180 );
             Offset = Mathf.Clamp( Offset, 0.005f, 0.05f );

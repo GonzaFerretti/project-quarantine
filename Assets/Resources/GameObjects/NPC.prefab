@@ -48,11 +48,14 @@ MonoBehaviour:
   requiredAction: {fileID: 11400000, guid: 1fea96819cfe8a947a1d901a3b7ce36b, type: 2}
   feedback: {fileID: 11400000, guid: b7a11d0cb2d7a3247b6f83dacd12eed1, type: 2}
   animator: {fileID: 0}
+  preview: {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 0}
   dialogBox: {fileID: 0}
   textField: {fileID: 0}
   npcAttributes: {fileID: 11400000, guid: 7d0bfb87573d7574b8cfe3df0efb636d, type: 2}
+  currentResource: {fileID: 0}
+  currentAmountRequired: 0
   currentDialog: []
   currentLine: 0
   maxLine: 0

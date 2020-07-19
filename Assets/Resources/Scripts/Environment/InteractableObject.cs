@@ -5,6 +5,7 @@ public class InteractableObject : Model
     public ActionWrapper requiredAction;
     public InteractableFeedbackWrapper feedback;
     public Animator animator;
+    public InteractablePreviewWrapper preview;
 
     //Tentative
     public GameObject objModel;
@@ -29,6 +30,11 @@ public class InteractableObject : Model
         {
             initModel(ref animator, objModel, anims);
         }
+        if(preview)
+        {
+            preview.SetAction();
+        }
+        
         /*
         _mat = Resources.Load<Material>("Art/Visual/Placeholder/Blue");
         transform.GetComponent<MeshRenderer>().material = _mat;*/
@@ -36,7 +42,10 @@ public class InteractableObject : Model
 
     public void Interact(ModelPlayable c)
     {
+        if (feedback)
+        { 
         if (feedback.action == null) feedback.SetAction();
         feedback.action.Do(this);
+        }
     }
 }

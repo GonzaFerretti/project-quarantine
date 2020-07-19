@@ -67,8 +67,13 @@ public class ModelPlayable : ModelHumanoid
         duckingBodyHeight = standingBodyHeight / 2;
         bodyHeight = standingBodyHeight;
         _rb = GetComponent<Rigidbody>();
+        InitFlingObsChecker();
     }
 
+    public List<GameObject> GetFlingObstacleObjects()
+    {
+        return FlingObstacleChecker.GetCloseObstacles();
+    }
 
     void LocRepositioning(Model m)
     {

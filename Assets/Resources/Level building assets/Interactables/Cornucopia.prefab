@@ -6231,6 +6231,7 @@ MonoBehaviour:
   requiredAction: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   feedback: {fileID: 11400000, guid: 5315370a5618f5a42898b9c4f4f7df7b, type: 2}
   animator: {fileID: 0}
+  preview: {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 0}
   item: {fileID: 11400000, guid: 64605b5d4cb8ccb44b4b1bd7b117caec, type: 2}
