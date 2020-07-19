@@ -5,5 +5,5 @@ Project Quarantine is a stealth game where you have to gather resources to keep 
 Collaborators:
 - Gonzalo Ferretti: Unity Developer
 - Pablo Sueiro: Unity Developer
-- Agustin Seisdedos: Game Designer
-- Sofia Escrofani: 3D Artist
+- Agustín Seisdedos: Game Designer
+- Sofía Escrofani: 3D Artist
