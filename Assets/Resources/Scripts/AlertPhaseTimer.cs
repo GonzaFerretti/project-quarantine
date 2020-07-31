@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class AlertPhaseTimer : MonoBehaviour
 {
@@ -14,25 +16,20 @@ public class AlertPhaseTimer : MonoBehaviour
 
     private void Start()
     {
-        if (!seenIndicator)
-        { 
-        seenIndicator = GameObject.Find("IconitoOjoCambiable").GetComponent<Image>();
-        }
-        seenIndicator.sprite = eyeShut;
         EventManager.SubscribeToEvent("Alert", ActivateAlert);
         EventManager.SubscribeToEvent("UnsubEnter", EnterBehavior);
-        /*
-        if (!timerText)
+        soundManager = FindObjectOfType<SoundManager>();
+        StartCoroutine(StartSeenIndicator());
+    }
+
+    IEnumerator StartSeenIndicator()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (!seenIndicator)
         {
-            try
-            {
-                timerText = GameObject.Find("DiscoveryTimer").GetComponent<Text>();
-            }
-            catch
-            {
-                Debug.LogError("Couldn't find Timer Object! Please make sure the Canvas was added to the scene!");
-            }
-        }*/
+            seenIndicator = GameObject.Find("IconitoOjoCambiable").GetComponent<Image>();
+        }
+        seenIndicator.sprite = eyeShut;
     }
 
     private void ActivateAlert()
@@ -54,10 +51,7 @@ public class AlertPhaseTimer : MonoBehaviour
         if (timer > 0)
         {
             timer -= Time.deltaTime;
-            /*
-            timerText.color = Color.red;*/
             seenIndicator.sprite = eyeOpen;
-            //timerText.text = "Alert!" + "\n" + timer.ToString("F0");
         }
         else
         {

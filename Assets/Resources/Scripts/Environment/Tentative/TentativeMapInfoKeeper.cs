@@ -15,6 +15,7 @@ public class TentativeMapInfoKeeper : MonoBehaviour
     public ItemWrapper firecracker;
     public ItemWrapper firstAidKit;
     public Fence fence;
+    public string sceneName;
 
     private void Start()
     {
@@ -55,7 +56,10 @@ public class TentativeMapInfoKeeper : MonoBehaviour
 
     void SpawnItems(Scene current, Scene next)
     {
-        StartCoroutine(SpawnItemCoroutine());
+        if (sceneMapAssigner.ContainsKey(SceneManager.GetActiveScene().name))        
+            StartCoroutine(SpawnItemCoroutine());        
+        else
+            FindObjectOfType<LoadAsync>().futureScene = sceneName;
     }
 
     IEnumerator UpdateUICoroutine(ModelPlayable player)

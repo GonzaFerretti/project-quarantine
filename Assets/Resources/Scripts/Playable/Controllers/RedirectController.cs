@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Controller/Player/Redirect Controller")]
 public class RedirectController : ControllerWrapper, IController
 {
-    ModelChar _model;
+    ModelPlayable _model;
     Vector3 frontGoal;
     Vector3 insideGoal;
     Vector3 forward;
@@ -15,14 +15,24 @@ public class RedirectController : ControllerWrapper, IController
     public float animationDuration;
     bool isCoroutineHappening;
 
+    public float enterAmplitude;
+    public float enterSpeed;
+    public float exitAmplitude;
+    public float exitSpeed;
+
     public void AssignModel(Model model)
     {
-        _model = model as ModelChar;
+        _model = model as ModelPlayable;
     }
 
     public override ControllerWrapper Clone()
     {
-        return new RedirectController();
+        RedirectController clone = CreateInstance("RedirectController") as RedirectController;
+        clone.enterAmplitude = enterAmplitude;
+        clone.exitAmplitude = exitAmplitude;
+        clone.enterSpeed = enterSpeed;
+        clone.exitSpeed = exitSpeed;
+        return clone;
     }
 
     public void OnUpdate()
@@ -35,11 +45,29 @@ public class RedirectController : ControllerWrapper, IController
         }
         else
         {
-            if (!isCoroutineHappening)
+            if (hidingPlace.requiredAction == hidingPlace.hideAction)
             {
-                _model.StartCoroutine(EnterHidingPlace());
-                isCoroutineHappening = true;
+                (_model.hidingActionController as HidingActionController).amplitude = enterAmplitude;
+                (_model.hidingActionController as HidingActionController).speed = enterSpeed;
+                (_model.hidingActionController as HidingActionController).SetGoal(new Vector3(hidingPlace.transform.position.x, hidingPlace.GetComponent<BoxCollider>().bounds.max.y, hidingPlace.transform.position.z));
             }
+            else
+            {
+                RaycastHit ray;
+                Physics.Raycast(hidingPlace.transform.position + hidingPlace.transform.forward * 3, Vector3.down * 5, out ray);
+
+                if (ray.collider)
+                {
+                    (_model.hidingActionController as HidingActionController).amplitude = exitAmplitude;
+                    (_model.hidingActionController as HidingActionController).speed = exitSpeed;
+                    (_model.hidingActionController as HidingActionController).SetGoal(ray.point);
+                }
+            }
+
+            (_model.hidingActionController as HidingActionController).dur = 0;
+            _model.controller = _model.hidingActionController;
+            _model.animator.Play("Jump");
+            _model.StartCoroutine(EnterHidingPlace());
         }
     }
 
@@ -48,7 +76,6 @@ public class RedirectController : ControllerWrapper, IController
         yield return new WaitForSeconds(animationDuration);
         {
             _model.transform.position = insideGoal;
-
 
             HideController hc = ((_model as ModelPlayable).hideController as HideController);
             hc.AssignModel(_model);

@@ -23,6 +23,8 @@ public class ModelSpycam : ModelEnemy
     public float maxLightIntensity;
     public float minLightScaleDistance;
     public float maxLightDistance;
+    public GameObject areaPrefab;
+    public Transform area;
 
     protected override void Start()
     {
@@ -38,11 +40,18 @@ public class ModelSpycam : ModelEnemy
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
         EventManager.SubscribeToEvent("UnsubEnter", EnterBehavior);
+
+        GameObject areago = Instantiate(areaPrefab, null);
+        area = areago.transform;
     }
 
     protected override void Update()
     {
         base.Update();
+        if (transform.hasChanged)
+        {
+            UpdateLightIndicator();
+        }
         if (IsInSight(target, alertRange))
         {
             EventManager.TriggerEvent("Alert");
@@ -56,6 +65,16 @@ public class ModelSpycam : ModelEnemy
         yield return new WaitForSeconds(waitTime);
         currentSpeed = f;
         coroutineCasted = false;
+    }
+
+    void UpdateLightIndicator()
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position, transform.forward, out hit, enemyAttributes.alertDistance, LayerMask.NameToLayer("Ground")))
+        {
+            area.position = hit.point;
+            transform.hasChanged = false;
+        }
     }
 
     void AlertBehavior()

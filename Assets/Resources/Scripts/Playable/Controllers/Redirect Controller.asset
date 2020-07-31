@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceTreshold: 0.73
   animationDuration: 1
+  enterAmplitude: 2
+  enterSpeed: 2.4
+  exitAmplitude: 0.3
+  exitSpeed: 2.3

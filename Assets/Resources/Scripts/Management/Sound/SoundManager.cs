@@ -4,10 +4,15 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
-    private float bgmMasterVolume = 1, sfxMasterVolume = 1;
     public AudioMixerGroup amg;
     
-    public Dictionary<SoundClip, AudioSource> currentlyInitiatedSources;
+    public Dictionary<SoundClip, AudioSource> currentlyInitiatedSources = new Dictionary<SoundClip, AudioSource>();
+
+    public void Start()
+    {
+        if (FindObjectOfType<SoundManager>() && FindObjectOfType<SoundManager>() != this) Destroy(gameObject);
+        DontDestroyOnLoad(this);
+    }
 
     public void Play(SoundClip clip)
     {

@@ -214,9 +214,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58d7f9ee5aa8cb438a5a5cea867a00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   requiredAction: {fileID: 11400000, guid: b61e571d7c5a21d418771b6908161e9c, type: 2}
   feedback: {fileID: 0}
   animator: {fileID: 0}
-  preview: {fileID: 11400000, guid: 27fa163d28941c0429fe94a6833732f9, type: 2}
+  previews:
+  - {fileID: 11400000, guid: 27fa163d28941c0429fe94a6833732f9, type: 2}
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 0}
+  hasBeenPreviewed: 0

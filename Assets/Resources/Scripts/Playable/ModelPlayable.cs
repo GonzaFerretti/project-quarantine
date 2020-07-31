@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
-public class ModelPlayable : ModelHumanoid
+public class ModelPlayable : ModelHumanoid, IMakeNoise
 {
     float _sneakSpeed;
     public float bodyHeight;
@@ -13,12 +14,19 @@ public class ModelPlayable : ModelHumanoid
     public ControllerWrapper usualController;
     public ControllerWrapper redirectController;
     public ControllerWrapper hideController;
+    public ControllerWrapper hidingActionController;
     public ControllerWrapper flingController;
     public ControllerWrapper talkController;
     public ControllerWrapper lossController;
+    public ControllerWrapper whistleController;
     public FlingSpotLight flingSpotlight;
+    public RangeIndicator rangeIndicator;
+    public GameObject rangeIndicatorPrefab;
+    public float whistleStrength;
     public bool isHidden = false;
     public Item currentlySelectedItem;
+    public CameraMovement mainCam;
+    public CameraMovement secondaryCamera;
 
     public Dictionary<KeyCode, movementKeysDirection> movementKeys = new Dictionary<KeyCode, movementKeysDirection>();
 
@@ -27,23 +35,41 @@ public class ModelPlayable : ModelHumanoid
     public Firecracker firecracker;
     Rigidbody _rb;
 
+    public float GetNoiseValue()
+    {
+        return whistleStrength;
+    }
+
+    public void InitIndicator()
+    {
+        GameObject newRangeIndicator = Instantiate(rangeIndicatorPrefab, transform);
+        newRangeIndicator.transform.rotation = rangeIndicatorPrefab.transform.localRotation;
+        newRangeIndicator.transform.localPosition = Vector3.zero;
+        rangeIndicator = newRangeIndicator.GetComponent<RangeIndicator>();
+        rangeIndicator.gameObject.SetActive(false);
+    }
+
+    private void ChangedActiveScene(Scene current, Scene next)
+    {
+        StartCoroutine(FindCameras());
+    }
+
     protected override void Start()
     {
         DontDestroyOnLoad(this);
+        InitIndicator();
         controller = usualController;
         base.Start();
         SetAttributes(myAttributes);
-        flingController.SetController();
-        flingController.myController.AssignModel(this);
-        if (!flingObject)
-        {
-            GameObject newFlingObject = Instantiate(baseFlingObject, transform.parent);
-            newFlingObject.SetActive(false);
-            flingObject = newFlingObject.GetComponent<FlingObject>();
-            newFlingObject.gameObject.SetActive(false);
-        }
-        talkController.SetController();
-        talkController.myController.AssignModel(this);
+
+        SetController(flingController);
+        SetController(talkController);
+        SetController(lossController);
+        SetController(redirectController);
+        SetController(hideController);
+        SetController(hidingActionController);
+
+        CheckFlingObjectExistsOrCreate();
 
         for (int i = 0; i < gainedActions.Count; i++)
         {
@@ -55,9 +81,6 @@ public class ModelPlayable : ModelHumanoid
             (controller as PlayerController).StartFunction();
         }
 
-        lossController.SetController();
-        lossController.myController.AssignModel(this);
-
         inv = inv.cloneInvTemplate();
         inv.initializeInventory(this);
         EventManager.SubscribeToEvent("Loss", LossBehavior);
@@ -68,6 +91,16 @@ public class ModelPlayable : ModelHumanoid
         bodyHeight = standingBodyHeight;
         _rb = GetComponent<Rigidbody>();
         InitFlingObsChecker();
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+        mainCam = GameObject.Find("Main Camera").GetComponent<CameraMovement>();
+        secondaryCamera = GameObject.Find("minimapCamera").GetComponent<CameraMovement>();
+    }
+
+    public IEnumerator FindCameras()
+    {
+        yield return new WaitForEndOfFrame();
+        mainCam = GameObject.Find("Main Camera").GetComponent<CameraMovement>();
+        secondaryCamera = GameObject.Find("minimapCamera").GetComponent<CameraMovement>();
     }
 
     public List<GameObject> GetFlingObstacleObjects()
@@ -82,6 +115,12 @@ public class ModelPlayable : ModelHumanoid
         transform.position = door.targetLocation;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
         StartCoroutine(Unfreeze());
+    }
+
+    void SetController(ControllerWrapper c)
+    {
+        c.SetController();
+        c.myController.AssignModel(this);
     }
 
     IEnumerator Unfreeze()
@@ -110,6 +149,7 @@ public class ModelPlayable : ModelHumanoid
         currentSpeed = standardSpeed;
         //bodyHeight = attributes.bodyheight;
         gainedActions = new List<ActionWrapper>();
+        whistleStrength = attributes.whistleStrength;
         for (int i = 0; i < attributes.innateActions.Length; i++)
         {
             gainedActions.Add(attributes.innateActions[i]);

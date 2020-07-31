@@ -152,12 +152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3deb7cbc8b55524885f696ffb65417a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   requiredAction: {fileID: 11400000, guid: e4b22e86750d82849922ef36f928cbb4, type: 2}
   feedback: {fileID: 11400000, guid: 2c58ebcebc1a6224787158725573a7e2, type: 2}
   animator: {fileID: 3682343662993302849}
-  preview: {fileID: 11400000, guid: 10e20effbb631eb4db2f08ae75309e40, type: 2}
+  previews:
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
+  - {fileID: 11400000, guid: cb9d4cbb4fdad6648ab49675aecc1a48, type: 2}
+  - {fileID: 11400000, guid: 10e20effbb631eb4db2f08ae75309e40, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 9100000, guid: 9626d1630db49cf4f870e00f2dd3ea47, type: 2}
+  hasBeenPreviewed: 0
   openColliders: {fileID: 8855970168486706350}
   closedColliders: {fileID: 8855970170080217259}
   canBeCut: 0

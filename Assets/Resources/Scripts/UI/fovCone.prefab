@@ -91,14 +91,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63d117ccc6fa3c44928ae91f95587b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
   fov: 90
   viewDistance: 5
   heightOffset: 0.25
   curveSharpness: 1
+  layerFilter:
+    serializedVersion: 2
+    m_Bits: 7991
   model: {fileID: 0}
   startingAngle: 0
   suspectMaterial: {fileID: 2100000, guid: d6571f30cb75b73438c56b17e3f1f6c2, type: 2}
+  isVisible: 1
   detectionMaterial: {fileID: 2100000, guid: 2e88ffb95f8e6f34789244a90c63e1dd, type: 2}

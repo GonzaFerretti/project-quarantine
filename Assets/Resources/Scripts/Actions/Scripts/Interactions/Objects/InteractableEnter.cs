@@ -36,9 +36,8 @@ public class InteractableEnter : IActionInteractableObject
         {
             if (MonoBehaviour.FindObjectOfType<AlertPhaseTimer>().timer == 0)
             {
-                EventManager.TriggerLocEvent("EnterLocation", obj);
                 EventManager.TriggerEvent("UnsubEnter");
-                GameObject.Destroy(GameObject.Find("interfaceBase"));
+                //GameObject.Destroy(GameObject.Find("interfaceBase"));
                 door.SceneLoad();
             }
         }

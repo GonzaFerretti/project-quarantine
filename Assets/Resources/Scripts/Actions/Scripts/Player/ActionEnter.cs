@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ActionEnter : ActionBaseInteract
 {
@@ -16,8 +17,14 @@ public class ActionEnter : ActionBaseInteract
         ModelChar mc = m as ModelChar;
         if (hit.collider && hit.collider.GetComponent<Door>() && MonoBehaviour.FindObjectOfType<AlertPhaseTimer>() && MonoBehaviour.FindObjectOfType<AlertPhaseTimer>().timer == 0)
         {
-            m.transform.position = hit.collider.GetComponent<Door>().targetLocation;
+            m.StartCoroutine(GoToPosition(m,hit));
         }
+    }
+
+    IEnumerator GoToPosition(Model m, RaycastHit hit)
+    {
+        yield return new WaitForFixedUpdate();
+        m.transform.position = hit.collider.GetComponent<Door>().targetLocation;
     }
 
     Vector3 ReturnHeight(float f)

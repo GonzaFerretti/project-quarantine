@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Door : InteractableObject
 {
-    public MapSetter mapSetter;
+    //public MapSetter mapSetter;
     public string tentativeSceneName;
-    public MapAttributes mapAttributes;
-    public MapInfoKeeper mapInfoKeeper;
+    //public MapAttributes mapAttributes;
+    //public MapInfoKeeper mapInfoKeeper;
     public Vector3 targetLocation;
-
+    public Image loadScreen;
+    public Image loadBar;
+    string currentScene;
     //public MapAttributes GenerateIndoorAttributes()
     //{
     //    MapAttributes newMap = ScriptableObject.CreateInstance("MapAttributes") as MapAttributes;
@@ -38,7 +41,6 @@ public class Door : InteractableObject
     void AlertAction()
     {
         requiredAction.name = "Locked";
-
     }
 
     void AlertStopAction()
@@ -56,12 +58,27 @@ public class Door : InteractableObject
     IEnumerator DelayedSceneLoad()
     {
         yield return new WaitForFixedUpdate();
-        SceneManager.LoadScene(tentativeSceneName);
+        FindObjectOfType<TentativeMapInfoKeeper>().sceneName = tentativeSceneName;
+        AsyncOperation loadScene = SceneManager.LoadSceneAsync(tentativeSceneName, LoadSceneMode.Additive);
+        StartCoroutine(GetSceneLoadProgress(loadScene));
+    }
+
+    IEnumerator GetSceneLoadProgress(AsyncOperation loadScene)
+    {
+        while (loadScene.progress < 0.9)
+        {
+            loadBar.fillAmount = loadScene.progress / 0.9f;
+            yield return null;
+        }
         EventManager.TriggerEvent("Enter");
+        EventManager.TriggerLocEvent("EnterLocation", this);
+        SceneManager.UnloadSceneAsync(currentScene);
     }
 
     public void SceneLoad()
     {
+        loadScreen.gameObject.SetActive(true);
+        currentScene = SceneManager.GetActiveScene().name;
         StartCoroutine(DelayedSceneLoad());
     }
 }

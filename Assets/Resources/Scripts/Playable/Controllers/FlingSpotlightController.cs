@@ -28,20 +28,21 @@ public class FlingSpotlightController : ControllerWrapper, IController
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
         Vector3 _modelDistVector = new Vector3(_model.transform.position.x, 0, _model.transform.position.z);
-        Vector3 _playableDistVector = new Vector3(_model.modelPlayable.transform.position.x, 0, _model.modelPlayable.transform.position.z);
+        ModelPlayable mp = _model.modelPlayable;
+        Vector3 _playableDistVector = new Vector3(mp.transform.position.x, 0, mp.transform.position.z);
 
         //Debug.Log(Physics.RaycastAll(ray, float.MaxValue, 1 << groundLayerId).Length);
         RaycastHit[] groundHits = Physics.RaycastAll(ray, float.MaxValue, 1 << groundLayerId);
         if (groundHits.Length > 0)
         {
-            float range = _model.modelPlayable.strength;
+            float range =mp.strength;
             hit = groundHits[0];
-            Vector3 mPos = _model.modelPlayable.transform.position;
+            Vector3 mPos = mp.transform.position;
             Vector3 direction = new Vector3(hit.point.x - mPos.x,0, hit.point.z - mPos.z);
             Vector3 clampedDirection = Vector3.ClampMagnitude(direction, range);
             Vector3 finalPosition = new Vector3(mPos.x + clampedDirection.x, hit.point.y, mPos.z + clampedDirection.z);
-            _model.flingRangeIndicator.UpdatePosition(finalPosition, _model.GetComponentInParent<ModelPlayable>().baseFlingObject.GetComponent<FlingObject>().noiseValue);
-            _model.noiseRangeIndicator.UpdatePosition(_model.transform.parent.position, range * 2);
+            //mp.rangeIndicator.UpdatePosition(_model.transform.parent.position, range * 2);
+            _model.noiseRangeIndicator.UpdatePosition(finalPosition);
             _model.transform.position = finalPosition + Vector3.up * height;
             UpdateTrajectory(_model.modelPlayable);
         }

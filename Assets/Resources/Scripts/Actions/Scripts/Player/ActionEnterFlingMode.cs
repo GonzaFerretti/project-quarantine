@@ -14,21 +14,16 @@ public class ActionEnterFlingMode : IAction
         }
 
         FlingSpotLight fs = mp.flingSpotlight;
-
         if (mp.controller != mp.flingController)
         {
             if (myflingables.Count == 0) return;
-            fs.gameObject.SetActive(true);
-            fs.noiseRangeIndicator.gameObject.SetActive(true);
-            fs.flingRangeIndicator.gameObject.SetActive(true);
+            fs.SetIndicatorState(true);
             mp.controller = mp.flingController;
         }
         else
         {
             (fs.controller as FlingSpotlightController)._curveDrawer.Hide();
-            fs.gameObject.SetActive(false);
-            fs.noiseRangeIndicator.gameObject.SetActive(false);
-            fs.flingRangeIndicator.gameObject.SetActive(false);
+            fs.SetIndicatorState(false);
             mp.controller = mp.usualController;
         }
     }

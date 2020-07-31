@@ -217,10 +217,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6391621869539279117}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6391621869539279118
 MonoBehaviour:
@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b568ca0baea0da459cfb05933149e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   noiseValue: 15
-  collisionAction:
-  - {fileID: 11400000, guid: cf4d42f04384c7f438e0c55fb07c595a, type: 2}
+  collisionActions: []
   rb: {fileID: 0}
   objectsNotToCollideWith: []
   tentativeFeedback: {fileID: 1112178774142206120, guid: 5afdeab0e31362b40aa1fac7de8a10c8,
@@ -246,7 +246,8 @@ MonoBehaviour:
   trailren: {fileID: 8811587853463959794}
   currentRotation: 0
   currentBaseRotation: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
+  rotationSpeed: 360
+  impactedObject: {fileID: 0}
 --- !u!54 &6391621869539279119
 Rigidbody:
   m_ObjectHideFlags: 0

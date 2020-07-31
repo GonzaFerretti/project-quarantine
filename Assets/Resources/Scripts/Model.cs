@@ -2,6 +2,7 @@
 
 public class Model : MonoBehaviour
 {
+    public SoundManager sm;
     public virtual void InitModel(ref Animator animator, GameObject characterModel, RuntimeAnimatorController animations)
     {
         GameObject myPlayerCharacter = Instantiate(characterModel, transform);
@@ -11,8 +12,17 @@ public class Model : MonoBehaviour
         myPlayerCharacter.GetComponent<Animator>().runtimeAnimatorController = animations;
         animator = myPlayerCharacter.GetComponent<Animator>();
         }
-        CharacterSounds charSounds = myPlayerCharacter.GetComponentInChildren<CharacterSounds>();
-        charSounds.FindSoundManager();
+        SoundManager globalSm = FindObjectOfType<SoundManager>();
+        sm = globalSm;
+        if (GetComponentInChildren<CharacterSounds>())
+        {
+            CharacterSounds charSounds = myPlayerCharacter.GetComponentInChildren<CharacterSounds>();
+            charSounds.FindSoundManager();
+        }
+        else
+        {
+            globalSm.GetComponent<CharacterSounds>().Clone(myPlayerCharacter);
+        }
         myPlayerCharacter.name = "characterModel";
     }
 }

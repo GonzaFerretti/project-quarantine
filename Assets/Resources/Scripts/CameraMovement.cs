@@ -10,20 +10,35 @@ public class CameraMovement : MonoBehaviour
 
     public bool isMainCamera;
 
+    [Header("Test")]
+    public bool testLerp;
+    public float testWaitDuration;
+    public float testTransitionDuration;
+    public Transform testTarget;
+    public Vector3 testDistanceVector;
+
+
     public float camDistanceStep;
     public float camRotationStep;
     private float startingDistance;
     private Vector3 defaultCamRotation;
     public bool shouldMove = true;
+    public focusStatus status = focusStatus.isNotFocused;
 
     public Vector2 smooth;
 
     public bool activateSmooth;
 
+    public enum focusStatus
+    {
+        isFocused,
+        isFocusing,
+        isNotFocused,
+    }
+
     //Tentative
     private void Start()
     {
-        if (!GetComponent<SoundManager>()) gameObject.AddComponent<SoundManager>();
         StartCoroutine(FindPlayer());
         if (isMainCamera)
         {
@@ -41,24 +56,54 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    public void StartFocusOnPoint(Vector3 targetPos, float waitDuration, float transitionDuration, Vector3 distanceVector)
+    {
+        StartCoroutine(FocusOnPoint(targetPos, waitDuration, transitionDuration, distanceVector));
+    }
+
+    IEnumerator FocusOnPoint(Vector3 targetPos, float waitDuration,float transitionDuration, Vector3 distanceVector)
+    {
+        float startTime = Time.time;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = targetPos + distanceVector;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = Quaternion.LookRotation(-distanceVector.normalized);
+        StartCoroutine(LerpCamera(startTime, transitionDuration, startPosition, endPosition, startRotation, endRotation, focusStatus.isFocused));
+        while (!(status == focusStatus.isFocused))
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(waitDuration);
+        startTime = Time.time;
+        endPosition = startPosition;
+        startPosition = transform.position;
+        endRotation = startRotation;
+        startRotation = transform.rotation;
+        StartCoroutine(LerpCamera(startTime, transitionDuration, startPosition, endPosition, startRotation, endRotation, focusStatus.isNotFocused));
+        while (!(status == focusStatus.isNotFocused))
+        {
+            yield return null;
+        }
+    }
+
+    public IEnumerator LerpCamera(float startTime, float duration, Vector3 startPosition, Vector3 endPosition, Quaternion startRotation, Quaternion endRotation, focusStatus finalStatus)
+    {
+        status = focusStatus.isFocusing;
+        while (Time.time - startTime < duration)
+        {
+            float index = Mathf.InverseLerp(0, duration, Time.time - startTime);
+            transform.position = Vector3.Lerp(startPosition, endPosition, index);
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, index);
+            yield return null;
+        }
+        status = finalStatus;
+    }
+
     IEnumerator FindPlayer()
     {
         yield return new WaitForEndOfFrame();
         if (!player) player = FindObjectOfType<ModelPlayable>();
     }
-    /*
-    public void setFixedCamera(bool _shouldMove,Vector3 position, Vector3 rotation)
-    {
-        shouldMove = _shouldMove;
-        if (!shouldMove)
-        {
-            if (isMainCamera)
-            {
-                transform.position = position;
-                transform.rotation = Quaternion.Euler(rotation);
-            }
-        }
-    }*/
 
     private void LateUpdate()
     {
@@ -70,27 +115,19 @@ public class CameraMovement : MonoBehaviour
 
     void FollowTarget()
     {
-        if (activateSmooth)
+        if (status == focusStatus.isNotFocused)
         {
-
-            Vector3 newPos;
-            newPos.x = ((player.transform.position.x - camDistance * (transform.forward.x) - transform.position.x) / smooth.x) * Time.deltaTime;
-            newPos.y = ((player.transform.position.y - camDistance * (transform.forward.y) - transform.position.y) / smooth.y) * Time.deltaTime;
-            newPos.z = ((player.transform.position.z - camDistance * (transform.forward.z) - transform.position.z) / smooth.y) * Time.deltaTime;
-
-            transform.position += newPos;
+            transform.position = new Vector3(player.transform.position.x, player.standingBodyHeight, player.transform.position.z) - camDistance * transform.forward;
         }
-        else transform.position = new Vector3(player.transform.position.x - camDistance * (transform.forward.x), (/*player.transform.position.y + */player.standingBodyHeight)- camDistance * (transform.forward.y), player.transform.position.z - camDistance * (transform.forward.z));
+        if (testLerp)
+        {
+            testLerp = !testLerp;
+            StartFocusOnPoint(testTarget.position, testWaitDuration, testTransitionDuration, testDistanceVector);
+        }
     }
 
     private void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("DebugDelDebug");
-            FindObjectOfType<ModelPlayable>();
-        }*/
         if (shouldMove)
         {
             if (isMainCamera)
@@ -99,40 +136,19 @@ public class CameraMovement : MonoBehaviour
                 {
                     camDistance += camDistanceStep * -Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime;
                 }
-                else if (Input.GetKey(KeyCode.E))
-                {
-                    Vector3 angle = transform.localRotation.eulerAngles;
-                    angle += Vector3.down * Time.deltaTime * camRotationStep;
-                    transform.localRotation = Quaternion.Euler(angle);
-                    updateMovementDirection();
-                }
-                else if (Input.GetKey(KeyCode.Q))
-                {
-                    Vector3 angle = transform.localRotation.eulerAngles;
-                    angle += Vector3.up * Time.deltaTime * camRotationStep;
-                    transform.localRotation = Quaternion.Euler(angle);
-                    updateMovementDirection();
-                }
-            }
-            else
-            {
-                if (Input.GetKey(KeyCode.E))
-                {
-                    Vector3 angle = transform.localRotation.eulerAngles;
-                    angle += Vector3.down * Time.deltaTime * camRotationStep;
-                    transform.localRotation = Quaternion.Euler(angle);
-                }
-                else if (Input.GetKey(KeyCode.Q))
-                {
-                    Vector3 angle = transform.localRotation.eulerAngles;
-                    angle += Vector3.up * Time.deltaTime * camRotationStep;
-                    transform.localRotation = Quaternion.Euler(angle);
-                }
             }
         }
     }
 
-    private void updateMovementDirection()
+    public void Rotate(float directionMult, float step)
+    {
+        Vector3 angle = transform.localRotation.eulerAngles;
+        angle += Vector3.up * Time.deltaTime * step * directionMult;
+        transform.localRotation = Quaternion.Euler(angle);
+        if (isMainCamera) updateMovementDirection();
+    }
+
+    public void updateMovementDirection()
     {
         Vector3 right = transform.right * Mathf.Sqrt(2) / 2;
         Vector3 left = -right;

@@ -9,7 +9,7 @@ public class lampFlickering : MonoBehaviour
 {
     Light lampLight;
     public bool willFlicker;
-    public float usualIntensity;
+    float usualIntensity;
     private float waitTime;
     private float waitTimer = 0;
     private float flickersMax;
@@ -26,6 +26,7 @@ public class lampFlickering : MonoBehaviour
     private void Start()
     {
         lampLight = GetComponentInChildren<Light>();
+        usualIntensity = GetComponentInChildren<Light>().intensity;
         flickers = Random.Range(minFlickers, maxFlickers);
         waitTime = Random.Range(minWait, maxWait);
         waitTimer = 0;

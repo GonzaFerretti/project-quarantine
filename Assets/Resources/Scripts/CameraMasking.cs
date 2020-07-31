@@ -8,9 +8,9 @@ public class CameraMasking : MonoBehaviour
     public float checkDistanceDelta;
     public float perpendicularLength;
     public int buildingLayerId;
-    public int maskedBuildingLayerId;
     private WideCamMaskCheck wideCheckScript;
     public ModelPlayable player;
+    public float timeAfterFirstHide;
 
     public BoxCollider longCollider;
     public BoxCollider wideCollider;
@@ -19,8 +19,8 @@ public class CameraMasking : MonoBehaviour
     {
         longCollider = GetComponent<BoxCollider>();
         wideCheckScript = wideCollider.GetComponent<WideCamMaskCheck>();
+        wideCheckScript.timeAfterHide = timeAfterFirstHide;
         wideCheckScript.buildingLayerId = buildingLayerId;
-        wideCheckScript.maskedBuildingLayerId = maskedBuildingLayerId;
         longCollider.center = new Vector3(0, 0, checkDistanceDelta / 2);
         StartCoroutine(FindPlayerWithDelay());
     }
@@ -51,8 +51,8 @@ public class CameraMasking : MonoBehaviour
     {
         if (other.gameObject.layer == buildingLayerId)
         {
-            other.gameObject.layer = maskedBuildingLayerId;
-            wideCheckScript.SwitchPosition();
+            other.GetComponent<Building>().Hide(timeAfterFirstHide);
+            //wideCheckScript.SwitchPosition();
             wideCollider.enabled = true;
             wideCollider.size = new Vector3(perpendicularLength, 0.25f, 0.25f);
             //wideCollider.center = new Vector3(0, 0, checkDistance);
@@ -61,47 +61,21 @@ public class CameraMasking : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == buildingLayerId)
+        {
+            //wideCheckScript.SwitchPosition();
+        }
+    }
+
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == maskedBuildingLayerId)
+        if (other.gameObject.layer == buildingLayerId)
         {
-            other.gameObject.layer = buildingLayerId;
+            //other.GetComponent<Building>().UnHide(timeAfterFirstHide);
             wideCollider.enabled = false;
-            wideCheckScript.SwitchPosition();
+            //wideCheckScript.SwitchPosition();
         }
     }
-    /*
-    private void CheckCoveringBuilding()
-    {
-        RaycastHit[] hitsBuilding = Physics.RaycastAll(transform.position, transform.forward, checkDistance, 1 << buildingLayerId);
-        RaycastHit[] hitsMasked = Physics.RaycastAll(transform.position, transform.forward, checkDistance, 1 << maskedBuildingLayerId);
-        if (lastMaskedBuildings.Count > 0)
-        { 
-            List<GameObject> maskedButNotHitBuildings = new List<GameObject>(lastMaskedBuildings);
-            for (int i = 0; i < hitsMasked.Length; i++)
-            {
-                RaycastHit hit = hitsMasked[i];
-                if (maskedButNotHitBuildings.Contains(hit.transform.gameObject))
-                {
-                    maskedButNotHitBuildings.Remove(hit.transform.gameObject);
-                }
-            }
-            foreach (GameObject building in maskedButNotHitBuildings)
-            {
-                building.transform.gameObject.layer = buildingLayerId;
-            }
-        }
-        for (int i = 0; i<hitsBuilding.Length; i++)
-        {
-            RaycastHit hit = hitsBuilding[i];
-            hit.collider.gameObject.layer = maskedBuildingLayerId;
-            if (!lastMaskedBuildings.Contains(hit.transform.gameObject))
-            {
-                lastMaskedBuildings.Add(hit.transform.gameObject);
-            }
-        }
-
-        Debug.DrawLine(transform.position, transform.position + transform.forward * checkDistance, Color.red, Time.deltaTime);
-    }
-    */
 }

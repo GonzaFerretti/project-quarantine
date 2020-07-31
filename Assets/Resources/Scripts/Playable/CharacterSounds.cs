@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterSounds : MonoBehaviour
 {
-    SoundManager _manager;
+    public SoundManager _manager;
     public SoundClip leftFoot;
     public SoundClip rightFoot;
     public SoundClip landAfterVault;
@@ -14,10 +14,19 @@ public class CharacterSounds : MonoBehaviour
         FindSoundManager();
     }
 
+    public void Clone(GameObject go)
+    {
+        CharacterSounds charSounds = go.AddComponent<CharacterSounds>();
+        charSounds.leftFoot = leftFoot;
+        charSounds.rightFoot = rightFoot;
+        charSounds.landAfterVault = landAfterVault;
+        charSounds._manager = _manager;
+    }
+
     public void FindSoundManager()
     {
-        if(!_manager)
-        _manager = FindObjectOfType<SoundManager>();
+        if (!_manager)
+            _manager = FindObjectOfType<SoundManager>();
     }
 
     public void PlayLeftFootStep(float f)

@@ -45,9 +45,7 @@ public class SpycamAI : ControllerWrapper, IController
 
     public bool IsInRange(Vector3 condition, float range)
     {
-        if ((_model.transform.forward.x < condition.x + range && _model.transform.forward.x > condition.x - range) && (_model.transform.forward.z < condition.z + range && _model.transform.forward.z > condition.z - range))
-            return true;
-        else return false;
+        return ((_model.transform.forward.x < condition.x + range && _model.transform.forward.x > condition.x - range) && (_model.transform.forward.z < condition.z + range && _model.transform.forward.z > condition.z - range));
     }
 
     public override void SetController()

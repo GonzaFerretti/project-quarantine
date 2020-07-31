@@ -47,11 +47,11 @@ public class MapSetter : MonoBehaviour
     public void CreateDoor(Vector3 position, Quaternion rotation, int number)
     {
         Door newDoor = Instantiate(door);
-        newDoor.mapInfoKeeper = mapInfoKeeper;
+        //newDoor.mapInfoKeeper = mapInfoKeeper;
 
         //If this door has a link to a map attribute then it assigns that attribute
         if (mapInfoKeeper.doorLinker.ContainsKey(mapInfoKeeper.currentMap + newDoor.transform.position))
-            newDoor.mapAttributes = mapInfoKeeper.mapLinker[mapInfoKeeper.doorLinker[mapInfoKeeper.currentMap + newDoor.transform.position]];
+         //-   newDoor.mapAttributes = mapInfoKeeper.mapLinker[mapInfoKeeper.doorLinker[mapInfoKeeper.currentMap + newDoor.transform.position]];
 
         newDoor.transform.position = position;
     }

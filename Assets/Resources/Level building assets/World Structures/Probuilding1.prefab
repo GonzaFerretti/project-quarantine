@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4833706051441016222}
   - component: {fileID: 2885115289591158265}
   - component: {fileID: 6162261941727192552}
+  - component: {fileID: 4332913982400512149}
+  - component: {fileID: 7809322126605386339}
+  - component: {fileID: 1049843550}
   m_Layer: 11
   m_Name: Probuilding1
   m_TagString: Untagged
@@ -110,3 +113,50 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.16700001, y: -5.46, z: 8.205}
   m_TimeToStationary: 0.5
+--- !u!114 &4332913982400512149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568517681008216386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198141583cb14f14fbade1f49626ce19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transBaseMat: {fileID: 2100000, guid: f5cbd1b2b45d80c4bbfa61c9bc98eb23, type: 2}
+  isHiding: 0
+  opacity: 1
+--- !u!95 &7809322126605386339
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568517681008216386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e0aa0a454ae83545a9830c52aee33d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1049843550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568517681008216386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea6f7e10972d394d824ea97fb0220db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maskDirection: {x: 1, y: 0, z: 0}

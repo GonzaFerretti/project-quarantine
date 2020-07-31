@@ -76,13 +76,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359975f17d3d5b24fbb9cf884ccc8c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   requiredAction: {fileID: 11400000, guid: 12c85f03aa2383847ac7481e6be312ff, type: 2}
   feedback: {fileID: 11400000, guid: 718524a1e2f8d3d43858b31293a817d2, type: 2}
   animator: {fileID: 0}
-  preview: {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
+  previews:
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
   objModel: {fileID: 2215579688871701955, guid: a6513a9d14d0de34da0febbae2a37256,
     type: 3}
   anims: {fileID: 9100000, guid: 506b8dff37e967c4599cc85270e86ebf, type: 2}
+  hasBeenPreviewed: 0
   full: 0
   hideAction: {fileID: 11400000, guid: 12c85f03aa2383847ac7481e6be312ff, type: 2}
   unhideAction: {fileID: 11400000, guid: d1a6cc61e6790484294a36883deaa8c1, type: 2}

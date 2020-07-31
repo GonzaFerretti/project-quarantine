@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc5113e3dfe17d4bb6ee194bb2f2fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   controller: {fileID: 11400000, guid: b456120371ea80945a750da8e0239a67, type: 2}
   currentSpeed: 0
   standardSpeed: 0
@@ -245,10 +246,17 @@ MonoBehaviour:
   usualController: {fileID: 11400000, guid: b456120371ea80945a750da8e0239a67, type: 2}
   redirectController: {fileID: 11400000, guid: 7f4d4cf796eb95a4abf16d38d2f6da92, type: 2}
   hideController: {fileID: 11400000, guid: e864caa915fe2d142aad8e426f288b36, type: 2}
+  hidingActionController: {fileID: 11400000, guid: ad3da6ef70010394da92a94ee07a399f,
+    type: 2}
   flingController: {fileID: 11400000, guid: 34e189ab5645e4443860b33d828bf85a, type: 2}
   talkController: {fileID: 11400000, guid: 2bbf04f64c217634daa49354b4c2c5b4, type: 2}
   lossController: {fileID: 11400000, guid: 91b9ddc20f80f5f45a29a4f5df2fe223, type: 2}
+  whistleController: {fileID: 11400000, guid: da4433c552f48614197937d3ff511b02, type: 2}
   flingSpotlight: {fileID: 7636424143663356410}
+  rangeIndicator: {fileID: 0}
+  rangeIndicatorPrefab: {fileID: 4249991989642785645, guid: ae41fb11e76a7b344a1a8decf9f86831,
+    type: 3}
+  whistleStrength: 0
   isHidden: 0
   currentlySelectedItem: {fileID: 0}
   baseFlingObject: {fileID: 6391621869539279117, guid: 1366872e92e409a449c78158484e6542,
@@ -315,15 +323,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5e015515bb2e54cb5c8784b9ae68a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   modelPlayable: {fileID: 0}
   point: {x: 0, y: 0, z: 0}
   controller: {fileID: 11400000, guid: 5bf857d91452fa746a808a28edf7fa92, type: 2}
-  noiseRangeIndicatorPrefab: {fileID: 4249991989642785645, guid: ae41fb11e76a7b344a1a8decf9f86831,
-    type: 3}
-  flingRangeIndicatorPrefab: {fileID: 7210240740033550061, guid: d96c11edc2cc8a545b45cc212d10f50a,
+  noiseRangeIndicatorPrefab: {fileID: 7210240740033550061, guid: d96c11edc2cc8a545b45cc212d10f50a,
     type: 3}
   noiseRangeIndicator: {fileID: 0}
-  flingRangeIndicator: {fileID: 0}
 --- !u!108 &7636424143663356409
 Light:
   m_ObjectHideFlags: 0

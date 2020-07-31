@@ -14,23 +14,24 @@ public class MapManager : MonoBehaviour
         {
             myAction = myAction.Clone();
             myAction.SetAction();
-            StartCoroutine(FindMapInfoKeeper());
         }
-        else Destroy(gameObject);
+        StartCoroutine(FindMapInfoKeeper());
     }
 
     IEnumerator FindMapInfoKeeper()
     {
         yield return new WaitForFixedUpdate();
-        if (mapInfoKeeper == null)        
+        if (mapInfoKeeper == null)
             mapInfoKeeper = FindObjectOfType<TentativeMapInfoKeeper>();
 
         if (!mapInfoKeeper.sceneMapAssigner[SceneManager.GetActiveScene().name].enteredBefore)
         {
-            myAction.myMapAction.Do();
+            if (myAction)
+                myAction.myMapAction.Do();             
+            
             mapInfoKeeper.sceneMapAssigner[SceneManager.GetActiveScene().name].enteredBefore = true;
+            Destroy(gameObject);
         }
-
         else StartCoroutine(FindMapInfoKeeper());
     }
 }

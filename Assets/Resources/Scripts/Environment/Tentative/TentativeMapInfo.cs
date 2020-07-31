@@ -20,6 +20,10 @@ public class TentativeMapInfo : ScriptableObject
     public bool shouldCameraMove;
     public bool enteredBefore;    
 
+    public Vector3 camPosition;
+    public Vector3 camRotation;
+    public float distance;
+
     public TentativeMapInfo Clone()
     {
         TentativeMapInfo newTentativeMapInfo = CreateInstance("TentativeMapInfo") as TentativeMapInfo;
@@ -46,7 +50,6 @@ public class TentativeMapInfo : ScriptableObject
         newTentativeMapInfo.fencePositions = fencePositions;
         newTentativeMapInfo.fenceRotations = fenceRotations;
         newTentativeMapInfo.fenceWasBroken = fenceWasBroken;
-
 
         //newTentativeMapInfo.scales = new List<Vector3>();
         //for (int i = 0; i < scales.Count; i++)

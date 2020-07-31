@@ -85,8 +85,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: UrbanHouse2var4
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1800187155002596518, guid: f1e3088608b602d439e71b13db103900, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e3088608b602d439e71b13db103900, type: 3}
 --- !u!1 &2172303239844398328 stripped
 GameObject:

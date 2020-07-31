@@ -10,6 +10,7 @@ public class ModelPatrol : ModelEnemy
     public ControllerWrapper staggerController;
     public ControllerWrapper scoutController;
     public ControllerWrapper guardController;
+    public ControllerWrapper koController;
     public PatrolSpawner spawner;
     public GameObject fovConePrefab;
     public float runSpeed;
@@ -17,6 +18,8 @@ public class ModelPatrol : ModelEnemy
     public ActionCaptureWrapper actionCapture;
     public float meleeDistance;
     public float staggerTimer;
+    public RagdollController ragdoll;
+    public List<GameObject> fovCones = new List<GameObject>();
 
     protected override void Start()
     {
@@ -37,6 +40,10 @@ public class ModelPatrol : ModelEnemy
         guardController.SetController();
         (guardController as IController).AssignModel(this);
 
+        koController = koController.Clone();
+        koController.SetController();
+        (koController as IController).AssignModel(this);
+
         base.Start();
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
@@ -44,19 +51,38 @@ public class ModelPatrol : ModelEnemy
         EventManager.SubscribeToEvent("UnsubEnter", EnterBehavior);
         actionCapture = actionCapture.Clone();
         actionCapture.SetAction();
-
-        InitFOVCone(_suspectRange, true);
-        InitFOVCone(alertRange, false);
+        ragdoll = GetComponentInChildren<RagdollController>();
+        ragdoll.Init(this);
+        StartCoroutine(test());
     }
 
-    void InitFOVCone(float range, bool isSuspect)
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        InitFOVCone(enemyAttributes.angle, _suspectRange, true);
+        InitFOVCone(enemyAttributes.angle, alertRange, false);
+        InitFOVCone(360, GetComponent<SphereCollider>().radius, false);
+    }
+
+    void InitFOVCone(float angle,float range, bool isSuspect)
     {
         GameObject cone = Instantiate(fovConePrefab, null);
-        cone.GetComponent<FieldOfView>().Init(enemyAttributes.angle, range, gameObject, isSuspect);
+        cone.GetComponent<FieldOfView>().Init(angle, range, gameObject, isSuspect);
+        fovCones.Add(cone);
+    }
+
+    public void SetFOVcones(bool isOn)
+    {
+        foreach (GameObject fovCone in fovCones)
+        {
+            fovCone.SetActive(isOn);
+        }
     }
 
     protected override void Update()
     {
+        if (controller is PatrolKoAI) return;
         base.Update();
         if (IsInSight(target, alertRange))
         {
@@ -122,6 +148,7 @@ public class ModelPatrol : ModelEnemy
     void AlertBehavior()
     {
         if (controller is ChaseAI) return;
+        if (controller is PatrolKoAI) return;
         //Debug.Log(gameObject.name + "  " + Vector3.Distance(transform.position, target.transform.position) + " " + _alertDistance);
         if (Vector3.Distance(transform.position, target.transform.position) > _alertDistance) return;
         StartCoroutine(ChangeToAlert(0));
@@ -160,6 +187,7 @@ public class ModelPatrol : ModelEnemy
         if (c.gameObject.GetComponent<ModelPlayable>())
         {
             if (controller == staggerController) return;
+            if (controller is PatrolKoAI) return;
             if (controller != alertController)
             {
                 Stagger(staggerTimer);

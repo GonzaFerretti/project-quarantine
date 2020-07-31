@@ -26,14 +26,6 @@ public class ActionInteractPreview : IAction
         {
             RaycastHit hit = new RaycastHit();
             Physics.Raycast(startPoint, m.transform.forward, out hit, _rayDistance);
-            /*int i = 0;
-            /*string DebugText = "";
-            foreach (RaycastHit hitTest in Physics.RaycastAll(startPoint, m.transform.forward, _rayDistance))
-            {
-                i++;
-                DebugText += i + " " + hitTest.collider.gameObject.name + " ";
-            }
-            Debug.Log(DebugText);*/
             if (hit.collider)
             {
                 go = hit.collider.gameObject;
@@ -51,7 +43,10 @@ public class ActionInteractPreview : IAction
                 {
                     if (!(mc.gainedActions[i].action is ActionBaseInteract) || (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject)
                     {
-                        interactable.preview.previewAction.Do(m, _textBox, interactable, interactable.requiredAction == mc.gainedActions[i]);
+                        foreach (InteractablePreviewWrapper preview in interactable.previews)
+                        {
+                            preview.previewAction.Do(m, _textBox, interactable, interactable.requiredAction == mc.gainedActions[i]);
+                        }
                     }
                 }
             }

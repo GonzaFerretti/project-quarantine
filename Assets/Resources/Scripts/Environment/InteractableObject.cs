@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class InteractableObject : Model
 {
     public ActionWrapper requiredAction;
     public InteractableFeedbackWrapper feedback;
     public Animator animator;
-    public InteractablePreviewWrapper preview;
+    public List<InteractablePreviewWrapper> previews;
 
     //Tentative
     public GameObject objModel;
     public RuntimeAnimatorController anims;
+    public bool hasBeenPreviewed = false;
 
     //Tentative
     public virtual void initModel(ref Animator animator, GameObject characterModel, RuntimeAnimatorController animations)
@@ -30,7 +33,7 @@ public class InteractableObject : Model
         {
             initModel(ref animator, objModel, anims);
         }
-        if(preview)
+        foreach (InteractablePreviewWrapper preview in previews)
         {
             preview.SetAction();
         }

@@ -123,18 +123,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6956b164042c85543b6012429a01e709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   requiredAction: {fileID: 11400000, guid: eff97ae2f9229194eba16ade55b52550, type: 2}
   feedback: {fileID: 11400000, guid: 252f21cc82ea36544bda215d21c00c47, type: 2}
   animator: {fileID: 0}
-  preview: {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
+  previews:
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 0}
-  mapSetter: {fileID: 1176247790189006239, guid: 472a7229778444747a70a78076924b70,
-    type: 3}
+  hasBeenPreviewed: 0
   tentativeSceneName: 
-  mapAttributes: {fileID: 0}
-  mapInfoKeeper: {fileID: 0}
   targetLocation: {x: 0, y: 0, z: 0}
+  loadScreen: {fileID: 0}
+  loadBar: {fileID: 0}
 --- !u!1001 &6844486174520193139
 PrefabInstance:
   m_ObjectHideFlags: 0

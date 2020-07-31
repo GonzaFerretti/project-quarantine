@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8203917140755216497}
   - component: {fileID: 5902469895028328044}
   - component: {fileID: 6859906014405388195}
+  - component: {fileID: 4099599425244050938}
+  - component: {fileID: 7429870826278198602}
   m_Layer: 11
   m_Name: Negocio3x1
   m_TagString: Untagged
@@ -140,6 +142,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskDirection: {x: 1, y: 0, z: 0}
+--- !u!95 &4099599425244050938
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173292498474827580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e0aa0a454ae83545a9830c52aee33d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7429870826278198602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173292498474827580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198141583cb14f14fbade1f49626ce19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transBaseMat: {fileID: 2100000, guid: f5cbd1b2b45d80c4bbfa61c9bc98eb23, type: 2}
+  isHiding: 0
+  opacity: 1
 --- !u!1 &6000097418548078925
 GameObject:
   m_ObjectHideFlags: 0

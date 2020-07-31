@@ -1,8 +1,10 @@
 ﻿public class ActionMakeNoise : IAction
 {
-    public void Do(Model m)
+    public virtual void Do(Model m)
     {
         if(m is IMakeNoise)
-        EventManager.TriggerLocEvent("Noise", m);
+        {
+            EventManager.TriggerLocEvent("Noise", m);
+        }
     }
 }

@@ -35,7 +35,7 @@ public class FlingController : PlayerController
     {
         (_mp.flingSpotlight.controller as FlingSpotlightController)._curveDrawer.Hide();
         _mp.flingSpotlight.noiseRangeIndicator.gameObject.SetActive(false);
-        _mp.flingSpotlight.flingRangeIndicator.gameObject.SetActive(false);
+        _mp.rangeIndicator.gameObject.SetActive(false);
         _mp.controller = _mp.usualController;
         //_mp.flingObject.trailren.enabled = false;
         _mp.flingSpotlight.gameObject.SetActive(false);

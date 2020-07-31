@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
+  m_Name: Rotate Camera Counterclockwise Key
+  m_EditorClassIdentifier: 
+  myAction: {fileID: 11400000, guid: 56d60a77176b00e44a4e21ec22e51a28, type: 2}
+  key: 101
+  triggerType: {fileID: 11400000, guid: af69ad0b0b10c304cbccfb7e5b7b6645, type: 2}

@@ -26,7 +26,6 @@ public class ActionFling : IAction
         {
             yield return null;
         } while (rb.velocity == Vector3.zero);
-        Debug.Log(rb.velocity);
     }
 
     IEnumerator waitForAnimationAndFling(Model m)

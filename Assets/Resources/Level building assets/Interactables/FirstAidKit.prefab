@@ -4804,12 +4804,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975655448c75b964fadc4772583ea516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   requiredAction: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   feedback: {fileID: 11400000, guid: 5315370a5618f5a42898b9c4f4f7df7b, type: 2}
   animator: {fileID: 0}
-  preview: {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
+  previews:
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
   objModel: {fileID: 0}
   anims: {fileID: 0}
+  hasBeenPreviewed: 0
   item: {fileID: 11400000, guid: bde77953197936843a07af46fb37e484, type: 2}
   standardMaterial: {fileID: 2100000, guid: 6391f6b015b2596429886b3ccb28b39c, type: 2}
   outlineMaterial: {fileID: 2100000, guid: 026e3de46fa36104098aff7ec8dd6da9, type: 2}

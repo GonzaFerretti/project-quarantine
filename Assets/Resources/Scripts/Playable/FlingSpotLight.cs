@@ -7,9 +7,7 @@ public class FlingSpotLight : Model
     public Vector3 point;
     public ControllerWrapper controller;
     public GameObject noiseRangeIndicatorPrefab;
-    public GameObject flingRangeIndicatorPrefab;
     public RangeIndicator noiseRangeIndicator;
-    public RangeIndicator flingRangeIndicator;
 
     private void Awake()
     {
@@ -31,9 +29,17 @@ public class FlingSpotLight : Model
         GameObject newRangeIndicator = Instantiate(noiseRangeIndicatorPrefab, null);
         newRangeIndicator.transform.rotation = noiseRangeIndicatorPrefab.transform.localRotation;
         noiseRangeIndicator = newRangeIndicator.GetComponent<RangeIndicator>();
+    }
 
-        GameObject newFlingRange = Instantiate(flingRangeIndicatorPrefab, null);
-        flingRangeIndicator = newFlingRange.GetComponent<RangeIndicator>();
-        flingRangeIndicator.gameObject.transform.rotation = flingRangeIndicatorPrefab.transform.localRotation;
+    public void SetIndicatorState(bool isEnabled)
+    {
+        gameObject.SetActive(isEnabled);
+        if (isEnabled)
+        { 
+        noiseRangeIndicator.UpdateSize(modelPlayable.baseFlingObject.GetComponent<FlingObject>().noiseValue);
+        modelPlayable.rangeIndicator.UpdateSize(modelPlayable.strength * 2 / modelPlayable.transform.localScale.x);
+        }
+        noiseRangeIndicator.gameObject.SetActive(isEnabled);
+        modelPlayable.rangeIndicator.gameObject.SetActive(isEnabled);
     }
 }
