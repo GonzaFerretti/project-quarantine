@@ -14,8 +14,6 @@ public class ModelSpycam : ModelEnemy
     public Vector3 startDir;
     public Vector3 rightForward;
     public Vector3 leftForward;
-    public float test;
-    public float test2;
 
     [Header("Light intensity variation")]
     public Light spyCamLight;
@@ -24,7 +22,13 @@ public class ModelSpycam : ModelEnemy
     public float minLightScaleDistance;
     public float maxLightDistance;
     public GameObject areaPrefab;
-    public Transform area;
+    public FieldOfView area;
+
+    public float maxIndicatorSize = -1;
+    public float indicatorMaxSizeFactor;
+
+    public float minIndicatorSize = -1;
+    public float indicatorMinSizeFactor;
 
     protected override void Start()
     {
@@ -32,17 +36,23 @@ public class ModelSpycam : ModelEnemy
         leftForward = (Quaternion.Euler(0, camAngle / 2, 0) * transform.forward).normalized;
         rightForward = (Quaternion.Euler(0, -camAngle / 2, 0) * transform.forward).normalized;
 
-        test = transform.parent.localRotation.y + camAngle / 2;
-        test2 = transform.parent.localRotation.y - camAngle / 2;
-
         base.Start();
         controller = standardController;
         EventManager.SubscribeToEvent("Alert", AlertBehavior);
         EventManager.SubscribeToEvent("AlertStop", NormalBehavior);
         EventManager.SubscribeToEvent("UnsubEnter", EnterBehavior);
+        StartCoroutine(InitRangeIndicatorAfterAMoment());
+    }
 
+    IEnumerator InitRangeIndicatorAfterAMoment()
+    {
+        yield return new WaitForSeconds(1f);
         GameObject areago = Instantiate(areaPrefab, null);
-        area = areago.transform;
+        area = areago.GetComponent<FieldOfView>();
+        area.Init(360, 1, gameObject, false);
+        area.patrolMode = false;
+        area.layerFilter = LayerMask.GetMask("Nothing");
+
     }
 
     protected override void Update()
@@ -50,7 +60,10 @@ public class ModelSpycam : ModelEnemy
         base.Update();
         if (transform.hasChanged)
         {
-            UpdateLightIndicator();
+            if (area)
+            {
+                UpdateLightIndicator();
+            }
         }
         if (IsInSight(target, alertRange))
         {
@@ -69,12 +82,22 @@ public class ModelSpycam : ModelEnemy
 
     void UpdateLightIndicator()
     {
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, transform.forward, out hit, enemyAttributes.alertDistance, LayerMask.NameToLayer("Ground")))
+        RaycastHit angleHit = new RaycastHit();
+        RaycastHit centerHit = new RaycastHit();
+        Physics.Raycast(transform.position, (Quaternion.Euler(0, _angle, 0) * transform.forward).normalized, out angleHit, alertRange, 1 << 9);
+        Physics.Raycast(transform.position, transform.forward, out centerHit, alertRange, 1 << 9);
+
+        float radius = (angleHit.point - centerHit.point).magnitude;
+
+        if (maxIndicatorSize == -1)
         {
-            area.position = hit.point;
-            transform.hasChanged = false;
+            maxIndicatorSize = radius * indicatorMaxSizeFactor;
+            minIndicatorSize = radius * indicatorMinSizeFactor;
         }
+        float clampedRadius = Mathf.Clamp(radius, minIndicatorSize, maxIndicatorSize);
+        area.transform.position = centerHit.point + area.heightOffset * Vector3.up;
+        area.viewDistance = clampedRadius;
+        transform.hasChanged = false;
     }
 
     void AlertBehavior()

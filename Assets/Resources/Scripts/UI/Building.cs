@@ -12,16 +12,16 @@ public class Building : MonoBehaviour
         visible,
     }
 
-
-    Material[] transMat;
-    Material[] usualMat;
     public Material transBaseMat;
     Animator anim;
     MeshRenderer meshren;
+    Material[] usualMat;
+    Material[] transMat;
     HideStates currentHideState = HideStates.visible;
 
     [Range(0, 1)]
     public float opacity;
+    public float lastOpacity;
 
     public void Start()
     {
@@ -38,7 +38,6 @@ public class Building : MonoBehaviour
             mat.SetTexture("_ao", usualMat[i].GetTexture("_OcclusionMap"));
             transMat[i] = mat;
         }
-        meshren.materials = transMat;
     }
 
     public void Hide(float time)
@@ -46,6 +45,7 @@ public class Building : MonoBehaviour
         if (currentHideState == HideStates.visible)
         {
             anim.SetBool("isHiding", true);
+            meshren.materials = transMat;
             StartCoroutine(StartTimerToUnHideAgain(time));
             currentHideState = HideStates.waitingToUnhide;
         }
@@ -79,9 +79,17 @@ public class Building : MonoBehaviour
 
     public void UpdateOpacity()
     {
-        foreach (Material mat in transMat)
+        if (lastOpacity != opacity)
         {
-            mat.SetFloat("_opacity", opacity);
+            foreach (Material mat in meshren.materials)
+            {
+                mat.SetFloat("_opacity", opacity);
+            }
+            if (opacity == 1)
+            {
+                meshren.materials = usualMat;
+            }
         }
+        lastOpacity = opacity;
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "Controller/AI/PatrolAI")]
 public class PatrolAI : ControllerWrapper, IController
 {
-    ModelPatrol _model;
+    ModelNodeUsingEnemy _model;
     public float nodeDistanceThreshold;
     NavMeshAgent _agent;
 
     public void AssignModel(Model model)
     {
-        _model = model as ModelPatrol;
+        _model = model as ModelNodeUsingEnemy;
         _agent = _model.GetComponent<NavMeshAgent>();
     }
 

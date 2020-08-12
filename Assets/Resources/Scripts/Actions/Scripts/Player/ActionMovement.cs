@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class ActionMovement : IAction
+public class ActionMovement : BaseAction
 {
     public movementKeysDirection _direction;
     public static Dictionary<movementKeysDirection, Vector3> directionVectors = new Dictionary<movementKeysDirection, Vector3>();
@@ -10,7 +10,7 @@ public class ActionMovement : IAction
         _direction = direction;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         Vector3 directionVector = directionVectors[_direction];
         ModelPlayable mp = m as ModelPlayable;

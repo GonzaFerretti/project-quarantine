@@ -1,6 +1,6 @@
-﻿public class ActionMakeNoise : IAction
+﻿public class ActionMakeNoise : BaseAction
 {
-    public virtual void Do(Model m)
+    public override void Do(Model m)
     {
         if(m is IMakeNoise)
         {

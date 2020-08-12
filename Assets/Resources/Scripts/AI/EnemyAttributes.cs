@@ -13,4 +13,5 @@ public class EnemyAttributes : ScriptableObject
     public float alertDistance;
     public GameObject characterModel;
     public RuntimeAnimatorController animations;
+    public Color seeThroughColor;
 }

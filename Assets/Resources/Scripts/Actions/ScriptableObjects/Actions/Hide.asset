@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Hide
   m_EditorClassIdentifier: 
   actionKey: {fileID: 0}
+  sound: {fileID: 11400000, guid: 1084933becefae84d9404c5d6a73b887, type: 2}
   interactionDistance: 1
   redirection: -1
   goalLocation: 1
+  dragUI: {fileID: 11400000, guid: a90683efa35eb054ba132d245c90fecd, type: 2}

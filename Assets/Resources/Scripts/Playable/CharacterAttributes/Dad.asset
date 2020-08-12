@@ -27,6 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fea96819cfe8a947a1d901a3b7ce36b, type: 2}
   - {fileID: 11400000, guid: e472da21543aa2843b45bbd819c2b7f7, type: 2}
   - {fileID: 11400000, guid: b61e571d7c5a21d418771b6908161e9c, type: 2}
+  - {fileID: 11400000, guid: 38c82bf40d4d9834c9a18845c683db81, type: 2}
   characterModel: {fileID: 735626654489519756, guid: 05d3dd94f39cc574fa417753f441620f,
     type: 3}
   animations: {fileID: 9100000, guid: a1b73534e8681054ea02ed3fd699fb44, type: 2}

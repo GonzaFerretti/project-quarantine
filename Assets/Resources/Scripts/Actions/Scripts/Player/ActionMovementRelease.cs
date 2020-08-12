@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionMovementRelease : IAction
+public class ActionMovementRelease : BaseAction
 {
     public ActionMovementRelease()
     {
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         if (m is ModelChar)
         {

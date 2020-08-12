@@ -19,3 +19,4 @@ MonoBehaviour:
   characterModel: {fileID: 6212626233782701377, guid: 31e63af6a802aae43b43e7f950fa805c,
     type: 3}
   animations: {fileID: 9100000, guid: 5677ae262e8bcde408b905498f65cacc, type: 2}
+  seeThroughColor: {r: 1, g: 0, b: 0, a: 1}

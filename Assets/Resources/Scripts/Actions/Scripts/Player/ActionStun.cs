@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionStun : IAction
+public class ActionStun : BaseAction
 {
     float _knockStrength;
+    ActionWrapper _actionToAdd;
 
-    public ActionStun(float knockStrength)
+    public ActionStun(float knockStrength, ActionWrapper action)
     {
         _knockStrength = knockStrength;
+        _actionToAdd = action;
     }
 
-    public virtual void Do(Model m)
+    public override void Do(Model m)
     {        GameObject impactedObject = (m as FlingObject).impactedObject;
         if (impactedObject.GetComponentInParent<ModelPatrol>())
         {
@@ -19,10 +21,9 @@ public class ActionStun : IAction
             patrol.controller = patrol.koController;
             Vector3 forceToApply = unifiedVectorWithoutY(m.GetComponent<Rigidbody>().velocity) * _knockStrength;
             patrol.ragdoll.KnockOut(forceToApply);
-        }
-        else if (impactedObject.GetComponent<ModelPoliceCar>())
-        {
-            ModelPoliceCar pcar = impactedObject.GetComponent<ModelPoliceCar>();
+            patrol.GetComponent<InteractableObject>().requiredAction = _actionToAdd;
+            (m as FlingObject).hasMissed = false;
+            (m as FlingObject).sm.Play(clip);
         }
     }
     

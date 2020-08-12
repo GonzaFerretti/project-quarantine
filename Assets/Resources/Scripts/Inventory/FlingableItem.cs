@@ -6,6 +6,7 @@ using UnityEngine;
 public class FlingableItem : Item
 {
     public List<ActionWrapper> collisionActions;
+    public SoundClip missSound;
     public FlingObjectInfo flingItemRuntimeInfo;
     public override Item cloneItem()
     {

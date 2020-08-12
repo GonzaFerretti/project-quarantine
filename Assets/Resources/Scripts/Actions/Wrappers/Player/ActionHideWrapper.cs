@@ -7,9 +7,11 @@ public class ActionHideWrapper : ActionBaseInteractWrapper
 {
     public int redirection;
     public int goalLocation;
+    public Item dragUI;
 
     public override void SetAction()
     {
-        action = new ActionHide(goalLocation , redirection, interactionDistance);
+        action = new ActionHide(goalLocation , redirection, interactionDistance, dragUI);
+        base.SetAction();
     }
 }

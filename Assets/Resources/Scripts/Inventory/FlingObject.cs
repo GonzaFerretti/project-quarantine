@@ -13,11 +13,12 @@ public class FlingObject : Model, IMakeNoise
     TentativeFlingObjectFeedback _myTentativeFeedback;
     public float soundRegulator;
     MeshFilter _myMesh;
-    public SoundClip clip;
+    SoundClip missSound;
     public TrailRenderer trailren;
     public float currentRotation;
     public Vector3 currentBaseRotation;
     public float rotationSpeed;
+    public bool hasMissed;
 
     public GameObject impactedObject;
 
@@ -35,6 +36,7 @@ public class FlingObject : Model, IMakeNoise
         GetComponent<MeshRenderer>().material = objectInfo._material;
         transform.localScale = objectInfo._originalScale;
         collisionActions = objectInfo._collisionActions;
+        missSound = objectInfo._missSound;
     }
 
     public void Init()
@@ -42,7 +44,7 @@ public class FlingObject : Model, IMakeNoise
         currentBaseRotation = transform.eulerAngles;
         trailren.Clear();
         currentRotation = 0;
-        trailren.transform.localPosition = new Vector3(0,0,_myMesh.mesh.bounds.extents.z);
+        trailren.transform.localPosition = new Vector3(0, 0, _myMesh.mesh.bounds.extents.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,12 +52,19 @@ public class FlingObject : Model, IMakeNoise
         if (other.gameObject && !other.isTrigger)
         {
             if (!sm) sm = FindObjectOfType<SoundManager>();
-            sm.Play(clip);
             impactedObject = other.gameObject;
+            hasMissed = true;
             for (int i = 0; i < collisionActions.Count; i++)
             {
-                if (collisionActions[i].action == null) collisionActions[i].SetAction();
+                if (collisionActions[i].action == null)
+                {
+                    collisionActions[i].SetAction();
+                }
                 collisionActions[i].action.Do(this);
+            }
+            if (hasMissed)
+            {
+                sm.Play(missSound);
             }
             if (!_myTentativeFeedback) _myTentativeFeedback = Instantiate(tentativeFeedback);
             else _myTentativeFeedback.gameObject.SetActive(true);

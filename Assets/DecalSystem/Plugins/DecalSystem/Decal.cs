@@ -16,6 +16,7 @@ namespace DecalSystem {
 
         [FormerlySerializedAs( "material" )] public Material Material;
         [FormerlySerializedAs( "sprite" )] public Sprite Sprite;
+        public RangeIndicator range;
 
         [FormerlySerializedAs( "affectedLayers" ), FormerlySerializedAs( "AffectedLayers" )] public LayerMask LayerMask = -1;
         [FormerlySerializedAs( "maxAngle" )] public float MaxAngle = 90.0f;

@@ -1,8 +1,8 @@
 ﻿using UnityEngine.AI;
 
-public class InteractableOpen : IActionInteractableObject
+public class InteractableOpen : BaseActionInteractableObject
 {
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
        NavMeshObstacle navCollider = obj.GetComponent<NavMeshObstacle>();
        navCollider.enabled = !navCollider.enabled;

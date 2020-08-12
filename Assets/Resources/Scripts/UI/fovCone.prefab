@@ -99,6 +99,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7991
   model: {fileID: 0}
+  patrolMode: 1
   startingAngle: 0
   suspectMaterial: {fileID: 2100000, guid: d6571f30cb75b73438c56b17e3f1f6c2, type: 2}
   isVisible: 1

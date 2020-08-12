@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3142398977077777977}
   - component: {fileID: 8811587853463959794}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2594530355776001250}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -49,7 +49,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8f34a117f40b96643ba29ca486921173, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,13 +79,22 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.03008461
+        value: 0.09482765
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.17295742
+        value: 0.03596387
+        inSlope: -0.0000417583
+        outSlope: -0.0000417583
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -141,7 +150,7 @@ GameObject:
   - component: {fileID: 6391621869539279112}
   - component: {fileID: 6391621869539279118}
   - component: {fileID: 6391621869539279119}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Fling Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  rens: []
   noiseValue: 15
   collisionActions: []
   rb: {fileID: 0}
@@ -242,11 +252,11 @@ MonoBehaviour:
   tentativeFeedback: {fileID: 1112178774142206120, guid: 5afdeab0e31362b40aa1fac7de8a10c8,
     type: 3}
   soundRegulator: 0.2
-  clip: {fileID: 11400000, guid: b721b95eed75af64bb86187231b85418, type: 2}
   trailren: {fileID: 8811587853463959794}
   currentRotation: 0
   currentBaseRotation: {x: 0, y: 0, z: 0}
-  rotationSpeed: 360
+  rotationSpeed: 180
+  hasMissed: 0
   impactedObject: {fileID: 0}
 --- !u!54 &6391621869539279119
 Rigidbody:

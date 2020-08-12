@@ -11,6 +11,7 @@ public class TentativeMapInfoKeeper : MonoBehaviour
     public Dictionary<string, ItemWrapper> itemAssigner;
     public ItemWrapper boltcutter;
     public ItemWrapper bottle;
+    public ItemWrapper rock;
     public ItemWrapper cornucopia;
     public ItemWrapper firecracker;
     public ItemWrapper firstAidKit;
@@ -27,6 +28,7 @@ public class TentativeMapInfoKeeper : MonoBehaviour
         if (itemAssigner == null) itemAssigner = new Dictionary<string, ItemWrapper>();
         itemAssigner.Add("boltCutter", boltcutter);
         itemAssigner.Add("Bottle", bottle);
+        itemAssigner.Add("Rock", rock);
         itemAssigner.Add("cornucopia", cornucopia);
         itemAssigner.Add("Firecracker", firecracker);
         itemAssigner.Add("firstAidKit", firstAidKit);
@@ -37,6 +39,7 @@ public class TentativeMapInfoKeeper : MonoBehaviour
                 sceneMapAssigner.Add(sceneList[i], mapInfoList[i]);
         }
         SceneManager.activeSceneChanged += SpawnItems;
+        SceneManager.activeSceneChanged += SetCameraAttributes;
     }
 
     void LossBehavior()
@@ -44,6 +47,7 @@ public class TentativeMapInfoKeeper : MonoBehaviour
         //EventManager.UnsubscribeToEvent("Enter", SpawnItems);
         EventManager.UnsubscribeToEvent("Loss", LossBehavior);
         SceneManager.activeSceneChanged -= SpawnItems;
+        SceneManager.activeSceneChanged -= SetCameraAttributes;
     }
 
     void CloneMapInfo()
@@ -54,12 +58,24 @@ public class TentativeMapInfoKeeper : MonoBehaviour
         }
     }
 
-    void SpawnItems(Scene current, Scene next)
+    public void SpawnItems(Scene current, Scene next)
     {
         if (sceneMapAssigner.ContainsKey(SceneManager.GetActiveScene().name))        
             StartCoroutine(SpawnItemCoroutine());        
         else
-            FindObjectOfType<LoadAsync>().futureScene = sceneName;
+        {
+            LoadAsync loadModule = FindObjectOfType<LoadAsync>();
+            loadModule.futureScene = sceneName;
+            loadModule.lastScene = SceneManager.GetActiveScene().name;
+        }
+    }
+
+    public void SetCameraAttributes(Scene current, Scene next)
+    {
+        TentativeMapInfo currentScene = sceneMapAssigner[SceneManager.GetActiveScene().name];
+        Camera.main.transform.position = currentScene.camPosition;
+        Camera.main.transform.rotation = Quaternion.Euler(currentScene.camRotation);
+        Camera.main.GetComponent<CameraMovement>().camDistance = currentScene.distance;
     }
 
     IEnumerator UpdateUICoroutine(ModelPlayable player)

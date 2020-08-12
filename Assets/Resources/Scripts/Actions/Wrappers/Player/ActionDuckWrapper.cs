@@ -10,5 +10,6 @@ public class ActionDuckWrapper : ActionWrapper
     public override void SetAction()
     {
         action = new ActionDuck(height, radius, center);
+        base.SetAction();
     }
 }

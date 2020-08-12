@@ -14,13 +14,16 @@ public class ActionTalk : ActionBaseInteract
         {
             RaycastHit hit = new RaycastHit();
             ModelPlayable mp = m as ModelPlayable;
-            Physics.Raycast(mp.transform.position + new Vector3(0, mp.GetComponent<CapsuleCollider>().height / 2, 0), mp.transform.forward, out hit, interactionDistance);
-
+            //Physics.Raycast(mp.transform.position + new Vector3(0, mp.GetComponent<CapsuleCollider>().height / 2, 0), mp.transform.forward, out hit, interactionDistance);
+            int i = 0;
+            Vector3 rayCastOrigin = mp.GetRayCastOrigin();
+            Physics.Raycast(rayCastOrigin, mp.transform.forward,out hit, interactionDistance);
+            Debug.DrawLine(rayCastOrigin, rayCastOrigin + mp.transform.forward * interactionDistance,Color.blue, 3);
             if (hit.collider && hit.collider.GetComponent<ModelNPC>())
             {
-                if (mp.controller == mp.usualController)               
+                if (mp.controller == mp.usualController)
                     mp.controller = mp.talkController;
-                
+
                 ModelNPC _npc = hit.collider.GetComponent<ModelNPC>();
                 Vector3 baseDirection = (_npc.transform.position - mp.transform.position).normalized;
                 Vector3 finalDirection = new Vector3(baseDirection.x, 0, baseDirection.z);

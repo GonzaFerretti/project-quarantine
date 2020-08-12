@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ActionOpen : IAction
+public class ActionOpen : BaseAction
 {
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         //Animaciones
         Debug.Log("Open");

@@ -55,15 +55,10 @@ MonoBehaviour:
   - Shop2
   - Shop3 - Pharmacy
   - Demo House
-  testing:
-  - {fileID: 102900000, guid: 7166363940f0dfc4a857151c23d47c99, type: 3}
-  - {fileID: 102900000, guid: de88f83e5ae0bd249b7157eb223ed3aa, type: 3}
-  - {fileID: 102900000, guid: a97e8de900fa82148834b7e0078c3cb2, type: 3}
-  - {fileID: 102900000, guid: e1213abc53ac11549beb732f109cffb4, type: 3}
-  - {fileID: 102900000, guid: 2ca7d52680b04d04e8a76223a3a480b9, type: 3}
   boltcutter: {fileID: 7822136396938333184, guid: b1e48879ad4f65f4ca492963ace16c0f,
     type: 3}
   bottle: {fileID: 5208217556900930690, guid: 652991b530ad43b48a8a451231cdde99, type: 3}
+  rock: {fileID: 4606452394337161387, guid: 850164e6dcbd06a43af8f591c168153c, type: 3}
   cornucopia: {fileID: 8034349819938182487, guid: 3c125fc59a3ee534bb9130dc9fd37500,
     type: 3}
   firecracker: {fileID: 5429877253047538922, guid: 67ed96863d2b2c24cb034b8b51dd0f78,
@@ -71,3 +66,4 @@ MonoBehaviour:
   firstAidKit: {fileID: 3479766972522441762, guid: a09b3f8e0993d42428ffc156d6d5f8f2,
     type: 3}
   fence: {fileID: 8855970168875166601, guid: 1c74ab047bda0d544bfc33a0dec275e3, type: 3}
+  sceneName: 

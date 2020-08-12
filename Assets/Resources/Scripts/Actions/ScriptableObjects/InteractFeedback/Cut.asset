@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ef9346eaa0afe449cea2a3127173cd, type: 3}
   m_Name: Cut
   m_EditorClassIdentifier: 
+  clip: {fileID: 11400000, guid: 8e71c056be46e704aba23f5e3d04bc76, type: 2}

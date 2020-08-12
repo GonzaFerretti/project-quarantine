@@ -126,6 +126,7 @@ MonoBehaviour:
   reinforcementAmount: 0
   maxReinforcementAmount: 1
   waitTimeforFirstSummon: 0.3
+  patrolHeight: 0
   normalWaitTime: 0
 --- !u!1 &6733425544392657325
 GameObject:
@@ -221,6 +222,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58d7f9ee5aa8cb438a5a5cea867a00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  rens: []
+  requiredAction: {fileID: 11400000, guid: b61e571d7c5a21d418771b6908161e9c, type: 2}
+  feedback: {fileID: 0}
+  animator: {fileID: 0}
+  previews:
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
+  - {fileID: 11400000, guid: 27fa163d28941c0429fe94a6833732f9, type: 2}
+  objModel: {fileID: 0}
+  anims: {fileID: 0}
+  hasBeenPreviewed: 0
 --- !u!114 &6733425544392657320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f1f204aee81bf44b1061d50cd4919e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  rens: []
   controller: {fileID: 11400000, guid: 91b9ddc20f80f5f45a29a4f5df2fe223, type: 2}
   currentSpeed: 0
   standardSpeed: 0
@@ -250,6 +264,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2871
   target: {fileID: 0}
+  targetDistance: 0
+  seethroughBaseMaterial: {fileID: 2100000, guid: ed6cebc9567df064f93de764efe1cb50,
+    type: 2}
+  isDestroyed: 0
+  sirenSound: {fileID: 11400000, guid: 60d7baa09176bbf4794335a41d0a4d1a, type: 2}
 --- !u!1 &7842800555737888628
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,4 +317,5 @@ MonoBehaviour:
   reinforcementAmount: 0
   maxReinforcementAmount: 1
   waitTimeforFirstSummon: 0.3
+  patrolHeight: 0
   normalWaitTime: 0

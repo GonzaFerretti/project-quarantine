@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActionBaseInteractWrapper : ActionWrapper
+public class ActionBaseInteractWrapper : ActionWrapper
 {
+    public override void SetAction()
+    {
+        base.SetAction();
+    }
     public float interactionDistance;
 }

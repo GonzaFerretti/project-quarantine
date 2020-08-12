@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ActionInteract : IAction
+public class ActionInteract : BaseAction
 {
     float _rayDistance;
     float _angleArc;
@@ -13,7 +13,7 @@ public class ActionInteract : IAction
         _arcDensity = density;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         RaycastHit hit = new RaycastHit();
         GameObject hitObject = null;

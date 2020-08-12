@@ -17,6 +17,7 @@ public class MapActionAddRequisites : ActionMapWrapper, IActionMap
             ResourceManager.AddToResourceDict(myNpcs[i].currentResource.resourceName, Mathf.RoundToInt(myNpcs[i].currentAmountRequired), ref ResourceManager.requiredResources);
             ResourceManager.AddToResourceDict(myNpcs[i].currentResource.resourceName, 0, ref ResourceManager.currentResources);
         }
+        FindObjectOfType<WinCon>().no = true;
     }
 
     public override void SetAction()

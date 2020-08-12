@@ -77,7 +77,7 @@ public class ResourceManager : MonoBehaviour
                 ResourceUI[] resourceUIs = FindObjectsOfType<ResourceUI>();
                 foreach (ResourceUI resourceUi in resourceUIs)
                 {
-                    if (resourceUi.Resource.resourceName == res.Key)
+                    if (resourceUi.Resource.resourceName == res.Key && !Uielements.ContainsKey(res.Key))
                     {
                         Uielements.Add(res.Key, resourceUi);
                     }

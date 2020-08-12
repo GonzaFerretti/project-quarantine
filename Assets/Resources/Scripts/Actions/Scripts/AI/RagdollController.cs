@@ -14,6 +14,7 @@ public class RagdollController : MonoBehaviour
     public Vector3 pushForce;
     public Rigidbody head;
     public ModelPatrol mPatrol;
+    public Transform dragPivot;
 
     public void Init(ModelPatrol m)
     {
@@ -59,9 +60,21 @@ public class RagdollController : MonoBehaviour
         }*/
         anim.enabled = true;
         anim.SetTrigger("awake");
+        mPatrol.EnableEvents();
         //tentative
         mPatrol.controller = mPatrol.standardController;
+        mPatrol.KOManager.RemovePatrol(mPatrol);
+        mPatrol.GetComponent<InteractableObject>().requiredAction = null;
         ChangeLayer(mPatrol.gameObject, LayerMask.NameToLayer("Enemy"));
+    }
+
+    public void PickUp()
+    {
+        anim.enabled = true;
+        foreach (Rigidbody rb in rbs)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 
     public void KnockOut(Vector3 force)
@@ -78,7 +91,9 @@ public class RagdollController : MonoBehaviour
         head.AddForce(force, ForceMode.Impulse);
         anim.SetTrigger("sleep");
         anim.enabled = false;
+        mPatrol.DisableEvents();
         mPatrol.GetComponent<NavMeshAgent>().enabled = false;
+        //mPatrol.KOManager.AddPatrol(mPatrol);
         ChangeLayer(mPatrol.gameObject, LayerMask.NameToLayer("EnemyDown"));
     }
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InteractableEnter : IActionInteractableObject
+public class InteractableEnter : BaseActionInteractableObject
 {
     InteractableEnterWrapper _wrapper;
 
@@ -9,7 +9,7 @@ public class InteractableEnter : IActionInteractableObject
         _wrapper = wrapper;
     }
 
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
         Door door = obj as Door;
 

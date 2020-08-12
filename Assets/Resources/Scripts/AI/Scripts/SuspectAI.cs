@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Controller/AI/SuspectAI")]
 public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
 {
-    public float targetTreshold;
+    public float targetThreshold;
 
     public float rotationDuration;
     public float rotationMaxDuration;
@@ -16,18 +14,18 @@ public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
 
     public float degrees;
 
-    ModelPatrol _model;
+    ModelNodeUsingEnemy _model;
     Vector3 _target;
 
     public void AssignModel(Model model)
     {
-        _model = model as ModelPatrol;
+        _model = model as ModelNodeUsingEnemy;
     }
 
     public override ControllerWrapper Clone()
     {
         SuspectAI clone = CreateInstance("SuspectAI") as SuspectAI;
-        clone.targetTreshold = targetTreshold;
+        clone.targetThreshold = targetThreshold;
         clone.rotationDuration = rotationDuration;
         clone.rotationMaxDuration = rotationMaxDuration;
         clone.currentRotations = currentRotations;
@@ -45,6 +43,8 @@ public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
         else
         {
             SecondaryPhase();
+            _model.animator.SetBool("running", false);
+            _model.animator.SetBool("isIdle", true);
         }
     }
 
@@ -76,7 +76,7 @@ public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
 
     bool Distance()
     {
-        return Vector3.Distance(_model.transform.position, _target) > targetTreshold;
+        return Vector3.Distance(_model.transform.position, _target) > targetThreshold;
     }
 
     public INeedTargetLocation SetTarget(Vector3 target)

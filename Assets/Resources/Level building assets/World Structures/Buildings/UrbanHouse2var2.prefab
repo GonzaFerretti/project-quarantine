@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 158040926722641891, guid: f1e3088608b602d439e71b13db103900,
         type: 3}
       propertyPath: m_Size.x
-      value: 7.457657
+      value: 5.495021
       objectReference: {fileID: 0}
     - target: {fileID: 158040926722641891, guid: f1e3088608b602d439e71b13db103900,
         type: 3}
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 158040926722641891, guid: f1e3088608b602d439e71b13db103900,
         type: 3}
       propertyPath: m_Center.x
-      value: -3.67877
+      value: -2.697452
       objectReference: {fileID: 0}
     - target: {fileID: 158040926722641891, guid: f1e3088608b602d439e71b13db103900,
         type: 3}
@@ -116,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 8339620318394295723, guid: f1e3088608b602d439e71b13db103900,
         type: 3}
       propertyPath: m_Name
-      value: UrbanHouse2var2 (18)
+      value: UrbanHouse2var2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e3088608b602d439e71b13db103900, type: 3}

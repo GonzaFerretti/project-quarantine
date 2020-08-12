@@ -15,7 +15,17 @@ namespace DecalSystem {
         public static MeshFilter[] GetAffectedObjects(Decal decal) {
             var bounds = GetBounds( decal );
             var isOnlyStatic = decal.gameObject.isStatic;
-
+            List<MeshFilter> result = new List<MeshFilter>();
+            foreach (GameObject go in decal.range.currentCollidingObjects)
+            {
+                MeshFilter mf = go.GetComponent<MeshFilter>();
+                if (mf && mf.sharedMesh)
+                {
+                    result.Add(mf);
+                }
+            }
+            return result.ToArray();
+            /*
             return GameObject.FindObjectsOfType<MeshRenderer>()
                 .Where( i => i.GetComponent<Decal>() == null ) // ignore another decals
                 .Where( i => i.gameObject.isStatic || !isOnlyStatic )
@@ -25,7 +35,7 @@ namespace DecalSystem {
                 .Select( i => i.GetComponent<MeshFilter>() )
                 .Where( i => i )
                 .Where( i => i.sharedMesh )
-                .ToArray();
+                .ToArray();*/
         }
 
         public static Terrain[] GetAffectedTerrains(Decal decal) {

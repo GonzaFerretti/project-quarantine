@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Enter
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
+  sound: {fileID: 0}
   interactionDistance: 1

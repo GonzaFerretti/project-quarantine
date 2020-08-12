@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimCheck : MonoBehaviour
 {
     public bool hasReachedPoint = false;
+    public Rigidbody rightArm;
     public void SetAnim()
     {
         hasReachedPoint = true;

@@ -12,17 +12,20 @@ public class ItemContainer : MonoBehaviour
     public GameObject amountDisplay;
     public GameObject itemKeyDisplay;
     public GameObject modText;
+    public Image selectedBorder;
 
-    public void UpdateText(string text)
+    public void UpdateText(string text, bool isSelected)
     {
         amount.text = text;
+        selectedBorder.gameObject.SetActive(isSelected);
     }
 
-    public void InitContainer(Item item, string amountText)
+    public void InitContainer(Item item, string amountText, bool isSelected)
     {
         UiImage.sprite = item.icon;
         amount.text = amountText;
         UiImage.SetNativeSize();
+        selectedBorder.gameObject.SetActive(isSelected);
         if (!item.isStackable)
         {
             amountDisplay.SetActive(false);

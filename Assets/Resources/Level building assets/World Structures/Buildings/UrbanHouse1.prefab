@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2884313014262772531}
   - component: {fileID: 4164158007443685085}
   - component: {fileID: 614593542345255150}
+  - component: {fileID: 5253269310467163477}
   m_Layer: 11
   m_Name: UrbanHouse1
   m_TagString: Untagged
@@ -138,8 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transBaseMat: {fileID: 2100000, guid: f5cbd1b2b45d80c4bbfa61c9bc98eb23, type: 2}
-  isHiding: 0
   opacity: 1
+  lastOpacity: 0
 --- !u!95 &614593542345255150
 Animator:
   serializedVersion: 3
@@ -159,3 +160,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &5253269310467163477
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203266741656102209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.000002, y: 18.000004, z: 5.869758}
+  m_Center: {x: 0, y: -8, z: 13.508413}

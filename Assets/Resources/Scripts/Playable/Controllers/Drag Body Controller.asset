@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcff84d0288caee45ab9cfc6120c3233, type: 3}
+  m_Name: Drag Body Controller
+  m_EditorClassIdentifier: 
+  guardPivotPoint: {fileID: 0}
+  handPivot: {fileID: 0}
+  draggedGuard: {fileID: 0}
+  lastPos: {x: 1.6070848, y: 0.9087543, z: -37.060333}
+  actionLinks:
+  - {fileID: 11400000, guid: b6896b1a5a0b88740990634bf0d6286f, type: 2}
+  - {fileID: 11400000, guid: 85198abd4ae59e84ea0e5c1400649f00, type: 2}
+  - {fileID: 11400000, guid: dfff7a2e77d431b4db7d37eb14a16396, type: 2}
+  - {fileID: 11400000, guid: 4feb2c7c163df9b4ab8401d2af50b3fa, type: 2}
+  - {fileID: 11400000, guid: 1aee3b37ff70f6344bbf8424ed11c48c, type: 2}
+  - {fileID: 11400000, guid: 4304a581e29be2242bafe108fb8ab9d0, type: 2}
+  - {fileID: 11400000, guid: dc1213891fc473d4e9773b48631b4cf9, type: 2}
+  - {fileID: 11400000, guid: 181c19e7aeea29541a2238a7f282790d, type: 2}
+  - {fileID: 11400000, guid: 4824bc4e9feb94341a80b2cdb2d7810e, type: 2}
+  - {fileID: 11400000, guid: 570bc07071e7eae409d47f34abea1658, type: 2}
+  - {fileID: 11400000, guid: 2ea7bae771a848b4791090494ad1271c, type: 2}
+  - {fileID: 11400000, guid: fbc046fb1000b454a8c3867e141c262b, type: 2}

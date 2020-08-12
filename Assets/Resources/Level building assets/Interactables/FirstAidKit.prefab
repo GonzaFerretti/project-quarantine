@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6747702645262093802}
-  - component: {fileID: 6256927527074623075}
-  - component: {fileID: 4430908775177179684}
+  - component: {fileID: 436966106639252487}
+  - component: {fileID: 7274619076664355213}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 3479766972522441763}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!199 &6256927527074623075
+--- !u!199 &436966106639252487
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23f7a5d9ad178fe4083af3407d46114b, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -95,7 +95,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!198 &4430908775177179684
+--- !u!198 &7274619076664355213
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606112253196152526}
   serializedVersion: 6
-  lengthInSec: 0.05
+  lengthInSec: 9.51
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -231,7 +231,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.09
+      scalar: 0.63
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -347,7 +347,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.09
+      scalar: 0.39
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -663,7 +663,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 10
+    maxNumParticles: 98
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -728,9 +728,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0.06, y: 0.02, z: 0.21}
+    m_Position: {x: 0.21, y: 0.02, z: -0.02}
     m_Rotation: {x: 0, y: 90, z: 0}
-    m_Scale: {x: 0.67, y: 0.35, z: 0.32}
+    m_Scale: {x: 0.73, y: 0.6, z: 0.62}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1034,7 +1034,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1046,20 +1046,20 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 3.7865343
+          outSlope: 3.7865343
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.07677458
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
+          value: 0
+          inSlope: -3.6094954
+          outSlope: -3.6094954
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.05867213
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1196,7 +1196,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -1306,7 +1306,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7853982
+      scalar: 0.8571312
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -1358,7 +1358,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1367,14 +1367,14 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 0.9433962, g: 0.91967, b: 0.6363475, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
+        ctime0: 31226
         ctime1: 65535
         ctime2: 0
         ctime3: 0
@@ -3826,8 +3826,8 @@ ParticleSystem:
       emitProbability: 1
   LightsModule:
     enabled: 0
-    ratio: 0
-    light: {fileID: 0}
+    ratio: 1
+    light: {fileID: 5816019559097895802, guid: 3388aac23f035d845ac80db660758a8f, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
@@ -3888,7 +3888,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 20
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4770,7 +4770,7 @@ GameObject:
   - component: {fileID: 3479766972522441785}
   - component: {fileID: 3479766972522441761}
   - component: {fileID: 3479766972522441760}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FirstAidKit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4805,6 +4805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  rens: []
   requiredAction: {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   feedback: {fileID: 11400000, guid: 5315370a5618f5a42898b9c4f4f7df7b, type: 2}
   animator: {fileID: 0}
@@ -4816,6 +4817,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: bde77953197936843a07af46fb37e484, type: 2}
   standardMaterial: {fileID: 2100000, guid: 6391f6b015b2596429886b3ccb28b39c, type: 2}
   outlineMaterial: {fileID: 2100000, guid: 026e3de46fa36104098aff7ec8dd6da9, type: 2}
+  seeThroughMat: {fileID: 2100000, guid: ed6cebc9567df064f93de764efe1cb50, type: 2}
 --- !u!65 &3479766972522441789
 BoxCollider:
   m_ObjectHideFlags: 0

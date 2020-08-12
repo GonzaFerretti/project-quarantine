@@ -19,5 +19,7 @@ MonoBehaviour:
   allowingActions: []
   resource: {fileID: 0}
   amountPerResource: 0
+  seeThroughColor: {r: 0.2, g: 0.24313726, b: 0.79607844, a: 0}
   collisionActions:
   - {fileID: 11400000, guid: cf4d42f04384c7f438e0c55fb07c595a, type: 2}
+  missSound: {fileID: 11400000, guid: b721b95eed75af64bb86187231b85418, type: 2}

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InteractableGrab : IActionInteractableObject
+public class InteractableGrab : BaseActionInteractableObject
 {
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
         //tentative
         /*

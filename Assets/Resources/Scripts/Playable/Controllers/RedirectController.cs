@@ -65,6 +65,7 @@ public class RedirectController : ControllerWrapper, IController
             }
 
             (_model.hidingActionController as HidingActionController).dur = 0;
+            _model.GetComponent<CapsuleCollider>().enabled = false;
             _model.controller = _model.hidingActionController;
             _model.animator.Play("Jump");
             _model.StartCoroutine(EnterHidingPlace());
@@ -76,6 +77,7 @@ public class RedirectController : ControllerWrapper, IController
         yield return new WaitForSeconds(animationDuration);
         {
             _model.transform.position = insideGoal;
+            _model.GetComponent<CapsuleCollider>().enabled = true;
 
             HideController hc = ((_model as ModelPlayable).hideController as HideController);
             hc.AssignModel(_model);

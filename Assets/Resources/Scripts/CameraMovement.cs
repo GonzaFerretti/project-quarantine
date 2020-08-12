@@ -73,6 +73,7 @@ public class CameraMovement : MonoBehaviour
         {
             yield return null;
         }
+        updateMovementDirection();
         yield return new WaitForSeconds(waitDuration);
         startTime = Time.time;
         endPosition = startPosition;
@@ -84,6 +85,7 @@ public class CameraMovement : MonoBehaviour
         {
             yield return null;
         }
+        updateMovementDirection();
     }
 
     public IEnumerator LerpCamera(float startTime, float duration, Vector3 startPosition, Vector3 endPosition, Quaternion startRotation, Quaternion endRotation, focusStatus finalStatus)

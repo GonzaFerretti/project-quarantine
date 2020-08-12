@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ActionPatrolRotation : IAction
+public class ActionPatrolRotation : BaseAction
 {
     float _speed;
     float _duration;
@@ -16,7 +16,7 @@ public class ActionPatrolRotation : IAction
         _quaternion = quaternion;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         if (_duration < _maxDuration)
         {

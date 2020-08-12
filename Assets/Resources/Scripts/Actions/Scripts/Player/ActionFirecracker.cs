@@ -2,17 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ActionFirecracker : IAction
+public class ActionFirecracker : BaseAction
 {
-    SoundClip _sound;
     SoundManager _soundManager;
 
-    public ActionFirecracker(SoundClip sound)
-    {
-        _sound = sound;
-    }
-
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelPlayable mp = m as ModelPlayable;
         if (mp.firecracker == null) mp.firecracker = MonoBehaviour.Instantiate(mp.baseFirecracker);
@@ -22,8 +16,8 @@ public class ActionFirecracker : IAction
         mp.firecracker.StartCoroutine(mp.firecracker.TurnOff());
         mp.StartCoroutine(CancelLoss());
         if (!_soundManager) _soundManager = MonoBehaviour.FindObjectOfType<SoundManager>();
-        if (_sound)
-           _soundManager.Play(_sound);
+        if (clip)
+           _soundManager.Play(clip);
     }   
 
     IEnumerator CancelLoss()

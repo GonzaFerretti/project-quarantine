@@ -6,5 +6,6 @@ public class ActionCutWrapper : ActionWrapper
     public override void SetAction()
     {
         action = new ActionCut();
+        base.SetAction();
     }
 }

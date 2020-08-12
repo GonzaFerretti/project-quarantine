@@ -18,9 +18,16 @@ public class Firecracker : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider c)
+    private void OnTriggerStay(Collider c)
     {
         if(c.GetComponent<ModelPatrol>())
+        {
+            c.GetComponent<ModelPatrol>().Stagger(staggerDuration);
+        }
+    }
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.GetComponent<ModelPatrol>())
         {
             c.GetComponent<ModelPatrol>().Stagger(staggerDuration);
         }

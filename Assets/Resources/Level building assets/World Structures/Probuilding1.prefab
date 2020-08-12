@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4332913982400512149}
   - component: {fileID: 7809322126605386339}
   - component: {fileID: 1049843550}
+  - component: {fileID: 6449888869250186114}
   m_Layer: 11
   m_Name: Probuilding1
   m_TagString: Untagged
@@ -126,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transBaseMat: {fileID: 2100000, guid: f5cbd1b2b45d80c4bbfa61c9bc98eb23, type: 2}
-  isHiding: 0
   opacity: 1
+  lastOpacity: 0
 --- !u!95 &7809322126605386339
 Animator:
   serializedVersion: 3
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskDirection: {x: 1, y: 0, z: 0}
+--- !u!65 &6449888869250186114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568517681008216386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.699472, y: 11.243552, z: 3.136204}
+  m_Center: {x: 0.16666889, y: -5.025216, z: 14.841608}

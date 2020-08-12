@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Stun
   m_EditorClassIdentifier: 
   actionKey: {fileID: 0}
+  sound: {fileID: 11400000, guid: 3feb2fc55bc9b584e86fc048339ed76f, type: 2}
   knockStrength: 50
+  actionToAdd: {fileID: 11400000, guid: 38c82bf40d4d9834c9a18845c683db81, type: 2}

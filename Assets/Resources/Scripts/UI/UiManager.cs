@@ -26,6 +26,16 @@ public class UiManager : MonoBehaviour
         initialPos = initialPivot.GetComponent<RectTransform>().anchoredPosition;
     }
 
+    public void RemoveFromInterface(Item item)
+    {
+        if (itemContainers.ContainsKey(item.name))
+        {
+            GameObject go = itemContainers[item.name].gameObject;
+            itemContainers.Remove(item.name);
+            Destroy(go);
+        }
+    }
+
     public KeyValuePair<GameObject, FlyingUItext> GetAvailableModText(string itemName)
     {
         KeyValuePair<GameObject, FlyingUItext> modTextElement;
@@ -51,24 +61,24 @@ public class UiManager : MonoBehaviour
         return modTextElement;
     }
 
-    public void UpdateItem(Item item, int amount, bool isAdding, bool isReloading)
+    public void UpdateItem(Item item, int amount, bool isAdding, bool isReloading, bool isSelected, bool isSelecting)
     {
         //Debug.Log(item.displayName);
-        if (!itemContainers.ContainsKey(item.name) || isReloading)
+        if (!itemContainers.ContainsKey(item.name) || (isReloading))
         {
             GameObject newContainer = Instantiate(sampleContainer, transform);
             newContainer.name = item.displayName;
             itemContainers[item.name] = newContainer.GetComponent<ItemContainer>();
             newContainer.GetComponent<RectTransform>().anchoredPosition = new Vector3(initialPos.x + distance * itemContainers.Count - 1, initialPos.y, initialPos.z);
-            itemContainers[item.name].InitContainer(item, amount.ToString());
+            itemContainers[item.name].InitContainer(item, amount.ToString(), isSelected);
             //Debug.Log("cantidad de item containers " + itemContainers.Count);
         }
         else
         {
             //Debug.Log("Actualizando data");
             ItemContainer itemCont = itemContainers[item.name];
-            itemCont.UpdateText(amount.ToString());
-            if (item.isStackable && !isReloading)
+            itemCont.UpdateText(amount.ToString(), isSelected);
+            if (item.isStackable && !isReloading && !isSelecting)
             {
                 KeyValuePair<GameObject, FlyingUItext> flyingText = GetAvailableModText(item.name);
                 Vector3 contPos = itemCont.GetComponent<RectTransform>().anchoredPosition;

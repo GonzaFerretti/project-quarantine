@@ -110,7 +110,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 004fc1c8ad83c474e8c890dc7b3ead57, type: 2}
+  - {fileID: 2100000, guid: ac03b3d011b461048b03366a4af6faee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbec44b71054be843ba680d79b048879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _manager: {fileID: 0}
   leftFoot: {fileID: 11400000, guid: 8f8293db4aa02644cb5df4f212c46847, type: 2}
   rightFoot: {fileID: 11400000, guid: f06b5ccd719d1cf4988a9bb001f76a88, type: 2}
   landAfterVault: {fileID: 11400000, guid: 7980fd61165946a4f9dddd11805608dd, type: 2}
@@ -305,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasReachedPoint: 0
+  rightArm: {fileID: 2450833680186312859}
 --- !u!1 &794216679570332629
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +478,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ec793d153bdeb849a9fddb64c6fb378, type: 2}
+  - {fileID: 2100000, guid: e0df6d6626f38f84590af948f6fe77e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -621,7 +623,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf01b4703d7d1e749810f1ed95731e20, type: 2}
+  - {fileID: 2100000, guid: 24de73a7cb7ede64ca0d14106cce5378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1014,7 +1016,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf01b4703d7d1e749810f1ed95731e20, type: 2}
+  - {fileID: 2100000, guid: 24de73a7cb7ede64ca0d14106cce5378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1314,7 +1316,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf01b4703d7d1e749810f1ed95731e20, type: 2}
+  - {fileID: 2100000, guid: 24de73a7cb7ede64ca0d14106cce5378, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1861,7 +1863,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 888ba13fae06da640b0d8ccc5f5bb251, type: 2}
+  - {fileID: 2100000, guid: 618837d761c80c546b987f4806cda51d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2198,7 +2200,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16cb31764b4515d40b6ae3777245b243, type: 2}
+  - {fileID: 2100000, guid: 124ac626644d2d448af063ebbe5c36da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2596,6 +2598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3052233167082623996}
+  - component: {fileID: 2450833680186312859}
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: throwingHand
@@ -2622,6 +2625,22 @@ Transform:
   m_Father: {fileID: 2282700618865353824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2450833680186312859
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8099426895448624425}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8209242762023585099
 GameObject:
   m_ObjectHideFlags: 0

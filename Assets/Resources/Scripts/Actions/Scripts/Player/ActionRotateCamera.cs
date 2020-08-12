@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionRotateCamera : IAction
+public class ActionRotateCamera : BaseAction
 {
     float _directionMultiplier;
     float _step;
@@ -13,9 +13,14 @@ public class ActionRotateCamera : IAction
         _step = step;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelPlayable mp = (m as ModelPlayable);
+        if (!mp.mainCam || !mp.secondaryCamera)
+        {
+            mp.mainCam = GameObject.Find("Main Camera").GetComponent<CameraMovement>();
+            mp.secondaryCamera = GameObject.Find("minimapCamera").GetComponent<CameraMovement>();
+        }
         mp.mainCam.Rotate(_directionMultiplier, _step);
         mp.secondaryCamera.Rotate(_directionMultiplier, _step);
     }

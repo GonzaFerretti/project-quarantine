@@ -32,14 +32,17 @@ public class LossMenuManager : MonoBehaviour
 
     void LossCancel()
     {
-        StopAllCoroutines();
+        if (this != null)
+        {
+            StopAllCoroutines();
+        }
     }
 
     void EnterBehavior()
     {
-        EventManager.UnsubscribeToEvent("Loss", LossBehavior);
+        /*EventManager.UnsubscribeToEvent("Loss", LossBehavior);
         EventManager.UnsubscribeToEvent("LossCancel", LossCancel);
-        EventManager.UnsubscribeToEvent("Enter", EnterBehavior);
+        EventManager.UnsubscribeToEvent("Enter", EnterBehavior);*/
     }
 
     public void LossConfirm()

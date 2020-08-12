@@ -6,5 +6,6 @@ public class ActionMakeNoiseWrapper : ActionWrapper
     public override void SetAction()
     {
         action = new ActionMakeNoise();
+        base.SetAction();
     }
 }

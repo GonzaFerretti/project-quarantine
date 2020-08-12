@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionFling : IAction
+public class ActionFling : BaseAction
 {
     float _upwardStrength;
 
@@ -11,10 +11,9 @@ public class ActionFling : IAction
     {
         _upwardStrength = upwardStrength;
     }
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelChar mc = m as ModelChar;
-        mc.animator.SetTrigger("fling");
         (m as ModelPlayable).CheckFlingObjectExistsOrCreate();
         m.StartCoroutine(waitForAnimationAndFling(mc));
     }
@@ -31,6 +30,20 @@ public class ActionFling : IAction
     IEnumerator waitForAnimationAndFling(Model m)
     {
         ModelChar mc = m as ModelChar;
+
+        ModelPlayable mp = (m as ModelPlayable);
+        //tentative
+        List<FlingableItem> flingableItems = new List<FlingableItem>();
+
+        for (int i = 0; i < mp.inv.items.Count; i++)
+        {
+            if (mp.inv.items[i] is FlingableItem && mp.inv.currentlySelectedItem == mp.inv.items[i])
+                flingableItems.Add(mp.inv.items[i] as FlingableItem);
+        }
+
+        if (flingableItems.Count == 0) yield break;
+
+            mc.animator.SetTrigger("fling");
         AnimCheck check = GameObject.FindObjectOfType<AnimCheck>();
         do
         {
@@ -43,19 +56,8 @@ public class ActionFling : IAction
         check.hasReachedPoint = false;
         if (m is ModelPlayable)
         {
-            ModelPlayable mp = (m as ModelPlayable);
             Vector3 handPosition = GameObject.FindGameObjectWithTag("throwingHand").transform.position;
             if (mp.inv.items.Count == 0) yield break;
-
-            //tentative
-            List<FlingableItem> flingableItems = new List<FlingableItem>();
-
-            for (int i = 0; i < mp.inv.items.Count; i++)
-            {
-                if (mp.inv.items[i] is FlingableItem)
-                    flingableItems.Add(mp.inv.items[i] as FlingableItem);
-            }
-
             if (flingableItems.Count == 0) yield break;
 
             //if (!(mp.currentlySelectedItem is FlingableItem)) return;

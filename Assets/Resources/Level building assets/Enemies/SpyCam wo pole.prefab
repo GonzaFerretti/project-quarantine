@@ -359,6 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990978b70eb196c459b697af9ab18e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  rens: []
   controller: {fileID: 0}
   currentSpeed: 0
   standardSpeed: 0.3
@@ -376,6 +378,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 6967
   target: {fileID: 0}
+  targetDistance: 0
+  seethroughBaseMaterial: {fileID: 2100000, guid: ed6cebc9567df064f93de764efe1cb50,
+    type: 2}
   alertSpeed: 1
   waitTime: 2
   camAngle: 60
@@ -384,5 +389,13 @@ MonoBehaviour:
   startDir: {x: 0, y: 0, z: 0}
   rightForward: {x: 0, y: 0, z: 0}
   leftForward: {x: 0, y: 0, z: 0}
-  test: 0
-  test2: 0
+  spyCamLight: {fileID: 0}
+  minLightIntensity: 0
+  maxLightIntensity: 0
+  minLightScaleDistance: 0
+  maxLightDistance: 0
+  areaPrefab: {fileID: 4249991989642785645, guid: e0a9c5ddd2402ec48ab364248f5be67b,
+    type: 3}
+  area: {fileID: 0}
+  maxIndicatorSize: -1
+  indicatorMaxSizeFactor: 1.2

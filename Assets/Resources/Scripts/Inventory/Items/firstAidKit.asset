@@ -19,4 +19,4 @@ MonoBehaviour:
   allowingActions: []
   resource: {fileID: 11400000, guid: ffc7b9ba9e139fd46aa82b7da1ff1b5b, type: 2}
   amountPerResource: 1
-  mesh: {fileID: 7204923983376927192, guid: debd69daf1def2144b9d3c0a16558eb4, type: 3}
+  seeThroughColor: {r: 0.2, g: 0.24313726, b: 0.79607844, a: 0}

@@ -26,3 +26,6 @@ MonoBehaviour:
   fenceWasBroken: 
   shouldCameraMove: 1
   enteredBefore: 0
+  camPosition: {x: -320, y: -20, z: 6}
+  camRotation: {x: 42, y: -90, z: 0}
+  distance: 15

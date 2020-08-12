@@ -6,8 +6,10 @@ using UnityEngine;
 public class ActionStunWrapper : ActionWrapper
 {
     public float knockStrength;
+    public ActionWrapper actionToAdd;
     public override void SetAction()
     {
-        action = new ActionStun(knockStrength);
+        action = new ActionStun(knockStrength, actionToAdd);
+        base.SetAction();
     }
 }

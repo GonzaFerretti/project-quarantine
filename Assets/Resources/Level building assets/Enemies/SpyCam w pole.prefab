@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &132120240658034568
 Transform:
   m_ObjectHideFlags: 0
@@ -219,6 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990978b70eb196c459b697af9ab18e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  rens: []
   controller: {fileID: 0}
   currentSpeed: 0
   standardSpeed: 0.3
@@ -237,6 +239,8 @@ MonoBehaviour:
     m_Bits: 6967
   target: {fileID: 0}
   targetDistance: 0
+  seethroughBaseMaterial: {fileID: 2100000, guid: ed6cebc9567df064f93de764efe1cb50,
+    type: 2}
   alertSpeed: 1
   waitTime: 2
   camAngle: 60
@@ -245,13 +249,18 @@ MonoBehaviour:
   startDir: {x: 0, y: 0, z: 0}
   rightForward: {x: 0, y: 0, z: 0}
   leftForward: {x: 0, y: 0, z: 0}
-  test: 0
-  test2: 0
   spyCamLight: {fileID: 4293905848468365149}
   minLightIntensity: 1.5
   maxLightIntensity: 4
   minLightScaleDistance: 6
   maxLightDistance: 8
+  areaPrefab: {fileID: 7261090255829537363, guid: 18d1216a03948564ab72f2c441598049,
+    type: 3}
+  area: {fileID: 0}
+  maxIndicatorSize: -1
+  indicatorMaxSizeFactor: 1.1
+  minIndicatorSize: -1
+  indicatorMinSizeFactor: 0.6
 --- !u!1 &4293905846881604101
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +521,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4293905848468365151}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ActionCut : IAction
+public class ActionCut : BaseAction
 {
-    public void Do(Model m)
+    public override void Do(Model m)
     {
     }
 }

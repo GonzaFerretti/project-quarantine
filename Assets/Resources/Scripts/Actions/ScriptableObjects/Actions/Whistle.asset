@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Whistle
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 56dd0288a128cbb49a4b5720bb075366, type: 2}
-  whistleSound: {fileID: 11400000, guid: a178840575b7d7d45b0dc8ea6360b5ce, type: 2}
+  sound: {fileID: 11400000, guid: c0656d918cfcfd140b0dbbffd65130b7, type: 2}

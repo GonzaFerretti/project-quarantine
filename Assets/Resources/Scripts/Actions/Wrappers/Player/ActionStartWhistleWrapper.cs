@@ -7,5 +7,6 @@ public class ActionStartWhistleWrapper : ActionWrapper
     public override void SetAction()
     {
         action = new ActionStartWhistle();
+        base.SetAction();
     }
 }

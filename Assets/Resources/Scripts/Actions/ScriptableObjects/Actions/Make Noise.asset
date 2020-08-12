@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Make Noise
   m_EditorClassIdentifier: 
   actionKey: {fileID: 0}
+  sound: {fileID: 11400000, guid: b721b95eed75af64bb86187231b85418, type: 2}

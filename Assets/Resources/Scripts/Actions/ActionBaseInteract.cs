@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActionBaseInteract : IAction
+public abstract class ActionBaseInteract : BaseAction
 {
-    public abstract void Do(Model m);
     public float interactionDistance;
 }

@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 
-public abstract class ActionWrapper : ScriptableObject
+public class ActionWrapper : ScriptableObject
 {
-    public IAction action;
+    public BaseAction action;
     public ActionKeyLinks actionKey;
-    public abstract void SetAction();
+    public SoundClip sound;
+    public virtual void SetAction()
+    {
+        action.clip = sound;
+    }
 }

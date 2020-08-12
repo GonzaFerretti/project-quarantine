@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2105802e19bb5a246ac3a17287d41a5d, type: 3}
   m_Name: Cut
   m_EditorClassIdentifier: 
-  actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
+  actionKey: {fileID: 11400000, guid: a44501dcd6498e54984b71e2554b8ed0, type: 2}
+  sound: {fileID: 0}

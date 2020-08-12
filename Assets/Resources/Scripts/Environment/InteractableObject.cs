@@ -29,6 +29,7 @@ public class InteractableObject : Model
     
     protected virtual void Start()
     {
+        sm = FindObjectOfType<SoundManager>();
         if (objModel && anims)
         {
             initModel(ref animator, objModel, anims);

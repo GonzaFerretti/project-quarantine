@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Whistle
   description: This should get the attention of some guards.
-  icon: {fileID: 21300000, guid: b6fbe64ee4beb0544afc35aa86e0b2a5, type: 3}
+  icon: {fileID: 21300000, guid: 29f9c567037c4d348bc0e66443775e22, type: 3}
   isStackable: 0
   allowingActions:
-  - {fileID: 11400000, guid: cf4d42f04384c7f438e0c55fb07c595a, type: 2}
+  - {fileID: 11400000, guid: eedb29ac7f1c7894abd885512283eaf3, type: 2}
   resource: {fileID: 0}
   amountPerResource: 0
+  seeThroughColor: {r: 0.2, g: 0.24313726, b: 0.79607844, a: 0}

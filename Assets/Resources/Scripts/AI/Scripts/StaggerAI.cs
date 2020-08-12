@@ -6,12 +6,10 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "Controller/AI/StaggerAI")]
 public class StaggerAI : ControllerWrapper, IController
 {
-    ModelPatrol _model;
     NavMeshAgent _agent;
 
     public void AssignModel(Model model)
     {
-        _model = model as ModelPatrol;
         _agent = model.GetComponent<NavMeshAgent>();
     }
 

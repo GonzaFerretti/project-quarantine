@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InteractableCut : IActionInteractableObject
+public class InteractableCut : BaseActionInteractableObject
 {
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
         obj.animator.SetBool("ShouldOpen", true);
         obj.GetComponent<Collider>().enabled = false;
 
         (obj as Fence).switchColliders();
+        obj.sm.Play(clip);
 
         TentativeMapInfoKeeper infoKeeper = MonoBehaviour.FindObjectOfType<TentativeMapInfoKeeper>();
         TentativeMapInfo currentMapInfo = infoKeeper.sceneMapAssigner[SceneManager.GetActiveScene().name];

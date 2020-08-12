@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class ActionInteractPreview : IAction
+public class ActionInteractPreview : BaseAction
 {
     TextMeshProUGUI _textBox;
     float _rayDistance;
@@ -12,7 +12,7 @@ public class ActionInteractPreview : IAction
         _textBox = text;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         GameObject go = null;
         float distanceToObject = 0;
@@ -41,7 +41,7 @@ public class ActionInteractPreview : IAction
             {
                 for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
-                    if (!(mc.gainedActions[i].action is ActionBaseInteract) || (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject)
+                    if ((!(mc.gainedActions[i].action is ActionBaseInteract) || (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject) && ((m as ModelPlayable).controller != (m as ModelPlayable).dragBodyController) || (mc.gainedActions[i].action is ActionHide && (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject))
                     {
                         foreach (InteractablePreviewWrapper preview in interactable.previews)
                         {

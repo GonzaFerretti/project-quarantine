@@ -6,6 +6,8 @@ using UnityEngine;
 public class FlingController : PlayerController
 {
     ModelPlayable _mp;
+    public FlingableItem rock;
+    public FlingableItem bottle;
 
     public override void OnUpdate()
     {
@@ -17,16 +19,35 @@ public class FlingController : PlayerController
     void CheckFlingables()
     {
         if (_mp == null) _mp = _model as ModelPlayable;
+        List<FlingableItem> currentlySelectedFlingableItems = new List<FlingableItem>();
         List<FlingableItem> flingableItems = new List<FlingableItem>();
 
         for (int i = 0; i < _mp.inv.items.Count; i++)
         {
             if (_mp.inv.items[i] is FlingableItem)
+            {
                 flingableItems.Add(_mp.inv.items[i] as FlingableItem);
+                if (_mp.inv.items[i] == _mp.inv.currentlySelectedItem)
+                {
+                currentlySelectedFlingableItems.Add(_mp.inv.items[i] as FlingableItem);
+                }
+            }
         }
 
         if (flingableItems.Count == 0)
         {
+            if (_mp.inv.currentlySelectedItem == bottle)
+            {
+                _mp.inv.currentlySelectedItem = rock;
+                _mp.inv.UpdateUI(rock, false, false, true, true);
+                _mp.inv.UpdateUI(bottle, false, false, false, true);
+            }
+            else
+            {
+                _mp.inv.currentlySelectedItem = bottle;
+                _mp.inv.UpdateUI(rock, false, false, false, true);
+                _mp.inv.UpdateUI(bottle, false, false, true, true);
+            }
             DisableFling();
         }
     }

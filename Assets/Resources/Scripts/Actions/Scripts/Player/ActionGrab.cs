@@ -19,6 +19,7 @@ public class ActionGrab : ActionBaseInteract
             item.Interact(model);
             model.transform.forward = finalDirection;
             GameObject flingItemModel = (item.item is FlingableItem) ? model.nearbyObject.gameObject : null;
+            mh.sm.Play(clip);
             model.inv.AddItem(item.item, flingItemModel);
             model.nearbyObject = null;
             model.animator.SetTrigger("pickUp");

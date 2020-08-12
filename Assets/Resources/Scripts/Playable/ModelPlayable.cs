@@ -19,6 +19,7 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
     public ControllerWrapper talkController;
     public ControllerWrapper lossController;
     public ControllerWrapper whistleController;
+    public ControllerWrapper dragBodyController;
     public FlingSpotLight flingSpotlight;
     public RangeIndicator rangeIndicator;
     public GameObject rangeIndicatorPrefab;
@@ -27,6 +28,8 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
     public Item currentlySelectedItem;
     public CameraMovement mainCam;
     public CameraMovement secondaryCamera;
+    public ModelPatrol draggingEnemy;
+    public Vector3 offsetDragEnemy;
 
     public Dictionary<KeyCode, movementKeysDirection> movementKeys = new Dictionary<KeyCode, movementKeysDirection>();
 
@@ -49,7 +52,7 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
         rangeIndicator.gameObject.SetActive(false);
     }
 
-    private void ChangedActiveScene(Scene current, Scene next)
+    public void ChangedActiveScene(Scene current, Scene next)
     {
         StartCoroutine(FindCameras());
     }
@@ -68,6 +71,7 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
         SetController(redirectController);
         SetController(hideController);
         SetController(hidingActionController);
+        SetController(dragBodyController);
 
         CheckFlingObjectExistsOrCreate();
 
@@ -108,7 +112,7 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
         return FlingObstacleChecker.GetCloseObstacles();
     }
 
-    void LocRepositioning(Model m)
+    public void LocRepositioning(Model m)
     {
         if (!(m is Door)) return;
         Door door = m as Door;
@@ -161,7 +165,7 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
         InitModel(ref animator, attributes.characterModel, attributes.animations);
     }
 
-    void LossBehavior()
+    public void LossBehavior()
     {
         ActionFirecrackerWrapper gotFirecracker = null;
 
@@ -174,7 +178,6 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
         }
 
         if (firecrackers.Count > 0) inv.items.Remove(firecrackers[0]);
-
 
         for (int i = 0; i < gainedActions.Count; i++)
         {
@@ -192,14 +195,22 @@ public class ModelPlayable : ModelHumanoid, IMakeNoise
         {
             gotFirecracker.SetAction();
             gotFirecracker.action.Do(this);
+            EventManager.TriggerEvent("LossCancel");
             gotFirecracker = null;
         }
         else
         {
             controller = lossController;
+            ScentCreator scentCreator = GetComponentInChildren<ScentCreator>();
+            for (int i = 0; i < scentCreator.scentObjects.Count; i++)
+            {
+                Destroy(scentCreator.scentObjects[i].gameObject);
+            }
+            Destroy(scentCreator);
             _rb.constraints = RigidbodyConstraints.FreezeAll;
             EventManager.UnsubscribeToLocationEvent("EnterLocation", LocRepositioning);
             EventManager.UnsubscribeToEvent("Loss", LossBehavior);
+            SceneManager.activeSceneChanged -= ChangedActiveScene;
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class InteractableTalk : IActionInteractableObject
+public class InteractableTalk : BaseActionInteractableObject
 {
     NPCDialog _currentDialog;
 
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
         if (obj is ModelNPC)
         {

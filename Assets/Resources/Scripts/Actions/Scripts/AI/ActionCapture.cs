@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
-public class ActionCapture : IAction
+public class ActionCapture : BaseAction
 {
     ModelPatrol _mp;
     LayerMask _layerMask;
@@ -12,7 +12,7 @@ public class ActionCapture : IAction
         _layerMask = l;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         if (!(m is ModelPatrol)) return;
         if (_mp == null) _mp = m as ModelPatrol;

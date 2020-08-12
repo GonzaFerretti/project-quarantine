@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionStartWhistle : IAction
+public class ActionStartWhistle : BaseAction
 {
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelPlayable mp = m as ModelPlayable;
         mp.controller = mp.whistleController;

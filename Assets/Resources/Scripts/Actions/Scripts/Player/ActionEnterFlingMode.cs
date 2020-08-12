@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-public class ActionEnterFlingMode : IAction
+public class ActionEnterFlingMode : BaseAction
 {
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelPlayable mp = m as ModelPlayable;
 

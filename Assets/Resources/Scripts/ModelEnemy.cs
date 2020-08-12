@@ -16,6 +16,8 @@ public class ModelEnemy : ModelChar
     public ModelPlayable target;
     public float targetDistance = 0;
 
+    public Material seethroughBaseMaterial;
+
     //Tentative
     private Transform debugTarget;
 
@@ -32,6 +34,30 @@ public class ModelEnemy : ModelChar
 
         //Tentative
         if (!target) target = FindObjectOfType<ModelPlayable>();
+        InitShader();
+    }
+
+    void InitShader()
+    {
+        if (!(this is ModelPoliceCar))
+        {
+            foreach (Renderer ren in rens)
+            {
+                Material[] usualMat = ren.materials;
+                Material[] transMat = new Material[ren.materials.Length];
+                for (int i = 0; i < ren.materials.Length; i++)
+                {
+                    Material mat = new Material(seethroughBaseMaterial);
+                    mat.SetTexture("_Albedo", usualMat[i].GetTexture("_MainTex"));
+                    mat.SetTexture("_Normal", usualMat[i].GetTexture("_BumpMap"));
+                    mat.SetFloat("_Glossiness", usualMat[i].GetFloat("_Glossiness"));
+                    mat.SetFloat("_Metallic", usualMat[i].GetFloat("_Metallic"));
+                    mat.SetColor("_Color", enemyAttributes.seeThroughColor);
+                    transMat[i] = mat;
+                }
+                ren.materials = transMat;
+            }
+        }
     }
 
     void SetAttributes()
@@ -57,31 +83,31 @@ public class ModelEnemy : ModelChar
         var angleToTarget = Vector3.Angle(transform.forward, positionDifference);
 
         if (angleToTarget > _angle / 2) return false;
-        
+
         RaycastHit hitInfo;
 
         if (Physics.Raycast(transform.position + head, positionDifference, out hitInfo, range, visibility))
         {
-            if (hitInfo.transform != player.transform) return false;            
+            if (hitInfo.transform != player.transform) return false;
             if (hitInfo.transform == player.transform && player.isHidden) return false;
             targetDistance = (hitInfo.transform.position - transform.position).magnitude;
         }
         return true;
     }
 
-        //void OnDrawGizmos()
-        //{
-        //    var position = transform.position + new Vector3(0, headHeight, 0);
+    //void OnDrawGizmos()
+    //{
+    //    var position = transform.position + new Vector3(0, headHeight, 0);
 
-        //    //Gizmos.color = Color.white;
-        //    //Gizmos.DrawWireSphere(position, _suspectRange);
+    //    //Gizmos.color = Color.white;
+    //    //Gizmos.DrawWireSphere(position, _suspectRange);
 
-        //    Gizmos.color = Color.yellow;
-        //    Gizmos.DrawLine(position, position + Quaternion.Euler(0, -_angle / 2, 0) * transform.forward * alertRange);
-        //    Gizmos.DrawLine(position, position + Quaternion.Euler(0, _angle / 2, 0) * transform.forward * alertRange);
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawLine(position, position + Quaternion.Euler(0, -_angle / 2, 0) * transform.forward * alertRange);
+    //    Gizmos.DrawLine(position, position + Quaternion.Euler(0, _angle / 2, 0) * transform.forward * alertRange);
 
 
-        //    if (target)
-        //        Gizmos.DrawLine(position, target.transform.position + new Vector3(0, target.bodyHeight, 0));
-        //}
-    }
+    //    if (target)
+    //        Gizmos.DrawLine(position, target.transform.position + new Vector3(0, target.bodyHeight, 0));
+    //}
+}

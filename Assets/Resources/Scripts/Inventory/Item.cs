@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public List<ActionWrapper> allowingActions = new List<ActionWrapper>();
     public Resource resource;
     public int amountPerResource;
+    public Color seeThroughColor;
 
     public virtual Item cloneItem()
     {

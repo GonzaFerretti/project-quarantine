@@ -20,10 +20,10 @@ public class ModelHumanoid : ModelChar
         {
             if (nearbyObject)
             { 
-            nearbyObject.DisableOutline();
+            //nearbyObject.DisableOutline();
             }
             nearbyObject = collider.GetComponent<ItemWrapper>();
-            nearbyObject.ActivateOutline();
+            //nearbyObject.ActivateOutline();
         }
     }
 
@@ -34,7 +34,7 @@ public class ModelHumanoid : ModelChar
             if (!nearbyObject)
             {
                 nearbyObject = collider.GetComponent<ItemWrapper>();
-                nearbyObject.ActivateOutline();
+                //nearbyObject.ActivateOutline();
             }
         }
     }
@@ -45,7 +45,7 @@ public class ModelHumanoid : ModelChar
         {
             if (nearbyObject)
             {
-                nearbyObject.DisableOutline();
+                //nearbyObject.DisableOutline();
                 nearbyObject = null;
             }
         }

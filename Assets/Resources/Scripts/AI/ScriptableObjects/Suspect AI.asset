@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623d5aa847eedb34bbf9edbb8ad87ef4, type: 3}
   m_Name: Suspect AI
   m_EditorClassIdentifier: 
-  targetTreshold: 1.6
+  targetThreshold: 2.23
   rotationDuration: 0
   rotationMaxDuration: 3
   currentRotations: 0

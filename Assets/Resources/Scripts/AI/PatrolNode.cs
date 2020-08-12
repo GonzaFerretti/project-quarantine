@@ -7,7 +7,7 @@ public class PatrolNode : MonoBehaviour
     public PatrolNode nextNode;
     public NodeAction[] queuedAction;
     public int currentAction;
-    public ModelPatrol patrol;
+    public ModelNodeUsingEnemy patrol;
     Dictionary<AIEnum, ControllerWrapper> _controllerDictionary;
 
     void Start()

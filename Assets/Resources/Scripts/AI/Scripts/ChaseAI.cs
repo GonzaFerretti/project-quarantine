@@ -9,12 +9,12 @@ public class ChaseAI : ControllerWrapper, IController, INeedTargetLocation
     public float maxTimer;
     public float timer;
     NavMeshAgent _agent;
-    ModelPatrol _model;
+    ModelNodeUsingEnemy _model;
     Vector3 _target;
 
     public void AssignModel(Model model)
     {
-        _model = model as ModelPatrol;
+        _model = model as ModelNodeUsingEnemy;
         _agent = model.GetComponent<NavMeshAgent>();
     }
 
@@ -50,6 +50,7 @@ public class ChaseAI : ControllerWrapper, IController, INeedTargetLocation
                 _agent.SetDestination(_model.lastSight);
         }
 
+        if(_model.animator.GetBool("running"))
         _model.animator.SetBool("running", true);
     }
 

@@ -11,5 +11,6 @@ public class ActionRotateCameraWrapper : ActionWrapper
     public override void SetAction()
     {
         action = new ActionRotateCamera(directionMultiplier,step);
+        base.SetAction();
     }
 }

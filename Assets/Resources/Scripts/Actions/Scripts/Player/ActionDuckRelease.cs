@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ActionDuckRelease : IAction
+public class ActionDuckRelease : BaseAction
 {
     Vector3 _center;
     float _height;
@@ -12,7 +12,7 @@ public class ActionDuckRelease : IAction
         _height = height;
         _radius = radius;
     }
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelHumanoid mh = m as ModelHumanoid;
         mh.isDucking = false;

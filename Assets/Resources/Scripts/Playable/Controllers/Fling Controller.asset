@@ -28,3 +28,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
   - {fileID: 11400000, guid: dc1213891fc473d4e9773b48631b4cf9, type: 2}
   - {fileID: 11400000, guid: 181c19e7aeea29541a2238a7f282790d, type: 2}
+  - {fileID: 11400000, guid: 09a0eeb4975d66f41afe72152d52f396, type: 2}
+  rock: {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  bottle: {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}

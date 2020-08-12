@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 6098897822162930757}
   - component: {fileID: 6098897822162930755}
   - component: {fileID: 6098897822162930758}
+  - component: {fileID: 4030548787821460600}
   m_Layer: 10
   m_Name: Patrol
   m_TagString: Untagged
@@ -157,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  rens: []
   controller: {fileID: 0}
   currentSpeed: 3
   standardSpeed: 3
@@ -172,26 +174,32 @@ MonoBehaviour:
   headHeight: 1.5
   visibility:
     serializedVersion: 2
-    m_Bits: 15159
+    m_Bits: 31543
   target: {fileID: 0}
   targetDistance: 0
+  seethroughBaseMaterial: {fileID: 2100000, guid: ed6cebc9567df064f93de764efe1cb50,
+    type: 2}
   node: {fileID: 0}
+  scoutController: {fileID: 11400000, guid: a057ba16832fd394abbff7abab28afdf, type: 2}
+  guardController: {fileID: 11400000, guid: e95bb362e16d50047a16f666cdce53ce, type: 2}
+  fovCones: []
+  fovConePrefab: {fileID: 7261090255829537363, guid: 18d1216a03948564ab72f2c441598049,
+    type: 3}
+  lastSight: {x: 0, y: 0, z: 0}
   suspectController: {fileID: 11400000, guid: ba3c23eb89cc9924598c913cd29a801c, type: 2}
   indoorController: {fileID: 11400000, guid: 1fb128c82325d674cb12ea0b39f3df6b, type: 2}
   staggerController: {fileID: 11400000, guid: 6844ac9302eaa9844964cab64a42b3e2, type: 2}
-  scoutController: {fileID: 11400000, guid: a057ba16832fd394abbff7abab28afdf, type: 2}
-  guardController: {fileID: 11400000, guid: e95bb362e16d50047a16f666cdce53ce, type: 2}
   koController: {fileID: 11400000, guid: c4eb24724cc59624195a805cbcd1265c, type: 2}
+  lookAtFlungObjectController: {fileID: 11400000, guid: 3a286fcafb81b1a4da427504614392e9,
+    type: 2}
+  approachGuardAI: {fileID: 11400000, guid: d61f284709025594b99c22263ddddd41, type: 2}
   spawner: {fileID: 0}
-  fovConePrefab: {fileID: 7261090255829537363, guid: 18d1216a03948564ab72f2c441598049,
-    type: 3}
   runSpeed: 6
-  lastSight: {x: 0, y: 0, z: 0}
   actionCapture: {fileID: 11400000, guid: e484aadb42fe24e428408c5c9fa4c869, type: 2}
   meleeDistance: 2.1
-  staggerTimer: 1.5
+  staggerTimer: 0.5
   ragdoll: {fileID: 0}
-  fovCones: []
+  KOManager: {fileID: 0}
 --- !u!195 &6098897822162930755
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -227,6 +235,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4030548787821460600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098897822162930756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea53979d51310d41a37f22cad01729a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  rens: []
+  requiredAction: {fileID: 0}
+  feedback: {fileID: 0}
+  animator: {fileID: 0}
+  previews:
+  - {fileID: 11400000, guid: 71150f3f443a5eb44b501c6559ef126b, type: 2}
+  objModel: {fileID: 0}
+  anims: {fileID: 0}
+  hasBeenPreviewed: 0
 --- !u!1 &6098897823655000896
 GameObject:
   m_ObjectHideFlags: 0

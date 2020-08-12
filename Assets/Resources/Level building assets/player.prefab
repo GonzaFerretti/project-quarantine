@@ -75,6 +75,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1175610433801712001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2784265329150316131}
+  - component: {fileID: 8152894176741707262}
+  m_Layer: 0
+  m_Name: ScentMaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2784265329150316131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175610433801712001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4032696742755407107}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8152894176741707262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175610433801712001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7101f60ff629e7a4cb30f572683eac07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scentTrailAmount: 3
+  scentMovementTimer: 0.5
+  scent: {fileID: 1634658638327038177, guid: b48371ac597f2254f9e01508d395752f, type: 3}
+  scentObjects: []
 --- !u!1 &4032696742062400465
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +216,7 @@ GameObject:
   - component: {fileID: 195629204}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +236,7 @@ Transform:
   - {fileID: 6350784885631328887}
   - {fileID: 7636424143663356408}
   - {fileID: 1730145687114619078}
+  - {fileID: 2784265329150316131}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -221,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  rens: []
   controller: {fileID: 11400000, guid: b456120371ea80945a750da8e0239a67, type: 2}
   currentSpeed: 0
   standardSpeed: 0
@@ -252,6 +301,7 @@ MonoBehaviour:
   talkController: {fileID: 11400000, guid: 2bbf04f64c217634daa49354b4c2c5b4, type: 2}
   lossController: {fileID: 11400000, guid: 91b9ddc20f80f5f45a29a4f5df2fe223, type: 2}
   whistleController: {fileID: 11400000, guid: da4433c552f48614197937d3ff511b02, type: 2}
+  dragBodyController: {fileID: 11400000, guid: 2815ecebb8233f04188b4ae6f5bb5819, type: 2}
   flingSpotlight: {fileID: 7636424143663356410}
   rangeIndicator: {fileID: 0}
   rangeIndicatorPrefab: {fileID: 4249991989642785645, guid: ae41fb11e76a7b344a1a8decf9f86831,
@@ -259,6 +309,10 @@ MonoBehaviour:
   whistleStrength: 0
   isHidden: 0
   currentlySelectedItem: {fileID: 0}
+  mainCam: {fileID: 0}
+  secondaryCamera: {fileID: 0}
+  draggingEnemy: {fileID: 0}
+  offsetDragEnemy: {x: 0.19, y: 0.19, z: 0.32}
   baseFlingObject: {fileID: 6391621869539279117, guid: 1366872e92e409a449c78158484e6542,
     type: 3}
   baseFirecracker: {fileID: 2847855571473310872, guid: 3ce1788ad59ec8e41a50e774359653cc,
@@ -324,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  rens: []
   modelPlayable: {fileID: 0}
   point: {x: 0, y: 0, z: 0}
   controller: {fileID: 11400000, guid: 5bf857d91452fa746a808a28edf7fa92, type: 2}

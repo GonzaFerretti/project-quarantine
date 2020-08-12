@@ -6,5 +6,6 @@ public class InteractableGrabWrapper : InteractableFeedbackWrapper
     public override void SetAction()
     {
         action = new InteractableGrab();
+        base.SetAction();
     }
 }

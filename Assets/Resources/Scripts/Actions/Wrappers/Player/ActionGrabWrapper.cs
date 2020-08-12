@@ -6,5 +6,6 @@ public class ActionGrabWrapper : ActionBaseInteractWrapper
     public override void SetAction()
     {
         action = new ActionGrab(interactionDistance);
+        base.SetAction();
     }
 }

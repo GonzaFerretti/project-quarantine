@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8855970168875166600}
   - component: {fileID: 8855970168875166601}
   - component: {fileID: 7767313065294576175}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: WiredFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
+  rens: []
   requiredAction: {fileID: 11400000, guid: e4b22e86750d82849922ef36f928cbb4, type: 2}
   feedback: {fileID: 11400000, guid: 2c58ebcebc1a6224787158725573a7e2, type: 2}
   animator: {fileID: 3682343662993302849}

@@ -6,7 +6,9 @@ using System.Linq;
 public class Inventory : ScriptableObject
 {
     public List<Item> items;
+    public FlingableItem currentlySelectedItem;
     ModelChar _model;
+
     public void initializeInventory(ModelChar model)
     {
         _model = model;
@@ -25,7 +27,7 @@ public class Inventory : ScriptableObject
 
     public void AddItem(Item item, GameObject objectObtainedFrom = null)
     {
-        //Debug.Log("itemAdded");
+        if (item is FlingableItem && !currentlySelectedItem) currentlySelectedItem = item as FlingableItem;
         Item itemToAdd = item;
         if (objectObtainedFrom) (itemToAdd as FlingableItem).flingItemRuntimeInfo = new FlingObjectInfo(objectObtainedFrom);
         items.Add(itemToAdd);
@@ -46,8 +48,7 @@ public class Inventory : ScriptableObject
         }
         if (itemToAdd.icon != null)
         {
-            //Debug.Log("has Icon");
-            UpdateUI(itemToAdd, true, false);
+            UpdateUI(itemToAdd, true, false, itemToAdd == currentlySelectedItem, false);
         }
     }
 
@@ -58,19 +59,18 @@ public class Inventory : ScriptableObject
         {
             if (item.icon != null)
             {
-                //Debug.Log("has Icon");
-                UpdateUI(item, true, true);
+                UpdateUI(item, true, true, item == currentlySelectedItem, false);
             }
         }
     }
 
-    void UpdateUI(Item item, bool isAdding, bool isReloading)
+    public void UpdateUI(Item item, bool isAdding, bool isReloading, bool isSelected, bool isSelecting)
     {
         Item _item = item;
         int count = GetItemCount(item);
         bool _isAdding = isAdding;
         bool _isReloading = isReloading;
-        FindObjectOfType<UiManager>().UpdateItem(item, GetItemCount(item), isAdding, isReloading);
+        FindObjectOfType<UiManager>().UpdateItem(item, GetItemCount(item), isAdding, isReloading, isSelected, isSelecting);
     }
 
     public void RemoveItem(Item item)
@@ -78,7 +78,7 @@ public class Inventory : ScriptableObject
         if (items.Contains(item))
         {
             items.Remove(item);
-            UpdateUI(item, false, false);
+            UpdateUI(item, false, false, item == currentlySelectedItem, false);
         }
         foreach (ActionWrapper action in item.allowingActions)
         {

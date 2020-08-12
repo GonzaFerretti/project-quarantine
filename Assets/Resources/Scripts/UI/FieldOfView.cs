@@ -6,14 +6,15 @@ public class FieldOfView : MonoBehaviour
 {
     private int rayCount;
     private Mesh mesh;
-    [SerializeField] private float fov;
-    [SerializeField] private float viewDistance;
-    [SerializeField] private float heightOffset;
+    [SerializeField] public float fov;
+    [SerializeField] public float viewDistance;
+    [SerializeField] public float heightOffset;
     [Range(1, 100)]
     [SerializeField] private int curveSharpness;
-    [SerializeField] private LayerMask layerFilter;
+    [SerializeField] public LayerMask layerFilter;
     [SerializeField] public GameObject model;
     private Vector3 origin;
+    public bool patrolMode = true;
     [SerializeField] private float startingAngle;
     public Material suspectMaterial;
     public bool isVisible = true;
@@ -50,8 +51,16 @@ public class FieldOfView : MonoBehaviour
         if (isVisible)
         {
             startingAngle = GetAngleFromVectorFloat(model.transform.forward);
-            Vector3 rayCastOrigin = new Vector3(model.transform.position.x, model.GetComponent<ModelPatrol>().headHeight, model.transform.position.z);
-            transform.position = model.transform.position + heightOffset * Vector3.up;
+            Vector3 rayCastOrigin = Vector3.zero;
+            if (patrolMode)
+            {
+                transform.position = model.transform.position + heightOffset * Vector3.up;
+                rayCastOrigin = new Vector3(model.transform.position.x, model.GetComponent<ModelNodeUsingEnemy>().headHeight, model.transform.position.z);
+            }
+            else
+            {
+                rayCastOrigin = transform.position + heightOffset * Vector3.up;
+            }
             rayCount = Mathf.RoundToInt(fov / curveSharpness);
             origin = Vector3.zero;
             float angle = startingAngle + fov / 2;
@@ -69,7 +78,7 @@ public class FieldOfView : MonoBehaviour
             {
                 Vector3 vertex;
                 RaycastHit hit = new RaycastHit();
-                RaycastHit[] hits = Physics.RaycastAll(rayCastOrigin, GetVectorFromAngle(angle), viewDistance, layerFilter.value);
+                /*RaycastHit[] hits = Physics.RaycastAll(rayCastOrigin, GetVectorFromAngle(angle), viewDistance, layerFilter.value);
                 foreach (RaycastHit possibleHit in hits)
                 {
                     if (!possibleHit.collider.isTrigger)
@@ -77,8 +86,8 @@ public class FieldOfView : MonoBehaviour
                         hit = possibleHit;
                         break;
                     }
-                }
-
+                }*/
+                Physics.Raycast(rayCastOrigin, GetVectorFromAngle(angle),out hit, viewDistance, layerFilter.value);
                 if (hit.collider == null)
                 {
                     // No hit
