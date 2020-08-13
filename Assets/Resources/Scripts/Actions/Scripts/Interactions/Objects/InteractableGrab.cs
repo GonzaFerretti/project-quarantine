@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InteractableGrab : IActionInteractableObject
+public class InteractableGrab : BaseActionInteractableObject
 {
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
         //tentative
-        //TentativeMapInfoKeeper test = MonoBehaviour.FindObjectOfType<TentativeMapInfoKeeper>();
-        //if(test.sceneMapAssigner[SceneManager.GetActiveScene().name].items.Contains((obj as ItemWrapper).item))
-        //test.sceneMapAssigner[SceneManager.GetActiveScene().name].items.Remove((obj as ItemWrapper).item);
+        /*
+        TentativeMapInfoKeeper infoKeeper = MonoBehaviour.FindObjectOfType<TentativeMapInfoKeeper>();
+        int positionInList = 0;
+        TentativeMapInfo currentMapInfo = infoKeeper.sceneMapAssigner[SceneManager.GetActiveScene().name];
+
+        for (int i = 0; i < currentMapInfo.items.Count; i++)
+        {
+            if (currentMapInfo.items[i] == (obj as ItemWrapper))
+                positionInList = i;
+            break;
+        }
+
+        if (currentMapInfo.items.Contains((obj as ItemWrapper).item))
+        {
+            currentMapInfo.items.Remove((obj as ItemWrapper).item);
+            currentMapInfo.positions.Remove(currentMapInfo.positions[positionInList]);
+            currentMapInfo.rotations.Remove(currentMapInfo.rotations[positionInList]);
+            //currentMapInfo.scales.Remove(currentMapInfo.scales[positionInList]);
+        }*/
         Object.Destroy(obj.gameObject);
     }
 }

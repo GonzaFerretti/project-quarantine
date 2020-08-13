@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ActionPreviewer : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class ActionPreviewer : MonoBehaviour
 
     private void Start()
     {
-        actionPreviewer.text = GetComponent<Text>();
+        actionPreviewer.text = GetComponent<TextMeshProUGUI>();
         actionPreviewer.SetAction();
     }
 

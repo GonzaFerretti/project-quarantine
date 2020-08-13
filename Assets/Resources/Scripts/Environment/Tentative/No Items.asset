@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   positions: []
+  rotations: []
+  scales: []
+  shouldCameraMove: 0

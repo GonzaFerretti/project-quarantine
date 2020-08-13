@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class ActionRelocation : IAction
+public class ActionRelocation : BaseAction
 {
     Vector3 _targetLoc;
 
@@ -10,7 +10,7 @@ public class ActionRelocation : IAction
         _targetLoc = targetLocation;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelChar mc = m as ModelChar;
         NavMeshAgent agent = m.GetComponent<NavMeshAgent>();

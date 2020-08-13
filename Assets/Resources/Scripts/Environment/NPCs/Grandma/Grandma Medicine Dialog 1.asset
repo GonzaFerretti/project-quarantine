@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59aa946f49c9b504db44b79fcb11aa40, type: 3}
+  m_Name: Grandma Medicine Dialog 1
+  m_EditorClassIdentifier: 
+  resource: {fileID: 11400000, guid: ffc7b9ba9e139fd46aa82b7da1ff1b5b, type: 2}
+  dialog:
+  - These old bones are feeling more clanky lately.

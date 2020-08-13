@@ -16,3 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
   positions:
   - {x: 1.16, y: 0.93, z: -17.6}
+  rotations: []
+  fencePositions:
+  - {x: -58.50076, y: 0, z: 0}
+  - {x: -58.50076, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  fenceRotations:
+  - {x: -90, y: 90, z: 0}
+  - {x: -90, y: 90, z: 0}
+  - {x: -90, y: 90, z: 0}
+  - {x: -90, y: 90, z: 0}
+  fenceWasBroken: 00000000
+  shouldCameraMove: 1

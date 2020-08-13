@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionFling : IAction
+public class ActionFling : BaseAction
 {
     float _upwardStrength;
 
@@ -11,46 +11,72 @@ public class ActionFling : IAction
     {
         _upwardStrength = upwardStrength;
     }
-
-    public void Do(Model m)
+    public override void Do(Model m)
     {
+        ModelChar mc = m as ModelChar;
+        (m as ModelPlayable).CheckFlingObjectExistsOrCreate();
+        m.StartCoroutine(waitForAnimationAndFling(mc));
+    }
+
+    IEnumerator logSpeed(FlingObject fo)
+    {
+        Rigidbody rb = fo.GetComponent<Rigidbody>();
+        do
+        {
+            yield return null;
+        } while (rb.velocity == Vector3.zero);
+    }
+
+    IEnumerator waitForAnimationAndFling(Model m)
+    {
+        ModelChar mc = m as ModelChar;
+
+        ModelPlayable mp = (m as ModelPlayable);
+        //tentative
+        List<FlingableItem> flingableItems = new List<FlingableItem>();
+
+        for (int i = 0; i < mp.inv.items.Count; i++)
+        {
+            if (mp.inv.items[i] is FlingableItem && mp.inv.currentlySelectedItem == mp.inv.items[i])
+                flingableItems.Add(mp.inv.items[i] as FlingableItem);
+        }
+
+        if (flingableItems.Count == 0) yield break;
+
+            mc.animator.SetTrigger("fling");
+        AnimCheck check = GameObject.FindObjectOfType<AnimCheck>();
+        do
+        {
+            yield return null;
+        } while (!check.hasReachedPoint);
         //m.flingObject.SetAttributes();
         float strength;
         Vector3 dir;
-        ModelChar mc = m as ModelChar;
-        if (mc.flingObject.gameObject.activeSelf) return;
-
+        if (mc.flingObject.gameObject.activeSelf) yield break;
+        check.hasReachedPoint = false;
         if (m is ModelPlayable)
         {
-            ModelPlayable mp = (m as ModelPlayable);
-            if (mp.inv.items.Count == 0) return;
-
-            //tentative
-            List<FlingableItem> flingableItems = new List<FlingableItem>();
-
-            for (int i = 0; i < mp.inv.items.Count; i++)
-            {
-                if (mp.inv.items[i] is FlingableItem)
-                    flingableItems.Add(mp.inv.items[i] as FlingableItem);
-            }
-
-            if (flingableItems.Count == 0) return;
+            Vector3 handPosition = GameObject.FindGameObjectWithTag("throwingHand").transform.position;
+            if (mp.inv.items.Count == 0) yield break;
+            if (flingableItems.Count == 0) yield break;
 
             //if (!(mp.currentlySelectedItem is FlingableItem)) return;
-            dir = new Vector3(mp.flingSpotlight.transform.forward.x, 0, mp.flingSpotlight.transform.forward.z);
+            dir = new Vector3(mp.flingSpotlight.transform.position.x - handPosition.x, 0, mp.flingSpotlight.transform.position.z - handPosition.z).normalized;
             m.transform.forward = dir;
             //tentative
-            mp.flingObject.transform.position = m.transform.position + dir + new Vector3(0, m.transform.localScale.y, 0);
+            mp.flingObject.transform.position = handPosition + dir + new Vector3(0, m.transform.localScale.y, 0);
 
-            float dis = Vector3.Distance(mp.GetComponentInChildren<FlingSpotLight>().point, m.transform.position);
+            float dis = Vector3.Distance(mp.GetComponentInChildren<FlingSpotLight>().point, handPosition);
 
             if (dis < mp.strength)
                 strength = dis;
             else strength = mp.strength;
 
             //tentative
-            mc.flingObject.SetAttributes(flingableItems[0].itemModel);
+            mc.flingObject.SetAttributes(flingableItems[0].flingItemRuntimeInfo);
+            mc.flingObject.Init();
             mp.inv.RemoveItem(flingableItems[0]);
+            (mp.controller as FlingController).DisableFling();
         }
         else
         {
@@ -66,12 +92,26 @@ public class ActionFling : IAction
                 strength = dis;
             else strength = me.strength;
         }
+        FlingObject flingObject = mc.flingObject;
+        m.StartCoroutine(logSpeed(flingObject));
+        flingObject.transform.forward = dir.normalized;
+        flingObject.gameObject.SetActive(true);
+        flingObject.rb.velocity = Vector3.zero;
+        flingObject.rb.angularVelocity = Vector3.zero;
+        Vector3 forceToApply = dir * strength + Vector3.up * _upwardStrength / 2;
+        flingObject.rb.AddForce(forceToApply, ForceMode.VelocityChange);
+        /*flingObject.rb.AddForce(dir * strength, ForceMode.Impulse);
+        flingObject.rb.AddTorque(mc.flingObject.transform.forward, ForceMode.Impulse);
+        flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);*/
 
-        mc.flingObject.gameObject.SetActive(true);
-        mc.flingObject.rb.velocity = Vector3.zero;
-        mc.flingObject.rb.angularVelocity = Vector3.zero;
-        mc.flingObject.rb.AddForce(dir * strength, ForceMode.Impulse);
-        mc.flingObject.rb.AddTorque(mc.flingObject.transform.forward, ForceMode.Impulse);
-        mc.flingObject.rb.AddForce(Vector3.up * _upwardStrength / 2, ForceMode.Impulse);        
+        Collider flingCollider = flingObject.GetComponent<Collider>();
+        foreach (GameObject go in (m as ModelPlayable).GetFlingObstacleObjects())
+        {
+            if (go)
+            {
+                flingObject.objectsNotToCollideWith.Add(go);
+                Physics.IgnoreCollision(go.GetComponent<Collider>(), flingCollider, true);
+            }
+        }
     }
 }

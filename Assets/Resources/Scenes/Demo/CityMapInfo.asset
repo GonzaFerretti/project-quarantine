@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac7935043dd6e44b9dc8d754a6a3c1f, type: 3}
+  m_Name: CityMapInfo
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  - {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  positions:
+  - {x: 71.04, y: 0, z: 79.56}
+  - {x: 72.79, y: 0, z: 77.91}
+  - {x: 18.48, y: 0.284, z: 52.25}
+  - {x: 22.05, y: 0.284, z: 62.55}
+  - {x: 23.67, y: 0.284, z: 54.75}
+  - {x: 10.88741, y: 0.3, z: 98.93575}
+  - {x: 12.18002, y: 0.3, z: 116.1695}
+  - {x: -53.07248, y: 0.29, z: 93.61462}
+  - {x: -54.34004, y: 0.27, z: 115.4494}
+  - {x: -39.02489, y: 0.3, z: 135.4961}
+  - {x: -56.64864, y: 0.268, z: 22.77528}
+  - {x: -57.17772, y: 0.294, z: 19.68154}
+  - {x: -14.35643, y: 0.3, z: -10.08829}
+  - {x: -7.178253, y: 0.3, z: -18.46723}
+  - {x: -21.30863, y: 0.3, z: -15.78117}
+  - {x: -29.01031, y: 0.3, z: -26.65898}
+  - {x: -43.28465, y: 0.3, z: -12.76494}
+  - {x: 23.62624, y: 0.3, z: 9.055283}
+  - {x: 32.89, y: 0.3, z: 11.8691}
+  - {x: -32.299, y: 0.3, z: -10.83}
+  - {x: 18.42, y: 0.2, z: 75.73}
+  - {x: 10.35, y: 0.2, z: 27.71}
+  - {x: -36.035, y: 0.2, z: 98.683}
+  - {x: -51.152, y: 0.2, z: 131.08}
+  - {x: 23.864, y: 0.2, z: 96.686}
+  - {x: -44.627, y: 0.2, z: -18.202}
+  - {x: 26.528, y: 0.2, z: -6.1343}
+  rotations:
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: -58.426, z: 90}
+  - {x: 0, y: -58.426, z: 90}
+  - {x: 0, y: 16.268, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 23.401, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  - {x: 0, y: 0, z: 90}
+  fencePositions:
+  - {x: -52.32992, y: 0.1999997, z: 7.326862}
+  - {x: -54.38686, y: 0.1999997, z: 7.326862}
+  - {x: -56.44381, y: 0.1999997, z: 7.326862}
+  - {x: -58.50076, y: 0.1999997, z: 7.326862}
+  fenceRotations:
+  - {x: -90, y: 90, z: 0}
+  - {x: -90, y: 90, z: 0}
+  - {x: -90, y: 90, z: 0}
+  - {x: -90, y: 90, z: 0}
+  fenceWasBroken: 00000000
+  shouldCameraMove: 1
+  enteredBefore: 0
+  camPosition: {x: -557, y: -20, z: -74}
+  camRotation: {x: 42, y: 90, z: 0}
+  distance: 15

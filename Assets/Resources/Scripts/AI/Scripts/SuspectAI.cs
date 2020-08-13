@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Controller/AI/SuspectAI")]
-public class SuspectAI : ControllerWrapper, IController
+public class SuspectAI : ControllerWrapper, IController, INeedTargetLocation
 {
-    public float targetTreshold;
+    public float targetThreshold;
 
     public float rotationDuration;
     public float rotationMaxDuration;
@@ -16,23 +14,23 @@ public class SuspectAI : ControllerWrapper, IController
 
     public float degrees;
 
-    ModelPatrol _model;
+    ModelNodeUsingEnemy _model;
     Vector3 _target;
 
     public void AssignModel(Model model)
     {
-        _model = model as ModelPatrol;
+        _model = model as ModelNodeUsingEnemy;
     }
 
     public override ControllerWrapper Clone()
     {
-        ControllerWrapper clone = CreateInstance("SuspectAI") as ControllerWrapper;
-        (clone as SuspectAI).targetTreshold = targetTreshold;
-        (clone as SuspectAI).rotationDuration = rotationDuration;
-        (clone as SuspectAI).rotationMaxDuration = rotationMaxDuration;
-        (clone as SuspectAI).currentRotations = currentRotations;
-        (clone as SuspectAI).rotationMaxAmount = rotationMaxAmount;
-        (clone as SuspectAI).degrees = degrees;
+        SuspectAI clone = CreateInstance("SuspectAI") as SuspectAI;
+        clone.targetThreshold = targetThreshold;
+        clone.rotationDuration = rotationDuration;
+        clone.rotationMaxDuration = rotationMaxDuration;
+        clone.currentRotations = currentRotations;
+        clone.rotationMaxAmount = rotationMaxAmount;
+        clone.degrees = degrees;
         return clone;
     }
 
@@ -45,6 +43,8 @@ public class SuspectAI : ControllerWrapper, IController
         else
         {
             SecondaryPhase();
+            _model.animator.SetBool("running", false);
+            _model.animator.SetBool("isIdle", true);
         }
     }
 
@@ -52,7 +52,11 @@ public class SuspectAI : ControllerWrapper, IController
     {
         if (currentRotations < rotationMaxAmount)
             Rotate();
-        else _model.controller = _model.standardController;
+        else
+        {
+            _model.GetComponent<NavMeshAgent>().SetDestination(_model.node.transform.position);
+            _model.controller = _model.standardController;
+        }
     }
 
     void Rotate()
@@ -72,11 +76,10 @@ public class SuspectAI : ControllerWrapper, IController
 
     bool Distance()
     {
-        return Vector3.Distance(_model.transform.position, _target) > targetTreshold;
+        return Vector3.Distance(_model.transform.position, _target) > targetThreshold;
     }
 
-
-    public SuspectAI SetTarget(Vector3 target)
+    public INeedTargetLocation SetTarget(Vector3 target)
     {
         _target = target;
         return this;

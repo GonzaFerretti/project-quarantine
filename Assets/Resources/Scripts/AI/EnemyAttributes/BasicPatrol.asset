@@ -16,7 +16,7 @@ MonoBehaviour:
   suspectRange: 12
   angle: 80
   alertDistance: 60
-  hearingDistance: 16
-  characterModel: {fileID: -927199367670048503, guid: 528cee9f389f7694ebcdfd0073f39f4c,
+  characterModel: {fileID: 6212626233782701377, guid: 31e63af6a802aae43b43e7f950fa805c,
     type: 3}
-  animations: {fileID: 9100000, guid: 4d206dc747243b342a235563ecc53d11, type: 2}
+  animations: {fileID: 9100000, guid: 5677ae262e8bcde408b905498f65cacc, type: 2}
+  seeThroughColor: {r: 1, g: 0, b: 0, a: 1}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Interact
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
-  interactionDistance: 1
+  interactionDistance: 3
   angleArc: 150
   angleDensity: 10

@@ -1,7 +1,10 @@
-﻿public class ActionMakeNoise : IAction
+﻿public class ActionMakeNoise : BaseAction
 {
-    public void Do(Model m)
+    public override void Do(Model m)
     {
-        EventManager.TriggerLocEvent("Noise", m);
+        if(m is IMakeNoise)
+        {
+            EventManager.TriggerLocEvent("Noise", m);
+        }
     }
 }

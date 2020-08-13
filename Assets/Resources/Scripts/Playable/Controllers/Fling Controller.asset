@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 388cea6ba23d0e0459505556b33eb700, type: 3}
+  m_Script: {fileID: 11500000, guid: b7129335a87874f439ef1c2e85e2cd37, type: 3}
   m_Name: Fling Controller
   m_EditorClassIdentifier: 
-  constantActionLinks:
   actionKeyLinks:
   - {fileID: 11400000, guid: dfff7a2e77d431b4db7d37eb14a16396, type: 2}
   - {fileID: 11400000, guid: b6896b1a5a0b88740990634bf0d6286f, type: 2}
@@ -20,3 +19,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4824bc4e9feb94341a80b2cdb2d7810e, type: 2}
   - {fileID: 11400000, guid: 7bc9e5ce023778e4783e478378d90b61, type: 2}
   - {fileID: 11400000, guid: 48327cf5edf5b5645938effb5aee197a, type: 2}
+  - {fileID: 11400000, guid: 85198abd4ae59e84ea0e5c1400649f00, type: 2}
+  - {fileID: 11400000, guid: 4304a581e29be2242bafe108fb8ab9d0, type: 2}
+  - {fileID: 11400000, guid: 4feb2c7c163df9b4ab8401d2af50b3fa, type: 2}
+  - {fileID: 11400000, guid: 570bc07071e7eae409d47f34abea1658, type: 2}
+  - {fileID: 11400000, guid: d904d6d29e437fd429d5359854c13f5e, type: 2}
+  - {fileID: 11400000, guid: 7974c7280e1280a4882733ebe7f7f1ee, type: 2}
+  - {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
+  - {fileID: 11400000, guid: dc1213891fc473d4e9773b48631b4cf9, type: 2}
+  - {fileID: 11400000, guid: 181c19e7aeea29541a2238a7f282790d, type: 2}
+  - {fileID: 11400000, guid: 09a0eeb4975d66f41afe72152d52f396, type: 2}
+  rock: {fileID: 11400000, guid: dbcabb94f2cd9c94aa37411f741f2161, type: 2}
+  bottle: {fileID: 11400000, guid: 589efc95fff433f468cefcf5d664d6f6, type: 2}

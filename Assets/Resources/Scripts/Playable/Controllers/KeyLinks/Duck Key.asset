@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33456fe05a705543a8f2cb91fd23480, type: 3}
   m_Name: Duck Key
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: e472da21543aa2843b45bbd819c2b7f7, type: 2}
+  myAction: {fileID: 11400000, guid: e472da21543aa2843b45bbd819c2b7f7, type: 2}
   key: 306
+  triggerType: {fileID: 11400000, guid: af69ad0b0b10c304cbccfb7e5b7b6645, type: 2}

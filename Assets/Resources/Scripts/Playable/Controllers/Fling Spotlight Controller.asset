@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97815d371811fae46830c19348414b57, type: 3}
   m_Name: Fling Spotlight Controller
   m_EditorClassIdentifier: 
+  height: 2
+  groundLayerId: 9
+  _upwardStrength: 5.5
+  _curveDrawer: {fileID: 0}

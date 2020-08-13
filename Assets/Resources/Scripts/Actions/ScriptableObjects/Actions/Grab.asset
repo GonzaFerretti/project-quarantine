@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Grab
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 1ebe23217b25ffe45b58a4b7360efb38, type: 2}
+  sound: {fileID: 11400000, guid: 5e0e751ce1e6ae44e9ef91d9408a2b6e, type: 2}
+  interactionDistance: 0.5

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Interaction Key
   m_EditorClassIdentifier: 
   myAction: {fileID: 11400000, guid: 2345e2593fd952c42b6f17a2226baf34, type: 2}
-  key: 101
+  key: 32
   triggerType: {fileID: 11400000, guid: ebc19ec25038cc7489fc95db82cee3d1, type: 2}

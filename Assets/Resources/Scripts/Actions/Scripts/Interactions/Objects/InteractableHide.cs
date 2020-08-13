@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableHide : IActionInteractableObject
+public class InteractableHide : BaseActionInteractableObject
 {
-    public void Do(InteractableObject obj)
+    public override void Do(InteractableObject obj)
     {
-        //Animation
-        Debug.Log("Hide");
+        obj.animator.SetBool("open", true);
     }
 }

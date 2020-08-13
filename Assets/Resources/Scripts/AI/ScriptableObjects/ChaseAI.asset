@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f808147bf0b7e64488ca1709fc0a1218, type: 3}
   m_Name: ChaseAI
   m_EditorClassIdentifier: 
+  searchAI: {fileID: 11400000, guid: 896acb1b2fe9b8c47a962aa4324caf96, type: 2}
+  targetTreshold: 1.99
+  maxTimer: 10
+  timer: 0

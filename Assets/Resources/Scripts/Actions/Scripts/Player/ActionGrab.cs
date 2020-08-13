@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 
-public class ActionGrab : IAction
+public class ActionGrab : ActionBaseInteract
 {
-    public void Do(Model m)
+    public ActionGrab(float _interactionDistance)
+    {
+        interactionDistance = _interactionDistance;
+    }
+
+    public override void Do(Model m)
     {
         ModelHumanoid mh = m as ModelHumanoid;
         if (mh.nearbyObject != null && m is ModelPlayable)
@@ -13,9 +18,11 @@ public class ActionGrab : IAction
             ItemWrapper item = model.nearbyObject.GetComponent<ItemWrapper>();
             item.Interact(model);
             model.transform.forward = finalDirection;
-            Debug.Log("test");
-            model.inv.AddItem(item.item);
+            GameObject flingItemModel = (item.item is FlingableItem) ? model.nearbyObject.gameObject : null;
+            mh.sm.Play(clip);
+            model.inv.AddItem(item.item, flingItemModel);
             model.nearbyObject = null;
+            model.animator.SetTrigger("pickUp");
         }
     }
 }

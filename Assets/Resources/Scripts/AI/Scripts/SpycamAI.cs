@@ -11,6 +11,7 @@ public class SpycamAI : ControllerWrapper, IController
     public void AssignModel(Model model)
     {
         _model = model as ModelSpycam;
+        if (_currentGoal == Vector3.zero) _currentGoal = _model.leftForward;
     }
 
     public override ControllerWrapper Clone()
@@ -21,8 +22,6 @@ public class SpycamAI : ControllerWrapper, IController
 
     public void OnUpdate()
     {
-        if (_currentGoal == Vector3.zero) _currentGoal = _model.leftForward;
-
         Vector3 currentGoal = Vector3.RotateTowards(_model.transform.forward, _currentGoal, _model.currentSpeed * Time.deltaTime, 0);
         _model.transform.rotation = Quaternion.LookRotation(currentGoal);
 
@@ -46,9 +45,7 @@ public class SpycamAI : ControllerWrapper, IController
 
     public bool IsInRange(Vector3 condition, float range)
     {
-        if ((_model.transform.forward.x < condition.x + range && _model.transform.forward.x > condition.x - range) && (_model.transform.forward.z < condition.z + range && _model.transform.forward.z > condition.z - range))
-            return true;
-        else return false;
+        return ((_model.transform.forward.x < condition.x + range && _model.transform.forward.x > condition.x - range) && (_model.transform.forward.z < condition.z + range && _model.transform.forward.z > condition.z - range));
     }
 
     public override void SetController()

@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionMovementRelease : IAction
+public class ActionMovementRelease : BaseAction
 {
     public ActionMovementRelease()
     {
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         if (m is ModelChar)
         {
-            ModelChar mc = m as ModelChar;
+            ModelPlayable mp = m as ModelPlayable;
             int currentlyPressedAmount = 0;
-            foreach (KeyCode key in (mc.controller as PlayerController).movementKeys)
+            foreach (KeyValuePair<KeyCode, movementKeysDirection> key in mp.movementKeys)
             {
-                if (Input.GetKey(key))
+                if (Input.GetKey(key.Key))
                 {
                     currentlyPressedAmount++;
                 }
             }
             if (currentlyPressedAmount < 1)
             {
-                mc.animator.SetBool("isRunning", false);
-                mc.animator.SetTrigger("idleVariation");
+                mp.animator.SetBool("isRunning", false);
+                mp.animator.SetTrigger("idleVariation");
             }
         }
     }

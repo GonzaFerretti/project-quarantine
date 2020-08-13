@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="new steps_data" version="1.3.0" audacityversion="2.3.3" sel0="28.0334762931" sel1="28.0334762931" vpos="0" h="25.7989345159" zoom="169.6097176920" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="272250__sturmankin__concrete-13a-sportshoes-walk" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="1707072">
+				<waveblock start="0">
+					<simpleblockfile filename="e08080ea.au" len="258049" min="-0.599165" max="0.554604" rms="0.016962"/>
+				</waveblock>
+				<waveblock start="258049">
+					<simpleblockfile filename="e0808848.au" len="262144" min="-0.401189" max="0.393179" rms="0.013884"/>
+				</waveblock>
+				<waveblock start="520193">
+					<simpleblockfile filename="e080828f.au" len="262144" min="-0.310529" max="0.384942" rms="0.014811"/>
+				</waveblock>
+				<waveblock start="782337">
+					<simpleblockfile filename="e080807c.au" len="262144" min="-0.788045" max="0.856823" rms="0.018146"/>
+				</waveblock>
+				<waveblock start="1044481">
+					<simpleblockfile filename="e0808baf.au" len="262144" min="-0.422416" max="0.758903" rms="0.016156"/>
+				</waveblock>
+				<waveblock start="1306625">
+					<simpleblockfile filename="e0808171.au" len="262144" min="-0.426724" max="0.468117" rms="0.014226"/>
+				</waveblock>
+				<waveblock start="1568769">
+					<simpleblockfile filename="e0808931.au" len="138303" min="-0.691772" max="0.658935" rms="0.018252"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

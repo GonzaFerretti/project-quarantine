@@ -2,6 +2,10 @@
 
 public abstract class InteractableFeedbackWrapper : ScriptableObject
 {
-    public IActionInteractableObject action;
-    public abstract void SetAction();
+    public BaseActionInteractableObject action;
+    public SoundClip clip;
+    public virtual void SetAction()
+    {
+        action.clip = clip;
+    }
 }

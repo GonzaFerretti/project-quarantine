@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8816721037066142a04f16b09d777a7, type: 3}
+  m_Name: Grandma
+  m_EditorClassIdentifier: 
+  characterModel: {fileID: 9198329020825594131, guid: 2ff03972143fb744eb5d7362a73e3fe8,
+    type: 3}
+  resources:
+  - {fileID: 11400000, guid: 8db035356ff707b44b7eae0ec6eee5b2, type: 2}
+  dialog:
+  - {fileID: 11400000, guid: 7f97a440eee3bac48b08d7d9219d4041, type: 2}
+  - {fileID: 11400000, guid: 8f74d45c1a737a74787fcde24cddd249, type: 2}
+  - {fileID: 11400000, guid: c9252d0ddee9b1b449b1ad04cabf69c7, type: 2}
+  - {fileID: 11400000, guid: c9252d0ddee9b1b449b1ad04cabf69c7, type: 2}
+  animations: {fileID: 9100000, guid: aede1b0bc34f25646a3947d1b4792969, type: 2}

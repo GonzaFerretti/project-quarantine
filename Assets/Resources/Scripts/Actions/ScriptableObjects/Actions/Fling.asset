@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Fling
   m_EditorClassIdentifier: 
   actionKey: {fileID: 11400000, guid: 7bc9e5ce023778e4783e478378d90b61, type: 2}
-  upwardStrength: 0.2
+  upwardStrength: 5.5

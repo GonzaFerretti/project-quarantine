@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683f7576893680849907787f5a1c2495, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  displayName: Rock
+  description: A sturdy little rock. May wreck minor havoc
+  icon: {fileID: 21300000, guid: 03e113ee92a859a41a8fddfe9526a31d, type: 3}
+  isStackable: 1
+  allowingActions: []
+  resource: {fileID: 0}
+  amountPerResource: 0
+  seeThroughColor: {r: 0.2, g: 0.24313726, b: 0.79607844, a: 0}
+  collisionActions:
+  - {fileID: 11400000, guid: 22772c45194a0124eb8b0962f4fbce1c, type: 2}
+  - {fileID: 11400000, guid: bf19bc0d26a2d7049a672b4582daf286, type: 2}
+  missSound: {fileID: 11400000, guid: 0e1b744c820669e4085c9abe773a2f2d, type: 2}

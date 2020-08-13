@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableVaultWrapper : MonoBehaviour
+public class InteractableVaultWrapper : InteractableObject
 {
-    //Tentative
-    Material _mat;
-    private void Start()
-    {
-        _mat = Resources.Load<Material>("Art/Visual/Placeholder/Blue");
-        transform.GetComponent<MeshRenderer>().material = _mat;
-    }
 }

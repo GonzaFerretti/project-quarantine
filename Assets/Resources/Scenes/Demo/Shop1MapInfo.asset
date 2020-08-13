@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac7935043dd6e44b9dc8d754a6a3c1f, type: 3}
+  m_Name: Shop1MapInfo
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: e7339ff3719147148a541cbf995a5f1f, type: 2}
+  - {fileID: 11400000, guid: e1f7850dc9c1b0643a6ebb984112d150, type: 2}
+  - {fileID: 11400000, guid: 64605b5d4cb8ccb44b4b1bd7b117caec, type: 2}
+  - {fileID: 11400000, guid: e1f7850dc9c1b0643a6ebb984112d150, type: 2}
+  - {fileID: 11400000, guid: 761d5a06db08d6141a5fdfbb0266db07, type: 2}
+  positions:
+  - {x: 4.193, y: 1.075, z: 6.257}
+  - {x: -6.578, y: 0.771, z: 6.828}
+  - {x: -3.27, y: 0.883, z: 6.896}
+  - {x: -5.724, y: 0.665, z: 3.214}
+  - {x: 3.861, y: 0.601, z: 3.777}
+  rotations:
+  - {x: -90, y: 0, z: 90}
+  - {x: 0, y: 43.11, z: 90}
+  - {x: -90, y: 0, z: 41.57}
+  - {x: 0, y: 54.11, z: 90}
+  - {x: -90, y: 0, z: -90}
+  fencePositions: []
+  fenceRotations: []
+  fenceWasBroken: 
+  shouldCameraMove: 1
+  enteredBefore: 0
+  camPosition: {x: -316, y: -20, z: 7}
+  camRotation: {x: 42, y: -90, z: 0}
+  distance: 15

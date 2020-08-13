@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f7c58cf44c0934988084fc6309ba0e, type: 3}
   m_Name: Redirect Controller
   m_EditorClassIdentifier: 
-  distanceTreshold: 0.77
+  distanceTreshold: 0.73
   animationDuration: 1
+  enterAmplitude: 2
+  enterSpeed: 2.4
+  exitAmplitude: 0.3
+  exitSpeed: 2.3

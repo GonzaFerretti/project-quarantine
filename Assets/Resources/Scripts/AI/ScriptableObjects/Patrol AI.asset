@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acda1ba268757af429e6318081f85c9c, type: 3}
   m_Name: Patrol AI
   m_EditorClassIdentifier: 
-  nodeDistanceThreshold: 0.68
+  nodeDistanceThreshold: 1.6

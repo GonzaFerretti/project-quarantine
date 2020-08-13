@@ -23,16 +23,30 @@ public class EventManager : MonoBehaviour
         _locEvents[eventType] += listener;
     }
 
-    public static void ClearAllEvents()
+    public static void UnsubscribeToEvent(string eventType, EventReceiver listener)
     {
         if (_events != null)
-            _events.Clear();
+        {
+            if (_events.ContainsKey(eventType))
+            {
+                _events[eventType] -= listener;
+            }
+        }
     }
 
-    public static void ClearAllLocEvents()
+    public static void UnsubscribeToLocationEvent(string eventType, LocationEventReceiver listener)
     {
         if (_locEvents != null)
-            _locEvents.Clear();
+        {
+            if( _locEvents.ContainsKey(eventType))
+            _locEvents[eventType] -= listener;
+        }
+    }
+
+    public static void ClearCertainKeyEvents(string s)
+    {
+        if (_events.ContainsKey(s))
+            _events[s] = null;
     }
 
     public static void TriggerEvent(string s)
@@ -40,7 +54,8 @@ public class EventManager : MonoBehaviour
         if (_events == null) _locEvents = new Dictionary<string, LocationEventReceiver>();
         if (_events.ContainsKey(s))
         {
-            _events[s]?.Invoke();
+            if (_events[s] != null)
+                _events[s]?.Invoke();
         }
     }
 

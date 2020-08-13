@@ -1,0 +1,99 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+
+public class CameraMasking : MonoBehaviour
+{
+    public int buildingLayerId;
+    public int maskedBuildingLayerId;
+    public Camera cam;
+    [Range(0,1)]
+    public float dotProductThresh;
+
+    public GameObject[] buildingsInScene;
+    public List<GameObject> buildingsInSight = new List<GameObject>();
+
+    public Vector3 GetR3Forward(GameObject go, bool shouldCounterRotateX)
+    {
+        if (!shouldCounterRotateX)
+        { 
+        return new Vector3(go.transform.forward.x,0, go.transform.forward.z);
+        }
+        else
+        {
+            float Xrotation = go.transform.localEulerAngles.x;
+            Vector3 correctedFw =  (Quaternion.AngleAxis(-Xrotation, Vector3.right) * go.transform.forward);
+            //Debug.Log("Base forward: " + go.transform.forward + " Corrected forward: " + correctedFw);
+            return new Vector3(correctedFw.x, 0, correctedFw.z); 
+        }
+    }
+
+    public void Start()
+    {
+        buildingsInScene = FindObjectsWithLayer(buildingLayerId);
+    }
+
+    GameObject[] FindObjectsWithLayer(int id)
+    {
+        GameObject[] gameObjs = FindObjectsOfType<GameObject>().Where(x => x.layer == id).ToArray();
+        return gameObjs;
+    }
+
+    public void UpdateObjectsOnSight()
+    {
+        buildingsInSight = new List<GameObject>();
+        foreach (GameObject go in buildingsInScene)
+        {
+            if (isOnSight(go))
+            {
+                buildingsInSight.Add(go);
+                go.name = "angle " + (go.transform.localEulerAngles.y + go.transform.localEulerAngles.z);
+            }
+            else
+            {
+                go.name = "object" + Random.Range(0, 8096);
+            }
+        }
+        foreach (GameObject go in buildingsInSight)
+        {
+            if (shouldBeInvisible(go))
+            {
+                go.layer = maskedBuildingLayerId;
+            }
+            else
+            {
+                go.layer = buildingLayerId;
+            }
+        }
+    }
+
+    public bool shouldBeInvisible(GameObject go)
+    {
+        Vector3 v3forward = GetR3Forward(go,true);
+        // Usar localEulerAngles
+        Vector3 thisv3fw = GetR3Forward(gameObject,false);
+        float dot = Vector3.Dot(v3forward.normalized, thisv3fw.normalized);
+        //Debug.Log(dot);
+        //go.name = go.transform.forward.ToString();
+        bool check = (dot >= dotProductThresh && dot <= 1);
+        return check;
+    }
+
+    public void Update()
+    {
+        UpdateObjectsOnSight();
+    }
+
+    bool isOnSight(GameObject go)
+    {
+        var planes = GeometryUtility.CalculateFrustumPlanes(cam);
+        var point = go.transform.position;
+        foreach (var plane in planes)
+        {
+            if (plane.GetDistanceToPoint(point) < 0)
+                return false;
+        }
+        return true;
+    }
+}

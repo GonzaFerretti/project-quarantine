@@ -23,5 +23,11 @@ public class ModelChar : Model
     protected virtual void Update()
     {
         controller.myController.OnUpdate();
-    }  
+    } 
+
+    public Vector3 GetRayCastOrigin()
+    {
+        Vector3 origin = (GetComponent<CapsuleCollider>()) ? new Vector3(transform.position.x, transform.position.y + GetComponent<CapsuleCollider>().height * transform.localScale.x / 2, transform.position.z) : transform.position;
+        return origin;
+    }
 }

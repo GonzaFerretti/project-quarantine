@@ -4,9 +4,9 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "Controller/AI/Exit Indoors AI")]
 public class ExitIndoorAI : ControllerWrapper, IController
 {
-    public float tresholdDistance;
     ModelPatrol _model;
     NavMeshAgent _agent;
+    public float tresholdDistance;
 
     public void AssignModel(Model model)
     {
@@ -23,8 +23,8 @@ public class ExitIndoorAI : ControllerWrapper, IController
 
     public void OnUpdate()
     {
-        if (Vector3.Distance(_model.transform.position, _model.spawner.transform.position - _model.spawner.transform.forward) < tresholdDistance)
-            Destroy(_model.transform);
+        if (Vector3.Distance(_model.transform.position, _model.spawner.transform.position) < tresholdDistance)
+            Destroy(_model.gameObject);
         else
         {
             _agent.SetDestination(_model.spawner.transform.position);

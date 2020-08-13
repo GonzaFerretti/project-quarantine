@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Controller/Action/Vault")]
-public class ActionVaultWrapper : ActionWrapper
+public class ActionVaultWrapper : ActionBaseInteractWrapper
 {
-    public float vaultDuration;
     public float vaultHeight;
+    public float objectiveOffset;
+    public float distanceModifierMin;
     public override void SetAction()
     {
-        action = new ActionVault(vaultDuration,vaultHeight);
+        action = new ActionVault(vaultHeight, interactionDistance, objectiveOffset, distanceModifierMin);
     }
 }

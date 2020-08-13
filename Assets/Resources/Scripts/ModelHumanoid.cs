@@ -4,26 +4,38 @@ public class ModelHumanoid : ModelChar
 {
     public float runSpeed;
     public bool isDucking;
-    public vaultStates vaultState = vaultStates.cantVault;
+    public bool isVaulting = false;
     private Vector3 vaultObjetive, vaultStartPoint;
+    float _vaultDuration;
     private float vaultStart;
     public float vaultDuration, vaultHeight;
-    public Transform lastVault;
-    public GameObject nearbyObject;
-    
-    public enum vaultStates
-    {
-        cantVault = 0,
-        isVaulting = 1,
-        canVault = 2,
-    }
+    public Collider lastVault;
+    public ItemWrapper nearbyObject;
+    public FlingObstacleChecker FlingObstacleChecker;
+    public VaultCurveDrawer vaultCurveDrawer;
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.GetComponent<ItemWrapper>())
         {
-            nearbyObject = collider.gameObject;
-            nearbyObject.GetComponent<ItemWrapper>().activateParticles();
+            if (nearbyObject)
+            { 
+            //nearbyObject.DisableOutline();
+            }
+            nearbyObject = collider.GetComponent<ItemWrapper>();
+            //nearbyObject.ActivateOutline();
+        }
+    }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        if (collider.GetComponent<ItemWrapper>())
+        {
+            if (!nearbyObject)
+            {
+                nearbyObject = collider.GetComponent<ItemWrapper>();
+                //nearbyObject.ActivateOutline();
+            }
         }
     }
 
@@ -31,68 +43,60 @@ public class ModelHumanoid : ModelChar
     {
         if (collider.GetComponent<ItemWrapper>())
         {
-            nearbyObject.GetComponent<ItemWrapper>().disableParticles();
-            nearbyObject = null;
+            if (nearbyObject)
+            {
+                //nearbyObject.DisableOutline();
+                nearbyObject = null;
+            }
         }
     }
 
     protected override void Update()
     {
         base.Update();
-        isDucking = false;
-        if (vaultState == vaultStates.isVaulting)
+        if (isVaulting)
         {
             moveTowardsVaultPoint();
         }
     }
 
+    public void InitFlingObsChecker()
+    {
+        FlingObstacleChecker = GetComponentInChildren<FlingObstacleChecker>();
+        FlingObstacleChecker.Init();
+    }
+
     private void moveTowardsVaultPoint()
     {
-        float vaultProgress = (Time.time - vaultStart) / (vaultDuration);
+        float vaultProgress = (Time.time - vaultStart) / (_vaultDuration);
         if (vaultProgress < 1)
         {
-            //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine function. The distance travelled is lerped between the starting point and the objective.
+            //The arc movement is described seperately lerping the current progress between 0 and 2PI on a Sine-based function. The distance travelled is lerped between the starting point and the objective.
             float vaultHeightIndex = Mathf.Lerp(0, Mathf.PI, vaultProgress);
-            float yPosition = vaultStartPoint.y + Mathf.Sin(vaultHeightIndex) * vaultHeight;
+            float yPosition = vaultStartPoint.y + (-(Mathf.Pow(vaultHeightIndex + Mathf.PI, 2) * Mathf.Sin(vaultHeightIndex + Mathf.PI))) / 3 * vaultHeight;
             Vector3 XandZposition = Vector3.Lerp(vaultStartPoint, vaultObjetive, vaultProgress);
             transform.position = new Vector3(XandZposition.x, yPosition, XandZposition.z);
         }
         else
         {
-            transform.position = vaultObjetive;
-            vaultState = vaultStates.cantVault;
-            Physics.IgnoreCollision(lastVault.GetComponent<Collider>(), GetComponent<Collider>(), false);
+            isVaulting = false;
+            animator.SetBool("vault", false);
+            vaultCurveDrawer.Hide();
+            Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), false);
         }
     }
 
-    public void startVault(Vector3 objetive)
+    public void startVault(Vector3 objetive, Collider vaultCollider, float distanceCoef)
     {
         vaultStart = Time.time;
+        lastVault = vaultCollider;
         vaultStartPoint = transform.position;
         vaultObjetive = objetive;
-        vaultState = vaultStates.isVaulting;
-        Physics.IgnoreCollision(lastVault.GetComponent<Collider>(), GetComponent<Collider>(), true);
+        isVaulting = true;
+        _vaultDuration = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(objetive.x, objetive.z)) / (standardSpeed * distanceCoef);
+        Physics.IgnoreCollision(lastVault, GetComponent<Collider>(), true);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        animator.SetTrigger("vault");
+        animator.SetBool("vault", true);
     }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.transform.GetComponent<InteractableVaultWrapper>() != null && vaultState != vaultStates.canVault)
-        {
-            vaultState = vaultStates.canVault;
-            lastVault = collision.transform;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.GetComponent<InteractableVaultWrapper>() != null && vaultState == vaultStates.canVault)
-        {
-            vaultState = vaultStates.cantVault;
-            animator.ResetTrigger("vault");
-        }
-    }
-
 }
 

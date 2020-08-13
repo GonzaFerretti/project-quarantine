@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ActionRotation : IAction
+public class ActionRotation : BaseAction
 {
     float _speed;
     Vector3 _quaternion;
@@ -11,7 +11,7 @@ public class ActionRotation : IAction
         _quaternion = quaternion;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         m.transform.Rotate(_quaternion * _speed * Time.deltaTime);
     }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: playerBaseInventory
   m_EditorClassIdentifier: 
   items: []
+  currentlySelectedItem: {fileID: 0}

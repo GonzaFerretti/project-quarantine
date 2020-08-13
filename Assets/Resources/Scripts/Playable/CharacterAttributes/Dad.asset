@@ -12,18 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b271d210ffb8dd943ae44c3e76189d9c, type: 3}
   m_Name: Dad
   m_EditorClassIdentifier: 
-  sneakSpeed: 2
+  sneakSpeed: 3
   walkSpeed: 5
   runSpeed: 7
-  strength: 6
+  strength: 14
+  bodyheight: 1.15
+  whistleStrength: 8
   innateActions:
   - {fileID: 11400000, guid: d5119eeedd505ec459d131853b53419f, type: 2}
   - {fileID: 11400000, guid: 8deec2ca8ca46b242a75c46bcb0bf311, type: 2}
   - {fileID: 11400000, guid: eff97ae2f9229194eba16ade55b52550, type: 2}
   - {fileID: 11400000, guid: 12c85f03aa2383847ac7481e6be312ff, type: 2}
   - {fileID: 11400000, guid: d1a6cc61e6790484294a36883deaa8c1, type: 2}
+  - {fileID: 11400000, guid: 1fea96819cfe8a947a1d901a3b7ce36b, type: 2}
+  - {fileID: 11400000, guid: e472da21543aa2843b45bbd819c2b7f7, type: 2}
   - {fileID: 11400000, guid: b61e571d7c5a21d418771b6908161e9c, type: 2}
-  characterModel: {fileID: -927199367670048503, guid: 92cf32674492aff4c9f8772f75a1536e,
+  - {fileID: 11400000, guid: 38c82bf40d4d9834c9a18845c683db81, type: 2}
+  characterModel: {fileID: 735626654489519756, guid: 05d3dd94f39cc574fa417753f441620f,
     type: 3}
-  materials: []
   animations: {fileID: 9100000, guid: a1b73534e8681054ea02ed3fd699fb44, type: 2}

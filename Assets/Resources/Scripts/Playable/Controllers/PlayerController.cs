@@ -7,8 +7,7 @@ public class PlayerController : ControllerWrapper, IController
 {
     public List<ActionKeyLinks> actionKeyLinks;
 
-    ModelChar _model;
-    public List<KeyCode> movementKeys = new List<KeyCode>();
+    protected ModelChar _model;
 
     public void AssignModel(Model model)
     {
@@ -17,10 +16,11 @@ public class PlayerController : ControllerWrapper, IController
 
     public override ControllerWrapper Clone()
     {
-        return new PlayerController();
+        PlayerController clone = CreateInstance("PlayerController") as PlayerController;
+        return clone;
     }
 
-    public void OnUpdate()
+    public virtual void OnUpdate()
     {
         CheckActionList(actionKeyLinks);
         List<ActionKeyLinks> addedActions = _model.gainedActionKeyLinks;
@@ -34,14 +34,15 @@ public class PlayerController : ControllerWrapper, IController
 
     public void StartFunction()
     {
+        ModelPlayable mp = _model as ModelPlayable;
         for (int i = 0; i < actionKeyLinks.Count; i++)
         {
             if (actionKeyLinks[i].myAction.action == null)
                 actionKeyLinks[i].myAction.SetAction();
             if (actionKeyLinks[i].myAction.action is ActionMovement)
             {
-                if (!movementKeys.Contains(actionKeyLinks[i].key))
-                    movementKeys.Add(actionKeyLinks[i].key);
+                if (!mp.movementKeys.ContainsKey(actionKeyLinks[i].key))
+                    mp.movementKeys[actionKeyLinks[i].key] = (actionKeyLinks[i].myAction.action as ActionMovement)._direction;
             }
         }
     }

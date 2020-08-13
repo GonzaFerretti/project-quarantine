@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ActionInteract : IAction
+public class ActionInteract : BaseAction
 {
     float _rayDistance;
     float _angleArc;
@@ -13,45 +13,41 @@ public class ActionInteract : IAction
         _arcDensity = density;
     }
 
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         RaycastHit hit = new RaycastHit();
+        GameObject hitObject = null;
+        CapsuleCollider collider = m.GetComponent<CapsuleCollider>();
+        Vector3 startPoint = new Vector3(m.transform.position.x, m.transform.position.y + collider.height * m.transform.localScale.x / 2, m.transform.position.z);
         if ((m is ModelHumanoid) && (m as ModelHumanoid).nearbyObject)
         {
-            float forwardAngle = Vector2.SignedAngle(new Vector2(1, 0), new Vector2(m.transform.forward.x, m.transform.forward.z));
-            float longestPossibleRay = LongestPossibleRoute((m as ModelPlayable).GetComponent<Collider>());
-            for (float i = -_angleArc / 2 + forwardAngle; i <= _angleArc / 2 + forwardAngle; i += _arcDensity)
-            {
-                float angle = i * Mathf.Deg2Rad;
-                float x = Mathf.Cos(angle);
-                float z = Mathf.Sin(angle);
-                Vector3 rayDirection = new Vector3(x, 0, z);
-                Debug.DrawLine(m.transform.position, m.transform.position + rayDirection * longestPossibleRay, Color.red, Time.deltaTime);
-                Physics.Raycast(m.transform.position, rayDirection, out hit, longestPossibleRay);
-                if (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>())
-                {
-                    break;
-                }
-            }
+            hitObject = (m as ModelHumanoid).nearbyObject.gameObject;
         }
         else
         {
-            Physics.Raycast(m.transform.position, m.transform.forward, out hit, _rayDistance);
-            hit = (hit.collider && hit.collider.gameObject.GetComponent<ItemWrapper>()) ? new RaycastHit() : hit;
+            Physics.Raycast(startPoint, m.transform.forward, out hit, _rayDistance);
+            if (hit.collider)
+            { 
+                hitObject = hit.transform.gameObject;
+            }
         }
         ModelChar mc = m as ModelChar;
-        Debug.DrawLine(m.transform.position, m.transform.position + m.transform.forward, Color.red, 2);
-        if (hit.collider)
+        //Debug.DrawLine(startPoint, startPoint + m.transform.forward, Color.red, 2);
+        if (hit.collider || hitObject)
         {
-            InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
+            InteractableObject interactable = hitObject.GetComponent<InteractableObject>();
             if (interactable)
             {
+                float distanceToObject = hit.distance;
                 for (int i = 0; i < mc.gainedActions.Count; i++)
                 {
                     if (interactable.requiredAction == mc.gainedActions[i])
                     {
-                        mc.gainedActions[i].action.Do(m);
-                        interactable.Interact(m as ModelPlayable);
+                        if (!(mc.gainedActions[i].action is ActionBaseInteract) || (mc.gainedActions[i].action as ActionBaseInteract).interactionDistance > distanceToObject)
+                        { 
+                            mc.gainedActions[i].action.Do(m);
+                            interactable.Interact(m as ModelPlayable);
+                        }
                     }
                 }
             }

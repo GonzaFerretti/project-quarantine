@@ -1,0 +1,11 @@
+Para implementar un nuevo NPC:
+
+-Creen un nuevo Attribute de NPC (Create/Environments/NPCs/Attributes)
+*Asignenle un Resource que llegue a pedir (Tematicamente hablando, el hijo chico no creo que te pida puchos)
+*Asignenele un Modelo y Animator
+
+-Creen un nuevo Dialogo de NPC (Create/Environments/NPCs/Dialog) 
+--Asignenle a este el Resource al cual va a estar linkeado (Para que sepa que dialogo tiene que usar)
+--Escriban el dialogo en el campo de string
+
+*Asignenle el dialogo al Attribute de NPC

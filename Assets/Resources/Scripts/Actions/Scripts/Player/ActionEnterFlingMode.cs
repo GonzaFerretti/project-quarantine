@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-public class ActionEnterFlingMode : IAction
+public class ActionEnterFlingMode : BaseAction
 {
-    public void Do(Model m)
+    public override void Do(Model m)
     {
         ModelPlayable mp = m as ModelPlayable;
 
@@ -14,16 +14,16 @@ public class ActionEnterFlingMode : IAction
         }
 
         FlingSpotLight fs = mp.flingSpotlight;
-
         if (mp.controller != mp.flingController)
         {
             if (myflingables.Count == 0) return;
-            fs.gameObject.SetActive(true);
+            fs.SetIndicatorState(true);
             mp.controller = mp.flingController;
         }
         else
         {
-            fs.gameObject.SetActive(false);
+            (fs.controller as FlingSpotlightController)._curveDrawer.Hide();
+            fs.SetIndicatorState(false);
             mp.controller = mp.usualController;
         }
     }

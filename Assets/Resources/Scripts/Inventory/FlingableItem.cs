@@ -6,8 +6,8 @@ using UnityEngine;
 public class FlingableItem : Item
 {
     public List<ActionWrapper> collisionActions;
-    public Mesh itemModel;
-
+    public SoundClip missSound;
+    public FlingObjectInfo flingItemRuntimeInfo;
     public override Item cloneItem()
     {
         FlingableItem newItem = new FlingableItem();
@@ -17,7 +17,6 @@ public class FlingableItem : Item
         newItem.allowingActions = allowingActions;
         newItem.collisionActions = new List<ActionWrapper>();
         newItem.collisionActions = collisionActions;
-        newItem.itemModel = itemModel;
         return newItem;
     }
 }
