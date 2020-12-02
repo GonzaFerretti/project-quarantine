@@ -8,4 +8,3 @@ Collaborators:
 - Gonzalo Ferretti: Unity Developer
 - Pablo Sueiro: Unity Developer
 - Agustín Seisdedos: Game Designer
-- Sofía Escrofani: 3D Artist
